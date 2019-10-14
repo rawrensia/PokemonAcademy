@@ -1,7 +1,7 @@
 # PokemonAcademy
 A mobile game project for the CZ3003 (Software System Analysis and Design) course.
 
-##App Details
+## App Details
 - A simple quiz-based game with Pokemon theme.
 - The game content is on the Software Life Development Cycle (SLDC).
 - Each World in the game corresponds to each stage in the SLDC --> 6 Worlds: Planning, Analysis, Design, Implementation, Testing & Integration, Maintenance.
@@ -11,13 +11,13 @@ A mobile game project for the CZ3003 (Software System Analysis and Design) cours
 - The app can receive input from external system (Facebook and Twitter) to support the use case of a teacher sending assignments to student profiles through social media.
 - Students will be able to design a custom quiz.
 
-##Subsystems
+## Subsystems
 - Authentication
 - World Design
 - System Design
 - Content Design
 - UI Design
 
-#Project Structure
+## Project Structure
 Target SDK version: 28
 
