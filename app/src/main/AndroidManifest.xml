@@ -19,9 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserInterface.Topic"/>
-        <activity android:name=".Control.World"/>
+        <activity android:name=".Control.TopicActivity"/>
+        <activity android:name=".Control.WorldActivity"/>
         <activity android:name=".Control.LoginActivity"/>
+        <activity android:name=".Control.ContentActivity"/>
     </application>
 
 </manifest>

@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Failed to log in , please try again", Toast.LENGTH_LONG).show();
                     }
                 }*/
-                Intent Layer = new Intent(LoginActivity.this, World.class);
+                Intent Layer = new Intent(LoginActivity.this, WorldActivity.class);
                 startActivity(Layer);
             }
         });
