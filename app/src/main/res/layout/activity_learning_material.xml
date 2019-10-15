@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/violet">
 
+    <ImageButton
+        android:id="@+id/contentBackBtn"
+        android:layout_width="61dp"
+        android:layout_height="62dp"
+        app:srcCompat="@drawable/button1" />
+
+    <TextView
+        android:id="@+id/content_textView"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarStyle="insideOverlay">
 
         <TextView
+            android:id="@+id/contentBlock"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="ABC"
+            android:paddingTop="70dp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textAlignment="center"
-            android:textSize="45dp"
-            android:paddingTop="70dp"/>
+            android:textSize="45dp" />
     </ScrollView>
 </LinearLayout>

@@ -12,6 +12,12 @@
         android:layout_height="0dp"
         android:layout_weight="2.5">
 
+        <ImageButton
+            android:id="@+id/topicBackBtn"
+            android:layout_width="61dp"
+            android:layout_height="62dp"
+            app:srcCompat="@drawable/button1" />
+
         <TextView
             android:id="@+id/topicpage"
             android:layout_width="wrap_content"
@@ -49,6 +55,7 @@
     </RelativeLayout>
 
     <GridLayout
+        android:id="@+id/topicGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
@@ -67,9 +74,9 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/darkGreen"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            android:backgroundTint="@color/darkGreen">
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -79,10 +86,10 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/poktrainer"
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="100dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/poktrainer" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,8 +98,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -107,31 +113,31 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/yellow"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            android:backgroundTint="@color/yellow">
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/trainer"
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="100dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/trainer" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Take Mini Quiz"
+                    android:textAlignment="center"
                     android:textColor="@color/darkGreen"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    android:textAlignment="center"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

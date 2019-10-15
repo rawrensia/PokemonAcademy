@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Pokemon Academy</string>
+    <string name="planning_content">
+        Requirements are specification of what should be implemented, descriptions of how a system should behave, or of a system property/attribute.
+        Requirement Engineering is about identifying the purpose of a software system and the contexts in which it will be used. It refers to the activity of requirement development, which includes elicitation, specification, analysis and management of stakeholder requirements.
+        Elicitation: talk to customers.
+        Analysis: clarify with customers.
+        Specification: write requirements in formal documents.
+        Validation: check if there are conflicting requirements.
+
+        There are two Requirement Elicitation techniques:
+        Technique 1:
+        1: Examine documents
+        reuse existing or related documents, read standards or government regulations.
+        2: Interview stakeholders
+        conduct focus groups with customers to gather idea and needs.
+        3: Use questionnaires or marketing surveys
+        for quantitative data.
+
+        Technique 2:
+        1: Watch users do their job
+        2: Prototyping: just the interface to help customers better understand the system.
+        3: Task analysis: make use cases / scenarios.
+
+        Requirement Analysis: Decompose high-level requirements into details and identify priorities.
+        Requirements Specification Approaches:
+        -   	Textual: vision and scope doc, use case doc, SRS
+        -   	Graphical: structured analysis models (data flow diagram, entity-relationship diagram, dialog map), OO analysis models
+        -   	Formal: formal specification languages.
+        SRS: a set of precisely-stated properties and constraints that a software system must satisfy, and a complete description of the external behaviour of a system.
+    </string>
 </resources>
