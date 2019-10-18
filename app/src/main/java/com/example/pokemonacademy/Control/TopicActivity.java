@@ -54,12 +54,5 @@ public class TopicActivity extends AppCompatActivity {
                 });
             }
         }
-
-        ImageButton worldBackBtn = findViewById(R.id.topicBackBtn);
-        worldBackBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view)  {
-                finish();
-            }
-        });
     }
 }

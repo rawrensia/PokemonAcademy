@@ -23,6 +23,8 @@
         <activity android:name=".Control.WorldActivity"/>
         <activity android:name=".Control.LoginActivity"/>
         <activity android:name=".Control.ContentActivity"/>
+        <activity android:name=".Control.MiniQuiz"/>
+        <activity android:name=".Control.ChooseCharacterActivity"/>
     </application>
 
 </manifest>

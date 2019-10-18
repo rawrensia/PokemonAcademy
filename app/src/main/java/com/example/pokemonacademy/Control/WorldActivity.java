@@ -48,12 +48,6 @@ public class WorldActivity extends AppCompatActivity {
                 }
             });
         }
-        ImageButton worldBackBtn = findViewById(R.id.worldBackBtn);
-        worldBackBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view)  {
-                finish();
-            }
-        });
 
     }
 }

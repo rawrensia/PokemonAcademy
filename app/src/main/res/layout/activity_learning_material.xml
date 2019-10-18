@@ -3,25 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/violet">
-
-    <ImageButton
-        android:id="@+id/contentBackBtn"
-        android:layout_width="61dp"
-        android:layout_height="62dp"
-        app:srcCompat="@drawable/button1" />
+    android:background="@color/lightyellow">
 
     <TextView
         android:id="@+id/content_textView"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_gravity="center"
         android:text="TextView"
+        android:fontFamily="@font/quenda"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="33sp"
+        android:textColor="@color/darkBlue"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="580dp"
         android:scrollbarStyle="insideOverlay">
 
         <TextView
@@ -31,6 +28,6 @@
             android:paddingTop="70dp"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textAlignment="center"
-            android:textSize="45dp" />
+            android:textSize="22sp" />
     </ScrollView>
 </LinearLayout>

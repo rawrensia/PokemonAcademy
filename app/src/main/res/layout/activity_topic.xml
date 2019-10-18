@@ -12,12 +12,6 @@
         android:layout_height="0dp"
         android:layout_weight="2.5">
 
-        <ImageButton
-            android:id="@+id/topicBackBtn"
-            android:layout_width="61dp"
-            android:layout_height="62dp"
-            app:srcCompat="@drawable/button1" />
-
         <TextView
             android:id="@+id/topicpage"
             android:layout_width="wrap_content"
