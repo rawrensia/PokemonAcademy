@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/violet">
 
-    <ImageButton
-        android:id="@+id/contentBackBtn"
-        android:layout_width="61dp"
-        android:layout_height="62dp"
-        app:srcCompat="@drawable/button1" />
-
     <TextView
         android:id="@+id/content_textView"
         android:layout_width="match_parent"
@@ -21,7 +15,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="580dp"
         android:scrollbarStyle="insideOverlay">
 
         <TextView
@@ -31,6 +25,6 @@
             android:paddingTop="70dp"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textAlignment="center"
-            android:textSize="45dp" />
+            android:textSize="22sp" />
     </ScrollView>
 </LinearLayout>

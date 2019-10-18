@@ -2,7 +2,11 @@ package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -13,11 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class ContentActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning_material);
-
         Intent intent = getIntent();
         String worldName = intent.getStringExtra("worldName");
 
@@ -49,15 +53,25 @@ public class ContentActivity extends AppCompatActivity {
 
         TextView content_tv = findViewById(R.id.contentBlock);
         content_tv.setText(content);
-        setSingleEvent();
     }
 
-    private void setSingleEvent()   {
-        ImageButton worldBackBtn = findViewById(R.id.contentBackBtn);
-        worldBackBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view)  {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_mini_quiz, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tominiquiz:
+                Intent intent = new Intent(getApplicationContext(), MiniQuiz.class);
+                startActivity(intent);
                 finish();
-            }
-        });
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -66,7 +66,11 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Failed to log in , please try again", Toast.LENGTH_LONG).show();
                     }
                 }*/
-                Intent Layer = new Intent(LoginActivity.this, WorldActivity.class);
+
+                /*need code before this to check whether the user has chosen a Pokemon character
+                if user avatar != 0, go straight to World Selection, else go to Character Selection
+                 */
+                Intent Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
                 startActivity(Layer);
             }
         });
