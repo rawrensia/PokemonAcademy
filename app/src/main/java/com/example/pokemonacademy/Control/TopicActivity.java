@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.Random;
 
 import com.example.pokemonacademy.R;
 
@@ -28,6 +31,9 @@ public class TopicActivity extends AppCompatActivity {
 
         GridLayout mainGrid = findViewById(R.id.topicGrid);
         setSingleEvent(mainGrid, worldID);
+
+        ImageView imageView = (ImageView) findViewById(R.id.trainerView);
+        imageView.setImageResource(getRandomImage());
     }
 
     private void setSingleEvent(GridLayout mainGrid, final int worldID){
@@ -54,5 +60,13 @@ public class TopicActivity extends AppCompatActivity {
                 });
             }
         }
+    }
+
+    private int getRandomImage() {
+        TypedArray imgs = getResources().obtainTypedArray(R.array.trainer_imgs);
+        // or set you ImageView's resource to the id
+        int id = imgs.getResourceId(new Random().nextInt(imgs.length()), -1); //-1 is default if nothing is found (we don't care)
+        imgs.recycle();
+        return id;
     }
 }

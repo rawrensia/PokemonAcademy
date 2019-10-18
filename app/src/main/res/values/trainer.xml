@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="trainer_imgs">
+        <item>@drawable/trainer_1</item>
+        <item>@drawable/trainer_2</item>
+        <item>@drawable/trainer_3</item>
+        <item>@drawable/trainer_4</item>
+        <item>@drawable/trainer_5</item>
+        <item>@drawable/trainer_6</item>
+    </string-array>
+</resources>
