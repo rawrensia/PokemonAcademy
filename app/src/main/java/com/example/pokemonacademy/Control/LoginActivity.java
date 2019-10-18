@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         //Handling validation for Email field
         if (username.isEmpty()) {
             valid = false;
-            txtUsername.setError("Please enter valid NTU username!");
+            txtUsername.setError("Please enter valid NTU email!");
         } else {
             valid = true;
             txtUsername.setError(null);
