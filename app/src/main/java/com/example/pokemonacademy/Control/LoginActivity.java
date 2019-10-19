@@ -17,7 +17,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtUsername;
     EditText txtEmail;
     EditText txtPassword;
-    EditText txtCourseIndex;
     Button btnLogin;
     IAccountDAO mydb;
     boolean add_data = false;
@@ -32,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         txtEmail = (EditText) findViewById(R.id.email);
         txtPassword = (EditText) findViewById(R.id.password);
         txtPassword.setTransformationMethod(new AsteriskPassword());
-        txtCourseIndex = (EditText) findViewById(R.id.course_index);
         btnLogin = (Button) findViewById(R.id.button_login);
 
 
@@ -40,10 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         String username1 = "boham3003";
         String email1 = "boham3003@e.ntu.edu.sg";
         String password1 = "boham3003";
-        String course_index1 = "3003";
 
         if (add_data) {
-            createNewAccount(username1, email1, password1, course_index1);
+            createNewAccount(username1, email1, password1);
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -122,8 +119,8 @@ public class LoginActivity extends AppCompatActivity {
         return valid;
     }
 
-    public void createNewAccount(String username, String email, String password, String course_index){
-        Account user = new Account(username, email, password, course_index);
+    public void createNewAccount(String username, String email, String password){
+        Account user = new Account(username, email, password);
         mydb.addUser(user);
     }
 
