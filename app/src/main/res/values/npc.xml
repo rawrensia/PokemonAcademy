@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="npc_imgs">
+        <item>@drawable/npc1</item>
+        <item>@drawable/npc2</item>
+        <item>@drawable/npc3</item>
+        <item>@drawable/npc4</item>
+        <item>@drawable/npc5</item>
+        <item>@drawable/npc6</item>
+        <item>@drawable/npc7</item>
+        <item>@drawable/npc8</item>
+        <item>@drawable/npc9</item>
+        <item>@drawable/npc10</item>
+        <item>@drawable/npc11</item>
+        <item>@drawable/npc12</item>
+        <item>@drawable/npc13</item>
+        <item>@drawable/npc14</item>
+        <item>@drawable/npc15</item>
+        <item>@drawable/npc16</item>
+        <item>@drawable/npc17</item>
+        <item>@drawable/npc18</item>
+        <item>@drawable/npc19</item>
+        <item>@drawable/npc20</item>
+        <item>@drawable/npc21</item>
+        <item>@drawable/npc22</item>
+        <item>@drawable/npc23</item>
+        <item>@drawable/npc24</item>
+        <item>@drawable/npc25</item>
+        <item>@drawable/npc26</item>
+        <item>@drawable/npc27</item>
+        <item>@drawable/npc28</item>
+        <item>@drawable/npc29</item>
+        <item>@drawable/npc30</item>
+
+    </string-array>
+</resources>

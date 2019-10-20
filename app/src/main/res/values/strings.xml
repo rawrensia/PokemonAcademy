@@ -29,4 +29,5 @@
         -   	Formal: formal specification languages.
         SRS: a set of precisely-stated properties and constraints that a software system must satisfy, and a complete description of the external behaviour of a system.
     </string>
+    <string name="title_activity_mini_quiz_landing_page">MiniQuizLandingPage</string>
 </resources>

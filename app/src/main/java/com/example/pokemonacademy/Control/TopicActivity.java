@@ -5,7 +5,10 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -54,7 +57,10 @@ public class TopicActivity extends AppCompatActivity {
             } else {
                 cardView.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        Intent Layer = new Intent(TopicActivity.this, MiniQuiz.class);
+                        Intent Layer = new Intent(TopicActivity.this, MiniQuizLandingPage.class);
+                        Layer.putExtra("worldName", ((TextView) findViewById(R.id.topicpage)).getText());
+                        Layer.putExtra("worldID", worldID);
+                        ImageView imgView = (ImageView)findViewById(R.id.trainerView);
                         startActivity(Layer);
                     }
                 });
