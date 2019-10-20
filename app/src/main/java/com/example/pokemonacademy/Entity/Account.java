@@ -1,12 +1,11 @@
 package com.example.pokemonacademy.Entity;
 
 public class Account {
-    private String username, email, password, course_index;
-    public Account (String u, String e, String p, String c) {
+    private String username, email, password;
+    public Account (String u, String e, String p) {
         username = u;
         email = e;
         password = p;
-        course_index = c;
     }
     public String getUsername() {
         return username;
@@ -17,5 +16,4 @@ public class Account {
     public String getPassword() {
         return password;
     }
-    public String getCourseIndex() {return course_index;}
 }

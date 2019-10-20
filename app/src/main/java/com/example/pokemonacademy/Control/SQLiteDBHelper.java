@@ -23,8 +23,6 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
     public static final String KEY_EMAIL = "email";
     //COLUMN password
     public static final String KEY_PASSWORD = "password";
-    //COLUMN course index
-    public static final String KEY_COURSE_INDEX = "course_index";
 
     //SQL for creating users table
     public static final String SQL_TABLE_USERS = " CREATE TABLE " + TABLE_ACCOUNTS
@@ -33,9 +31,8 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
             + KEY_USER_NAME + " TEXT, "
             + KEY_PASSWORD + " TEXT, "
             + KEY_EMAIL + " TEXT, "
-            + KEY_COURSE_INDEX + " TEXT"
+            + KEY_EMAIL + "0"
             + " ) ";
-
 
     public SQLiteDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,8 +63,6 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
         values.put(KEY_PASSWORD, user.getPassword());
         //Put email in  @values
         values.put(KEY_EMAIL, user.getEmail());
-        //Put course index in @values
-        values.put(KEY_COURSE_INDEX, user.getCourseIndex());
         // insert row
         long todo_id = db.insert(TABLE_ACCOUNTS, null, values);
     }
@@ -78,7 +73,6 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
         contentValues.put(KEY_USER_NAME, user.getUsername());
         contentValues.put(KEY_PASSWORD, user.getPassword());
         contentValues.put(KEY_EMAIL, user.getEmail());
-        contentValues.put(KEY_COURSE_INDEX, user.getCourseIndex());
         db.update(TABLE_ACCOUNTS, contentValues, "userName = ? ", new String[] {
                 user.getUsername() } );
     }
@@ -86,14 +80,14 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
     public Account Authenticate(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_ACCOUNTS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL, KEY_COURSE_INDEX},//Selecting columns want to query
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL},//Selecting columns want to query
                 KEY_USER_NAME + "=?",
                 new String[]{username},//Where clause
                 null, null, null);
 
         if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
             //if cursor has value then in user database there is user associated with this given email
-            Account user1 = new Account(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            Account user1 = new Account(cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
             //Match both passwords check they are same or not
             if (password.equals(user1.getPassword())) {
@@ -108,7 +102,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
     public boolean isEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_ACCOUNTS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL, KEY_COURSE_INDEX},//Selecting columns want to query
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL},//Selecting columns want to query
                 KEY_EMAIL + "=?",
                 new String[]{email},//Where clause
                 null, null, null);
@@ -125,7 +119,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
     public boolean isUsernameExists(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_ACCOUNTS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL, KEY_COURSE_INDEX},//Selecting columns want to query
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL},//Selecting columns want to query
                 KEY_USER_NAME + "=?",
                 new String[]{username},//Where clause
                 null, null, null);
@@ -138,20 +132,5 @@ public class SQLiteDBHelper extends SQLiteOpenHelper implements IAccountDAO{
         //if email does not exist return false
         return false;
     }
-    public boolean isCourseIndexExists(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_ACCOUNTS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_PASSWORD, KEY_EMAIL, KEY_COURSE_INDEX},//Selecting columns want to query
-                KEY_COURSE_INDEX + "=?",
-                new String[]{username},//Where clause
-                null, null, null);
 
-        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
-            //if cursor has value then in user database there is user associated with this given email so return true
-            return true;
-        }
-
-        //if email does not exist return false
-        return false;
-    }
 }
