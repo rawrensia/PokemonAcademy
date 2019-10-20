@@ -66,7 +66,12 @@ public class ContentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.tominiquiz:
-                Intent intent = new Intent(getApplicationContext(), MiniQuiz.class);
+                Intent Layer = getIntent();
+                String worldName = Layer.getStringExtra("worldName");
+                int worldID = Layer.getIntExtra("worldID", -1);
+                Intent intent = new Intent(getApplicationContext(), MiniQuizLandingPage.class);
+                intent.putExtra("worldName", worldName);
+                intent.putExtra("worldID", worldID);
                 startActivity(intent);
                 finish();
                 return true;
