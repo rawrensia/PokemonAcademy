@@ -1,68 +1,46 @@
 package com.example.pokemonacademy.Entity;
 
 
+import com.example.pokemonacademy.Entity.Choice;
+import java.util.ArrayList;
+
 public class Question {
-    int qnsId;
-    String qns;
-    String world;
-    String topic;
-    String quizType;
-    int diffLevel;
+    public int questionId;
+    public String question;
+    public String world;
+    public int difficultyLevel;
+    public ArrayList<Choice> choiceOptions;
+    public boolean attempted;
+    public String quiz_type;
 
-    public Question(int qnsId, String qns, String world, String topic, String quizType, int diffLevel){
-        this.qnsId = qnsId;
-        this.qns = qns;
+    Question(int questionId, String question, String world, int difficultyLevel, String quiz_type){
+        this.questionId = questionId;
+        this.question = question;
         this.world = world;
-        this.topic = topic;
-        this.quizType = quizType;
-        this.diffLevel = diffLevel;
+        this.difficultyLevel = difficultyLevel;
+        this.quiz_type = quiz_type;
+        attempted = false;
     }
 
-    public int getQnsId() {
-        return qnsId;
+    public int getDifficultyLevel(){
+        return difficultyLevel;
     }
 
-    public void setQnsId(int qnsId) {
-        this.qnsId = qnsId;
+    public void setChoiceOptions(){
+        // iterate through list of choices,
+        // get those this.question_id == choice.question_id
+        // append those choices into ArrayList<Choice> CO
+        // this.choiceOptions = CO
     }
 
-    public String getQns() {
-        return qns;
+    public ArrayList<Choice> getChoices(){
+        return choiceOptions;
     }
-
-    public void setQns(String qns) {
-        this.qns = qns;
+    public boolean verifyChoice(Choice choice) {
+        return choice.isCorrect();
     }
+    public void setAttempted(){
+        attempted = true;
 
-    public String getWorld() {
-        return world;
-    }
-
-    public void setWorld(String world) {
-        this.world = world;
-    }
-
-    public String getTopic() {
-        return topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
-    public String getQuizType() {
-        return quizType;
-    }
-
-    public void setQuizType(String quizType) {
-        this.quizType = quizType;
-    }
-
-    public int getDiffLevel() {
-        return diffLevel;
-    }
-
-    public void setDiffLevel(int diffLevel) {
-        this.diffLevel = diffLevel;
     }
 }
