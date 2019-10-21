@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
             diffLevel = (i+1) % 4;
 
-            Question addQuestion = new Question(qnsId, qns, world, topic, quizType, diffLevel);
+            Question addQuestion = new Question(qnsId, qns, world, diffLevel, quizType);
             databaseReferenceQuestion.child(qnsIdString).setValue(addQuestion);
         }
 
