@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.pokemonacademy.R;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FinalQuiz extends AppCompatActivity {
 
