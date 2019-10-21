@@ -1,34 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient2"
+    android:orientation="vertical"
     android:weightSum="10">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
 
-    <TextView
-        android:id="@+id/miniquiztitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="70dp"
-        android:fontFamily="@font/quenda"
-        android:text="Test Your Knowledge"
-        android:textColor="@color/orange"
-        android:textSize="33sp"
-        android:textAlignment="center"/>
+    <RelativeLayout
+        android:id="@+id/questionlayout"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:background="@drawable/questionbackground">
+
+        <TextView
+            android:id="@+id/miniquiztitle"
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="73dp"
+            android:layout_marginLeft="73dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="83dp"
+            android:layout_marginRight="83dp"
+            android:fontFamily="@font/quenda"
+            android:text="Mini Quiz Number"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/questiontext"
+            android:layout_width="378dp"
+            android:layout_height="77dp"
+            android:layout_below="@+id/miniquiztitle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/quenda"
+            android:text="Question: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
     </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/battlelayout"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:background="@drawable/pokemonstandingbackground">
+
+        <ImageView
+            android:id="@+id/enemypokemon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.193"
+            app:srcCompat="@drawable/pokemon4" />
+
+        <ProgressBar
+            android:id="@+id/enemypokemonhealth"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="107dp"
+            android:layout_height="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.19"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.31" />
+
+        <ProgressBar
+            android:id="@+id/userpokemonhealth"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="110dp"
+            android:layout_height="17dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enemypokemon"
+            app:layout_constraintVertical_bias="0.527" />
+
+        <ImageView
+            android:id="@+id/userpokemon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enemypokemonhealth"
+            app:layout_constraintVertical_bias="0.95"
+            app:srcCompat="@drawable/userpokemonpikachu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/answerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:background="@drawable/answerbackground">
+
+        <TextView
+            android:id="@+id/answeroption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/quenda"
+            android:text="1) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/answeroption2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/quenda"
+            android:text="2) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answeroption1" />
+
+        <TextView
+            android:id="@+id/answeroption3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/quenda"
+            android:text="3) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answeroption2" />
+
+        <Button
+            android:id="@+id/choice2btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="2"
+            app:layout_constraintEnd_toStartOf="@+id/choice3btn"
+            app:layout_constraintTop_toBottomOf="@+id/answeroption3" />
+
+        <Button
+            android:id="@+id/choice1btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="1"
+            app:layout_constraintEnd_toStartOf="@+id/choice2btn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answeroption3" />
+
+        <Button
+            android:id="@+id/choice3btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="3"
+            app:layout_constraintEnd_toStartOf="@+id/attackbtn"
+            app:layout_constraintTop_toBottomOf="@+id/answeroption3" />
+
+        <Button
+            android:id="@+id/attackbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="28dp"
+            android:text="Attack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answeroption3"
+            app:layout_constraintVertical_bias="0.181" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

@@ -115,10 +115,15 @@ public class MiniQuizLandingPage extends AppCompatActivity {
         finalQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = getIntent();
+                String worldName = intent.getStringExtra("worldName");
+                int worldID = intent.getIntExtra("worldID", -1);
+
                 Intent Layer = new Intent(MiniQuizLandingPage.this, FinalQuiz.class);
                 TextView tv = (TextView)((LinearLayout)finalQuiz.getChildAt(0)).getChildAt(1);
-                Layer.putExtra("worldName", tv.getText().toString());
-                Layer.putExtra("worldID", finalQuiz.getId());
+                Layer.putExtra("finalQuizNum", tv.getText().toString());
+                Layer.putExtra("worldName", worldName);
+                Layer.putExtra("worldID", worldID);
                 startActivity(Layer);
             }
         });
@@ -129,10 +134,15 @@ public class MiniQuizLandingPage extends AppCompatActivity {
 
             miniQuiz.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view){
+                    Intent intent = getIntent();
+                    String worldName = intent.getStringExtra("worldName");
+                    int worldID = intent.getIntExtra("worldID", -1);
+
                     Intent Layer = new Intent(MiniQuizLandingPage.this, MiniQuiz.class);
                     TextView tv = (TextView)((LinearLayout)miniQuiz.getChildAt(0)).getChildAt(1);
-                    Layer.putExtra("worldName", tv.getText().toString());
-                    Layer.putExtra("worldID", miniQuiz.getId());
+                    Layer.putExtra("miniQuizNum", tv.getText().toString());
+                    Layer.putExtra("worldName", worldName);
+                    Layer.putExtra("worldID", worldID);
                     startActivity(Layer);
                 }
             });
@@ -147,6 +157,9 @@ public class MiniQuizLandingPage extends AppCompatActivity {
         return id;
     }
 
-    // Get from db which quiz mini quiz has completed by the user
+    // TODO
+    // Get from db which mini quiz has completed by the user
+    // Mini quiz can be done in any order
+    // Condition to check all miniquiz is completed before allowing access to Final quiz.
 
 }
