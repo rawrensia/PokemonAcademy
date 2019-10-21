@@ -50,6 +50,8 @@
             android:fontFamily="@font/quenda"
             android:text="Question: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
+
+
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

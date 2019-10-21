@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "871686643860",
+    "firebase_url": "https://pokemon-academy-c98d0.firebaseio.com",
+    "project_id": "pokemon-academy-c98d0",
+    "storage_bucket": "pokemon-academy-c98d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871686643860:android:25f22901931534208ad481",
+        "android_client_info": {
+          "package_name": "com.example.pokemonacademy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871686643860-rka1l83tucsnflvh6s7sa76omtjnjlhe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pokemonacademy",
+            "certificate_hash": "6bee814b5094bdc3b990150bb5b1fdb7ac46220d"
+          }
+        },
+        {
+          "client_id": "871686643860-5aoenmhieaj028tdjg2pqpv8s6i4a71r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCoQEdtW11vFh1Kj6FLhWrKzH7L8mEdpo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871686643860-5aoenmhieaj028tdjg2pqpv8s6i4a71r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
