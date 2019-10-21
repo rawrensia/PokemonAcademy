@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pokemonacademy.R;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -23,11 +26,22 @@ import androidx.core.content.res.ResourcesCompat;
 public class MiniQuiz extends AppCompatActivity {
 
     private int selectedChoice = 0;
+    int counter = 0;
+    // Get list of questions
+    // Assign the questions their choices
+    // Get user's pokemon
+    // Get user's health
+
+    // Hardcode
+    private int userpokemonhp = 100;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_quiz);
+
         Intent intent = getIntent();
         String worldName = intent.getStringExtra("worldName");
         String miniQuizNum = intent.getStringExtra("miniQuizNum");
@@ -45,20 +59,11 @@ public class MiniQuiz extends AppCompatActivity {
         ImageView enemypokemon = (ImageView)findViewById(R.id.enemypokemon);
         enemypokemon.setImageResource(getRandomEnemyImage());
 
-        // Get list of questions for 3 difficulty levels from db
-
-        // Set Question
-        TextView questionTv = (TextView)findViewById(R.id.questiontext);
-
-        // Set answer options
+        // initialize buttons
         final TextView answeroption1 = (TextView)findViewById(R.id.answeroption1);
         final TextView answeroption2 = (TextView)findViewById(R.id.answeroption2);
         final TextView answeroption3 = (TextView)findViewById(R.id.answeroption3);
-        answeroption1.setText("1) Test1");
-        answeroption2.setText("2) Test2");
-        answeroption3.setText("3) Test3");
 
-        // initialize buttons
         final int greenColor = Color.parseColor("#33FF93");
         final int yellowColor = Color.parseColor("#D5E3A1");
         final int redColor = Color.parseColor("#E73B3B");
@@ -127,6 +132,22 @@ public class MiniQuiz extends AppCompatActivity {
 
             }
         });
+
+        // initialize health bar for enemy and user pokemons
+        ProgressBar enemyhealthbar = (ProgressBar)findViewById(R.id.enemypokemonhealth);
+        ProgressBar userpokemonhealthbar = (ProgressBar)findViewById(R.id.userpokemonhealth);
+        userpokemonhealthbar.setProgress(userpokemonhp);
+
+
+        // Get list of questions for 3 difficulty levels from db
+
+        // Set Question
+        TextView questionTv = (TextView)findViewById(R.id.questiontext);
+
+        // Set answer options
+        answeroption1.setText("1) Test1");
+        answeroption2.setText("2) Test2");
+        answeroption3.setText("3) Test3");
     }
     // Require from DB
     // User's selected pokemon

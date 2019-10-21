@@ -13,7 +13,7 @@ public class Question {
     public boolean attempted;
     public String quiz_type;
 
-    Question(int questionId, String question, String world, int difficultyLevel, String quiz_type){
+    public Question(int questionId, String question, String world, int difficultyLevel, String quiz_type){
         this.questionId = questionId;
         this.question = question;
         this.world = world;
