@@ -1,5 +1,6 @@
 package com.example.pokemonacademy.Entity;
 
+
 import com.example.pokemonacademy.Entity.Choice;
 import java.util.ArrayList;
 
@@ -40,5 +41,6 @@ public class Question {
     }
     public void setAttempted(){
         attempted = true;
+
     }
 }
