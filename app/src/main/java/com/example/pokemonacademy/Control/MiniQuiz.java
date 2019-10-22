@@ -49,14 +49,14 @@ public class MiniQuiz extends AppCompatActivity {
     private int currentQuestionIndex;
     private int correctChoiceIndex;
     private ArrayList<Question> questionList = initialize();
+
     // Variables for summary quiz
     private Question questionAssigned;
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
     private ArrayList<Choice> choiceChosen = new ArrayList<Choice>(); // for storing the choice which is chosen by the student
+    private ArrayList<Choice> rightChoice = new ArrayList<Choice>(); // for storing the right choice
     private int timeTaken[] = new int[num_of_question];
     private long startTime, endTime;
-//    Integer i = (int) (long) theLong;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +64,6 @@ public class MiniQuiz extends AppCompatActivity {
         // Starting
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_quiz);
-
-//        ArrayList<Question> questionList = initialize();
 
         // Get intent
         Intent intent = getIntent();
@@ -90,8 +88,6 @@ public class MiniQuiz extends AppCompatActivity {
         battlelayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.pokemonstandingbackground, null));
         answerlayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.answerbackground, null));
         enemypokemon.setImageResource(getRandomEnemyImage());
-        //userpokemon.setImageResource(); // Set this once db is up and we can check what is the user's pokemon
-
 
         // initialize question, answers and buttons
         final int greenColor = Color.parseColor("#33FF93");
@@ -181,6 +177,15 @@ public class MiniQuiz extends AppCompatActivity {
                 // For mini quiz summary
                 questionAnswered.add(questionAssigned);
                 choiceChosen.add(questionAssigned.choiceOptions.get(selectedChoice-1));
+
+                if (questionAssigned.choiceOptions.get(0).is_right_choice){
+                    rightChoice.add(questionAssigned.choiceOptions.get(0));
+                } else if (questionAssigned.choiceOptions.get(1).is_right_choice){
+                    rightChoice.add(questionAssigned.choiceOptions.get(1));
+                } else {
+                    rightChoice.add(questionAssigned.choiceOptions.get(2));
+                }
+
                 getTimeTaken();
 
                 // initialize
@@ -235,12 +240,19 @@ public class MiniQuiz extends AppCompatActivity {
                     TextView miniQuizTv = (TextView)findViewById(R.id.miniquiztitle);
 
                     Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
+
                     Bundle bundle1 = new Bundle();
                     bundle1.putParcelableArrayList("questionAnswered", questionAnswered);
                     Layer.putExtras(bundle1);
+
                     Bundle bundle2 = new Bundle();
                     bundle2.putParcelableArrayList("choiceChosen", choiceChosen);
                     Layer.putExtras(bundle2);
+
+                    Bundle bundle3 = new Bundle();
+                    bundle3.putParcelableArrayList("rightChoice", rightChoice);
+                    Layer.putExtras(bundle3);
+
                     Layer.putExtra("timeTaken", timeTaken);
                     Layer.putExtra("miniQuizNum", miniQuizTv.getText().toString());
                     Layer.putExtra("worldName", worldName);
@@ -303,8 +315,8 @@ public class MiniQuiz extends AppCompatActivity {
         Random random = new Random();
         float x = v.getX();
         float y = v.getY();
-        int randomInteger = random.nextInt(5);
-        boolean randomBool = random.nextBoolean();
+        final int randomInteger = random.nextInt(5);
+        final boolean randomBool = random.nextBoolean();
         if (randomBool){
             v.setX(x+randomInteger);
             v.setY(y+randomInteger);
