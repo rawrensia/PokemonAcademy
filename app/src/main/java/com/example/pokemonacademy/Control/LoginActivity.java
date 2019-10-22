@@ -7,122 +7,77 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pokemonacademy.Entity.Account;
 import com.example.pokemonacademy.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText txtUsername;
     EditText txtEmail;
     EditText txtPassword;
     Button btnLogin;
-    IAccountDAO mydb;
-    boolean add_data = false;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mydb = new SQLiteDBHelper(this);
-        txtUsername = (EditText) findViewById(R.id.username);
-        txtEmail = (EditText) findViewById(R.id.email);
-        txtPassword = (EditText) findViewById(R.id.password);
+        txtEmail = findViewById(R.id.email);
+        txtPassword = findViewById(R.id.password);
         txtPassword.setTransformationMethod(new AsteriskPassword());
-        btnLogin = (Button) findViewById(R.id.button_login);
+        btnLogin = findViewById(R.id.button_login);
 
+        mAuth = FirebaseAuth.getInstance();
 
-        //DUMMY DATA
-        String username1 = "boham3003";
-        String email1 = "boham3003@e.ntu.edu.sg";
-        String password1 = "boham3003";
-
-        if (add_data) {
-            createNewAccount(username1, email1, password1);
-        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                //Check user input is correct or not
-                if (validate()) {
-                    //Authenticate user
-                    Account currentUser = mydb.Authenticate(txtUsername.getText().toString(), txtPassword.getText().toString());
-
-                    //Check Authentication is successful or not
-                    if (currentUser != null) {
-
-                        Toast.makeText(LoginActivity.this, "Successfully signed in", Toast.LENGTH_LONG).show();
-                        Intent Layer = new Intent(LoginActivity.this, World.class);
-                        startActivity(Layer);
-                    } else {
-                        //User Logged in Failed
-                        Toast.makeText(LoginActivity.this, "Failed to log in , please try again", Toast.LENGTH_LONG).show();
-                    }
-                }*/
-
-                /*need code before this to check whether the user has chosen a Pokemon character
-                if user avatar != 0, go straight to World Selection, else go to Character Selection
-                 */
-                Intent Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
-                startActivity(Layer);
+                authenticate(txtEmail.getText().toString(), txtPassword.getText().toString());
             }
         });
     }
 
 
-    public boolean validate(){
-        boolean valid = false;
-        //Get values from EditText fields
-        String username = txtUsername.getText().toString();
-        String password = txtPassword.getText().toString();
-
-        //Handling validation for Email field
-        if (username.isEmpty()) {
-            valid = false;
-            txtUsername.setError("Please enter valid NTU username!");
-        } else {
-            valid = true;
-            txtUsername.setError(null);
-        }
-
-        //Handling validation for Password field
-        if (password.isEmpty()) {
-            valid = false;
-            txtPassword.setError("Please enter your NTU account password!");
-        } else {
-            if (password.length() < 8) {
-                valid = false;
-            } else {
-                char c;
-                int dCount = 0, lCount = 0, uCount = 0, sCount = 0;
-                for (int i = 0; i < password.length(); i++) {
-                    c = password.charAt(i);
-                    if (Character.isDigit(c)) {
-                        dCount++;
-                    } else if (Character.isLowerCase(c)) {
-                        lCount++;
-                    } else if (Character.isUpperCase(c)) {
-                        uCount++;
-                    } else if (c >= 33 && c <= 46 || c == 64) {
-                        sCount++;
-                    }
-                    if ((dCount > 0) && (lCount > 0) && (uCount > 0) && (sCount > 0)) {
-                        valid = true;
-                    }
-                }
-            }
-        }
-        return valid;
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
 
-    public void createNewAccount(String username, String email, String password){
-        Account user = new Account(username, email, password);
-        mydb.addUser(user);
+    private void updateUI(FirebaseUser currentUser)    {
+        if(currentUser != null) {
+            Intent Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
+            startActivity(Layer);
+        }
     }
 
-
+    private void authenticate(String email, String password)  {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(LoginActivity.this, "Authentication failed. Invalid username or password. Please try again",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
+    }
 }

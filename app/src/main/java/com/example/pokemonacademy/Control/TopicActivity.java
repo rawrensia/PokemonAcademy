@@ -35,7 +35,7 @@ public class TopicActivity extends AppCompatActivity {
         GridLayout mainGrid = findViewById(R.id.topicGrid);
         setSingleEvent(mainGrid, worldID);
 
-        ImageView imageView = (ImageView) findViewById(R.id.trainerView);
+        ImageView imageView = findViewById(R.id.trainerView);
         imageView.setImageResource(getRandomImage());
     }
 
@@ -60,7 +60,7 @@ public class TopicActivity extends AppCompatActivity {
                         Intent Layer = new Intent(TopicActivity.this, MiniQuizLandingPage.class);
                         Layer.putExtra("worldName", ((TextView) findViewById(R.id.topicpage)).getText());
                         Layer.putExtra("worldID", worldID);
-                        ImageView imgView = (ImageView)findViewById(R.id.trainerView);
+                        ImageView imgView = findViewById(R.id.trainerView);
                         startActivity(Layer);
                     }
                 });
