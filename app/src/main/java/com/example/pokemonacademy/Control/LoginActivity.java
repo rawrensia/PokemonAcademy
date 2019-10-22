@@ -2,17 +2,25 @@ package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pokemonacademy.Entity.Student;
 import com.example.pokemonacademy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +32,10 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
+    private static final String TAG = "ChooseCharacterActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.button_login);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("USER");
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -52,14 +65,42 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        checkUser(currentUser);
     }
 
-    private void updateUI(FirebaseUser currentUser)    {
+    private void checkUser(FirebaseUser currentUser)    {
         if(currentUser != null) {
-            Intent Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
-            startActivity(Layer);
+            userPageSelection();
         }
+    }
+
+    private void userPageSelection() {
+        DatabaseReference reference = mDatabase.child(mAuth.getCurrentUser().getUid());
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                Intent Layer;
+                Student student = dataSnapshot.getValue(Student.class);
+
+                if (student.getFirstTime().equalsIgnoreCase("false")) {
+                    Layer = new Intent(LoginActivity.this, WorldActivity.class);
+                    startActivity(Layer);
+                } else {
+                    Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
+
+                }
+                startActivity(Layer);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        reference.addListenerForSingleValueEvent(userListener);
     }
 
     private void authenticate(String email, String password)  {
@@ -70,12 +111,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            checkUser(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "Authentication failed. Invalid username or password. Please try again",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                            checkUser(null);
                         }
                     }
                 });

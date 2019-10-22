@@ -6,13 +6,18 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class WorldActivity extends AppCompatActivity {
     public final static int WORLD_PLANNING_ID = 0;
@@ -22,11 +27,14 @@ public class WorldActivity extends AppCompatActivity {
     public final static int WORLD_TESTING_ID = 4;
     public final static int WORLD_MAINTENANCE_ID = 5;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_world_selection);
 
+        mAuth = FirebaseAuth.getInstance();
 
         GridLayout mainGrid = findViewById(R.id.worldGrid);
         //Set Event
@@ -49,6 +57,28 @@ public class WorldActivity extends AppCompatActivity {
                 }
             });
         }
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_world_logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tologout:
+                mAuth.signOut();
+                Intent Layer = new Intent(WorldActivity.this, MainActivity.class);
+                Toast.makeText(WorldActivity.this, "Successfully logged out.",
+                        Toast.LENGTH_SHORT).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
