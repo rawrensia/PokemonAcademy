@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -27,6 +28,15 @@ public class WorldActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_world_selection);
 
+        //TODO: Keep track of userId or user in general
+        Button btnReport = (Button) findViewById(R.id.reportButton);
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent Layer = new Intent(WorldActivity.this, SummaryReport.class);
+                Layer.putExtra("userId", 1); //Hardcode random userId
+                startActivity(Layer);
+            }
+        });
 
         GridLayout mainGrid = findViewById(R.id.worldGrid);
         //Set Event

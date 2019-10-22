@@ -3,49 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    android:orientation="vertical"
-    android:weightSum="11">
+    android:background="@color/lightyellow"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2.5">
+        android:layout_height="134dp">
 
         <TextView
-            android:id="@+id/topicpage"
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="92dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="68dp"
             android:fontFamily="@font/quenda"
-            android:text="Planning"
-            android:textColor="@color/yellow"
-            android:textSize="33sp"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="65dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/quenda"
-            android:lines="2"
-            android:text="Prepare yourself for the mini quizzes \nusing the learning material."
+            android:text="Summary Report"
             android:textAlignment="center"
-            android:textColor="@color/lightyellow"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
     </RelativeLayout>
 
     <GridLayout
@@ -88,7 +68,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Learning Material"
+                    android:text="Individual Report"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
                     android:textSize="20sp"
@@ -119,15 +99,15 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="140dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/trainerView" />
+                    android:src="@drawable/pok_gang" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Take Mini Quiz"
+                    android:text="Overall Report"
                     android:textAlignment="center"
                     android:textColor="@color/darkGreen"
                     android:textSize="20sp"
