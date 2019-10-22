@@ -15,12 +15,12 @@ import android.widget.TextView;
 import com.example.pokemonacademy.R;
 
 public class WorldActivity extends AppCompatActivity {
-    public final static int WORLD_PLANNING_ID = 2131230830;
-    public final static int WORLD_ANALYSIS_ID = 2131230751;
-    public final static int WORLD_DESIGN_ID = 2131230779;
-    public final static int WORLD_IMPLEMENTATION_ID = 2131230802;
-    public final static int WORLD_TESTING_ID = 2131230871;
-    public final static int WORLD_MAINTENANCE_ID = 2131230812;
+    public final static int WORLD_PLANNING_ID = 0;
+    public final static int WORLD_ANALYSIS_ID = 1;
+    public final static int WORLD_DESIGN_ID = 2;
+    public final static int WORLD_IMPLEMENTATION_ID = 3;
+    public final static int WORLD_TESTING_ID = 4;
+    public final static int WORLD_MAINTENANCE_ID = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +38,13 @@ public class WorldActivity extends AppCompatActivity {
         for (int i = 0; i<mainGrid.getChildCount();i++)
         {
             final CardView cardView = (CardView)mainGrid.getChildAt(i);
-
+            final int counter = i;
             cardView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view){
                     Intent Layer = new Intent(WorldActivity.this, TopicActivity.class);
                     TextView tv = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(1);
                     Layer.putExtra("worldName", tv.getText().toString());
-                    Layer.putExtra("worldID", cardView.getId());
+                    Layer.putExtra("worldID", counter);
                     startActivity(Layer);
                 }
             });
