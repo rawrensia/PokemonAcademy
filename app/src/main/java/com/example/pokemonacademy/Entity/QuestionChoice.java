@@ -4,10 +4,10 @@ package com.example.pokemonacademy.Entity;
 public class QuestionChoice {
     int choiceId; //MAY NOT NEED THIS
     int qnsId; //MAY NOT NEED THIS
-    int isRightChoice;
+    boolean isRightChoice;
     String choice;
 
-    public QuestionChoice(int choiceId, int qnsId, int isRightChoice, String choice) {
+    public QuestionChoice(int choiceId, int qnsId, boolean isRightChoice, String choice) {
         this.choiceId = choiceId;
         this.qnsId = qnsId;
         this.isRightChoice = isRightChoice;
@@ -30,11 +30,11 @@ public class QuestionChoice {
         this.qnsId = qnsId;
     }
 
-    public int isRightChoice() {
+    public boolean isRightChoice() {
         return isRightChoice;
     }
 
-    public void setRightChoice(int rightChoice) {
+    public void setRightChoice(boolean rightChoice) {
         isRightChoice = rightChoice;
     }
 

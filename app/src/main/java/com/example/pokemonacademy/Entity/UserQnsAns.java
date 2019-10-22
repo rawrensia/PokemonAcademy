@@ -6,13 +6,15 @@ public class UserQnsAns {
     int userId;
     int qnsId;
     int choiceId;
-    int isRight;
+    boolean isRight;
+    boolean isSelected;
 
-    public UserQnsAns(int userId, int qnsId, int choiceId, int isRight) {
+    public UserQnsAns(int userId, int qnsId, int choiceId, boolean isRight, boolean isSelected) {
         this.userId = userId;
         this.qnsId = qnsId;
         this.choiceId = choiceId;
         this.isRight = isRight;
+        this.isSelected = isSelected;
     }
 
     public int getUserId() {
@@ -39,11 +41,19 @@ public class UserQnsAns {
         this.choiceId = choiceId;
     }
 
-    public int getIsRight() {
+    public boolean getIsRight() {
         return isRight;
     }
 
-    public void setIsRight(int isRight) {
+    public void setIsRight(boolean isRight) {
         this.isRight = isRight;
+    }
+
+    public boolean getIsSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
     }
 }

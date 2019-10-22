@@ -9,7 +9,9 @@ import android.widget.Button;
 
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuestionChoice;
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
 import com.example.pokemonacademy.Entity.Student;
+import com.example.pokemonacademy.Entity.UserCompletedQns;
 import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
 import com.google.firebase.database.DatabaseReference;
@@ -23,9 +25,13 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReferenceQuestion;
     private DatabaseReference databaseReferenceQnsChoice;
     private DatabaseReference databaseReferenceUserQnsAns;
+    private DatabaseReference databaseReferenceQuizComplete;
+    private DatabaseReference databaseReferenceUserCompleteQns;
     private static final int NUM_STUDENTS = 10;
     private static final int NUM_QUESTIONS = 15;
-    private static final int NUM_CHOICES = 4;
+    private static final int NUM_CHOICES = 3;
+    private static final int NUM_WORLDS = 6;
+    private static final int NUM_QUIZZES = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 databaseReferenceQuestion = FirebaseDatabase.getInstance().getReference("QUESTION");
                 databaseReferenceQnsChoice = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
                 databaseReferenceUserQnsAns = FirebaseDatabase.getInstance().getReference("USER_QUESTION_ANS");
+                databaseReferenceQuizComplete = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
+                databaseReferenceUserCompleteQns = FirebaseDatabase.getInstance().getReference("USER_COMPLETED_QNS");
 
                 populateStudentTable();
                 populateQuestionTable();
                 populateQuestionChoicesTable();
                 populateUserQuestionAnsTable();
+                populateQuizCompleteTable();
+                populateUserCompletedQnsTable();;
 
 
                 Intent Layer = new Intent(MainActivity.this, LoginActivity.class);
@@ -62,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         String studentPw;
         String userType;
         int studentCourseInd;
+        int charId = 0;
 
         String[] studentNames = {"Spike", "Tom", "Jerry", "Mike", "Michael", "John", "Johnson", "Johnny", "Mary", "Marilyn"};
         String[] studentEmails = {"spike@xyz.com", "Tom@xyz.com", "Jerry@xyz.com", "Mike@xyz.com", "Michael@xyz.com",
@@ -78,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             studentPw = studentPasswords[i];
             userType = userTypes[i];
             studentCourseInd = courseIndex[i%4];
-            Student addStudent = new Student(studentId, studentName, studentEmail, studentPw, userType, studentCourseInd);
+            Student addStudent = new Student(studentId, studentName, studentEmail, studentPw, userType, studentCourseInd, charId);
 
             //String id = databaseReferenceUser.push().getKey();
             databaseReferenceUser.child(studIdString).setValue(addStudent);
@@ -88,10 +99,9 @@ public class MainActivity extends AppCompatActivity {
     public void populateQuestionTable(){
         int qnsId;
         String qns;
-        String world;
-        String topic;
-        String quizType;
+        int worldId;
         int diffLevel;
+        int quizId;
 
         String[] allQns = {"What are we supposed to do when planning a project?",
                 "Functional requirements ...",
@@ -115,20 +125,30 @@ public class MainActivity extends AppCompatActivity {
         //"Planning" world
         for (int i=0; i<NUM_QUESTIONS; i++){
             qnsId = i + 1;
-            String qnsIdString = "Question"+qnsId;
-            qns = allQns[i];
-            world = "Planning";
-            topic = "Topic A"; //TEMPORARY VARIABLE
+            String qnsIdString = "Question"+qnsId; //qnsId
+
+            qns = allQns[i]; //actual question
+
+            worldId = 0; //"Planning" world
+            String worldIdString = "World"+worldId;
+
             if (i<=8){
-                quizType = "MINI";
+                if (i%2 == 0){
+                    quizId = 0; //mini quiz 1
+
+                }
+                else{
+                    quizId = 1; //mini quiz 2
+                }
             }
             else{
-                quizType = "FINAL";
+                quizId = 2; //final quiz
             }
             diffLevel = (i+1) % 4;
+            String quizIdString = "Quiz"+quizId; //quizId
 
-            Question addQuestion = new Question(qnsId, qns, world, diffLevel, quizType);
-            databaseReferenceQuestion.child(qnsIdString).setValue(addQuestion);
+            Question addQuestion = new Question(worldId, quizId, qnsId, diffLevel, qns);
+            databaseReferenceQuestion.child(worldIdString).child(quizIdString).child(qnsIdString).setValue(addQuestion);
         }
 
     }
@@ -136,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     public void populateQuestionChoicesTable(){
         int choiceId;
         int qnsId;
-        int isRightChoice;
+        boolean isRightChoice;
         String choice; //choices available
 
         String[][] allChoices = {
@@ -168,10 +188,10 @@ public class MainActivity extends AppCompatActivity {
                 choiceId = j + 1;
                 String choiceIdString = "Choice"+choiceId;
                 if (choiceId == rightChoiceOption[i]){
-                    isRightChoice = 1;
+                    isRightChoice = true;
                 }
                 else{
-                    isRightChoice = 0;
+                    isRightChoice = false;
                 }
                 choice = allChoices[i][j];
                 QuestionChoice addQnsChoice = new QuestionChoice(choiceId, qnsId, isRightChoice, choice);
@@ -184,7 +204,10 @@ public class MainActivity extends AppCompatActivity {
         int userId;
         int qnsId;
         int choiceId;
-        int isRight;
+        boolean isRight;
+        boolean isSelected;
+
+        int[] rightChoiceOption = {1, 1, 3, 2, 3, 2, 3, 2, 3, 2, 3, 4, 1, 3, 1};
 
         for (int i=0; i<NUM_STUDENTS; i++){
             for (int j=0; j<NUM_QUESTIONS; j++){
@@ -193,15 +216,74 @@ public class MainActivity extends AppCompatActivity {
                     qnsId = j + 1;
                     choiceId = k + 1;
 
+                    if (choiceId == rightChoiceOption[j]){
+                        isRight = true;
+                    }
+                    else{
+                        isRight = false;
+                    }
+
                     String choiceIdString = "Choice"+choiceId;
                     String qnsIdString = "Question"+qnsId;
                     String userIdString = "User"+userId;
 
-                    isRight = 1; //TEMPORARY VARIABLE
-                    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight);
+                    isSelected = false;
+                    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight, isSelected);
                     databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
                 }
             }
+        }
+    }
+
+    public void populateQuizCompleteTable(){
+        int userId;
+        int worldId;
+        boolean completed;
+        int quizId;
+        int score;
+        int timeTaken;
+
+        for (int i=0; i<NUM_STUDENTS; i++){
+            for (int j=0; j<NUM_WORLDS; j++){
+                for (int k=0; k<NUM_QUIZZES; k++){
+                    worldId = j;
+                    userId = i + 1;
+                    quizId = k;
+                    String userIdString = "User"+userId;
+                    String worldIdString = "World"+worldId;
+                    String quizIdString = "Quiz"+quizId;
+                    completed = false;
+                    score = 0;
+                    timeTaken = 0;
+                    QuizzesCompleted oneQuiz = new QuizzesCompleted(userId, worldId, quizId, completed, timeTaken, score);
+                    databaseReferenceQuizComplete.child(userIdString).child(worldIdString).child(quizIdString).setValue(oneQuiz);
+                }
+
+
+
+            }
+        }
+    }
+
+    public void populateUserCompletedQnsTable(){
+        int userId;
+        int qnsId;
+        boolean completed;
+
+        for (int i=0; i<NUM_STUDENTS; i++){
+            for(int j=0; j<NUM_QUESTIONS; j++){
+                userId = i + 1;
+                String userIdString = "User"+userId;
+
+                qnsId = j+1;
+                String qnsIdString = "Question"+qnsId;
+
+                completed = false;
+
+                UserCompletedQns addQns = new UserCompletedQns(userId, qnsId, completed);
+                databaseReferenceUserCompleteQns.child(userIdString).child(qnsIdString).setValue(addQns);
+            }
+
         }
     }
 
