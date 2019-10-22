@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.example.pokemonacademy.Entity.Choice;
 import com.example.pokemonacademy.Entity.Question;
@@ -27,10 +30,21 @@ public class QuizSummary extends AppCompatActivity {
 //    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight);
 //    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
 
+    TableLayout tableLayout;
+    TableRow tableRow;
+    Button b1,b2,b3,b4,b5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_summary);
+        tableLayout = new TableLayout(this);
+        tableRow = new TableRow(this);
+        b1 = new Button(this);
+        b2 = new Button(this);
+        b3 = new Button(this);
+        b4 = new Button(this);
+        b5 = new Button(this);
 
         Intent intent = getIntent();
 
@@ -46,6 +60,8 @@ public class QuizSummary extends AppCompatActivity {
             Log.d("question","Question: " + questionAnswered.get(i).question);
             Log.d("choice","Selected Choice: " + choiceChosen.get(i).choice);
         }
+
+
 
     }
 }
