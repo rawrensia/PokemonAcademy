@@ -19,12 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText txtUsername;
     EditText txtEmail;
     EditText txtPassword;
     Button btnLogin;
-    IAccountDAO mydb;
-    boolean add_data = false;
 
     private FirebaseAuth mAuth;
 
@@ -83,6 +80,4 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }
