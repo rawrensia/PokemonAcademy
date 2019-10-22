@@ -54,6 +54,7 @@ public class MiniQuiz extends AppCompatActivity {
     private Question questionAssigned;
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
     private ArrayList<Choice> choiceChosen = new ArrayList<Choice>(); // for storing the choice which is chosen by the student
+    private ArrayList<Choice> rightChoice = new ArrayList<Choice>(); // for storing the right choice
     private int timeTaken[] = new int[num_of_question];
     private long startTime, endTime;
 
@@ -176,6 +177,15 @@ public class MiniQuiz extends AppCompatActivity {
                 // For mini quiz summary
                 questionAnswered.add(questionAssigned);
                 choiceChosen.add(questionAssigned.choiceOptions.get(selectedChoice-1));
+
+                if (questionAssigned.choiceOptions.get(0).is_right_choice){
+                    rightChoice.add(questionAssigned.choiceOptions.get(0));
+                } else if (questionAssigned.choiceOptions.get(1).is_right_choice){
+                    rightChoice.add(questionAssigned.choiceOptions.get(1));
+                } else {
+                    rightChoice.add(questionAssigned.choiceOptions.get(2));
+                }
+
                 getTimeTaken();
 
                 // initialize
@@ -230,12 +240,19 @@ public class MiniQuiz extends AppCompatActivity {
                     TextView miniQuizTv = (TextView)findViewById(R.id.miniquiztitle);
 
                     Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
+
                     Bundle bundle1 = new Bundle();
                     bundle1.putParcelableArrayList("questionAnswered", questionAnswered);
                     Layer.putExtras(bundle1);
+
                     Bundle bundle2 = new Bundle();
                     bundle2.putParcelableArrayList("choiceChosen", choiceChosen);
                     Layer.putExtras(bundle2);
+
+                    Bundle bundle3 = new Bundle();
+                    bundle3.putParcelableArrayList("rightChoice", rightChoice);
+                    Layer.putExtras(bundle3);
+
                     Layer.putExtra("timeTaken", timeTaken);
                     Layer.putExtra("miniQuizNum", miniQuizTv.getText().toString());
                     Layer.putExtra("worldName", worldName);
@@ -298,8 +315,8 @@ public class MiniQuiz extends AppCompatActivity {
         Random random = new Random();
         float x = v.getX();
         float y = v.getY();
-        int randomInteger = random.nextInt(5);
-        boolean randomBool = random.nextBoolean();
+        final int randomInteger = random.nextInt(5);
+        final boolean randomBool = random.nextBoolean();
         if (randomBool){
             v.setX(x+randomInteger);
             v.setY(y+randomInteger);
