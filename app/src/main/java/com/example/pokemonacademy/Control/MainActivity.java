@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReferenceUserQnsAns;
     private DatabaseReference databaseReferenceQuizComplete;
     private DatabaseReference databaseReferenceUserCompleteQns;
-    private static final int NUM_STUDENTS = 10;
+    private static final int NUM_STUDENTS = 11;
     private static final int NUM_QUESTIONS = 15;
     private static final int NUM_CHOICES = 3;
     private static final int NUM_WORLDS = 6;
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 databaseReferenceQuizComplete = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
                 databaseReferenceUserCompleteQns = FirebaseDatabase.getInstance().getReference("USER_COMPLETED_QNS");
 
-                populateStudentTable();
                 populateQuestionTable();
                 populateQuestionChoicesTable();
                 populateUserQuestionAnsTable();
@@ -65,36 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void populateStudentTable(){
-        int studentId;
-        String studentName;
-        String studentEmail;
-        String studentPw;
-        String userType;
-        int studentCourseInd;
-        int charId = 0;
-
-        String[] studentNames = {"Spike", "Tom", "Jerry", "Mike", "Michael", "John", "Johnson", "Johnny", "Mary", "Marilyn"};
-        String[] studentEmails = {"spike@xyz.com", "Tom@xyz.com", "Jerry@xyz.com", "Mike@xyz.com", "Michael@xyz.com",
-                "John@xyz.com", "Johnson@xyz.com", "Johnny@xyz.com", "Mary@xyz.com", "Marilyn@xyz.com"};
-        String[] studentPasswords = {"Spike123", "123Tom", "Jerry123", "123Mike", "Michael123", "123John", "Johnson123", "123Johnny", "Mary123", "123Marilyn"};
-        String[] userTypes = {"S", "S", "S", "S", "S", "S", "S", "S", "S", "T"};
-        int[] courseIndex = {10272, 10273, 10274, 10275};
-
-        for (int i=0; i<NUM_STUDENTS; i++){
-            studentId = i + 1;
-            String studIdString = "Student"+studentId;
-            studentName = studentNames[i];
-            studentEmail = studentEmails[i];
-            studentPw = studentPasswords[i];
-            userType = userTypes[i];
-            studentCourseInd = courseIndex[i%4];
-            Student addStudent = new Student(studentId, studentName, studentEmail, studentPw, userType, studentCourseInd, charId);
-
-            //String id = databaseReferenceUser.push().getKey();
-            databaseReferenceUser.child(studIdString).setValue(addStudent);
-        }
-    }
 
     public void populateQuestionTable(){
         int qnsId;

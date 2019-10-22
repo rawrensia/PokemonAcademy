@@ -13,11 +13,15 @@ import android.widget.TextView;
 import android.text.Html;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class ContentActivity extends AppCompatActivity {
+
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class ContentActivity extends AppCompatActivity {
         TextView tv = findViewById(R.id.content_textView);
         tv.setText(worldName);
 
-
+        mDatabase = FirebaseDatabase.getInstance().getReference("USER");
 
 
         int worldID = intent.getIntExtra("worldID", -1);
@@ -41,6 +45,7 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case WorldActivity.WORLD_ANALYSIS_ID:
                 // get analysis content
+                content = mDatabase.child("Student1").child("id").push().getKey();
                 break;
             case WorldActivity.WORLD_DESIGN_ID:
                 break;
