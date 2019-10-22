@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -31,21 +33,40 @@ public class QuizSummary extends AppCompatActivity {
 //    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
 
     TableLayout tableLayout;
-    TableRow tableRow;
+    TableRow tableRow1, tableRow2;
     Button b1,b2,b3,b4,b5;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_quiz_summary);
-        tableLayout = new TableLayout(this);
-        tableRow = new TableRow(this);
+        scrollView = (ScrollView)findViewById(R.id.quizsummaryscrollview);
+        tableLayout = (TableLayout)findViewById(R.id.quizsummarytablelayout);
+        tableRow1 = new TableRow(this);
+        tableRow2 = new TableRow(this);
         b1 = new Button(this);
         b2 = new Button(this);
         b3 = new Button(this);
         b4 = new Button(this);
         b5 = new Button(this);
+//        TableLayout.LayoutParams lp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        tableLayout.setLayoutParams(lp);
+        b1.setText("Column 1");
+        b2.setText("Column 2");
+        b3.setText("Column 3");
+        b4.setText("Column 4");
+        b5.setText("Column 5");
+        tableRow1.addView(b1);
+        tableRow1.addView(b2);
+        tableRow1.addView(b3);
+        tableRow1.addView(b4);
+        tableRow1.addView(b5);
+        tableLayout.addView(tableRow1);
+        tableLayout.addView(tableRow2);
 
+//        scrollView.addView(b1);
         Intent intent = getIntent();
 
         String worldName = intent.getStringExtra("worldName");
