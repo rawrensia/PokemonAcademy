@@ -17,6 +17,8 @@ import com.example.pokemonacademy.Entity.Choice;
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -31,9 +33,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 public class MiniQuiz extends AppCompatActivity {
 
-    // Get list of questions
-    // Assign the questions their choices
-    // Get user's pokemon character
+    // Get user's pokemon character (drawable)
     // Get user's health
 
     private int selectedChoice = 0;
@@ -48,6 +48,15 @@ public class MiniQuiz extends AppCompatActivity {
     private int correctChoiceId;
     private int currentQuestionIndex;
     private int correctChoiceIndex;
+    private ArrayList<Question> questionList = initialize();
+    // Variables for summary quiz
+    private Question questionAssigned;
+    private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
+    private ArrayList<Choice> choiceChosen = new ArrayList<Choice>(); // for storing the choice which is chosen by the student
+    private int timeTaken[] = new int[num_of_question];
+    private long startTime, endTime;
+//    Integer i = (int) (long) theLong;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +65,7 @@ public class MiniQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_quiz);
 
-        ArrayList<Question> questionList = initialize();
+//        ArrayList<Question> questionList = initialize();
 
         // Get intent
         Intent intent = getIntent();
@@ -66,6 +75,8 @@ public class MiniQuiz extends AppCompatActivity {
 
         // initialize background & pokemons
         TextView tv = (TextView)findViewById(R.id.miniquiztitle);
+        TextView userpokemonstatus = (TextView)findViewById(R.id.userpokemonstatus);
+        TextView enemypokemonstatus = (TextView)findViewById(R.id.enemypokemonstatus);
         RelativeLayout questionlayout = (RelativeLayout)findViewById(R.id.questionlayout);
         ConstraintLayout battlelayout = (ConstraintLayout)findViewById(R.id.battlelayout);
         ConstraintLayout answerlayout = (ConstraintLayout)findViewById(R.id.answerlayout);
@@ -73,6 +84,8 @@ public class MiniQuiz extends AppCompatActivity {
         ImageView userpokemon = (ImageView)findViewById(R.id.userpokemon);
 
         tv.setText(miniQuizNum);
+        userpokemonstatus.setText("");
+        enemypokemonstatus.setText("");
         questionlayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.questionbackground, null));
         battlelayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.pokemonstandingbackground, null));
         answerlayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.answerbackground, null));
@@ -159,13 +172,18 @@ public class MiniQuiz extends AppCompatActivity {
         // Get list of questions for 3 difficulty levels from db
 
         // Set question & answer options
-        displayNextQuestion(questionList);
+        questionAssigned = displayNextQuestion(questionList);
 
         attackbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Question> questionList = initialize();
 
+                // For mini quiz summary
+                questionAnswered.add(questionAssigned);
+                choiceChosen.add(questionAssigned.choiceOptions.get(selectedChoice-1));
+                getTimeTaken();
+
+                // initialize
                 ProgressBar enemyhealthbar = (ProgressBar)findViewById(R.id.enemypokemonhealth);
                 ProgressBar userpokemonhealthbar = (ProgressBar)findViewById(R.id.userpokemonhealth);
                 TextView questionTv = (TextView)findViewById(R.id.questiontext);
@@ -178,17 +196,22 @@ public class MiniQuiz extends AppCompatActivity {
                 Button attackbtn = (Button)findViewById(R.id.attackbtn);
                 ImageView enemypokemon = (ImageView)findViewById(R.id.enemypokemon);
                 ImageView userpokemon = (ImageView)findViewById(R.id.userpokemon);
+                TextView userpokemonstatus = (TextView)findViewById(R.id.userpokemonstatus);
+                TextView enemypokemonstatus = (TextView)findViewById(R.id.enemypokemonstatus);
 
-                // Check if selectedChoice is correct.  if (choiceOptions[selectedChoice].isRight())
-                if (selectedChoice-1==correctChoiceIndex){
+                if (selectedChoice==correctChoiceIndex){
                     int dmg = enemypokemonhp/num_of_question;
                     enemypokemonhp = enemypokemonhp - dmg;
                     enemyhealthbar.setProgress(enemypokemonhp);
+                    userpokemonstatus.setText("Correct answer");
+                    enemypokemonstatus.setText("Took "+ dmg +" damage");
                     damageAnimate(enemypokemon);
                     if (enemypokemonhp <= 0){endBattleFlag = true;}
                 } else {
                     userpokemonhp = userpokemonhp - 10;
                     userpokemonhealthbar.setProgress(userpokemonhp);
+                    userpokemonstatus.setText("Took 10 damage");
+                    enemypokemonstatus.setText("Wrong answer");
                     damageAnimate(userpokemon);
                     if (userpokemonhp <= 0){endBattleFlag = true;}
                 }
@@ -196,13 +219,29 @@ public class MiniQuiz extends AppCompatActivity {
                 // Save question, answer, time, right/wrong to db
 
 
-                if (endBattleFlag){
+                //TODO
+                // Add Different end states
+                // 1) User died, show screen user's pokemon died. (FailQuizActivity)
+                //      - reset users pokemon health to full (update db)
+                //      - bring back to miniquizlandingpage
+                // 2) User won, show quiz summary (QuizSummaryActivity)
+                //      - update db the questions user completed, selected choice, time taken
+                //      - update db user's pokemon remaining health
+                if (endBattleFlag || num_of_question<=0){
+
                     Intent intent = getIntent();
                     String worldName = intent.getStringExtra("worldName");
                     int worldID = intent.getIntExtra("worldID", -1);
                     TextView miniQuizTv = (TextView)findViewById(R.id.miniquiztitle);
 
-                    Intent Layer = new Intent(MiniQuiz.this, MiniQuizLandingPage.class);
+                    Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putParcelableArrayList("questionAnswered", questionAnswered);
+                    Layer.putExtras(bundle1);
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putParcelableArrayList("choiceChosen", choiceChosen);
+                    Layer.putExtras(bundle2);
+                    Layer.putExtra("timeTaken", timeTaken);
                     Layer.putExtra("miniQuizNum", miniQuizTv.getText().toString());
                     Layer.putExtra("worldName", worldName);
                     Layer.putExtra("worldID", worldID);
@@ -221,20 +260,13 @@ public class MiniQuiz extends AppCompatActivity {
 
                 // Display next question
                 // Condition to check for difficulty level
-                displayNextQuestion(questionList);
+                questionAssigned = displayNextQuestion(questionList);
             }
         });
     }
-    // Require from DB
-    // User's selected pokemon
-    // User's selected pokemon health
-    // The mini quiz questions
 
-    // TODO
-    // When mini quiz is completed, update DB that user has completed the miniquiz of this world
-    //
-
-    public void displayNextQuestion(ArrayList<Question> questionList){
+    public Question displayNextQuestion(ArrayList<Question> questionList){
+        startTime = System.currentTimeMillis();
         TextView questionTv = (TextView)findViewById(R.id.questiontext);
         TextView answeroption1 = (TextView)findViewById(R.id.answeroption1);
         TextView answeroption2 = (TextView)findViewById(R.id.answeroption2);
@@ -249,13 +281,22 @@ public class MiniQuiz extends AppCompatActivity {
                 answeroption1.setText("1) "+q.choiceOptions.get(0).choice);
                 answeroption2.setText("2) "+q.choiceOptions.get(1).choice);
                 answeroption3.setText("3) "+q.choiceOptions.get(2).choice);
-                if (q.choiceOptions.get(0).isCorrect()){correctChoiceIndex = 0;}
-                if (q.choiceOptions.get(1).isCorrect()){correctChoiceIndex = 1;}
-                if (q.choiceOptions.get(2).isCorrect()){correctChoiceIndex = 2;}
+                if (q.choiceOptions.get(0).isCorrect()){correctChoiceIndex = 1;}
+                if (q.choiceOptions.get(1).isCorrect()){correctChoiceIndex = 2;}
+                if (q.choiceOptions.get(2).isCorrect()){correctChoiceIndex = 3;}
                 q.attempted = true;
-                break;
+                return q;
             }
         }
+        return null;
+    }
+
+    public void getTimeTaken(){
+        endTime = System.currentTimeMillis() - startTime;
+        if(10-num_of_question>0){
+            timeTaken[10-num_of_question] = (int)(long)(endTime/1000);
+        }
+        startTime = System.currentTimeMillis();
     }
 
     public void damageAnimate(ImageView v){
