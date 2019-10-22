@@ -108,6 +108,33 @@
             app:layout_constraintVertical_bias="0.95"
             app:srcCompat="@drawable/userpokemonpikachu" />
 
+        <TextView
+            android:id="@+id/enemypokemonstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/quenda"
+            android:text="Took 6 damage"
+            app:layout_constraintBottom_toTopOf="@+id/enemypokemonhealth"
+            app:layout_constraintEnd_toStartOf="@+id/enemypokemon"
+            app:layout_constraintHorizontal_bias="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/userpokemonstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quenda"
+            android:text="Dealt 6 dmg"
+            app:layout_constraintBottom_toTopOf="@+id/userpokemonhealth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.71"
+            app:layout_constraintStart_toEndOf="@+id/userpokemon"
+            app:layout_constraintTop_toBottomOf="@+id/enemypokemon"
+            app:layout_constraintVertical_bias="0.83" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
