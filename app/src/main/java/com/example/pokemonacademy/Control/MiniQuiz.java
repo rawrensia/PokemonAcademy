@@ -49,14 +49,13 @@ public class MiniQuiz extends AppCompatActivity {
     private int currentQuestionIndex;
     private int correctChoiceIndex;
     private ArrayList<Question> questionList = initialize();
+
     // Variables for summary quiz
     private Question questionAssigned;
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
     private ArrayList<Choice> choiceChosen = new ArrayList<Choice>(); // for storing the choice which is chosen by the student
     private int timeTaken[] = new int[num_of_question];
     private long startTime, endTime;
-//    Integer i = (int) (long) theLong;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +63,6 @@ public class MiniQuiz extends AppCompatActivity {
         // Starting
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_quiz);
-
-//        ArrayList<Question> questionList = initialize();
 
         // Get intent
         Intent intent = getIntent();
@@ -90,8 +87,6 @@ public class MiniQuiz extends AppCompatActivity {
         battlelayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.pokemonstandingbackground, null));
         answerlayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.answerbackground, null));
         enemypokemon.setImageResource(getRandomEnemyImage());
-        //userpokemon.setImageResource(); // Set this once db is up and we can check what is the user's pokemon
-
 
         // initialize question, answers and buttons
         final int greenColor = Color.parseColor("#33FF93");

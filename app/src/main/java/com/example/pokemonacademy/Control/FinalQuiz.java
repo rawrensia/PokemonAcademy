@@ -5,10 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class FinalQuiz extends AppCompatActivity {
+
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference("USER");
+    private DatabaseReference databaseReferenceQuestion = FirebaseDatabase.getInstance().getReference("QUESTION");
+    private DatabaseReference databaseReferenceQnsChoice = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
+    private DatabaseReference databaseReferenceUserQnsAns = FirebaseDatabase.getInstance().getReference("USER_QUESTION_ANS");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,11 +8,24 @@ import android.util.Log;
 
 import com.example.pokemonacademy.Entity.Choice;
 import com.example.pokemonacademy.Entity.Question;
+import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class QuizSummary extends AppCompatActivity {
+
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference("USER");
+    private DatabaseReference databaseReferenceQuestion = FirebaseDatabase.getInstance().getReference("QUESTION");
+    private DatabaseReference databaseReferenceQnsChoice = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
+    private DatabaseReference databaseReferenceUserQnsAns = FirebaseDatabase.getInstance().getReference("USER_QUESTION_ANS");
+
+    // Adding to database.
+//    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight);
+//    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
