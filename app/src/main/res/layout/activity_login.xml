@@ -14,8 +14,8 @@
         android:padding="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/wallpaper"
-        tools:layout_editor_absoluteX="-48dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/button_login"
@@ -32,23 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.797" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/details_input_field"
-        android:ems="10"
-        android:hint="Enter NTU Acc Username"
-        android:inputType="textPersonName"
-        android:paddingLeft="24dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
 
     <EditText
         android:id="@+id/email"
@@ -83,23 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.324" />
-
-    <EditText
-        android:id="@+id/course_index"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/details_input_field"
-        android:ems="10"
-        android:hint="Enter CZ3003 Course Index"
-        android:inputType="textPersonName"
-        android:paddingLeft="24dp"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
 
     <TextView
         android:id="@+id/textView"
