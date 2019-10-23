@@ -48,6 +48,14 @@ public class WorldActivity extends AppCompatActivity {
                 startActivity(Layer);
             }
         });
+
+        Button leaderboardBtn = (Button)findViewById(R.id.leaderboardBtn);
+        leaderboardBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent Layer = new Intent(WorldActivity.this, Leaderboard.class);
+                startActivity(Layer);
+            }
+        });
     }
 
     private void setSingleEvent(GridLayout mainGrid){
