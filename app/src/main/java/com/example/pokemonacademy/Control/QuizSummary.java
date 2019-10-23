@@ -9,9 +9,11 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Xml;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TableLayout;
@@ -268,6 +270,19 @@ public class QuizSummary extends AppCompatActivity {
             Log.d("choice","Selected Choice: " + choiceChosen.get(i).choice);
         }
 
+        Button doneBtn = (Button)findViewById(R.id.doneBtn);
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = getIntent();
+                String worldName = intent.getStringExtra("worldName");
+                int worldID = intent.getIntExtra("worldID", -1);
+
+                Intent Layer = new Intent(QuizSummary.this, MiniQuizLandingPage.class);
+                Layer.putExtra("worldName", worldName);
+                Layer.putExtra("worldID", worldID);
+                startActivity(Layer);
+            }
+        });
 
 
     }
