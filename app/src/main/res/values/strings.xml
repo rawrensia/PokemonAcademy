@@ -24,7 +24,7 @@
                   "<br>&#8226; <b>Textual:</b> vision and scope document, use case document, SRS.</br>"
                   "<br>&#8226; <b>Graphical:</b> structured analysis models (data flow diagram, entity-relationship diagram, dialog map), OO analysis models.</br>"
                   "<br>&#8226; <b>Formal:</b> formal specification languages.</br>"
-                  "<p><b>SRS</b> is a set of precisely-stated properties and constraints "  
+                  "<p><b>Software Requirement Specification</b> is a set of precisely-stated properties and constraints "
                 "that a software system must satisfy, and a complete description of the external "  
                 "behaviour of a system. The objectives of SRS are to achieve agreement regarding the "  
                 "requirements among developers, customers and other stakeholders, as well as provide basis for design and system testing.</p>

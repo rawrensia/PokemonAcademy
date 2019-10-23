@@ -48,6 +48,7 @@
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/quenda"
+            android:textColor="@color/lightyellow"
             android:text="Question: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
 
@@ -140,7 +141,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/answerlayout"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="330dp"
         android:background="@drawable/answerbackground">
 
         <TextView
