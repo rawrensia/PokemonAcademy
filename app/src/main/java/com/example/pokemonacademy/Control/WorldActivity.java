@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -39,6 +40,14 @@ public class WorldActivity extends AppCompatActivity {
         GridLayout mainGrid = findViewById(R.id.worldGrid);
         //Set Event
         setSingleEvent(mainGrid);
+
+        Button summaryReportBtn = (Button)findViewById(R.id.summaryReportBtn);
+        summaryReportBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent Layer = new Intent(WorldActivity.this, SummaryReport.class);
+                startActivity(Layer);
+            }
+        });
     }
 
     private void setSingleEvent(GridLayout mainGrid){
