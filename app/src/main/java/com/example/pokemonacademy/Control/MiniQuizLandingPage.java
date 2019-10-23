@@ -17,6 +17,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -119,7 +120,9 @@ public class MiniQuizLandingPage extends AppCompatActivity {
                 String worldName = intent.getStringExtra("worldName");
                 int worldID = intent.getIntExtra("worldID", -1);
 
-                Intent Layer = new Intent(MiniQuizLandingPage.this, FinalQuiz.class);
+                //TODO
+                // Final quiz
+                Intent Layer = new Intent(MiniQuizLandingPage.this, MiniQuiz.class);
                 TextView tv = (TextView)((LinearLayout)finalQuiz.getChildAt(0)).getChildAt(1);
                 Layer.putExtra("finalQuizNum", tv.getText().toString());
                 Layer.putExtra("worldName", worldName);
@@ -147,6 +150,20 @@ public class MiniQuizLandingPage extends AppCompatActivity {
                 }
             });
         }
+
+        Button backBtn = (Button)findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent intent = getIntent();
+                String worldName = intent.getStringExtra("worldName");
+                int worldID = intent.getIntExtra("worldID", -1);
+
+                Intent Layer = new Intent(MiniQuizLandingPage.this, TopicActivity.class);
+                Layer.putExtra("worldName", worldName);
+                Layer.putExtra("worldID", worldID);
+                startActivity(Layer);
+            }
+        });
     }
 
     private int getRandomNpcImage() {
