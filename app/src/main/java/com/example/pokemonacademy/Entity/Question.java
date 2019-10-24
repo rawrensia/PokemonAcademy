@@ -4,7 +4,7 @@ package com.example.pokemonacademy.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.pokemonacademy.Entity.Choice;
+import com.example.pokemonacademy.Entity.QuestionChoice;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,16 +13,18 @@ public class Question implements Parcelable {
     public static int question_id_counter = 0;
     public int questionId;
     public String question;
-    public String world;
+    public String world; //not in database
     public int difficultyLevel;
-    public ArrayList<Choice> choiceOptions;
+    public ArrayList<QuestionChoice> choiceOptions; //not in database
     public boolean attempted;
     public String quiz_type;
     public int miniQuizId;
     int worldId;
     int quizId;
 
+    public Question(){
 
+    }
 
     public Question(int worldId, int quizId, int qnsId, int difficultyLevel, String qns){
         this.worldId = worldId;
@@ -42,7 +44,7 @@ public class Question implements Parcelable {
 //        this.miniQuizId = miniQuizId;
 //    }
 
-    public Question(int questionId, String question, String world, int difficultyLevel, String quiz_type, ArrayList<Choice> choiceOptions){
+    public Question(int questionId, String question, String world, int difficultyLevel, String quiz_type, ArrayList<QuestionChoice> choiceOptions){
         this.questionId = questionId;
         this.question = question;
         this.world = world;
@@ -91,24 +93,20 @@ public class Question implements Parcelable {
     public static Question addQuestion(String question, String world, int difficultyLevel, String quiz_type){
         question_id_counter++;
         int questionId = question_id_counter;
-        ArrayList<Choice> co = new ArrayList<Choice>();
+        ArrayList<QuestionChoice> co = new ArrayList<QuestionChoice>();
         Question q = new Question(questionId, question, world, difficultyLevel,quiz_type, co);
         return q;
     }
 
-    public int getDifficultyLevel(){
-        return difficultyLevel;
-    }
-
-    public void setChoiceOptions(ArrayList<Choice> choiceOptions){
+    public void setChoiceOptions(ArrayList<QuestionChoice> choiceOptions){
         this.choiceOptions = choiceOptions;
     }
 
-    public ArrayList<Choice> getChoices(){
+    public ArrayList<QuestionChoice> getChoices(){
         return choiceOptions;
     }
 
-    public boolean verifyChoice(Choice choice) {
+    public boolean verifyChoice(QuestionChoice choice) {
         return choice.isCorrect();
     }
 
@@ -133,6 +131,8 @@ public class Question implements Parcelable {
         this.question = question;
     }
 
+    public int getDifficultyLevel(){ return difficultyLevel; }
+
     public void setDifficultyLevel(int difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
     }
@@ -152,4 +152,13 @@ public class Question implements Parcelable {
     public void setQuizId(int quizId) {
         this.quizId = quizId;
     }
+
+    public Boolean getAttempted() { return attempted; }
+
+    public void setAttempted(Boolean attempted) { this.attempted = attempted; }
+
+    public int getMiniQuizId() { return miniQuizId; }
+
+    public void setMiniQuizId(int miniQuizId) { this.miniQuizId = miniQuizId; }
+
 }

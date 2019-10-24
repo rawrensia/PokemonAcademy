@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,14 +16,10 @@ import com.example.pokemonacademy.Entity.Choice;
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -178,9 +173,9 @@ public class MiniQuiz extends AppCompatActivity {
                 questionAnswered.add(questionAssigned);
                 choiceChosen.add(questionAssigned.choiceOptions.get(selectedChoice-1));
 
-                if (questionAssigned.choiceOptions.get(0).is_right_choice){
+                if (questionAssigned.choiceOptions.get(0).rightChoice){
                     rightChoice.add(questionAssigned.choiceOptions.get(0));
-                } else if (questionAssigned.choiceOptions.get(1).is_right_choice){
+                } else if (questionAssigned.choiceOptions.get(1).rightChoice){
                     rightChoice.add(questionAssigned.choiceOptions.get(1));
                 } else {
                     rightChoice.add(questionAssigned.choiceOptions.get(2));

@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.QuizzesCompleted;
-import com.example.pokemonacademy.Entity.Student;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.Entity.UserCompletedQns;
 import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     isRightChoice = false;
                 }
                 choice = allChoices[i][j];
-                QuestionChoice addQnsChoice = new QuestionChoice(choiceId, qnsId, isRightChoice, choice);
+                QuestionChoice addQnsChoice = new QuestionChoice(qnsId, choiceId, choice,isRightChoice);
                 databaseReferenceQnsChoice.child(qnsIdString).child(choiceIdString).setValue(addQnsChoice);
             }
         }

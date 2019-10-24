@@ -27,7 +27,7 @@ public class UserCompletedQns {
         this.qnsId = qnsId;
     }
 
-    public boolean isCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 

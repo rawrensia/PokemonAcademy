@@ -214,13 +214,13 @@ public class QuizSummary extends AppCompatActivity {
 //            question.setText("Q"+ i+1 + ") " + q.question);
 //            for (int j=0; j<3; j++){
 //                final Choice c = q.choiceOptions.get(j);
-//                if (c.is_right_choice){
+//                if (c.rightChoice){
 //                    answer.setText(c.choice);
 //                    break;
 //                }
 //            }
 //            time.setText(timeTaken[i]);
-//            if (choiceChosen.get(i).is_right_choice){
+//            if (choiceChosen.get(i).rightChoice){
 //                correctBtn.setText("Correct" );
 //            } else {
 //                correctBtn.setText("Wrong" );
