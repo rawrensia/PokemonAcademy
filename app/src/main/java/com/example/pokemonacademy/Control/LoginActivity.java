@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pokemonacademy.Entity.Student;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -82,9 +82,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 Intent Layer;
-                Student student = dataSnapshot.getValue(Student.class);
+                User user = dataSnapshot.getValue(User.class);
 
-                if (student.getFirstTime().equalsIgnoreCase("false")) {
+                if (user.getFirstTime().equalsIgnoreCase("false")) {
                     Layer = new Intent(LoginActivity.this, WorldActivity.class);
                     startActivity(Layer);
                 } else {

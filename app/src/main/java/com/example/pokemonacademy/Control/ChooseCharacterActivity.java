@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.pokemonacademy.Entity.Student;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,16 +59,16 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         findViewById(R.id.profile_button_next)
                 .setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        Student student = updateDB(mainGrid);
+                        User user = updateDB(mainGrid);
                         Intent Layer = new Intent(ChooseCharacterActivity.this, WorldActivity.class);
-                        Layer.putExtra("object", student);
+                        Layer.putExtra("object", user);
                         startActivity(Layer);
                         finish();
                     }
                 });
     }
 
-    private Student updateDB(LinearLayout mainGrid) {
+    private User updateDB(LinearLayout mainGrid) {
         int char_id = -1;
         FirebaseUser currentUser = mAuth.getCurrentUser();
         // update user profile based on id
@@ -80,11 +80,11 @@ public class ChooseCharacterActivity extends AppCompatActivity {
                 char_id = i;
         }
 //
-        Student student = new Student(currentUser.getUid(), txtName, "S", txtCourseIndex, char_id, "False");
+        User user = new User(currentUser.getUid(), txtName, "S", txtCourseIndex, char_id, "False");
 
-        mDatabase.child(currentUser.getUid()).setValue(student);
+        mDatabase.child(currentUser.getUid()).setValue(user);
 
-        return student;
+        return user;
     }
 
 }
