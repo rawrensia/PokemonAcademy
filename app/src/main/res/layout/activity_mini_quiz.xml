@@ -32,7 +32,7 @@
             android:fontFamily="@font/quenda"
             android:text="Mini Quiz Number"
             android:textAlignment="center"
-            android:textColor="@color/orange"
+            android:textColor="@color/yellow"
             android:textSize="24sp" />
 
         <TextView

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/tologout"
+        android:enabled="true"
+        android:title="Log Out"
+        android:icon="@drawable/logout"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/toworld"
+        android:enabled="true"
+        android:title="World"
+        android:icon="@drawable/worldwide"
+        android:visible="true"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/tocontent"
+        android:enabled="true"
+        android:title="Learning Material"
+        android:icon="@drawable/openbook"
+        android:visible="true"
+        app:showAsAction="always"/>
+
+</menu>

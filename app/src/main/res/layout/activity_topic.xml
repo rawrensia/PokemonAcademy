@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/topicpage"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -31,7 +31,7 @@
             android:fontFamily="@font/quenda"
             android:text="Planning"
             android:textColor="@color/yellow"
-            android:textSize="33sp"
+            android:textSize="26sp"
             android:textAlignment="center"/>
 
         <TextView
@@ -44,7 +44,7 @@
             android:fontFamily="@font/quenda"
             android:lines="2"
             android:text="Prepare yourself for the mini quizzes \nusing the learning material."
-            android:textAlignment="center"
+            android:gravity="center"
             android:textColor="@color/lightyellow"
             android:textSize="20sp" />
     </RelativeLayout>

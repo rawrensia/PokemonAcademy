@@ -74,7 +74,7 @@ public class Leaderboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.toleaderboard:
+            case R.id.toworld:
                 Intent Layer = new Intent(Leaderboard.this, WorldActivity.class);
                 startActivity(Layer);
                 return true;

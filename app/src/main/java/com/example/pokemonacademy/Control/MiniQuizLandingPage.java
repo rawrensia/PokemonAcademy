@@ -16,18 +16,24 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.GridLayout;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Random;
 
 public class MiniQuizLandingPage extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,37 +42,38 @@ public class MiniQuizLandingPage extends AppCompatActivity {
         Intent intent = getIntent();
         String worldName = intent.getStringExtra("worldName");
         int worldID = intent.getIntExtra("worldID", -1);
+        Log.d("myTag", worldName);
 
         Drawable dynamicBackground, finalQuizNpc;
         int textColor;
 
         switch (worldName) {
-            case ("Planning"):
+            case ("PLANNING"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m5, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite1, null);
                 textColor = Color.parseColor("#ebe850");
                 break;
-            case ("Analysis"):
+            case ("ANALYSIS"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m6, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite2, null);
-                textColor = Color.parseColor("#272a40");
+                textColor = Color.parseColor("#C7BCE6");
                 break;
-            case ("Design"):
+            case ("DESIGN"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m4, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite3, null);
-                textColor = Color.parseColor("#941b27");
+                textColor = Color.parseColor("#ffbf00");
                 break;
-            case ("Implementation"):
+            case ("IMPLEMENTATION"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m3, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite4, null);
                 textColor = Color.parseColor("#1b9451");
                 break;
-            case ("Testing & Integration"):
+            case ("TESTING & INTEGRATION"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m1, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite5, null);
                 textColor = Color.parseColor("#0d0982");
                 break;
-            case ("Maintenance"):
+            case ("MAINTENANCE"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m2, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite6, null);
                 textColor = Color.parseColor("#cbb8f2");
@@ -77,30 +84,6 @@ public class MiniQuizLandingPage extends AppCompatActivity {
                 textColor = Color.parseColor("#825e09");
                 break;
         }
-
-//        switch (worldID) {
-//            case (WorldActivity.WORLD_PLANNING_ID):
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m1, null);
-//                break;
-//            case (WorldActivity.WORLD_ANALYSIS_ID):
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m2, null);
-//                break;
-//            case (WorldActivity.WORLD_DESIGN_ID):
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m3, null);
-//                break;
-//            case (WorldActivity.WORLD_IMPLEMENTATION_ID):
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m4, null);
-//                break;
-//            case (WorldActivity.WORLD_TESTING_ID):
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m5, null);
-//                break;
-//            case (WorldActivity.WORLD_MAINTENANCE_ID):
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m6, null);
-//                break;
-//            default: // use for custom
-//                dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m6, null);
-//                break;
-//        }
 
         setContentView(R.layout.activity_mini_quiz_landing_page);
         LinearLayout background = (LinearLayout)findViewById(R.id.miniquizlinearlayout);
@@ -151,19 +134,6 @@ public class MiniQuizLandingPage extends AppCompatActivity {
             });
         }
 
-        Button backBtn = (Button)findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent intent = getIntent();
-                String worldName = intent.getStringExtra("worldName");
-                int worldID = intent.getIntExtra("worldID", -1);
-
-                Intent Layer = new Intent(MiniQuizLandingPage.this, TopicActivity.class);
-                Layer.putExtra("worldName", worldName);
-                Layer.putExtra("worldID", worldID);
-                startActivity(Layer);
-            }
-        });
     }
 
     private int getRandomNpcImage() {
@@ -178,5 +148,41 @@ public class MiniQuizLandingPage extends AppCompatActivity {
     // Get from db which mini quiz has completed by the user
     // Mini quiz can be done in any order
     // Condition to check all miniquiz is completed before allowing access to Final quiz.
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_mini_quiz_lp, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tocontent:
+                Intent Layer = getIntent();
+                String worldName = Layer.getStringExtra("worldName");
+                int worldID = Layer.getIntExtra("worldID", -1);
+                Intent intent = new Intent(getApplicationContext(), ContentActivity.class);
+                intent.putExtra("worldName", worldName);
+                intent.putExtra("worldID", worldID);
+                startActivity(intent);
+                return true;
+            case R.id.toworld:
+                Layer = new Intent(MiniQuizLandingPage.this, WorldActivity.class);
+                startActivity(Layer);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(MiniQuizLandingPage.this, MainActivity.class);
+                Toast.makeText(MiniQuizLandingPage.this, "Successfully logged out.",
+                        Toast.LENGTH_SHORT).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

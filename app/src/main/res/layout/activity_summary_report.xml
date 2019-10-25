@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightyellow"
+    android:background="@drawable/gradient_list3"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -13,19 +13,16 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
-            android:layout_height="92dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="68dp"
             android:fontFamily="@font/quenda"
             android:text="Summary Report"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            android:gravity="center"
+            android:textSize="33sp"
+            android:textColor="@color/yellow"/>
     </RelativeLayout>
 
     <GridLayout
@@ -34,10 +31,9 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:alignmentMode="alignMargins"
-        android:columnCount="2"
+        android:columnCount="1"
         android:columnOrderPreserved="false"
-        android:padding="14dp"
-        android:rowCount="3">
+        android:padding="14dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/Indiv_Report"

@@ -22,8 +22,7 @@
         <activity android:name=".Control.FinalQuiz" />
         <activity
             android:name=".Control.MiniQuizLandingPage"
-            android:label="@string/title_activity_mini_quiz_landing_page"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_mini_quiz_landing_page" />
         <activity android:name=".Control.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
