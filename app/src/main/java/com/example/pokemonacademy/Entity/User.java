@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Student implements Parcelable {
+public class User implements Parcelable {
 
     private String id;
     private String name;
@@ -14,11 +14,11 @@ public class Student implements Parcelable {
     private int charId;
     private String firstTime;
 
-    public Student()    {
+    public User()    {
 
     }
 
-    public Student(String id, String studentName, String userType, int courseIndex, int charId, String firstTime){
+    public User(String id, String studentName, String userType, int courseIndex, int charId, String firstTime){
         this.id = id;
         this.name = studentName;
         this.userType = userType;
@@ -27,7 +27,7 @@ public class Student implements Parcelable {
         this.firstTime = firstTime;
     }
 
-    protected Student(Parcel in) {
+    protected User(Parcel in) {
         id = in.readString();
         name = in.readString();
         userType = in.readString();
@@ -36,15 +36,15 @@ public class Student implements Parcelable {
         firstTime = in.readString();
     }
 
-    public static final Creator<Student> CREATOR = new Creator<Student>() {
+    public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
-        public Student createFromParcel(Parcel in) {
-            return new Student(in);
+        public User createFromParcel(Parcel in) {
+            return new User(in);
         }
 
         @Override
-        public Student[] newArray(int size) {
-            return new Student[size];
+        public User[] newArray(int size) {
+            return new User[size];
         }
     };
 
