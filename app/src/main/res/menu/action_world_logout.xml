@@ -6,7 +6,7 @@
         android:id="@+id/tologout"
         android:enabled="true"
         android:title="Log Out"
-        android:icon="@drawable/miniquiz"
+        android:icon="@drawable/logout"
         android:visible="true"
         app:showAsAction="ifRoom"/>
 

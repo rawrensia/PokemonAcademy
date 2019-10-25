@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/worldlayout"
     android:orientation="vertical"
     android:weightSum="13">
 
@@ -25,11 +26,11 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="70dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/quenda"
             android:text="World Selection"
+            android:gravity="center"
             android:textAlignment="center"
             android:textColor="@color/yellow"
             android:textSize="33sp" />
@@ -39,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="55dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="65dp"
+            android:gravity="center"
             android:fontFamily="@font/quenda"
             android:text="Select a World to Enter!"
             android:textAlignment="center"
