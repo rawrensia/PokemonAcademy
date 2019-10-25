@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuestionChoice;
@@ -35,12 +36,22 @@ public class MainActivity extends AppCompatActivity {
     private static final int NUM_WORLDS = 6;
     private static final int NUM_QUIZZES = 3;
 
+    Animation frombottom, fromtop;
+    ImageView pokemonLogo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         btnStart = (Button)findViewById(R.id.button_start);
+        pokemonLogo = (ImageView) findViewById(R.id.pokemonlogo);
+
+        fromtop = AnimationUtils.loadAnimation(this, R.anim.fromtop);
+        frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
+
+        btnStart.setAnimation(frombottom);
+        pokemonLogo.setAnimation(fromtop);
 
         btnStart.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View view) {

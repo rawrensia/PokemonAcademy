@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private static final String TAG = "ChooseCharacterActivity";
-
+    Animation from_down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.password);
         txtPassword.setTransformationMethod(new AsteriskPassword());
         btnLogin = findViewById(R.id.button_login);
+
+        from_down = AnimationUtils.loadAnimation(this, R.anim.frombottom);
+        btnLogin.setAnimation(from_down);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("USER");

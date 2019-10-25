@@ -2,10 +2,10 @@
     <string name="app_name">Pokemon Academy</string>
     <string name="planning_content">
         <![CDATA[
-        <h5> <font color=\"#784C27\">Requirements:</h5>"
+        <h5> <font color=\"#ffbf00\">Requirements:</h5>"
                 "<p>They are specifications of what should be implemented, "
                 "descriptions of how a system should behave, or of a system property/attribute.</p>"
-                  "<h5> <font color=\"#784C27\"> Requirement Engineering</h5><p>It is about identifying "  
+                  "<h5> <font color=\"#ffbf00\"> Requirement Engineering</h5><p>It is about identifying "
                 "the purpose of a software system and the contexts in which it will be used. "  
                 "It refers to the activity of requirement development, which includes elicitation, "  
                 "specification, analysis and management of stakeholder requirements.</p>"
@@ -18,7 +18,7 @@
                   "<br>&#8226; Watch users do their job.</br>"
                   "<br>&#8226; Prototyping: create interface to help customers better understand the system.\n</br>"
                   "<br>&#8226; Task analysis: make use cases/ scenarios.<br></br></br>"
-                  "<h5> <font color=\"#784C27\"> Requirement Analysis</h5>"
+                  "<h5> <font color=\"#ffbf00\"> Requirement Analysis</h5>"
                   "<p>Decompose high-level requirements into details and identify priorities."
                   "<br><b>Requirement Specification Approaches:</b><br></br></br>"
                   "<br>&#8226; <b>Textual:</b> vision and scope document, use case document, SRS.</br>"

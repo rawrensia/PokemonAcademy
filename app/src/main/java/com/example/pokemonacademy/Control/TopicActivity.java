@@ -10,17 +10,24 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class TopicActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,5 +89,35 @@ public class TopicActivity extends AppCompatActivity {
         int id = imgs.getResourceId(new Random().nextInt(imgs.length()), -1); //-1 is default if nothing is found (we don't care)
         imgs.recycle();
         return id;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_world, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.toleaderboard:
+                Intent Layer = new Intent(TopicActivity.this, Leaderboard.class);
+                startActivity(Layer);
+                Toast.makeText(TopicActivity.this, "Welcome to the leaderboard!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(TopicActivity.this, MainActivity.class);
+                Toast.makeText(TopicActivity.this, "Successfully logged out.",
+                        Toast.LENGTH_SHORT).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

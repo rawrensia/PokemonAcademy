@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/tologout"
-        android:enabled="true"
-        android:title="Log Out"
-        android:icon="@drawable/logout"
-        android:visible="true"
-        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/toleaderboard"
         android:enabled="true"
-        android:title="Leaderboard"
-        android:icon="@drawable/lblogo"
+        android:title="World"
+        android:icon="@drawable/worldwide"
         android:visible="true"
         app:showAsAction="always"/>
-
 </menu>

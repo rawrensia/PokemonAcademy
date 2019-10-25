@@ -4,13 +4,14 @@
     <color name="darkGreen">#00574B</color>
     <color name="darkPink">#D81B60</color>
     <color name="orange">#ef6c33</color>
+    <color name="darkOrange">#A74920</color>
     <color name="yellow">#ffbf00</color>
     <color name="darkBlue">#193862</color>
-    <color name="lightBlue">#0ea7b5</color>
+    <color name="lightBlue">#18747C</color>
     <color name="darkRed">#9f174d</color>
     <color name="violet">#C7BCE6</color>
     <color name="lightyellow">#F5E9BF</color>
-    <color name="darkPink2">#9C2858</color>
+    <color name="darkPink2">#741B3F</color>
     <color name="lightOrange">#ECBB96</color>
     <color name="darkerViolet">#BD99F7</color>
 

@@ -11,8 +11,10 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.text.Html;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,6 +24,7 @@ import androidx.cardview.widget.CardView;
 public class ContentActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,13 @@ public class ContentActivity extends AppCompatActivity {
                 intent.putExtra("worldName", worldName);
                 intent.putExtra("worldID", worldID);
                 startActivity(intent);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(ContentActivity.this, MainActivity.class);
+                Toast.makeText(ContentActivity.this, "Successfully logged out.",
+                        Toast.LENGTH_SHORT).show();
+                startActivity(Layer);
                 finish();
                 return true;
             default:

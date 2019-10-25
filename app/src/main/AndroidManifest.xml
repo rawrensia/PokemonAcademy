@@ -7,12 +7,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/gamelogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/gamelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Control.Leaderboard"></activity>
+        <activity android:name=".Control.Leaderboard"
+            android:label="The Leaderboard"></activity>
         <activity android:name=".Control.IndividualReportList" />
         <activity android:name=".Control.IndividualSummaryReport" />
         <activity android:name=".Control.OverallSummaryReport" />
