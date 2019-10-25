@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.example.pokemonacademy.Entity.Question;
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 populateQuizCompleteTable();
                 populateUserCompletedQnsTable();;
 
+                Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadeout);
+                btnStart.startAnimation(animation);
 
                 Intent Layer = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(Layer);

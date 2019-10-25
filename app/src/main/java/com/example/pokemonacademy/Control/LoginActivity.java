@@ -50,11 +50,15 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("USER");
 
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                authenticate(txtEmail.getText().toString(), txtPassword.getText().toString());
+                String email = txtEmail.getText().toString();
+                String password = txtPassword.getText().toString();
+                if (email.isEmpty() || password.isEmpty())
+                    Toast.makeText(LoginActivity.this, "Failed to log in, please enter the correct login information.", Toast.LENGTH_LONG).show();
+                else
+                    authenticate(email, password);
             }
         });
     }

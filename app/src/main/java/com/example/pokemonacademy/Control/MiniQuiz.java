@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.pokemonacademy.Entity.Choice;
+import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.R;
 
@@ -48,8 +48,8 @@ public class MiniQuiz extends AppCompatActivity {
     // Variables for summary quiz
     private Question questionAssigned;
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
-    private ArrayList<Choice> choiceChosen = new ArrayList<Choice>(); // for storing the choice which is chosen by the student
-    private ArrayList<Choice> rightChoice = new ArrayList<Choice>(); // for storing the right choice
+    private ArrayList<QuestionChoice> choiceChosen = new ArrayList<QuestionChoice>(); // for storing the choice which is chosen by the student
+    private ArrayList<QuestionChoice> rightChoice = new ArrayList<QuestionChoice>(); // for storing the right choice
     private int timeTaken[] = new int[num_of_question];
     private long startTime, endTime;
 
@@ -362,7 +362,7 @@ public class MiniQuiz extends AppCompatActivity {
             questionList.add(q);
         }
         // Hardcode choices & assign them to respective qn
-        ArrayList<Choice> choiceList = new ArrayList<Choice>();
+        ArrayList<QuestionChoice> choiceList = new ArrayList<QuestionChoice>();
         String[][] allChoices = {
                 {"Define the problem scope", "Conduct Acceptance test", "Monitor installation", " "},
                 {"State system behavior under certain conditions", "Describe how well the system must function", "Describe the properties(criteria, quality attributes)the system must have", " "},
@@ -386,14 +386,14 @@ public class MiniQuiz extends AppCompatActivity {
         int[] rightChoiceOption = {1, 1, 3, 2, 3, 2, 3, 2, 3, 2, 3, 4, 1, 3, 1};
         // Creating the choiceList
         for (int i=0; i<allChoices.length; i++){
-            ArrayList<Choice> choiceoption = new ArrayList<Choice>();
+            ArrayList<QuestionChoice> choiceoption = new ArrayList<QuestionChoice>();
             for (int j=0; j<3; j++){
                 if (j == rightChoiceOption[i]-1){ // minus 1 cuz its 0-4??
-                    Choice c = Choice.addChoice(i+1,allChoices[i][j],true);
+                    QuestionChoice c = QuestionChoice.addChoice(i+1,allChoices[i][j],true);
                     choiceList.add(c);
                     choiceoption.add(c);
                 } else {
-                    Choice c = Choice.addChoice(i + 1, allChoices[i][j], false);
+                    QuestionChoice c = QuestionChoice.addChoice(i + 1, allChoices[i][j], false);
                     choiceList.add(c);
                     choiceoption.add(c);
                 }

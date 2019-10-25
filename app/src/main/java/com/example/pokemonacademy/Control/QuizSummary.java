@@ -20,7 +20,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.example.pokemonacademy.Entity.Choice;
+import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
@@ -64,8 +64,8 @@ public class QuizSummary extends AppCompatActivity {
         int worldID = intent.getIntExtra("worldID", -1);
         int[] timeTaken = intent.getIntArrayExtra("timeTaken");
         ArrayList<Question> questionAnswered = intent.getExtras().getParcelableArrayList("questionAnswered");
-        ArrayList<Choice> choiceChosen = intent.getExtras().getParcelableArrayList("choiceChosen");
-        ArrayList<Choice> rightChoice = intent.getExtras().getParcelableArrayList("rightChoice");
+        ArrayList<QuestionChoice> choiceChosen = intent.getExtras().getParcelableArrayList("choiceChosen");
+        ArrayList<QuestionChoice> rightChoice = intent.getExtras().getParcelableArrayList("rightChoice");
 
         setContentView(R.layout.activity_quiz_summary);
         scrollView = (ScrollView)findViewById(R.id.quizsummaryscrollview);
@@ -146,7 +146,7 @@ public class QuizSummary extends AppCompatActivity {
             }
             answer.setText(rc);
             time.setText(""+timeTaken[i]);
-            if (choiceChosen.get(i).is_right_choice){
+            if (choiceChosen.get(i).isCorrect()){
                 correct.setText("Correct" );
             } else {
                 correct.setText("Wrong" );

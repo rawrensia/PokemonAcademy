@@ -2,19 +2,16 @@ package com.example.pokemonacademy.Control;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,13 +54,6 @@ public class WorldActivity extends AppCompatActivity {
             }
         });
 
-        Button leaderboardBtn = (Button)findViewById(R.id.leaderboardBtn);
-        leaderboardBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent Layer = new Intent(WorldActivity.this, Leaderboard.class);
-                startActivity(Layer);
-            }
-        });
     }
 
     private void setSingleEvent(GridLayout mainGrid){
@@ -87,16 +77,22 @@ public class WorldActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_world_logout, menu);
+        inflater.inflate(R.menu.action_world, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.toleaderboard:
+                Intent Layer = new Intent(WorldActivity.this, Leaderboard.class);
+                startActivity(Layer);
+                Toast.makeText(WorldActivity.this, "Welcome to the leaderboard!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.tologout:
                 mAuth.signOut();
-                Intent Layer = new Intent(WorldActivity.this, MainActivity.class);
+                Layer = new Intent(WorldActivity.this, MainActivity.class);
                 Toast.makeText(WorldActivity.this, "Successfully logged out.",
                         Toast.LENGTH_SHORT).show();
                 startActivity(Layer);

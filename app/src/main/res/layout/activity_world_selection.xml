@@ -53,24 +53,25 @@
         android:id="@+id/worldGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="9"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
         android:columnOrderPreserved="false"
-        android:padding="14dp"
+        android:padding="8dp"
         android:rowCount="3">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/planning"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="36dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="110dp"
@@ -80,18 +81,20 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/electricity" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/element1" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="6dp"
-                    android:text="Planning"
+                    android:paddingTop="5dp"
+                    android:text="PLANNING"
+                    android:fontFamily="@font/quenda"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/lightyellow"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -102,14 +105,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/analysis"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="36dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="110dp"
@@ -119,18 +123,20 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/water" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="6dp"
-                    android:text="Analysis"
+                    android:text="ANALYSIS"
+                    android:fontFamily="@font/quenda"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/lightyellow"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -141,14 +147,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/design"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="36dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="110dp"
@@ -159,18 +166,20 @@
                 android:textAlignment="center">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/fire" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="6dp"
-                    android:text="Design"
+                    android:text="DESIGN"
+                    android:fontFamily="@font/quenda"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/lightyellow"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -181,36 +190,39 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/implementation"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="36dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
-                android:layout_width="110dp"
+                android:layout_width="125dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/grass" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="6dp"
-                    android:text="Implementation"
+                    android:text="IMPLEMENTATION"
+                    android:fontFamily="@font/quenda"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="15sp"
+                    android:textColor="@color/lightyellow"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -220,14 +232,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/testing"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="36dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="110dp"
@@ -237,18 +250,20 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ground" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/element5" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="0dp"
-                    android:text="Testing &amp; Integration"
+                    android:paddingTop="4dp"
+                    android:text="TESTING &amp; INTEGRATION"
+                    android:fontFamily="@font/quenda"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/lightyellow"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -259,14 +274,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/maintenance"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="36dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="110dp"
@@ -276,18 +292,20 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="85dp"
-                    android:layout_height="82dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/psychic" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/element6" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="6dp"
-                    android:text="Maintenance"
+                    android:text="MAINTENANCE"
+                    android:fontFamily="@font/quenda"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/lightyellow"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -302,29 +320,25 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="2">
 
         <Button
             android:id="@+id/summaryReportBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button1"
+            android:fontFamily="@font/quenda"
             android:text="Summary Report"
+            android:textSize="20sp"
+            android:textColor="@color/darkPink2"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.13" />
+            app:layout_constraintVertical_bias="0.246" />
 
-        <Button
-            android:id="@+id/leaderboardBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Leaderboard"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/summaryReportBtn"
-            app:layout_constraintVertical_bias="0.26999998" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
