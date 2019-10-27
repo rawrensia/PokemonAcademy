@@ -12,10 +12,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 import org.w3c.dom.Text;
 
 public class IndividualSummaryReport extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,7 +30,7 @@ public class IndividualSummaryReport extends AppCompatActivity {
 
         // Get intent
         Intent intent = getIntent();
-        int userId = intent.getIntExtra("worldName", -1);
+        int userId = intent.getIntExtra("userId", -1);
         //TODO get user stuff from db
 
         ImageView usericon = (ImageView) findViewById(R.id.usericon);

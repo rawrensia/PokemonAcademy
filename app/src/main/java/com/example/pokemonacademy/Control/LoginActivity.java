@@ -93,6 +93,10 @@ public class LoginActivity extends AppCompatActivity {
                 Intent Layer;
                 User user = dataSnapshot.getValue(User.class);
 
+                if (user.getUserType().equalsIgnoreCase("T")) {
+                    Layer = new Intent(LoginActivity.this, SummaryReport.class);
+                    startActivity(Layer);
+                }
                 if (user.getFirstTime().equalsIgnoreCase("false")) {
                     Layer = new Intent(LoginActivity.this, WorldActivity.class);
                     startActivity(Layer);
