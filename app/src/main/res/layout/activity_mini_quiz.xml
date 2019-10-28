@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/gradient2"
     android:orientation="vertical"
+    android:id="@+id/miniquizlayout"
     android:weightSum="10">
 
     <RelativeLayout
         android:id="@+id/questionlayout"
         android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:background="@drawable/questionbackground">
+        android:layout_height="0dp"
+        android:background="@drawable/questionbackground"
+        android:layout_weight="4">
 
         <TextView
             android:id="@+id/miniquiztitle"
@@ -31,7 +33,7 @@
             android:layout_marginRight="83dp"
             android:fontFamily="@font/quenda"
             android:text="Mini Quiz Number"
-            android:textAlignment="center"
+            android:gravity="center"
             android:textColor="@color/yellow"
             android:textSize="24sp" />
 
@@ -49,17 +51,18 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/quenda"
             android:textColor="@color/lightyellow"
+            android:gravity="center"
+            android:textSize="18dp"
             android:text="Question: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-
-
 
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/battlelayout"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:background="@drawable/pokemonstandingbackground">
+        android:layout_height="230dp"
+        android:background="@drawable/pokemonstandingbackground"
+        android:paddingBottom="10dp">
 
         <ImageView
             android:id="@+id/enemypokemon"
@@ -103,10 +106,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintHorizontal_bias="0.103"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enemypokemonhealth"
-            app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/userpokemonpikachu" />
 
         <TextView
@@ -141,23 +144,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/answerlayout"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:background="@drawable/answerbackground">
+        android:layout_height="0dp"
+        android:background="@drawable/answerbackground"
+        android:layout_weight="6">
 
         <TextView
             android:id="@+id/answeroption1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/quenda"
+            android:gravity="center"
             android:text="1) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             android:textAlignment="center"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.026" />
 
         <TextView
             android:id="@+id/answeroption2"
@@ -167,12 +175,15 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/quenda"
+            android:gravity="center"
             android:text="2) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            android:textAlignment="center"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answeroption1" />
+            app:layout_constraintTop_toBottomOf="@+id/answeroption1"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/answeroption3"
@@ -182,44 +193,64 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/quenda"
+            android:gravity="center"
             android:text="3) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            android:textAlignment="center"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answeroption2" />
+            app:layout_constraintTop_toBottomOf="@+id/answeroption2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/choice2btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
+            android:background="@drawable/button2"
+            android:fontFamily="@font/quenda"
             android:text="2"
-            app:layout_constraintEnd_toStartOf="@+id/choice3btn"
-            app:layout_constraintTop_toBottomOf="@+id/answeroption3" />
+            android:textColor="@color/yellow"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.399"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.889" />
 
         <Button
             android:id="@+id/choice1btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
+            android:background="@drawable/button2"
+            android:fontFamily="@font/quenda"
             android:text="1"
-            app:layout_constraintEnd_toStartOf="@+id/choice2btn"
-            app:layout_constraintHorizontal_bias="1.0"
+            android:textColor="@color/yellow"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/choice3btn"
+            app:layout_constraintHorizontal_bias="0.365"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answeroption3" />
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.889" />
 
         <Button
             android:id="@+id/choice3btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
+            android:background="@drawable/button2"
+            android:fontFamily="@font/quenda"
             android:text="3"
-            app:layout_constraintEnd_toStartOf="@+id/attackbtn"
-            app:layout_constraintTop_toBottomOf="@+id/answeroption3" />
+            android:textColor="@color/yellow"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.573"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.889" />
 
         <Button
             android:id="@+id/attackbtn"
@@ -227,11 +258,15 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
             android:layout_marginBottom="28dp"
-            android:text="Attack"
+            android:background="@drawable/button2"
+            android:text="Attack!"
+            android:textColor="@color/yellow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answeroption3"
-            app:layout_constraintVertical_bias="0.181" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
