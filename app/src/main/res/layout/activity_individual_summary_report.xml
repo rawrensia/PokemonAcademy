@@ -83,7 +83,7 @@
                     android:paddingTop="6dp"
                     android:text="Planning"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -94,7 +94,7 @@
                     android:lines="1"
                     android:text="Mini Quiz 1: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
                 <TextView
                     android:id="@+id/planning_mq2"
@@ -103,7 +103,7 @@
                     android:lines="1"
                     android:text="Mini Quiz 2: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp"
                     />
                 <TextView
@@ -113,7 +113,7 @@
                     android:lines="1"
                     android:text="Final Quiz: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp"
                     />
 
@@ -132,7 +132,7 @@
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="6dp"
-            android:backgroundTint="@color/darkGreen">
+            android:backgroundTint="@color/darkBlue">
 
             <LinearLayout
                 android:layout_width="150dp"
@@ -196,7 +196,7 @@
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="6dp"
-            android:backgroundTint="@color/darkGreen">
+            android:backgroundTint="@color/darkBlue">
 
             <LinearLayout
                 android:layout_width="150dp"
@@ -275,7 +275,7 @@
                     android:paddingTop="6dp"
                     android:text="Implementation"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -286,7 +286,7 @@
                     android:lines="1"
                     android:text="Mini Quiz 1: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
                 <TextView
                     android:id="@+id/implementation_mq2"
@@ -295,7 +295,7 @@
                     android:lines="1"
                     android:text="Mini Quiz 2: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp"
                     />
                 <TextView
@@ -305,7 +305,7 @@
                     android:lines="1"
                     android:text="Final Quiz: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp"
                     />
 
@@ -339,7 +339,7 @@
                     android:paddingTop="6dp"
                     android:text="Testing"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -350,7 +350,7 @@
                     android:lines="1"
                     android:text="Mini Quiz 1: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
                 <TextView
                     android:id="@+id/testing_mq2"
@@ -359,7 +359,7 @@
                     android:lines="1"
                     android:text="Mini Quiz 2: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp"
                     />
                 <TextView
@@ -369,7 +369,7 @@
                     android:lines="1"
                     android:text="Final Quiz: 50"
                     android:gravity="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp"
                     />
 
@@ -388,7 +388,7 @@
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="6dp"
-            android:backgroundTint="@color/darkGreen">
+            android:backgroundTint="@color/darkBlue">
 
             <LinearLayout
                 android:layout_width="150dp"

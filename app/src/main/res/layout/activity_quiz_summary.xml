@@ -639,7 +639,7 @@
         android:background="@drawable/button1"
         android:fontFamily="@font/quenda"
         android:text="Next"
-        android:textColor="@color/darkPink2"
+        android:textColor="@color/darkBlue"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

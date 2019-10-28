@@ -180,6 +180,12 @@ public class MiniQuizLandingPage extends AppCompatActivity {
                 startActivity(Layer);
                 finish();
                 return true;
+            case R.id.toleaderboard:
+                Layer = new Intent(MiniQuizLandingPage.this, Leaderboard.class);
+                startActivity(Layer);
+                Toast.makeText(MiniQuizLandingPage.this, "Welcome to the leaderboard!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

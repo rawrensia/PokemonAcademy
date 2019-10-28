@@ -8,7 +8,14 @@
         android:title="Log Out"
         android:icon="@drawable/logout"
         android:visible="true"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/toleaderboard"
+        android:enabled="true"
+        android:title="Leaderboard"
+        android:icon="@drawable/lblogo"
+        android:visible="true"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/toworld"
         android:enabled="true"

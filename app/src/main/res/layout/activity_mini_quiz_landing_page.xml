@@ -71,7 +71,7 @@
                     android:paddingTop="6dp"
                     android:text="Mini Quiz 1"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                     android:paddingTop="6dp"
                     android:text="Mini Quiz 2"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
