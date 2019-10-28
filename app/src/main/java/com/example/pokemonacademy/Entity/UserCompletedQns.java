@@ -5,6 +5,10 @@ public class UserCompletedQns {
     int qnsId;
     boolean completed;
 
+    public UserCompletedQns() {
+
+    }
+
     public UserCompletedQns(int userId, int qnsId, boolean completed) {
         this.userId = userId;
         this.qnsId = qnsId;

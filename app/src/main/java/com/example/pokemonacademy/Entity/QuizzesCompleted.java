@@ -8,6 +8,10 @@ public class QuizzesCompleted {
     int score;
     boolean completed;
 
+    public QuizzesCompleted(){
+
+    }
+
     public QuizzesCompleted(int userId, int worldId, int miniQuizId, boolean completed, int timeTaken, int score) {
         this.userId = userId;
         this.worldId = worldId;

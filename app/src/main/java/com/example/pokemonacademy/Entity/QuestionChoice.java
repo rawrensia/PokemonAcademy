@@ -9,6 +9,7 @@ public class QuestionChoice implements Parcelable {
     public int choiceId;
     public String choice;
     public boolean rightChoice;
+    public boolean correct;
 
     public QuestionChoice(){
 
@@ -95,4 +96,6 @@ public class QuestionChoice implements Parcelable {
     public void setRightChoice(Boolean rightChoice){
         this.rightChoice = rightChoice;
     }
+
+    public void setCorrect(Boolean correct) { this.correct = correct; }
 }

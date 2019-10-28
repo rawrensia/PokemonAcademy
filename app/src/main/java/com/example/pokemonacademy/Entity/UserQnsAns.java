@@ -9,6 +9,10 @@ public class UserQnsAns {
     boolean isRight;
     boolean isSelected;
 
+    public UserQnsAns(){
+
+    }
+
     public UserQnsAns(int userId, int qnsId, int choiceId, boolean isRight, boolean isSelected) {
         this.userId = userId;
         this.qnsId = qnsId;
