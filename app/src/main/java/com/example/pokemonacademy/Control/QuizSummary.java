@@ -34,6 +34,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class QuizSummary extends AppCompatActivity {
@@ -84,44 +85,44 @@ public class QuizSummary extends AppCompatActivity {
         tvquestion[2] = R.id.question3;
         tvquestion[3] = R.id.question4;
         tvquestion[4] = R.id.question5;
-        tvquestion[5] = R.id.question6;
-        tvquestion[6] = R.id.question7;
-        tvquestion[7] = R.id.question8;
-        tvquestion[8] = R.id.question9;
-        tvquestion[9] = R.id.question10;
+//        tvquestion[5] = R.id.question6;
+//        tvquestion[6] = R.id.question7;
+//        tvquestion[7] = R.id.question8;
+//        tvquestion[8] = R.id.question9;
+//        tvquestion[9] = R.id.question10;
 
         tvanswer[0] = R.id.answer1;
         tvanswer[1] = R.id.answer2;
         tvanswer[2] = R.id.answer3;
         tvanswer[3] = R.id.answer4;
         tvanswer[4] = R.id.answer5;
-        tvanswer[5] = R.id.answer6;
-        tvanswer[6] = R.id.answer7;
-        tvanswer[7] = R.id.answer8;
-        tvanswer[8] = R.id.answer9;
-        tvanswer[9] = R.id.answer10;
+//        tvanswer[5] = R.id.answer6;
+//        tvanswer[6] = R.id.answer7;
+//        tvanswer[7] = R.id.answer8;
+//        tvanswer[8] = R.id.answer9;
+//        tvanswer[9] = R.id.answer10;
 
         tvtime[0] = R.id.time1;
         tvtime[1] = R.id.time2;
         tvtime[2] = R.id.time3;
         tvtime[3] = R.id.time4;
         tvtime[4] = R.id.time5;
-        tvtime[5] = R.id.time6;
-        tvtime[6] = R.id.time7;
-        tvtime[7] = R.id.time8;
-        tvtime[8] = R.id.time9;
-        tvtime[9] = R.id.time10;
+//        tvtime[5] = R.id.time6;
+//        tvtime[6] = R.id.time7;
+//        tvtime[7] = R.id.time8;
+//        tvtime[8] = R.id.time9;
+//        tvtime[9] = R.id.time10;
 
         tvcorrect[0] = R.id.correct1;
         tvcorrect[1] = R.id.correct2;
         tvcorrect[2] = R.id.correct3;
         tvcorrect[3] = R.id.correct4;
         tvcorrect[4] = R.id.correct5;
-        tvcorrect[5] = R.id.correct6;
-        tvcorrect[6] = R.id.correct7;
-        tvcorrect[7] = R.id.correct8;
-        tvcorrect[8] = R.id.correct9;
-        tvcorrect[9] = R.id.correct10;
+//        tvcorrect[5] = R.id.correct6;
+//        tvcorrect[6] = R.id.correct7;
+//        tvcorrect[7] = R.id.correct8;
+//        tvcorrect[8] = R.id.correct9;
+//        tvcorrect[9] = R.id.correct10;
 
         for (int i=0; i<questionAnswered.size(); i++){
             TextView question = (TextView)findViewById(tvquestion[i]);
@@ -264,7 +265,7 @@ public class QuizSummary extends AppCompatActivity {
 
 
 
-        for (int i=0;i<10; i++){
+        for (int i=0;i<5; i++){
             Log.d("time","Time Taken " + timeTaken[i]);
             Log.d("question","Question: " + questionAnswered.get(i).question);
             Log.d("choice","Selected Choice: " + choiceChosen.get(i).choice);
@@ -283,7 +284,5 @@ public class QuizSummary extends AppCompatActivity {
                 startActivity(Layer);
             }
         });
-
-
     }
 }
