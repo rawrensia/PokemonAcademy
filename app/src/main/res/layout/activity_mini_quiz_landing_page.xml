@@ -17,19 +17,16 @@
         <TextView
             android:id="@+id/miniquizlandingheading"
             android:layout_width="wrap_content"
-            android:layout_height="92dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="68dp"
             android:fontFamily="@font/quenda"
             android:text="World Header"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/yellow"/>
     </RelativeLayout>
 
     <GridLayout
@@ -74,8 +71,8 @@
                     android:paddingTop="6dp"
                     android:text="Mini Quiz 1"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="15sp"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -113,8 +110,8 @@
                     android:paddingTop="6dp"
                     android:text="Mini Quiz 2"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="15sp"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -152,32 +149,12 @@
                     android:paddingTop="6dp"
                     android:text="Final Quiz"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="15sp"
+                    android:textColor="@color/darkPink2"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
-
-
         </androidx.cardview.widget.CardView>
 
-
     </GridLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-
-        <Button
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

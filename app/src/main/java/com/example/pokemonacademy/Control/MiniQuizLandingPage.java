@@ -19,15 +19,20 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.GridLayout;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,6 +71,7 @@ public class MiniQuizLandingPage extends AppCompatActivity {
 
         Intent intent = getIntent();
         String worldName = intent.getStringExtra("worldName");
+
         worldID = intent.getIntExtra("worldID", -1);
 
         questionDb.addValueEventListener(new ValueEventListener() {
@@ -96,36 +102,37 @@ public class MiniQuizLandingPage extends AppCompatActivity {
             }
         });
 
+
         Drawable dynamicBackground, finalQuizNpc;
         int textColor;
 
         switch (worldName) {
-            case ("Planning"):
+            case ("PLANNING"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m5, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite1, null);
                 textColor = Color.parseColor("#ebe850");
                 break;
-            case ("Analysis"):
+            case ("ANALYSIS"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m6, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite2, null);
-                textColor = Color.parseColor("#272a40");
+                textColor = Color.parseColor("#C7BCE6");
                 break;
-            case ("Design"):
+            case ("DESIGN"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m4, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite3, null);
-                textColor = Color.parseColor("#941b27");
+                textColor = Color.parseColor("#ffbf00");
                 break;
-            case ("Implementation"):
+            case ("IMPLEMENTATION"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m3, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite4, null);
                 textColor = Color.parseColor("#1b9451");
                 break;
-            case ("Testing & Integration"):
+            case ("TESTING & INTEGRATION"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m1, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite5, null);
                 textColor = Color.parseColor("#0d0982");
                 break;
-            case ("Maintenance"):
+            case ("MAINTENANCE"):
                 dynamicBackground = ResourcesCompat.getDrawable(getResources(), R.drawable.quiz_landing_page_m2, null);
                 finalQuizNpc = ResourcesCompat.getDrawable(getResources(), R.drawable.elite6, null);
                 textColor = Color.parseColor("#cbb8f2");
@@ -188,19 +195,6 @@ public class MiniQuizLandingPage extends AppCompatActivity {
             });
         }
 
-        Button backBtn = (Button)findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent intent = getIntent();
-                String worldName = intent.getStringExtra("worldName");
-                int worldID = intent.getIntExtra("worldID", -1);
-
-                Intent Layer = new Intent(MiniQuizLandingPage.this, TopicActivity.class);
-                Layer.putExtra("worldName", worldName);
-                Layer.putExtra("worldID", worldID);
-                startActivity(Layer);
-            }
-        });
     }
 
     private int getRandomNpcImage() {
@@ -262,6 +256,47 @@ public class MiniQuizLandingPage extends AppCompatActivity {
             questionList.add(question);
         }
         return questionList;
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_mini_quiz_lp, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tocontent:
+                Intent Layer = getIntent();
+                String worldName = Layer.getStringExtra("worldName");
+                int worldID = Layer.getIntExtra("worldID", -1);
+                Intent intent = new Intent(getApplicationContext(), ContentActivity.class);
+                intent.putExtra("worldName", worldName);
+                intent.putExtra("worldID", worldID);
+                startActivity(intent);
+                return true;
+            case R.id.toworld:
+                Layer = new Intent(MiniQuizLandingPage.this, WorldActivity.class);
+                startActivity(Layer);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(MiniQuizLandingPage.this, MainActivity.class);
+                Toast.makeText(MiniQuizLandingPage.this, "Successfully logged out.",
+                        Toast.LENGTH_SHORT).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            case R.id.toleaderboard:
+                Layer = new Intent(MiniQuizLandingPage.this, Leaderboard.class);
+                startActivity(Layer);
+                Toast.makeText(MiniQuizLandingPage.this, "Welcome to the leaderboard!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

@@ -6,11 +6,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
@@ -68,6 +71,7 @@ public class MiniQuiz extends AppCompatActivity {
     private ArrayList<QuestionChoice> rightChoice = new ArrayList<QuestionChoice>(); // for storing the right choice
     private int timeTaken[] = new int[num_of_question];
     private long startTime, endTime;
+    private boolean choiceClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,10 +121,11 @@ public class MiniQuiz extends AppCompatActivity {
         enemypokemon.setImageResource(getRandomEnemyImage());
 
         // initialize question, answers and buttons
-        final int greenColor = Color.parseColor("#33FF93");
-        final int yellowColor = Color.parseColor("#D5E3A1");
-        final int redColor = Color.parseColor("#E73B3B");
+        final int greenColor = Color.parseColor("#22B395");
+        final int yellowColor = Color.parseColor("#ffbf00");
+        final int redColor = Color.parseColor("#741B3F");
         final int transparent = Color.parseColor("#00FFFFFF");
+        final int blueColor = Color.parseColor("#193862");
 
         final TextView question = (TextView)findViewById(R.id.questiontext);
         final TextView questionTv = (TextView)findViewById(R.id.questiontext);
@@ -136,16 +141,18 @@ public class MiniQuiz extends AppCompatActivity {
         attackbtn.setBackgroundColor(redColor);
         attackbtn.setVisibility(View.INVISIBLE);
 
-        choice1btn.setBackgroundColor(yellowColor);
-        choice2btn.setBackgroundColor(yellowColor);
-        choice3btn.setBackgroundColor(yellowColor);
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(120); //You can manage the blinking time with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        attackbtn.startAnimation(anim);
 
         choice1btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                choice1btn.setBackgroundColor(greenColor);
-                choice2btn.setBackgroundColor(yellowColor);
-                choice3btn.setBackgroundColor(yellowColor);
+                choice1btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button1, null));
+                choice1btn.setTextColor(blueColor);
 
                 answeroption1.setBackgroundColor(greenColor);
                 answeroption2.setBackgroundColor(transparent);
@@ -153,14 +160,14 @@ public class MiniQuiz extends AppCompatActivity {
 
                 attackbtn.setVisibility(View.VISIBLE);
                 selectedChoice = 1;
+                choiceClicked = true;
             }
         });
         choice2btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                choice2btn.setBackgroundColor(greenColor);
-                choice1btn.setBackgroundColor(yellowColor);
-                choice3btn.setBackgroundColor(yellowColor);
+                choice2btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button1, null));
+                choice2btn.setTextColor(blueColor);
 
                 answeroption2.setBackgroundColor(greenColor);
                 answeroption1.setBackgroundColor(transparent);
@@ -168,14 +175,14 @@ public class MiniQuiz extends AppCompatActivity {
 
                 attackbtn.setVisibility(View.VISIBLE);
                 selectedChoice = 2;
+                choiceClicked = true;
             }
         });
         choice3btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                choice3btn.setBackgroundColor(greenColor);
-                choice2btn.setBackgroundColor(yellowColor);
-                choice1btn.setBackgroundColor(yellowColor);
+                choice3btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button1, null));
+                choice3btn.setTextColor(blueColor);
 
                 answeroption3.setBackgroundColor(greenColor);
                 answeroption2.setBackgroundColor(transparent);
@@ -183,6 +190,7 @@ public class MiniQuiz extends AppCompatActivity {
 
                 attackbtn.setVisibility(View.VISIBLE);
                 selectedChoice = 3;
+                choiceClicked = true;
             }
         });
 
@@ -199,95 +207,108 @@ public class MiniQuiz extends AppCompatActivity {
         attackbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!choiceClicked)
+                    Toast.makeText(MiniQuiz.this, "Please select an answer.", Toast.LENGTH_LONG).show();
+                else {
 
-                // For mini quiz summary
-                questionAnswered.add(questionAssigned);
-                choiceChosen.add(questionAssigned.getQuestionChoice().get(selectedChoice-1));
+                    // For mini quiz summary
+                    questionAnswered.add(questionAssigned);
+                    choiceChosen.add(questionAssigned.getQuestionChoice().get(selectedChoice-1));
 
-                if (questionAssigned.getQuestionChoice().get(0).getRightChoice()){
-                    rightChoice.add(questionAssigned.getQuestionChoice().get(0));
-                } else if (questionAssigned.getQuestionChoice().get(1).getRightChoice()){
-                    rightChoice.add(questionAssigned.getQuestionChoice().get(1));
-                } else {
-                    rightChoice.add(questionAssigned.getQuestionChoice().get(2));
-                }
+                    if (questionAssigned.getQuestionChoice().get(0).getRightChoice()){
+                        rightChoice.add(questionAssigned.getQuestionChoice().get(0));
+                    } else if (questionAssigned.getQuestionChoice().get(1).getRightChoice()){
+                        rightChoice.add(questionAssigned.getQuestionChoice().get(1));
+                    } else {
+                        rightChoice.add(questionAssigned.getQuestionChoice().get(2));
+                    }
 
-                getTimeTaken();
+                    getTimeTaken();
 
-                // initialize
-                ProgressBar enemyhealthbar = (ProgressBar)findViewById(R.id.enemypokemonhealth);
-                ProgressBar userpokemonhealthbar = (ProgressBar)findViewById(R.id.userpokemonhealth);
-                TextView questionTv = (TextView)findViewById(R.id.questiontext);
-                TextView answeroption1 = (TextView)findViewById(R.id.answeroption1);
-                TextView answeroption2 = (TextView)findViewById(R.id.answeroption2);
-                TextView answeroption3 = (TextView)findViewById(R.id.answeroption3);
-                Button choice1btn = (Button)findViewById(R.id.choice1btn);
-                Button choice2btn = (Button)findViewById(R.id.choice2btn);
-                Button choice3btn = (Button)findViewById(R.id.choice3btn);
-                Button attackbtn = (Button)findViewById(R.id.attackbtn);
-                ImageView enemypokemon = (ImageView)findViewById(R.id.enemypokemon);
-                ImageView userpokemon = (ImageView)findViewById(R.id.userpokemon);
-                TextView userpokemonstatus = (TextView)findViewById(R.id.userpokemonstatus);
-                TextView enemypokemonstatus = (TextView)findViewById(R.id.enemypokemonstatus);
+                    // initialize
+                    ProgressBar enemyhealthbar = (ProgressBar) findViewById(R.id.enemypokemonhealth);
+                    ProgressBar userpokemonhealthbar = (ProgressBar) findViewById(R.id.userpokemonhealth);
+                    TextView questionTv = (TextView) findViewById(R.id.questiontext);
+                    TextView answeroption1 = (TextView) findViewById(R.id.answeroption1);
+                    TextView answeroption2 = (TextView) findViewById(R.id.answeroption2);
+                    TextView answeroption3 = (TextView) findViewById(R.id.answeroption3);
+                    Button choice1btn = (Button) findViewById(R.id.choice1btn);
+                    Button choice2btn = (Button) findViewById(R.id.choice2btn);
+                    Button choice3btn = (Button) findViewById(R.id.choice3btn);
+                    Button attackbtn = (Button) findViewById(R.id.attackbtn);
+                    ImageView enemypokemon = (ImageView) findViewById(R.id.enemypokemon);
+                    ImageView userpokemon = (ImageView) findViewById(R.id.userpokemon);
+                    TextView userpokemonstatus = (TextView) findViewById(R.id.userpokemonstatus);
+                    TextView enemypokemonstatus = (TextView) findViewById(R.id.enemypokemonstatus);
 
-                if (selectedChoice==correctChoiceIndex){
-                    int dmg = enemypokemonhp/num_of_question;
-                    enemypokemonhp = enemypokemonhp - dmg;
-                    enemyhealthbar.setProgress(enemypokemonhp);
-                    userpokemonstatus.setText("Correct answer");
-                    enemypokemonstatus.setText("Took "+ dmg +" damage");
-                    damageAnimate(enemypokemon);
-                    if (enemypokemonhp <= 0){endBattleFlag = true;}
-                } else {
-                    userpokemonhp = userpokemonhp - 10;
-                    userpokemonhealthbar.setProgress(userpokemonhp);
-                    userpokemonstatus.setText("Took 10 damage");
-                    enemypokemonstatus.setText("Wrong answer");
-                    damageAnimate(userpokemon);
-                    if (userpokemonhp <= 0){endBattleFlag = true;}
-                }
-                num_of_question = num_of_question - 1;
+                    if (selectedChoice == correctChoiceIndex) {
+                        int dmg = enemypokemonhp / num_of_question;
+                        enemypokemonhp = enemypokemonhp - dmg;
+                        enemyhealthbar.setProgress(enemypokemonhp);
+                        userpokemonstatus.setText("Correct answer");
+                        enemypokemonstatus.setText("Took " + dmg + " damage");
+                        damageAnimate(enemypokemon);
+                        if (enemypokemonhp <= 0) {
+                            endBattleFlag = true;
+                        }
+                    } else {
+                        userpokemonhp = userpokemonhp - 10;
+                        userpokemonhealthbar.setProgress(userpokemonhp);
+                        userpokemonstatus.setText("Took 10 damage");
+                        enemypokemonstatus.setText("Wrong answer");
+                        damageAnimate(userpokemon);
+                        if (userpokemonhp <= 0) {
+                            endBattleFlag = true;
+                        }
+                    }
+                    num_of_question = num_of_question - 1;
 
-                // End condition
-                if (endBattleFlag || num_of_question<=0){
-                    Intent intent = getIntent();
-                    String worldName = intent.getStringExtra("worldName");
-                    int worldID = intent.getIntExtra("worldID", -1);
-                    TextView miniQuizTv = (TextView)findViewById(R.id.miniquiztitle);
-                    Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
 
-                    Bundle bundle1 = new Bundle();
-                    bundle1.putParcelableArrayList("questionAnswered", questionAnswered);
-                    Layer.putExtras(bundle1);
+                    // End condition
+                    if (endBattleFlag || num_of_question <= 0) {
+                        Intent intent = getIntent();
+                        String worldName = intent.getStringExtra("worldName");
+                        int worldID = intent.getIntExtra("worldID", -1);
+                        TextView miniQuizTv = (TextView) findViewById(R.id.miniquiztitle);
 
-                    Bundle bundle2 = new Bundle();
-                    bundle2.putParcelableArrayList("choiceChosen", choiceChosen);
-                    Layer.putExtras(bundle2);
+                        Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
 
-                    Bundle bundle3 = new Bundle();
-                    bundle3.putParcelableArrayList("rightChoice", rightChoice);
-                    Layer.putExtras(bundle3);
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putParcelableArrayList("questionAnswered", questionAnswered);
+                        Layer.putExtras(bundle1);
 
-                    Layer.putExtra("timeTaken", timeTaken);
-                    Layer.putExtra("miniQuizName", miniQuizTv.getText().toString());
-                    Layer.putExtra("worldName", worldName);
-                    Layer.putExtra("worldID", worldID);
-                    startActivity(Layer);
-                }
+                        Bundle bundle2 = new Bundle();
+                        bundle2.putParcelableArrayList("choiceChosen", choiceChosen);
+                        Layer.putExtras(bundle2);
 
-                // Reset button states
-                selectedChoice = 0;
-                answeroption1.setBackgroundColor(transparent);
-                answeroption2.setBackgroundColor(transparent);
-                answeroption3.setBackgroundColor(transparent);
-                choice1btn.setBackgroundColor(yellowColor);
-                choice2btn.setBackgroundColor(yellowColor);
-                choice3btn.setBackgroundColor(yellowColor);
-                attackbtn.setVisibility(View.INVISIBLE);
+                        Bundle bundle3 = new Bundle();
+                        bundle3.putParcelableArrayList("rightChoice", rightChoice);
+                        Layer.putExtras(bundle3);
 
-                // Display next question
-                if (num_of_question!=0){
-                    questionAssigned = displayNextQuestion(questionList, getDifficultyLevel(userpokemonhp));
+                        Layer.putExtra("timeTaken", timeTaken);
+                        Layer.putExtra("miniQuizNum", miniQuizTv.getText().toString());
+                        Layer.putExtra("worldName", worldName);
+                        Layer.putExtra("worldID", worldID);
+                        startActivity(Layer);
+                    }
+
+                    // Reset button states
+                    selectedChoice = 0;
+                    answeroption1.setBackgroundColor(transparent);
+                    answeroption2.setBackgroundColor(transparent);
+                    answeroption3.setBackgroundColor(transparent);
+                    choice1btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                    choice2btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                    choice3btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                    choice1btn.setTextColor(yellowColor);
+                    choice2btn.setTextColor(yellowColor);
+                    choice3btn.setTextColor(yellowColor);
+                    attackbtn.setVisibility(View.INVISIBLE);
+
+                    // Display next question
+                    if (num_of_question!=0){
+                        questionAssigned = displayNextQuestion(questionList, getDifficultyLevel(userpokemonhp));
+                    }
                 }
             }
         });

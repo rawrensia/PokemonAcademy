@@ -1,11 +1,17 @@
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,6 +28,12 @@ public class IndividualSummaryReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual_summary_report);
 
+        LinearLayout linearLayout = findViewById(R.id.indiv_summary);
+        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
         // Get intent
         Intent intent = getIntent();
         int userId = intent.getIntExtra("worldName", -1);
@@ -29,12 +41,24 @@ public class IndividualSummaryReport extends AppCompatActivity {
 
         ImageView usericon = (ImageView) findViewById(R.id.usericon);
         TextView report = (TextView) findViewById(R.id.individualReport);
-        TextView planningScore = (TextView) findViewById(R.id.planningScore);
-        TextView designScore = (TextView) findViewById(R.id.designScore);
-        TextView implementationScore = (TextView) findViewById(R.id.implementationScore);
-        TextView analysisScore = (TextView) findViewById(R.id.analysisScore);
-        TextView maintenanceScore = (TextView) findViewById(R.id.maintenanceScore);
-        TextView testingScore = (TextView) findViewById(R.id.testingScore);
+        TextView planning_mq1 = (TextView) findViewById(R.id.planning_mq1);
+        TextView planning_mq2 = (TextView) findViewById(R.id.planning_mq2);
+        TextView planning_fq = (TextView) findViewById(R.id.planning_fq);
+        TextView design_mq1 = (TextView) findViewById(R.id.design_mq1);
+        TextView design_mq2 = (TextView) findViewById(R.id.design_mq2);
+        TextView design_fq = (TextView) findViewById(R.id.design_fq);
+        TextView implementation_mq1 = (TextView) findViewById(R.id.implementation_mq1);
+        TextView implementation_mq2 = (TextView) findViewById(R.id.implementation_mq2);
+        TextView implementation_fq = (TextView) findViewById(R.id.implementation_fq);
+        TextView analysis_mq1 = (TextView) findViewById(R.id.analysis_mq1);
+        TextView analysis_mq2 = (TextView) findViewById(R.id.analysis_mq2);
+        TextView analysis_fq = (TextView) findViewById(R.id.analysis_fq);
+        TextView maintenance_mq1 = (TextView) findViewById(R.id.maintenance_mq1);
+        TextView maintenance_mq2 = (TextView) findViewById(R.id.maintenance_mq2);
+        TextView maintenance_fq = (TextView) findViewById(R.id.maintenance_fq);
+        TextView testing_mq1 = (TextView) findViewById(R.id.testing_mq1);
+        TextView testing_mq2 = (TextView) findViewById(R.id.testing_mq2);
+        TextView testing_fq = (TextView) findViewById(R.id.testing_fq);
 
         //TODO get user's character image
         //usericon.setImageResource();
@@ -43,11 +67,24 @@ public class IndividualSummaryReport extends AppCompatActivity {
         //from User_Completed_Quiz, if completed get score for each quiz for user, else print not completed
 
         report.setText("Boham's Report");
-        planningScore.setText("Mini Quiz 1: 50 Mini Quiz 2: 30 Final Quiz : 50");
-        designScore.setText("Mini Quiz 1: 30 Mini Quiz 2: 40 Final Quiz : 70");
-        implementationScore.setText("Mini Quiz 1: 40 Mini Quiz 2: 40 Final Quiz : 10");
-        analysisScore.setText("Mini Quiz 1: 10 Mini Quiz 2: 70 Final Quiz : 30");
-        maintenanceScore.setText("Mini Quiz 1: 70 Mini Quiz 2: 40 Final Quiz : 64");
-        testingScore.setText("Mini Quiz 1: 80 Mini Quiz 2: 98 Final Quiz : 37");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_back_world, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.toworld:
+                Intent Layer = new Intent(IndividualSummaryReport.this, WorldActivity.class);
+                startActivity(Layer);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

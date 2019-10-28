@@ -4,27 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/quizsummarybg"
-    tools:context=".Control.QuizSummary">
-
-    <Button
-        android:id="@+id/doneBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Done"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quizsummaryscrollview"
-        app:layout_constraintVertical_bias="1.0" />
+    android:background="@drawable/gradient_list2"
+    tools:context=".Control.QuizSummary"
+    android:id="@+id/quiz_summary_layout">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="86dp"
-        android:layout_marginBottom="628dp"
+        android:layout_height="70dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,18 +23,28 @@
         <TextView
             android:id="@+id/quizsummaryheader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_height="50dp"
             android:fontFamily="@font/quenda"
             android:text="Quiz Summary"
+            android:gravity="center"
+            android:textColor="@color/yellow"
+            android:textSize="26sp" />
+        <TextView
+            android:id="@+id/quiz_type_header"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/quenda"
+            android:text="Mini Quiz / Final Quiz"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textColor="@color/yellow"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/quizsummaryscrollview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,60 +54,74 @@
         <TableLayout
             android:id="@+id/quizsummarytablelayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <TableRow
                 android:id="@+id/row0"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="#"
-                    android:textAlignment="center" />
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightyellow"/>
 
                 <TextView
                     android:layout_width="125dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="Question"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/lightyellow"/>
 
                 <TextView
                     android:layout_width="125dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="Answer"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/lightyellow"/>
 
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="Time"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/lightyellow"/>
 
                 <TextView
                     android:layout_width="85dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="Correct"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/lightyellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="1"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question1"
@@ -118,7 +129,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer1"
@@ -126,7 +138,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time1"
@@ -134,7 +147,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct1"
@@ -143,20 +157,24 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:textColor="@color/yellow"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="2"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question2"
@@ -164,7 +182,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer2"
@@ -172,7 +191,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time2"
@@ -180,7 +200,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct2"
@@ -189,20 +210,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="3"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question3"
@@ -210,7 +234,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer3"
@@ -218,7 +243,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time3"
@@ -226,7 +252,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct3"
@@ -235,20 +262,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="4"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question4"
@@ -256,7 +286,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer4"
@@ -264,7 +295,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time4"
@@ -272,6 +304,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
+                    android:textColor="@color/yellow"
                     android:textAlignment="center" />
 
                 <TextView
@@ -281,20 +314,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="5"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question5"
@@ -302,7 +338,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer5"
@@ -310,7 +347,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time5"
@@ -318,7 +356,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct5"
@@ -327,20 +366,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="6"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question6"
@@ -348,7 +390,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer6"
@@ -356,7 +399,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time6"
@@ -364,7 +408,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct6"
@@ -373,20 +418,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row7"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="7"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question7"
@@ -394,7 +442,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer7"
@@ -402,7 +451,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time7"
@@ -410,7 +460,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct7"
@@ -419,20 +470,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row8"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="8"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question8"
@@ -440,7 +494,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer8"
@@ -448,7 +503,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time8"
@@ -456,7 +512,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct8"
@@ -465,20 +522,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row9"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="9"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question9"
@@ -486,7 +546,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer9"
@@ -494,7 +555,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time9"
@@ -502,7 +564,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct9"
@@ -511,20 +574,23 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/row10"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:minHeight="25dp">
 
                 <TextView
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="10"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/question10"
@@ -532,7 +598,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/answer10"
@@ -540,7 +607,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/time10"
@@ -548,7 +616,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
 
                 <TextView
                     android:id="@+id/correct10"
@@ -557,9 +626,28 @@
                     android:clickable="true"
                     android:fontFamily="@font/quenda"
                     android:text="TextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"/>
             </TableRow>
         </TableLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button1"
+        android:fontFamily="@font/quenda"
+        android:text="Next"
+        android:textColor="@color/darkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.843" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
@@ -271,8 +272,8 @@ public class QuizSummary extends AppCompatActivity {
             Log.d("choice","Selected Choice: " + choiceChosen.get(i).choice);
         }
 
-        Button doneBtn = (Button)findViewById(R.id.doneBtn);
-        doneBtn.setOnClickListener(new View.OnClickListener() {
+        Button nextBtn = (Button)findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Intent intent = getIntent();
                 String worldName = intent.getStringExtra("worldName");

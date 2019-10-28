@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -23,22 +26,46 @@ public class OverallSummaryReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overall_summary_report);
 
-        TextView planningAvg = (TextView) findViewById(R.id.planningAvg);
-        TextView designAvg = (TextView) findViewById(R.id.designAvg);
-        TextView implementationAvg = (TextView) findViewById(R.id.implementationAvg);
-        TextView analysisAvg = (TextView) findViewById(R.id.analysisAvg);
-        TextView maintenanceAvg = (TextView) findViewById(R.id.maintenanceAvg);
-        TextView testingAvg = (TextView) findViewById(R.id.testingAvg);
+        TextView planningAvg_mq1 = (TextView) findViewById(R.id.planning_avg_mq1);
+        TextView planningAvg_mq2 = (TextView) findViewById(R.id.planning_avg_mq2);
+        TextView planningAvg_fq = (TextView) findViewById(R.id.planning_avg_fq);
+        TextView designAvg_mq1 = (TextView) findViewById(R.id.design_avg_mq1);
+        TextView designAvg_mq2 = (TextView) findViewById(R.id.design_avg_mq2);
+        TextView designAvg_fq = (TextView) findViewById(R.id.design_avg_fq);
+        TextView implementationAvg_mq1 = (TextView) findViewById(R.id.implementation_avg_mq1);
+        TextView implementationAvg_mq2 = (TextView) findViewById(R.id.implementation_avg_mq2);
+        TextView implementationAvg_fq = (TextView) findViewById(R.id.implementation_avg_fq);
+        TextView analysisAvg_mq1 = (TextView) findViewById(R.id.analysis_avg_mq1);
+        TextView analysisAvg_mq2 = (TextView) findViewById(R.id.analysis_avg_mq2);
+        TextView analysisAvg_fq = (TextView) findViewById(R.id.analysis_avg_fq);
+        TextView maintenanceAvg_mq1 = (TextView) findViewById(R.id.maintenance_avg_mq1);
+        TextView maintenanceAvg_mq2 = (TextView) findViewById(R.id.maintenance_avg_mq2);
+        TextView maintenanceAvg_fq = (TextView) findViewById(R.id.maintenance_avg_fq);
+        TextView testingAvg_mq1 = (TextView) findViewById(R.id.testing_avg_mq1);
+        TextView testingAvg_mq2 = (TextView) findViewById(R.id.testing_avg_mq2);
+        TextView testingAvg_fq = (TextView) findViewById(R.id.testing_avg_fq);
 
         //TODO fill in scores with data from database
         //from User_Completed_Quiz, get scores from all user completed quiz and calculate average
 
 
-        planningAvg.setText("Mini Quiz 1: 50 Mini Quiz 2: 30 Final Quiz : 50");
-        designAvg.setText("Mini Quiz 1: 30 Mini Quiz 2: 40 Final Quiz : 70");
-        implementationAvg.setText("Mini Quiz 1: 40 Mini Quiz 2: 40 Final Quiz : 10");
-        analysisAvg.setText("Mini Quiz 1: 10 Mini Quiz 2: 70 Final Quiz : 30");
-        maintenanceAvg.setText("Mini Quiz 1: 70 Mini Quiz 2: 40 Final Quiz : 64");
-        testingAvg.setText("Mini Quiz 1: 80 Mini Quiz 2: 98 Final Quiz : 37");
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_back_world, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.toworld:
+                Intent Layer = new Intent(OverallSummaryReport.this, WorldActivity.class);
+                startActivity(Layer);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -330,7 +330,7 @@
             android:fontFamily="@font/quenda"
             android:text="Summary Report"
             android:textSize="20sp"
-            android:textColor="@color/darkPink2"
+            android:textColor="@color/darkBlue"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
