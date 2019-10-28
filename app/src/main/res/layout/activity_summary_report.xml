@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_list3"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/summary_layout">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,7 +45,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/darkGreen"
+            android:backgroundTint="@color/yellow"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
@@ -59,14 +60,14 @@
                     android:layout_width="100dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/poktrainer" />
+                    android:src="@drawable/psyduck" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Individual Report"
                     android:textAlignment="center"
-                    android:textColor="@color/yellow"
+                    android:textColor="@color/darkGreen"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -83,7 +84,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/darkGreen"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
@@ -97,14 +98,15 @@
                 <ImageView
                     android:layout_width="140dp"
                     android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/jigglypuff"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Overall Report"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/yellow"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
