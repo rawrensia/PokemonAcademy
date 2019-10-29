@@ -43,8 +43,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/quenda"
             android:gravity="center"
-            android:text="TextView"
-            android:textColor="@color/lightyellow"
+            android:text="Challenge Your Friends!"
+            android:textColor="@color/yellow"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -61,17 +61,35 @@
             android:id="@+id/createCustomQuizBtn"
             android:layout_width="270dp"
             android:layout_height="65dp"
-            android:background="@drawable/button1"
+            android:background="@drawable/button2"
             android:fontFamily="@font/quenda"
             android:text="Create Custom quiz"
-            android:textColor="@color/darkBlue"
+            android:textColor="@color/yellow"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.234" />
+            app:layout_constraintVertical_bias="0.103" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="270dp"
+            android:layout_height="70dp"
+            android:background="@drawable/details_input_field"
+            android:ems="10"
+            android:hint="Enter Custom Quiz ID"
+            android:fontFamily="@font/quenda"
+            android:inputType="textPersonName"
+            android:paddingLeft="24dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.398" />
 
         <Button
             android:id="@+id/playCustomQuizBtn"
@@ -87,6 +105,6 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.537" />
+            app:layout_constraintVertical_bias="0.651" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
