@@ -19,6 +19,7 @@ public class PlayCustomQuizActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,14 @@ public class PlayCustomQuizActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
 
                 if (user.getUserType().equalsIgnoreCase("T")) {
-                    Layer = new Intent(LoginActivity.this, SummaryReport.class);
+                    Layer = new Intent(PlayCustomQuizActivity.this, SummaryReport.class);
                     startActivity(Layer);
                 }
                 if (user.getFirstTime().equalsIgnoreCase("false")) {
-                    Layer = new Intent(LoginActivity.this, WorldActivity.class);
+                    Layer = new Intent(PlayCustomQuizActivity.this, WorldActivity.class);
                     startActivity(Layer);
                 } else {
-                    Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
+                    Layer = new Intent(PlayCustomQuizActivity.this, ChooseCharacterActivity.class);
                 }
                 startActivity(Layer);
             }

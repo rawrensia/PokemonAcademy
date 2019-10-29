@@ -1,9 +1,11 @@
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,12 @@ public class CustomQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_quiz);
+
+        LinearLayout linearLayout = findViewById(R.id.custom_quiz_layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
 
         setSingleEvent();
     }
