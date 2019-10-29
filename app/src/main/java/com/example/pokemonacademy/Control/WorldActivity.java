@@ -51,7 +51,8 @@ public class WorldActivity extends AppCompatActivity {
         Button summaryReportBtn = (Button)findViewById(R.id.summaryReportBtn);
         summaryReportBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent Layer = new Intent(WorldActivity.this, SummaryReport.class);
+                Intent Layer = new Intent(WorldActivity.this, IndividualSummaryReport.class);
+                Layer.putExtra("userId", mAuth.getCurrentUser().getUid());
                 startActivity(Layer);
             }
         });

@@ -4,24 +4,32 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.res.ResourcesCompat;
+import androidx.cardview.widget.CardView;
 
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
 
-import org.w3c.dom.Text;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class IndividualSummaryReport extends AppCompatActivity {
+
+    private DatabaseReference mDatabaseUser;
+    private DatabaseReference mDatabaseResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,55 +44,136 @@ public class IndividualSummaryReport extends AppCompatActivity {
 
         // Get intent
         Intent intent = getIntent();
-        int userId = intent.getIntExtra("worldName", -1);
-        //TODO get user stuff from db
+        String userId = intent.getStringExtra("userId");
 
-        ImageView usericon = (ImageView) findViewById(R.id.usericon);
-        TextView report = (TextView) findViewById(R.id.individualReport);
-        TextView planning_mq1 = (TextView) findViewById(R.id.planning_mq1);
-        TextView planning_mq2 = (TextView) findViewById(R.id.planning_mq2);
-        TextView planning_fq = (TextView) findViewById(R.id.planning_fq);
-        TextView design_mq1 = (TextView) findViewById(R.id.design_mq1);
-        TextView design_mq2 = (TextView) findViewById(R.id.design_mq2);
-        TextView design_fq = (TextView) findViewById(R.id.design_fq);
-        TextView implementation_mq1 = (TextView) findViewById(R.id.implementation_mq1);
-        TextView implementation_mq2 = (TextView) findViewById(R.id.implementation_mq2);
-        TextView implementation_fq = (TextView) findViewById(R.id.implementation_fq);
-        TextView analysis_mq1 = (TextView) findViewById(R.id.analysis_mq1);
-        TextView analysis_mq2 = (TextView) findViewById(R.id.analysis_mq2);
-        TextView analysis_fq = (TextView) findViewById(R.id.analysis_fq);
-        TextView maintenance_mq1 = (TextView) findViewById(R.id.maintenance_mq1);
-        TextView maintenance_mq2 = (TextView) findViewById(R.id.maintenance_mq2);
-        TextView maintenance_fq = (TextView) findViewById(R.id.maintenance_fq);
-        TextView testing_mq1 = (TextView) findViewById(R.id.testing_mq1);
-        TextView testing_mq2 = (TextView) findViewById(R.id.testing_mq2);
-        TextView testing_fq = (TextView) findViewById(R.id.testing_fq);
+        mDatabaseUser = FirebaseDatabase.getInstance().getReference("USER");
+        mDatabaseResult = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
 
-        //TODO get user's character image
-        //usericon.setImageResource();
+        generateHeader(userId);
 
+//        ImageView usericon = (ImageView) findViewById(R.id.usericon);
+//        TextView report = (TextView) findViewById(R.id.individualReport);
+//        TextView planningScore = (TextView) findViewById(R.id.planningScore);
+//        TextView designScore = (TextView) findViewById(R.id.designScore);
+//        TextView implementationScore = (TextView) findViewById(R.id.implementationScore);
+//        TextView analysisScore = (TextView) findViewById(R.id.analysisScore);
+//        TextView maintenanceScore = (TextView) findViewById(R.id.maintenanceScore);
+//        TextView testingScore = (TextView) findViewById(R.id.testingScore);
+
+        GridLayout mainGrid = findViewById(R.id.indivReportGrid);
+
+        for (int i = 0; i < mainGrid.getChildCount();i++)
+        {
+            final CardView cardView = (CardView)mainGrid.getChildAt(i);
+            final int counter = i;
+
+            generateReport(userId, counter, cardView);
+        }
         //TODO fill in scores with data from databse
         //from User_Completed_Quiz, if completed get score for each quiz for user, else print not completed
 
-        report.setText("Boham's Report");
+//        report.setText("Boham's Report");
+//        planningScore.setText("Mini Quiz 1: 50 Mini Quiz 2: 30 Final Quiz : 50");
+//        designScore.setText("Mini Quiz 1: 30 Mini Quiz 2: 40 Final Quiz : 70");
+//        implementationScore.setText("Mini Quiz 1: 40 Mini Quiz 2: 40 Final Quiz : 10");
+//        analysisScore.setText("Mini Quiz 1: 10 Mini Quiz 2: 70 Final Quiz : 30");
+//        maintenanceScore.setText("Mini Quiz 1: 70 Mini Quiz 2: 40 Final Quiz : 64");
+//        testingScore.setText("Mini Quiz 1: 80 Mini Quiz 2: 98 Final Quiz : 37");
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_back_world, menu);
-        return true;
+    private void generateHeader(String id){
+        DatabaseReference reference = mDatabaseUser.child(id);
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+
+                String name = user.getName();
+                int charId = user.getCharId();
+
+                ImageView usericon = (ImageView) findViewById(R.id.usericon);
+                TextView report = (TextView) findViewById(R.id.individualReport);
+
+                usericon.setImageResource(R.drawable.gamelogo); //default
+                switch (charId){
+                    case 0:
+                        usericon.setImageResource(R.drawable.char1);
+                        break;
+                    case 1:
+                        usericon.setImageResource(R.drawable.char2);
+                        break;
+                    case 2:
+                        usericon.setImageResource(R.drawable.char3);
+                        break;
+                    case 3:
+                        usericon.setImageResource(R.drawable.char5);
+                }
+
+                report.setText(name + "'s Report");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        reference.addListenerForSingleValueEvent(userListener);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.toworld:
-                Intent Layer = new Intent(IndividualSummaryReport.this, WorldActivity.class);
-                startActivity(Layer);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    private void generateReport(final String userId, final int worldId, final CardView cardView){
+        DatabaseReference reference = mDatabaseResult.child(userId).child("World" + worldId);
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String mq1 = "-";
+                String mq2 = "-";
+                String fq = "-";
+
+                for (DataSnapshot quizzes : dataSnapshot.getChildren()) {
+                    QuizzesCompleted quizzesCompleted = quizzes.getValue(QuizzesCompleted.class);
+                    if (quizzesCompleted.getCompleted()) {
+                        int score = quizzesCompleted.getScore();
+                        switch (quizzesCompleted.getMiniQuizId()) {
+                            case 0:
+                                mq1 = String.valueOf(score);
+                                break;
+                            case 1:
+                                mq2 = String.valueOf(score);
+                                break;
+                            case 2:
+                                fq = String.valueOf(score);
+                                break;
+                        }
+                    }
+                }
+
+                LinearLayout indi_summary = (LinearLayout)cardView.getChildAt(0);
+
+                for(int i=1; i<indi_summary.getChildCount(); i++) {
+                    String score = "";
+                    switch(i) {
+                        case 1:
+                            score = mq1;
+                            break;
+                        case 2:
+                            score = mq2;
+                            break;
+                        case 3:
+                            score = fq;
+                            break;
+                    }
+                    TextView tv = (TextView) indi_summary.getChildAt(i);
+                    tv.setText(tv.getText().toString() + score);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("OverallSummary", "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        reference.addListenerForSingleValueEvent(userListener);
     }
 }
