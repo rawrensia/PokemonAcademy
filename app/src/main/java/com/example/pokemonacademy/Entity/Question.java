@@ -3,9 +3,6 @@ package com.example.pokemonacademy.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.pokemonacademy.Entity.QuestionChoice;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 //Question

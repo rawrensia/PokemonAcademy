@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private static final String TAG = "ChooseCharacterActivity";
-    Animation from_down;
+    private Animation from_down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,11 +98,10 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(Layer);
                 }
                 if (user.getFirstTime().equalsIgnoreCase("false")) {
-                    Layer = new Intent(LoginActivity.this, WorldActivity.class);
+                    Layer = new Intent(LoginActivity.this, MenuLandingPage.class);
                     startActivity(Layer);
                 } else {
                     Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
-
                 }
                 startActivity(Layer);
             }
@@ -125,10 +124,12 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             checkUser(user);
+                            Toast.makeText(LoginActivity.this, "Login successful!",
+                                    Toast.LENGTH_LONG).show();
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "Authentication failed. Invalid username or password. Please try again",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                             checkUser(null);
                         }
                     }

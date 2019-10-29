@@ -18,9 +18,12 @@
         <ImageView
             android:id="@+id/usericon"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            tools:srcCompat="@drawable/gamelogo" />
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/gamelogo"
+            android:layout_margin="13dp"/>
+
 
         <TextView
             android:id="@+id/individualReport"

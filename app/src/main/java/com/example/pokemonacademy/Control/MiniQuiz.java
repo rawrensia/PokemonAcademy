@@ -153,6 +153,10 @@ public class MiniQuiz extends AppCompatActivity {
             public void onClick(View v) {
                 choice1btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button1, null));
                 choice1btn.setTextColor(blueColor);
+                choice2btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                choice2btn.setTextColor(yellowColor);
+                choice3btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                choice3btn.setTextColor(yellowColor);
 
                 answeroption1.setBackgroundColor(greenColor);
                 answeroption2.setBackgroundColor(transparent);
@@ -168,6 +172,10 @@ public class MiniQuiz extends AppCompatActivity {
             public void onClick(View v) {
                 choice2btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button1, null));
                 choice2btn.setTextColor(blueColor);
+                choice1btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                choice1btn.setTextColor(yellowColor);
+                choice3btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                choice3btn.setTextColor(yellowColor);
 
                 answeroption2.setBackgroundColor(greenColor);
                 answeroption1.setBackgroundColor(transparent);
@@ -183,6 +191,10 @@ public class MiniQuiz extends AppCompatActivity {
             public void onClick(View v) {
                 choice3btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button1, null));
                 choice3btn.setTextColor(blueColor);
+                choice1btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                choice1btn.setTextColor(yellowColor);
+                choice2btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button2, null));
+                choice2btn.setTextColor(yellowColor);
 
                 answeroption3.setBackgroundColor(greenColor);
                 answeroption2.setBackgroundColor(transparent);

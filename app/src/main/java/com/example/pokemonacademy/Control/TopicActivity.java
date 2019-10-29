@@ -1,30 +1,27 @@
 package com.example.pokemonacademy.Control;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
-
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Random;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 
 public class TopicActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -33,6 +30,7 @@ public class TopicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
+        mAuth = FirebaseAuth.getInstance();
 
         LinearLayout linearLayout = findViewById(R.id.topiclayout);
         AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
@@ -101,6 +99,7 @@ public class TopicActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.toleaderboard:
                 Intent Layer = new Intent(TopicActivity.this, Leaderboard.class);
@@ -112,7 +111,7 @@ public class TopicActivity extends AppCompatActivity {
                 mAuth.signOut();
                 Layer = new Intent(TopicActivity.this, MainActivity.class);
                 Toast.makeText(TopicActivity.this, "Successfully logged out.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
                 startActivity(Layer);
                 finish();
                 return true;
