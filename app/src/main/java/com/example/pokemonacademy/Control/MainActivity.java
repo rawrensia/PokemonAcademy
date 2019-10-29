@@ -77,8 +77,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Layer);
             }
         });
-
     }
+
+//    @Override
+//    protected void onStart()    {
+//        super.onStart();
+//
+//        Intent Layer = new Intent(MainActivity.this, WorldActivity.class);
+//        startActivity(Layer);
+//    }
 
 
     public void populateQuestionTable(){

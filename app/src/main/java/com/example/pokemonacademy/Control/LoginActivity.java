@@ -102,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(Layer);
                 } else {
                     Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
-
                 }
                 startActivity(Layer);
             }

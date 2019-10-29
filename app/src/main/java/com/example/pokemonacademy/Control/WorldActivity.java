@@ -1,8 +1,5 @@
 package com.example.pokemonacademy.Control;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -10,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -20,6 +15,9 @@ import android.widget.Toast;
 
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class WorldActivity extends AppCompatActivity {
     public final static int WORLD_PLANNING_ID = 0;
@@ -48,7 +46,7 @@ public class WorldActivity extends AppCompatActivity {
         //Set Event
         setSingleEvent(mainGrid);
 
-        Button summaryReportBtn = (Button)findViewById(R.id.summaryReportBtn);
+        Button summaryReportBtn = findViewById(R.id.summaryReportBtn);
         summaryReportBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Intent Layer = new Intent(WorldActivity.this, IndividualSummaryReport.class);
