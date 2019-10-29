@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             diffLevel = (i+1) % 4;
             String quizIdString = "Quiz"+quizId; //quizId
 
-            Question addQuestion = new Question(worldId, quizId, (i+1), diffLevel, qns);
+            Question addQuestion = new Question(String.valueOf(worldId), String.valueOf(quizId), (i+1), diffLevel, qns);
             databaseReferenceQuestion.child(worldIdString).child(quizIdString).child(qnsIdString).setValue(addQuestion);
         }
 
