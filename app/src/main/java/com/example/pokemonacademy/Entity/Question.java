@@ -12,20 +12,19 @@ import java.util.ArrayList;
 // - difficulty_level: int (from 1 to 3)
 
 public class Question implements Parcelable {
-    public boolean attempted;
+    public boolean attempted = false;
     public int difficultyLevel;
-    public int miniQuizId;
     public String question;
     public int questionId;
-    public int quizId;
-    public int worldId;
+    public String quizId;
+    public String worldId;
     public ArrayList<QuestionChoice> questionChoice;
 
     public Question(){
 
     }
 
-    public Question(int worldId, int quizId, int qnsId, int difficultyLevel, String qns){
+    public Question(String worldId, String quizId, int qnsId, int difficultyLevel, String qns){
         this.worldId = worldId;
         this.quizId = quizId;
         this.questionId = qnsId;
@@ -37,11 +36,10 @@ public class Question implements Parcelable {
     protected Question(Parcel in) {
         attempted = in.readByte() != 0;
         difficultyLevel = in.readInt();
-        miniQuizId = in.readInt();
         question = in.readString();
         questionId = in.readInt();
-        quizId = in.readInt();
-        worldId = in.readInt();
+        quizId = in.readString();
+        worldId = in.readString();
         questionChoice = in.createTypedArrayList(QuestionChoice.CREATOR);
     }
 
@@ -87,29 +85,25 @@ public class Question implements Parcelable {
         this.difficultyLevel = difficultyLevel;
     }
 
-    public int getWorldId() {
+    public String getWorldId() {
         return worldId;
     }
 
-    public void setWorldId(int worldId) {
+    public void setWorldId(String worldId) {
         this.worldId = worldId;
     }
 
-    public int getQuizId() {
+    public String getQuizId() {
         return quizId;
     }
 
-    public void setQuizId(int quizId) {
+    public void setQuizId(String quizId) {
         this.quizId = quizId;
     }
 
     public Boolean getAttempted() { return attempted; }
 
     public void setAttempted(Boolean attempted) { this.attempted = attempted; }
-
-    public int getMiniQuizId() { return miniQuizId; }
-
-    public void setMiniQuizId(int miniQuizId) { this.miniQuizId = miniQuizId; }
 
     @Override
     public int describeContents() {
@@ -120,11 +114,10 @@ public class Question implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte((byte) (attempted ? 1 : 0));
         dest.writeInt(difficultyLevel);
-        dest.writeInt(miniQuizId);
         dest.writeString(question);
         dest.writeInt(questionId);
-        dest.writeInt(quizId);
-        dest.writeInt(worldId);
+        dest.writeString(quizId);
+        dest.writeString(worldId);
         dest.writeTypedList(questionChoice);
     }
 }
