@@ -91,9 +91,9 @@ public class MiniQuizLandingPage extends AppCompatActivity {
         choiceDb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                assignQuestionChoice(dataSnapshot,questionList0);
-                assignQuestionChoice(dataSnapshot,questionList1);
-                assignQuestionChoice(dataSnapshot,questionList2);
+                assignQuestionChoice(dataSnapshot.child("World"+worldID).child("Quiz0"),questionList0);
+                assignQuestionChoice(dataSnapshot.child("World"+worldID).child("Quiz1"),questionList1);
+                assignQuestionChoice(dataSnapshot.child("World"+worldID).child("Quiz2"),questionList2);
             }
 
             @Override
