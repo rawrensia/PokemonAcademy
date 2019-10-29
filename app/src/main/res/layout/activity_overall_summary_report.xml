@@ -20,7 +20,8 @@
             android:layout_height="0dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/gamelogo"/>
+            android:src="@drawable/gamelogo"
+            android:layout_margin="13dp"/>
 
     </RelativeLayout>
     <RelativeLayout

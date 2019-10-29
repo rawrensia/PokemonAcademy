@@ -90,13 +90,13 @@ public class WorldActivity extends AppCompatActivity {
                 Intent Layer = new Intent(WorldActivity.this, Leaderboard.class);
                 startActivity(Layer);
                 Toast.makeText(WorldActivity.this, "Welcome to the leaderboard!",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
                 return true;
             case R.id.tologout:
                 mAuth.signOut();
                 Layer = new Intent(WorldActivity.this, MainActivity.class);
                 Toast.makeText(WorldActivity.this, "Successfully logged out.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
                 startActivity(Layer);
                 finish();
                 return true;

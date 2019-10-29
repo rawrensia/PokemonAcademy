@@ -26,6 +26,7 @@ import java.util.Random;
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class TopicActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
@@ -33,6 +34,7 @@ public class TopicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
+        mAuth = FirebaseAuth.getInstance();
 
         LinearLayout linearLayout = findViewById(R.id.topiclayout);
         AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
@@ -101,6 +103,7 @@ public class TopicActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.toleaderboard:
                 Intent Layer = new Intent(TopicActivity.this, Leaderboard.class);
@@ -112,7 +115,7 @@ public class TopicActivity extends AppCompatActivity {
                 mAuth.signOut();
                 Layer = new Intent(TopicActivity.this, MainActivity.class);
                 Toast.makeText(TopicActivity.this, "Successfully logged out.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
                 startActivity(Layer);
                 finish();
                 return true;
