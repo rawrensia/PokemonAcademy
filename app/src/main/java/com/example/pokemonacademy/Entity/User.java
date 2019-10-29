@@ -13,6 +13,8 @@ public class User implements Parcelable {
     private int courseIndex;
     private int charId;
     private String firstTime;
+    private String email;
+    private String password;
 
     public User()    {
 
@@ -52,33 +54,36 @@ public class User implements Parcelable {
         return id;
     }
 
-    public int getCourseIndex() {
-        return courseIndex;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName(){
         return name;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserType() {
+        return userType;
     }
 
     public void setUserType(String userType) {
         this.userType = userType;
     }
 
+    public int getCourseIndex() {
+        return courseIndex;
+    }
+
+
     public void setCourseIndex(int courseIndex) {
         this.courseIndex = courseIndex;
     }
 
-    public String getUserType() {
-        return userType;
-    }
+
 
     public int getCharId() {
         return charId;
@@ -91,6 +96,11 @@ public class User implements Parcelable {
     public String getFirstTime() { return firstTime; }
 
     public void setFirstTime(String firstTime)  { this.firstTime = firstTime; }
+
+    public String getPassword() {return "pwd";}
+    public void setPassword(String password) { this.password = "pwd";}
+    public String getEmail() {return "email";}
+    public void setEmail(String email) { this.email = email;}
 
     @Override
     public int describeContents() {

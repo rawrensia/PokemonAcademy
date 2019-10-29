@@ -9,6 +9,7 @@ public class QuestionChoice implements Parcelable {
     public int choiceId;
     public int qnsId;
     public boolean rightChoice;
+    public boolean correct;
 
     public QuestionChoice(){
 
@@ -83,6 +84,8 @@ public class QuestionChoice implements Parcelable {
         this.rightChoice = rightChoice;
     }
 
+    public void setCorrect(Boolean correct) { this.correct = correct; }
+    
     @Override
     public int describeContents() {
         return 0;

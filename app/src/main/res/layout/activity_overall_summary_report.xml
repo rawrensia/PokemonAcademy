@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/OverallReport"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_list"
     android:orientation="vertical"
-    android:weightSum="10"
-    android:id="@+id/indiv_summary">
+    android:weightSum="10">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,11 +24,7 @@
             android:src="@drawable/gamelogo"
             android:layout_margin="13dp"/>
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+
         <TextView
             android:id="@+id/individualReport"
             android:layout_width="wrap_content"
@@ -48,7 +45,7 @@
     </RelativeLayout>
 
     <GridLayout
-        android:id="@+id/worldGrid"
+        android:id="@+id/overallGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7.5"
@@ -92,31 +89,31 @@
                     android:id="@+id/planning_avg_mq1"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:lines="1"
-                    android:text="Mini Quiz 1: 50"
                     android:gravity="center"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: "
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/planning_avg_mq2"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:lines="1"
-                    android:text="Mini Quiz 2: 50"
                     android:gravity="center"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: "
                     android:textColor="@color/darkBlue"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/planning_avg_fq"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:lines="1"
-                    android:text="Final Quiz: 50"
                     android:gravity="center"
+                    android:lines="1"
+                    android:text="Final Quiz: "
                     android:textColor="@color/darkGreen"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -156,31 +153,31 @@
                     android:id="@+id/analysis_avg_mq1"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:lines="1"
-                    android:text="Mini Quiz 1: 50"
                     android:gravity="center"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: "
                     android:textColor="@color/yellow"
                     android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/analysis_avg_mq2"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:lines="1"
-                    android:text="Mini Quiz 2: 50"
                     android:gravity="center"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: "
                     android:textColor="@color/yellow"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/analysis_avg_fq"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:lines="1"
-                    android:text="Final Quiz: 50"
                     android:gravity="center"
+                    android:lines="1"
+                    android:text="Final Quiz: "
                     android:textColor="@color/yellow"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -221,7 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 1: 50"
+                    android:text="Mini Quiz 1: "
                     android:gravity="center"
                     android:textColor="@color/yellow"
                     android:textSize="15sp" />
@@ -230,7 +227,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 2: 50"
+                    android:text="Mini Quiz 2: "
                     android:gravity="center"
                     android:textColor="@color/yellow"
                     android:textSize="15sp"
@@ -240,7 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Final Quiz: 50"
+                    android:text="Final Quiz: "
                     android:gravity="center"
                     android:textColor="@color/yellow"
                     android:textSize="15sp"
@@ -285,7 +282,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 1: 50"
+                    android:text="Mini Quiz 1: "
                     android:gravity="center"
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
@@ -294,7 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 2: 50"
+                    android:text="Mini Quiz 2: "
                     android:gravity="center"
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp"
@@ -304,7 +301,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Final Quiz: 50"
+                    android:text="Final Quiz: "
                     android:gravity="center"
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp"
@@ -349,7 +346,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 1: 50"
+                    android:text="Mini Quiz 1: "
                     android:gravity="center"
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
@@ -358,7 +355,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 2: 50"
+                    android:text="Mini Quiz 2: "
                     android:gravity="center"
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp"
@@ -368,7 +365,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Final Quiz: 50"
+                    android:text="Final Quiz: "
                     android:gravity="center"
                     android:textColor="@color/darkBlue"
                     android:textSize="15sp"
@@ -413,7 +410,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 1: 50"
+                    android:text="Mini Quiz 1: "
                     android:gravity="center"
                     android:textColor="@color/yellow"
                     android:textSize="15sp" />
@@ -422,7 +419,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Mini Quiz 2: 50"
+                    android:text="Mini Quiz 2: "
                     android:gravity="center"
                     android:textColor="@color/yellow"
                     android:textSize="15sp"
@@ -432,7 +429,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:lines="1"
-                    android:text="Final Quiz: 50"
+                    android:text="Final Quiz: "
                     android:gravity="center"
                     android:textColor="@color/yellow"
                     android:textSize="15sp"
