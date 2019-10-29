@@ -1,25 +1,25 @@
 package com.example.pokemonacademy.Entity;
 
 public class UserCompletedQns {
-    int userId;
+    String userId;
     int qnsId;
     boolean completed;
 
-    public UserCompletedQns() {
+    public UserCompletedQns(){
 
     }
 
-    public UserCompletedQns(int userId, int qnsId, boolean completed) {
+    public UserCompletedQns(String userId, int qnsId, boolean completed) {
         this.userId = userId;
         this.qnsId = qnsId;
         this.completed = completed;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

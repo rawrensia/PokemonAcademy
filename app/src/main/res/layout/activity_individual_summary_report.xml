@@ -3,20 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallpaper"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_list"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:id="@+id/indiv_summary">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_weight="2">
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
 
         <ImageView
             android:id="@+id/usericon"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            tools:srcCompat="@drawable/char2" />
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/char2"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <TextView
             android:id="@+id/individualReport"
             android:layout_width="wrap_content"
@@ -28,23 +38,19 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="70dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/quenda"
             android:text="Boham's Report"
-            android:textAlignment="center"
-            android:textColor="@color/darkBlue"
-            android:textSize="33sp" />
-
+            android:gravity="center"
+            android:textColor="@color/yellow"
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <GridLayout
         android:id="@+id/indivReportGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="7.5"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
         android:columnOrderPreserved="false"
@@ -59,36 +65,57 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="@color/yellow">
 
             <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:paddingTop="6dp"
                     android:text="Planning"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/planningScore"
+                    android:id="@+id/planning_mq1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:paddingTop="12dp"
-                    android:text="Mini Quiz 1: 50 Mini Quiz 2: 40 Final Quiz : 30"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/planning_mq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/planning_fq"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Final Quiz: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
 
@@ -102,36 +129,57 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="@color/darkBlue">
 
             <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:paddingTop="6dp"
                     android:text="Analysis"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/yellow"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/analysisScore"
+                    android:id="@+id/analysis_mq1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:paddingTop="12dp"
-                    android:text="Mini Quiz 1: 50 Mini Quiz 2: 40 Final Quiz : 30"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/analysis_mq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/analysis_fq"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Final Quiz: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
 
@@ -145,36 +193,57 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="@color/darkBlue">
 
             <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:paddingTop="6dp"
                     android:text="Design"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/yellow"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/designScore"
+                    android:id="@+id/design_mq1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:paddingTop="12dp"
-                    android:text="Mini Quiz 1: 50 Mini Quiz 2: 40 Final Quiz : 30"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/design_mq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/design_fq"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Final Quiz: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
 
@@ -188,36 +257,57 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="@color/yellow">
 
             <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:paddingTop="6dp"
                     android:text="Implementation"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="15sp"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/implementationScore"
+                    android:id="@+id/implementation_mq1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:paddingTop="12dp"
-                    android:text="Mini Quiz 1: 50 Mini Quiz 2: 40 Final Quiz : 30"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/implementation_mq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/implementation_fq"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Final Quiz: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
 
@@ -231,36 +321,57 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="@color/yellow">
 
             <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:paddingTop="6dp"
                     android:text="Testing"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/darkBlue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/testingScore"
+                    android:id="@+id/testing_mq1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:paddingTop="12dp"
-                    android:text="Mini Quiz 1: 50 Mini Quiz 2: 40 Final Quiz : 30"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/testing_mq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/testing_fq"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Final Quiz: 50"
+                    android:gravity="center"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
 
@@ -274,36 +385,57 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="@color/darkBlue">
 
             <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
                     android:paddingTop="6dp"
                     android:text="Maintenance"
                     android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="18sp"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/maintenanceScore"
+                    android:id="@+id/maintenance_mq1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:paddingTop="12dp"
-                    android:text="Mini Quiz 1: 50 Mini Quiz 2: 40 Final Quiz : 30"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreen"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 1: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/maintenance_mq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Mini Quiz 2: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/maintenance_fq"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:lines="1"
+                    android:text="Final Quiz: 50"
+                    android:gravity="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
 

@@ -1,7 +1,7 @@
 package com.example.pokemonacademy.Entity;
 
 public class QuizzesCompleted {
-    int userId;
+    String userId;
     int worldId;
     int miniQuizId;
     int timeTaken;
@@ -12,7 +12,7 @@ public class QuizzesCompleted {
 
     }
 
-    public QuizzesCompleted(int userId, int worldId, int miniQuizId, boolean completed, int timeTaken, int score) {
+    public QuizzesCompleted(String userId, int worldId, int miniQuizId, boolean completed, int timeTaken, int score) {
         this.userId = userId;
         this.worldId = worldId;
         this.miniQuizId = miniQuizId;
@@ -21,11 +21,11 @@ public class QuizzesCompleted {
         this.timeTaken = timeTaken;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

@@ -1,6 +1,5 @@
 package com.example.pokemonacademy.Entity;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,18 +8,21 @@ import com.example.pokemonacademy.Entity.QuestionChoice;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+//Question
+// - question_id: int
+// - world_id: int (from 0 to 5)
+// - quiz_id: int (from 0 to 2. [0 : mini_quiz_1] [1 : mini_quiz_2] [3: final_quiz])
+// - difficulty_level: int (from 1 to 3)
+
 public class Question implements Parcelable {
-    public static int question_id_counter = 0;
-    public int questionId;
-    public String question;
-    public String world; //not in database
-    public int difficultyLevel;
-    public ArrayList<QuestionChoice> choiceOptions; //not in database
     public boolean attempted;
-    public String quiz_type;
+    public int difficultyLevel;
     public int miniQuizId;
-    int worldId;
-    int quizId;
+    public String question;
+    public int questionId;
+    public int quizId;
+    public int worldId;
+    public ArrayList<QuestionChoice> questionChoice;
 
     public Question(){
 
@@ -34,48 +36,16 @@ public class Question implements Parcelable {
         this.question = qns;
     }
 
-//    public Question(int questionId, String question, String world, int difficultyLevel, String quiz_type, int miniQuizId){
-//        this.questionId = questionId;
-//        this.question = question;
-//        this.world = world;
-//        this.difficultyLevel = difficultyLevel;
-//        this.quiz_type = quiz_type;
-//        //attempted = false;
-//        this.miniQuizId = miniQuizId;
-//    }
-
-    public Question(int questionId, String question, String world, int difficultyLevel, String quiz_type, ArrayList<QuestionChoice> choiceOptions){
-        this.questionId = questionId;
-        this.question = question;
-        this.world = world;
-        this.difficultyLevel = difficultyLevel;
-        this.quiz_type = quiz_type;
-        this.choiceOptions = choiceOptions;
-        //attempted = false;
-    }
 
     protected Question(Parcel in) {
-        questionId = in.readInt();
-        question = in.readString();
-        world = in.readString();
-        difficultyLevel = in.readInt();
         attempted = in.readByte() != 0;
-        quiz_type = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(questionId);
-        dest.writeString(question);
-        dest.writeString(world);
-        dest.writeInt(difficultyLevel);
-        dest.writeByte((byte) (attempted ? 1 : 0));
-        dest.writeString(quiz_type);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        difficultyLevel = in.readInt();
+        miniQuizId = in.readInt();
+        question = in.readString();
+        questionId = in.readInt();
+        quizId = in.readInt();
+        worldId = in.readInt();
+        questionChoice = in.createTypedArrayList(QuestionChoice.CREATOR);
     }
 
     public static final Creator<Question> CREATOR = new Creator<Question>() {
@@ -90,30 +60,13 @@ public class Question implements Parcelable {
         }
     };
 
-    public static Question addQuestion(String question, String world, int difficultyLevel, String quiz_type){
-        question_id_counter++;
-        int questionId = question_id_counter;
-        ArrayList<QuestionChoice> co = new ArrayList<QuestionChoice>();
-        Question q = new Question(questionId, question, world, difficultyLevel,quiz_type, co);
-        return q;
-    }
-
-    public void setChoiceOptions(ArrayList<QuestionChoice> choiceOptions){
-        this.choiceOptions = choiceOptions;
-    }
-
-    public ArrayList<QuestionChoice> getChoices(){
-        return choiceOptions;
-    }
-
     public boolean verifyChoice(QuestionChoice choice) {
         return choice.isCorrect();
     }
 
-    public void setAttempted(){
-        attempted = true;
+    public void setQuestionChoice(ArrayList<QuestionChoice> questionChoice){ this.questionChoice = questionChoice; }
 
-    }
+    public ArrayList<QuestionChoice> getQuestionChoice() {return this.questionChoice; }
 
     public int getQuestionId() {
         return questionId;
@@ -161,4 +114,20 @@ public class Question implements Parcelable {
 
     public void setMiniQuizId(int miniQuizId) { this.miniQuizId = miniQuizId; }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte((byte) (attempted ? 1 : 0));
+        dest.writeInt(difficultyLevel);
+        dest.writeInt(miniQuizId);
+        dest.writeString(question);
+        dest.writeInt(questionId);
+        dest.writeInt(quizId);
+        dest.writeInt(worldId);
+        dest.writeTypedList(questionChoice);
+    }
 }

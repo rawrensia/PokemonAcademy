@@ -11,7 +11,7 @@
         android:minHeight="?attr/actionBarSize"
         android:orientation="horizontal"
         android:layout_margin="6dp"
-        android:background="@color/darkGreen">
+        android:background="@color/darkBlue">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image"
@@ -38,7 +38,7 @@
                 android:fontFamily="@font/quenda"
                 android:textSize="20sp"
                 android:layout_gravity="center"
-                android:textColor="@android:color/white"/>
+                android:textColor="@color/yellow"/>
 
             <TextView
                 android:id="@+id/grades"
@@ -50,7 +50,7 @@
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:textColor="@android:color/white"
+                android:textColor="@color/lightyellow"
                 />
 
             <TextView
@@ -63,14 +63,9 @@
                 android:textSize="20sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:textColor="@android:color/white"
+                android:textColor="@color/lightyellow"
                 />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="#e6e6e6" />
         </LinearLayout>
     </LinearLayout>
 </com.balysv.materialripple.MaterialRippleLayout>

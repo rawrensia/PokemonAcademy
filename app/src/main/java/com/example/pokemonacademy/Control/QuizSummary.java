@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
@@ -22,8 +23,12 @@ import android.widget.TextView;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
+import com.example.pokemonacademy.Entity.UserCompletedQns;
 import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,19 +39,20 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class QuizSummary extends AppCompatActivity {
 
     private FirebaseDatabase database;
+    private FirebaseAuth mAuth;
+    public String userID;
     private DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference("USER");
     private DatabaseReference databaseReferenceQuestion = FirebaseDatabase.getInstance().getReference("QUESTION");
     private DatabaseReference databaseReferenceQnsChoice = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
     private DatabaseReference databaseReferenceUserQnsAns = FirebaseDatabase.getInstance().getReference("USER_QUESTION_ANS");
-
-    // Adding to database.
-//    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight);
-//    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
+    private DatabaseReference databaseReferenceUserCompletedQns = FirebaseDatabase.getInstance().getReference("USER_COMPLETED_QNS");
+    private DatabaseReference databaseReferenceQuizCompleted = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
 
     TableLayout quizSummaryTableLayout;
     TableRow tableRow1, tableRow2;
@@ -56,16 +62,66 @@ public class QuizSummary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
 
         String worldName = intent.getStringExtra("worldName");
-        String miniQuizNum = intent.getStringExtra("miniQuizNum");
+        String miniQuizName = intent.getStringExtra("miniQuizName");
         int worldID = intent.getIntExtra("worldID", -1);
         int[] timeTaken = intent.getIntArrayExtra("timeTaken");
+        int miniQuizID = intent.getIntExtra("miniQuizId",-1);
         ArrayList<Question> questionAnswered = intent.getExtras().getParcelableArrayList("questionAnswered");
         ArrayList<QuestionChoice> choiceChosen = intent.getExtras().getParcelableArrayList("choiceChosen");
         ArrayList<QuestionChoice> rightChoice = intent.getExtras().getParcelableArrayList("rightChoice");
+
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userID = currentUser.getUid();
+
+        // For pushing to db QUIZZES_COMPLETED
+        QuizzesCompleted quizzesCompleted = new QuizzesCompleted();
+        quizzesCompleted.setCompleted(true);
+        quizzesCompleted.setMiniQuizId(miniQuizID);
+        quizzesCompleted.setWorldId(worldID);
+        quizzesCompleted.setUserId(userID);
+        int tt=0;
+        for (int i=0; i<timeTaken.length; i++){tt = timeTaken[i]-(-tt);}
+        quizzesCompleted.setTimeTaken(tt);
+        int s=0;
+        for (int i=0; i< questionAnswered.size();i++){
+            if (choiceChosen.get(i).isCorrect()){ s = s-(-1);}
+        }
+        quizzesCompleted.setScore(s);
+        databaseReferenceQuizCompleted.child(userID).child("World"+worldID).child("Quiz"+miniQuizID).setValue(quizzesCompleted);
+
+        // For pushing to db USER_COMPLETED_QNS
+        for (int i=0; i<questionAnswered.size();i++){
+            final UserCompletedQns userCompletedQns = new UserCompletedQns();
+            userCompletedQns.setCompleted(true);
+            userCompletedQns.setQnsId(questionAnswered.get(i).getQuestionId());
+            userCompletedQns.setUserId(userID);
+            databaseReferenceUserCompletedQns.child(userID).child("Question"+userCompletedQns.getQnsId()).setValue(userCompletedQns);
+        }
+
+        // For pushing to db USER_QUESTION_ANS
+        for (int i=0; i<questionAnswered.size();i++){
+            for (int j=0; j<3; j++){
+                final UserQnsAns userQnsAns = new UserQnsAns();
+                userQnsAns.setChoiceId(questionAnswered.get(i).getQuestionChoice().get(j).getChoiceId());
+                userQnsAns.setIsRight(questionAnswered.get(i).getQuestionChoice().get(j).getRightChoice());
+                if (choiceChosen.get(i).getChoiceId() == userQnsAns.getChoiceId()){
+                    userQnsAns.setIsSelected(true);
+                } else {
+                    userQnsAns.setIsSelected(false);
+                }
+                userQnsAns.setQnsId(questionAnswered.get(i).getQuestionId());
+                userQnsAns.setUserId(userID);
+                databaseReferenceUserQnsAns.child(userID).child("Question"+userQnsAns.getQnsId()).child("Choice"+userQnsAns.getChoiceId()).setValue(userQnsAns);
+            }
+
+        }
+
+
 
         setContentView(R.layout.activity_quiz_summary);
         scrollView = (ScrollView)findViewById(R.id.quizsummaryscrollview);
@@ -84,44 +140,47 @@ public class QuizSummary extends AppCompatActivity {
         tvquestion[2] = R.id.question3;
         tvquestion[3] = R.id.question4;
         tvquestion[4] = R.id.question5;
-        tvquestion[5] = R.id.question6;
-        tvquestion[6] = R.id.question7;
-        tvquestion[7] = R.id.question8;
-        tvquestion[8] = R.id.question9;
-        tvquestion[9] = R.id.question10;
+//        tvquestion[5] = R.id.question6;
+//        tvquestion[6] = R.id.question7;
+//        tvquestion[7] = R.id.question8;
+//        tvquestion[8] = R.id.question9;
+//        tvquestion[9] = R.id.question10;
 
         tvanswer[0] = R.id.answer1;
         tvanswer[1] = R.id.answer2;
         tvanswer[2] = R.id.answer3;
         tvanswer[3] = R.id.answer4;
         tvanswer[4] = R.id.answer5;
-        tvanswer[5] = R.id.answer6;
-        tvanswer[6] = R.id.answer7;
-        tvanswer[7] = R.id.answer8;
-        tvanswer[8] = R.id.answer9;
-        tvanswer[9] = R.id.answer10;
+//        tvanswer[5] = R.id.answer6;
+//        tvanswer[6] = R.id.answer7;
+//        tvanswer[7] = R.id.answer8;
+//        tvanswer[8] = R.id.answer9;
+//        tvanswer[9] = R.id.answer10;
 
         tvtime[0] = R.id.time1;
         tvtime[1] = R.id.time2;
         tvtime[2] = R.id.time3;
         tvtime[3] = R.id.time4;
         tvtime[4] = R.id.time5;
-        tvtime[5] = R.id.time6;
-        tvtime[6] = R.id.time7;
-        tvtime[7] = R.id.time8;
-        tvtime[8] = R.id.time9;
-        tvtime[9] = R.id.time10;
+//        tvtime[5] = R.id.time6;
+//        tvtime[6] = R.id.time7;
+//        tvtime[7] = R.id.time8;
+//        tvtime[8] = R.id.time9;
+//        tvtime[9] = R.id.time10;
 
         tvcorrect[0] = R.id.correct1;
         tvcorrect[1] = R.id.correct2;
         tvcorrect[2] = R.id.correct3;
         tvcorrect[3] = R.id.correct4;
         tvcorrect[4] = R.id.correct5;
-        tvcorrect[5] = R.id.correct6;
-        tvcorrect[6] = R.id.correct7;
-        tvcorrect[7] = R.id.correct8;
-        tvcorrect[8] = R.id.correct9;
-        tvcorrect[9] = R.id.correct10;
+//        tvcorrect[5] = R.id.correct6;
+//        tvcorrect[6] = R.id.correct7;
+//        tvcorrect[7] = R.id.correct8;
+//        tvcorrect[8] = R.id.correct9;
+//        tvcorrect[9] = R.id.correct10;
+
+        TextView quizHeader = (TextView)findViewById(R.id.quiz_type_header);
+        quizHeader.setText(miniQuizName);
 
         for (int i=0; i<questionAnswered.size(); i++){
             TextView question = (TextView)findViewById(tvquestion[i]);
@@ -264,14 +323,14 @@ public class QuizSummary extends AppCompatActivity {
 
 
 
-        for (int i=0;i<10; i++){
+        for (int i=0;i<5; i++){
             Log.d("time","Time Taken " + timeTaken[i]);
             Log.d("question","Question: " + questionAnswered.get(i).question);
             Log.d("choice","Selected Choice: " + choiceChosen.get(i).choice);
         }
 
-        Button doneBtn = (Button)findViewById(R.id.doneBtn);
-        doneBtn.setOnClickListener(new View.OnClickListener() {
+        Button nextBtn = (Button)findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Intent intent = getIntent();
                 String worldName = intent.getStringExtra("worldName");
@@ -283,7 +342,5 @@ public class QuizSummary extends AppCompatActivity {
                 startActivity(Layer);
             }
         });
-
-
     }
 }

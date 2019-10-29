@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
                 populateQuestionTable();
                 populateQuestionChoicesTable();
-                populateUserQuestionAnsTable();
-                populateQuizCompleteTable();
-                populateUserCompletedQnsTable();;
+//                populateUserQuestionAnsTable();
+//                populateQuizCompleteTable();
+//                populateUserCompletedQnsTable();;
 
                 Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadeout);
                 btnStart.startAnimation(animation);
@@ -185,92 +185,89 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void populateUserQuestionAnsTable(){
-        int userId;
-        int qnsId;
-        int choiceId;
-        boolean isRight;
-        boolean isSelected;
+//    public void populateUserQuestionAnsTable(){
+//        int userId;
+//        int qnsId;
+//        int choiceId;
+//        boolean isRight;
+//        boolean isSelected;
+//
+//        int[] rightChoiceOption = {1, 1, 3, 2, 3, 2, 3, 2, 3, 2, 3, 4, 1, 3, 1};
+//
+//        for (int i=0; i<NUM_STUDENTS; i++){
+//            for (int j=0; j<NUM_QUESTIONS; j++){
+//                for (int k=0; k<NUM_CHOICES; k++){
+//                    userId = i + 1;
+//                    qnsId = j + 1;
+//                    choiceId = k + 1;
+//
+//                    if (choiceId == rightChoiceOption[j]){
+//                        isRight = true;
+//                    }
+//                    else{
+//                        isRight = false;
+//                    }
+//
+//                    String choiceIdString = "Choice"+choiceId;
+//                    String qnsIdString = "Question"+qnsId;
+//                    String userIdString = "User"+userId;
+//
+//                    isSelected = false;
+//                    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight, isSelected);
+//                    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
+//                }
+//            }
+//        }
+//    }
 
-        int[] rightChoiceOption = {1, 1, 3, 2, 3, 2, 3, 2, 3, 2, 3, 4, 1, 3, 1};
+//    public void populateQuizCompleteTable(){
+//        int userId;
+//        int worldId;
+//        boolean completed;
+//        int quizId;
+//        int score;
+//        int timeTaken;
+//
+//        for (int i=0; i<NUM_STUDENTS; i++){
+//            for (int j=0; j<NUM_WORLDS; j++){
+//                for (int k=0; k<NUM_QUIZZES; k++){
+//                    worldId = j;
+//                    userId = i + 1;
+//                    quizId = k;
+//                    String userIdString = "User"+userId;
+//                    String worldIdString = "World"+worldId;
+//                    String quizIdString = "Quiz"+quizId;
+//                    completed = false;
+//                    score = 0;
+//                    timeTaken = 0;
+//                    QuizzesCompleted oneQuiz = new QuizzesCompleted(userId, worldId, quizId, completed, timeTaken, score);
+//                    databaseReferenceQuizComplete.child(userIdString).child(worldIdString).child(quizIdString).setValue(oneQuiz);
+//                }
+//            }
+//        }
+//    }
 
-        for (int i=0; i<NUM_STUDENTS; i++){
-            for (int j=0; j<NUM_QUESTIONS; j++){
-                for (int k=0; k<NUM_CHOICES; k++){
-                    userId = i + 1;
-                    qnsId = j + 1;
-                    choiceId = k + 1;
-
-                    if (choiceId == rightChoiceOption[j]){
-                        isRight = true;
-                    }
-                    else{
-                        isRight = false;
-                    }
-
-                    String choiceIdString = "Choice"+choiceId;
-                    String qnsIdString = "Question"+qnsId;
-                    String userIdString = "User"+userId;
-
-                    isSelected = false;
-                    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight, isSelected);
-                    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
-                }
-            }
-        }
-    }
-
-    public void populateQuizCompleteTable(){
-        int userId;
-        int worldId;
-        boolean completed;
-        int quizId;
-        int score;
-        int timeTaken;
-
-        for (int i=0; i<NUM_STUDENTS; i++){
-            for (int j=0; j<NUM_WORLDS; j++){
-                for (int k=0; k<NUM_QUIZZES; k++){
-                    worldId = j;
-                    userId = i + 1;
-                    quizId = k;
-                    String userIdString = "User"+userId;
-                    String worldIdString = "World"+worldId;
-                    String quizIdString = "Quiz"+quizId;
-                    completed = false;
-                    score = 0;
-                    timeTaken = 0;
-                    QuizzesCompleted oneQuiz = new QuizzesCompleted(userId, worldId, quizId, completed, timeTaken, score);
-                    databaseReferenceQuizComplete.child(userIdString).child(worldIdString).child(quizIdString).setValue(oneQuiz);
-                }
-
-
-
-            }
-        }
-    }
-
-    public void populateUserCompletedQnsTable(){
-        int userId;
-        int qnsId;
-        boolean completed;
-
-        for (int i=0; i<NUM_STUDENTS; i++){
-            for(int j=0; j<NUM_QUESTIONS; j++){
-                userId = i + 1;
-                String userIdString = "User"+userId;
-
-                qnsId = j+1;
-                String qnsIdString = "Question"+qnsId;
-
-                completed = false;
-
-                UserCompletedQns addQns = new UserCompletedQns(userId, qnsId, completed);
-                databaseReferenceUserCompleteQns.child(userIdString).child(qnsIdString).setValue(addQns);
-            }
-
-        }
-    }
+//    public void populateUserCompletedQnsTable(){
+//        int userId;
+//        int qnsId;
+//        boolean completed;
+//
+//        for (int i=0; i<NUM_STUDENTS; i++){
+//            for(int j=0; j<NUM_QUESTIONS; j++){
+//                userId = i + 1;
+//                String userIdString = "User"+userId;
+//
+//                qnsId = j+1;
+//                String qnsIdString = "Question"+qnsId;
+//
+//                completed = false;
+//
+//                UserCompletedQns addQns = new UserCompletedQns(userId, qnsId, completed);
+//                databaseReferenceUserCompleteQns.child(userIdString).child(qnsIdString).setValue(addQns);
+//            }
+//
+//        }
+//    }
 
 
 

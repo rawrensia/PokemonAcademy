@@ -1,13 +1,13 @@
 package com.example.pokemonacademy.Entity;
 
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class QuestionChoice implements Parcelable {
-    public static int choice_id_counter = 0;
-    public int qnsId;
-    public int choiceId;
     public String choice;
+    public int choiceId;
+    public int qnsId;
     public boolean rightChoice;
     public boolean correct;
 
@@ -22,10 +22,17 @@ public class QuestionChoice implements Parcelable {
         this.rightChoice = rightChoice;
     }
 
+    //    public static QuestionChoice addChoice(int question_id, String choice, boolean is_right_choice){
+//        choice_id_counter++;
+//        int choice_id = choice_id_counter;
+//        QuestionChoice c = new QuestionChoice(question_id, choice_id, choice, is_right_choice);
+//        return c;
+//    }
+
     protected QuestionChoice(Parcel in) {
-        qnsId = in.readInt();
-        choiceId = in.readInt();
         choice = in.readString();
+        choiceId = in.readInt();
+        qnsId = in.readInt();
         rightChoice = in.readByte() != 0;
     }
 
@@ -41,28 +48,8 @@ public class QuestionChoice implements Parcelable {
         }
     };
 
-    public static QuestionChoice addChoice(int question_id, String choice, boolean is_right_choice){
-        choice_id_counter++;
-        int choice_id = choice_id_counter;
-        QuestionChoice c = new QuestionChoice(question_id, choice_id, choice, is_right_choice);
-        return c;
-    }
-
     public boolean isCorrect(){
         return rightChoice;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(qnsId);
-        dest.writeInt(choiceId);
-        dest.writeString(choice);
-        dest.writeByte((byte) (rightChoice ? 1 : 0));
     }
 
     public int getQnsId(){
@@ -98,4 +85,17 @@ public class QuestionChoice implements Parcelable {
     }
 
     public void setCorrect(Boolean correct) { this.correct = correct; }
+    
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(choice);
+        dest.writeInt(choiceId);
+        dest.writeInt(qnsId);
+        dest.writeByte((byte) (rightChoice ? 1 : 0));
+    }
 }
