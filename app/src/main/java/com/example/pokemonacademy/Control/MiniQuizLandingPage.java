@@ -242,7 +242,7 @@ public class MiniQuizLandingPage extends AppCompatActivity {
 
         for(DataSnapshot ds: dataSnapshot.getChildren()){
             final Question question = new Question();
-            question.setAttempted(ds.getValue(Question.class).getAttempted());
+            question.setAttempted(false);
             question.setDifficultyLevel(ds.getValue(Question.class).getDifficultyLevel());
             question.setQuestion(ds.getValue(Question.class).getQuestion());
             question.setQuestionId(ds.getValue(Question.class).getQuestionId());
