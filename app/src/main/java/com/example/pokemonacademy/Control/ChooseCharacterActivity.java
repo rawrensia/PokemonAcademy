@@ -3,7 +3,6 @@ package com.example.pokemonacademy.Control;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,11 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
-import java.lang.invoke.ConstantCallSite;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class ChooseCharacterActivity extends AppCompatActivity {
 
@@ -42,19 +37,10 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         setSingleEvent(mainGrid);
     }
 
-    private User updateDB(LinearLayout mainGrid) {
-        int char_id = -1;
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        // update user profile based on id
-        String txtName = ((TextView) findViewById(R.id.profile_name)).getText().toString();
-        int txtCourseIndex = Integer.parseInt(((TextView) findViewById(R.id.course_index)).getText().toString());
+    private User updateDB(User user) {
 
-        for(int i=0; i<mainGrid.getChildCount(); i++)   {
-            if(((ImageView)mainGrid.getChildAt(i)).isSelected())
-                char_id = i;
-        }
-//
-        User user = new User(currentUser.getUid(), txtName, "S", txtCourseIndex, char_id, "False");
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        user.setId(currentUser.getUid());
 
         mDatabase.child(currentUser.getUid()).setValue(user);
 
@@ -73,7 +59,7 @@ public class ChooseCharacterActivity extends AppCompatActivity {
                     for(int j=0; j<4; j++)
                         if(imageNumber != j) {
                             ((ImageView) mainGrid.getChildAt(j)).setColorFilter(Color.argb(0, 0, 0, 0));
-                            ((ImageView) mainGrid.getChildAt(j)).setSelected(false);
+                            mainGrid.getChildAt(j).setSelected(false);
                         }
                 }
             });
@@ -82,17 +68,38 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         findViewById(R.id.profile_button_next)
                 .setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        int txtCourseIndex = -1;
+                        int char_id = -1;
+                        String txtCourseIndex = ((TextView) findViewById(R.id.course_index)).getText().toString();
                         String txtName = ((TextView) findViewById(R.id.profile_name)).getText().toString();
-                        txtCourseIndex = Integer.parseInt(((TextView) findViewById(R.id.course_index)).getText().toString());
-                        if (txtName.isEmpty() || txtCourseIndex == -1)
+
+                        for(int i=0; i<mainGrid.getChildCount(); i++)   {
+                            if(mainGrid.getChildAt(i).isSelected())
+                                char_id = i;
+                        }
+
+                        // VALIDATION
+                        if (txtName.isEmpty() || txtCourseIndex.isEmpty())
                             Toast.makeText(ChooseCharacterActivity.this, "Unable to proceed, please enter all information.", Toast.LENGTH_LONG).show();
                         else {
-                            User user = updateDB(mainGrid);
-                            Intent Layer = new Intent(ChooseCharacterActivity.this, WorldActivity.class);
-                            Layer.putExtra("object", user);
-                            startActivity(Layer);
-                            finish();
+                            if (char_id == -1) {
+                                Toast.makeText(ChooseCharacterActivity.this, "Please select a character.", Toast.LENGTH_LONG).show();
+                            } else if (!txtCourseIndex.matches("[0-9]*")) {
+                                Toast.makeText(ChooseCharacterActivity.this, "Invalid Course Index", Toast.LENGTH_LONG).show();
+                            } else {
+                                // PASSED VALIDATION
+                                User user = new User();
+                                user.setName(txtName);
+                                user.setUserType("S");
+                                user.setCourseIndex(Integer.parseInt(txtCourseIndex));
+                                user.setCharId(char_id);
+                                user.setFirstTime("False");
+
+                                user = updateDB(user);
+                                Intent Layer = new Intent(ChooseCharacterActivity.this, WorldActivity.class);
+                                Layer.putExtra("object", user);
+                                startActivity(Layer);
+                                finish();
+                            }
                         }
                     }
                 });
