@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private static final String TAG = "ChooseCharacterActivity";
-    Animation from_down;
+    private Animation from_down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

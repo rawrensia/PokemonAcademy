@@ -37,6 +37,7 @@
         <activity android:name=".Control.ContentActivity" />
         <activity android:name=".Control.MiniQuiz" />
         <activity android:name=".Control.MainActivity" />
+        <activity android:name=".Control.CustomQuizActivity" />
     </application>
 
 </manifest>
