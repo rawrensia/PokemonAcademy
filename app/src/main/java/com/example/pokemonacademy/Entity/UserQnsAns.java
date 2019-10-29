@@ -3,13 +3,17 @@ package com.example.pokemonacademy.Entity;
 
 public class UserQnsAns {
 
-    int userId;
+    String userId;
     int qnsId;
     int choiceId;
     boolean isRight;
     boolean isSelected;
 
-    public UserQnsAns(int userId, int qnsId, int choiceId, boolean isRight, boolean isSelected) {
+    public UserQnsAns(){
+
+    }
+
+    public UserQnsAns(String userId, int qnsId, int choiceId, boolean isRight, boolean isSelected) {
         this.userId = userId;
         this.qnsId = qnsId;
         this.choiceId = choiceId;
@@ -17,11 +21,11 @@ public class UserQnsAns {
         this.isSelected = isSelected;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuizzesCompleted;
+import com.example.pokemonacademy.Entity.UserCompletedQns;
 import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -84,18 +85,43 @@ public class QuizSummary extends AppCompatActivity {
         quizzesCompleted.setWorldId(worldID);
         quizzesCompleted.setUserId(userID);
         int tt=0;
-        for (int i=0; i<timeTaken.length; i++){
-            tt = timeTaken[i]-(-tt);
-        }
+        for (int i=0; i<timeTaken.length; i++){tt = timeTaken[i]-(-tt);}
         quizzesCompleted.setTimeTaken(tt);
         int s=0;
         for (int i=0; i< questionAnswered.size();i++){
-            if (choiceChosen.get(i).isCorrect()){
-                s = s-(-1);
-            }
+            if (choiceChosen.get(i).isCorrect()){ s = s-(-1);}
         }
         quizzesCompleted.setScore(s);
         databaseReferenceQuizCompleted.child(userID).child("World"+worldID).child("Quiz"+miniQuizID).setValue(quizzesCompleted);
+
+        // For pushing to db USER_COMPLETED_QNS
+        for (int i=0; i<questionAnswered.size();i++){
+            final UserCompletedQns userCompletedQns = new UserCompletedQns();
+            userCompletedQns.setCompleted(true);
+            userCompletedQns.setQnsId(questionAnswered.get(i).getQuestionId());
+            userCompletedQns.setUserId(userID);
+            databaseReferenceUserCompletedQns.child(userID).child("Question"+userCompletedQns.getQnsId()).setValue(userCompletedQns);
+        }
+
+        // For pushing to db USER_QUESTION_ANS
+        for (int i=0; i<questionAnswered.size();i++){
+            for (int j=0; j<3; j++){
+                final UserQnsAns userQnsAns = new UserQnsAns();
+                userQnsAns.setChoiceId(questionAnswered.get(i).getQuestionChoice().get(j).getChoiceId());
+                userQnsAns.setIsRight(questionAnswered.get(i).getQuestionChoice().get(j).getRightChoice());
+                if (choiceChosen.get(i).getChoiceId() == userQnsAns.getChoiceId()){
+                    userQnsAns.setIsSelected(true);
+                } else {
+                    userQnsAns.setIsSelected(false);
+                }
+                userQnsAns.setQnsId(questionAnswered.get(i).getQuestionId());
+                userQnsAns.setUserId(userID);
+                databaseReferenceUserQnsAns.child(userID).child("Question"+userQnsAns.getQnsId()).child("Choice"+userQnsAns.getChoiceId()).setValue(userQnsAns);
+            }
+
+        }
+
+
 
         setContentView(R.layout.activity_quiz_summary);
         scrollView = (ScrollView)findViewById(R.id.quizsummaryscrollview);
