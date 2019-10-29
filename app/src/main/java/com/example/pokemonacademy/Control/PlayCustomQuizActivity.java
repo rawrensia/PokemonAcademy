@@ -19,7 +19,6 @@ public class PlayCustomQuizActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +30,35 @@ public class PlayCustomQuizActivity extends AppCompatActivity {
 
     }
 
-    private void userPageSelection() {
-        DatabaseReference reference = mDatabase.child(mAuth.getCurrentUser().getUid());
-
-        ValueEventListener userListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Intent Layer;
-                User user = dataSnapshot.getValue(User.class);
-
-                if (user.getUserType().equalsIgnoreCase("T")) {
-                    Layer = new Intent(PlayCustomQuizActivity.this, SummaryReport.class);
-                    startActivity(Layer);
-                }
-                if (user.getFirstTime().equalsIgnoreCase("false")) {
-                    Layer = new Intent(PlayCustomQuizActivity.this, WorldActivity.class);
-                    startActivity(Layer);
-                } else {
-                    Layer = new Intent(PlayCustomQuizActivity.this, ChooseCharacterActivity.class);
-                }
-                startActivity(Layer);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        reference.addListenerForSingleValueEvent(userListener);
-    }
+//    private void userPageSelection() {
+//        DatabaseReference reference = mDatabase.child(mAuth.getCurrentUser().getUid());
+//
+//        ValueEventListener userListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // Get Post object and use the values to update the UI
+//                Intent Layer;
+//                User user = dataSnapshot.getValue(User.class);
+//
+//                if (user.getUserType().equalsIgnoreCase("T")) {
+//                    Layer = new Intent(LoginActivity.this, SummaryReport.class);
+//                    startActivity(Layer);
+//                }
+//                if (user.getFirstTime().equalsIgnoreCase("false")) {
+//                    Layer = new Intent(LoginActivity.this, WorldActivity.class);
+//                    startActivity(Layer);
+//                } else {
+//                    Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
+//                }
+//                startActivity(Layer);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Getting Post failed, log a message
+//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+//            }
+//        };
+//        reference.addListenerForSingleValueEvent(userListener);
+//    }
 }
