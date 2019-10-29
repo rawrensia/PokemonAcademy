@@ -24,7 +24,7 @@
         <activity
             android:name=".Control.MiniQuizLandingPage"
             android:label="@string/title_activity_mini_quiz_landing_page" />
-        <activity android:name=".Control.ChooseCharacterActivity">
+        <activity android:name=".Control.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,9 @@
         <activity android:name=".Control.LoginActivity" />
         <activity android:name=".Control.ContentActivity" />
         <activity android:name=".Control.MiniQuiz" />
-        <activity android:name=".Control.MainActivity" />
+        <activity android:name=".Control.ChooseCharacterActivity" />
+        <activity android:name=".Control.CustomQuizActivity" />
+        <activity android:name=".Control.MenuLandingPage"/>
     </application>
 
 </manifest>

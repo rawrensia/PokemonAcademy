@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private static final String TAG = "ChooseCharacterActivity";
-    Animation from_down;
+    private Animation from_down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(Layer);
                 }
                 if (user.getFirstTime().equalsIgnoreCase("false")) {
-                    Layer = new Intent(LoginActivity.this, WorldActivity.class);
+                    Layer = new Intent(LoginActivity.this, MenuLandingPage.class);
                     startActivity(Layer);
                 } else {
                     Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);

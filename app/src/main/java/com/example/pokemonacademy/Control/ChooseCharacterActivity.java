@@ -95,7 +95,7 @@ public class ChooseCharacterActivity extends AppCompatActivity {
                                 user.setFirstTime("False");
 
                                 user = updateDB(user);
-                                Intent Layer = new Intent(ChooseCharacterActivity.this, WorldActivity.class);
+                                Intent Layer = new Intent(ChooseCharacterActivity.this, MenuLandingPage.class);
                                 Layer.putExtra("object", user);
                                 startActivity(Layer);
                                 finish();
