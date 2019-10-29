@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
@@ -17,7 +18,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+import java.lang.invoke.ConstantCallSite;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class ChooseCharacterActivity extends AppCompatActivity {
 
@@ -36,6 +40,25 @@ public class ChooseCharacterActivity extends AppCompatActivity {
 
         //Set Event
         setSingleEvent(mainGrid);
+    }
+
+    private User updateDB(LinearLayout mainGrid) {
+        int char_id = -1;
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        // update user profile based on id
+        String txtName = ((TextView) findViewById(R.id.profile_name)).getText().toString();
+        int txtCourseIndex = Integer.parseInt(((TextView) findViewById(R.id.course_index)).getText().toString());
+
+        for(int i=0; i<mainGrid.getChildCount(); i++)   {
+            if(((ImageView)mainGrid.getChildAt(i)).isSelected())
+                char_id = i;
+        }
+//
+        User user = new User(currentUser.getUid(), txtName, "S", txtCourseIndex, char_id, "False");
+
+        mDatabase.child(currentUser.getUid()).setValue(user);
+
+        return user;
     }
 
     private void setSingleEvent(final LinearLayout mainGrid) {
@@ -59,32 +82,20 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         findViewById(R.id.profile_button_next)
                 .setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        User user = updateDB(mainGrid);
-                        Intent Layer = new Intent(ChooseCharacterActivity.this, WorldActivity.class);
-                        Layer.putExtra("object", user);
-                        startActivity(Layer);
-                        finish();
+                        int txtCourseIndex = -1;
+                        String txtName = ((TextView) findViewById(R.id.profile_name)).getText().toString();
+                        txtCourseIndex = Integer.parseInt(((TextView) findViewById(R.id.course_index)).getText().toString());
+                        if (txtName.isEmpty() || txtCourseIndex == -1)
+                            Toast.makeText(ChooseCharacterActivity.this, "Unable to proceed, please enter all information.", Toast.LENGTH_LONG).show();
+                        else {
+                            User user = updateDB(mainGrid);
+                            Intent Layer = new Intent(ChooseCharacterActivity.this, WorldActivity.class);
+                            Layer.putExtra("object", user);
+                            startActivity(Layer);
+                            finish();
+                        }
                     }
                 });
-    }
-
-    private User updateDB(LinearLayout mainGrid) {
-        int char_id = -1;
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        // update user profile based on id
-        String txtName = ((TextView) findViewById(R.id.profile_name)).getText().toString();
-        int txtCourseIndex = Integer.parseInt(((TextView) findViewById(R.id.course_index)).getText().toString());
-
-        for(int i=0; i<mainGrid.getChildCount(); i++)   {
-            if(((ImageView)mainGrid.getChildAt(i)).isSelected())
-                char_id = i;
-        }
-//
-        User user = new User(currentUser.getUid(), txtName, "S", txtCourseIndex, char_id, "False");
-
-        mDatabase.child(currentUser.getUid()).setValue(user);
-
-        return user;
     }
 
 }
