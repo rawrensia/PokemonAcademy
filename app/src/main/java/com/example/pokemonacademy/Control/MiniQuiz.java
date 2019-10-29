@@ -262,7 +262,7 @@ public class MiniQuiz extends AppCompatActivity {
                         }
                     }
                     num_of_question = num_of_question - 1;
-
+                    choiceClicked = false;
 
                     // End condition
                     if (endBattleFlag || num_of_question <= 0) {
@@ -286,7 +286,9 @@ public class MiniQuiz extends AppCompatActivity {
                         Layer.putExtras(bundle3);
 
                         Layer.putExtra("timeTaken", timeTaken);
-                        Layer.putExtra("miniQuizNum", miniQuizTv.getText().toString());
+                        Layer.putExtra("miniQuizName", miniQuizTv.getText().toString());
+                        Log.i("miniquizid","miniquizid: "+miniQuizID);
+                        Layer.putExtra("miniQuizId", miniQuizID);
                         Layer.putExtra("worldName", worldName);
                         Layer.putExtra("worldID", worldID);
                         startActivity(Layer);

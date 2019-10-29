@@ -23,8 +23,11 @@ import android.widget.TextView;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
 import com.example.pokemonacademy.Entity.UserQnsAns;
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,14 +44,14 @@ import java.util.ArrayList;
 public class QuizSummary extends AppCompatActivity {
 
     private FirebaseDatabase database;
+    private FirebaseAuth mAuth;
+    public String userID;
     private DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference("USER");
     private DatabaseReference databaseReferenceQuestion = FirebaseDatabase.getInstance().getReference("QUESTION");
     private DatabaseReference databaseReferenceQnsChoice = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
     private DatabaseReference databaseReferenceUserQnsAns = FirebaseDatabase.getInstance().getReference("USER_QUESTION_ANS");
-
-    // Adding to database.
-//    UserQnsAns addUserQnsAns = new UserQnsAns(userId, qnsId, choiceId, isRight);
-//    databaseReferenceUserQnsAns.child(userIdString).child(qnsIdString).child(choiceIdString).setValue(addUserQnsAns);
+    private DatabaseReference databaseReferenceUserCompletedQns = FirebaseDatabase.getInstance().getReference("USER_COMPLETED_QNS");
+    private DatabaseReference databaseReferenceQuizCompleted = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
 
     TableLayout quizSummaryTableLayout;
     TableRow tableRow1, tableRow2;
@@ -58,16 +61,41 @@ public class QuizSummary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
 
         String worldName = intent.getStringExtra("worldName");
-        String miniQuizNum = intent.getStringExtra("miniQuizNum");
+        String miniQuizName = intent.getStringExtra("miniQuizName");
         int worldID = intent.getIntExtra("worldID", -1);
         int[] timeTaken = intent.getIntArrayExtra("timeTaken");
+        int miniQuizID = intent.getIntExtra("miniQuizId",-1);
         ArrayList<Question> questionAnswered = intent.getExtras().getParcelableArrayList("questionAnswered");
         ArrayList<QuestionChoice> choiceChosen = intent.getExtras().getParcelableArrayList("choiceChosen");
         ArrayList<QuestionChoice> rightChoice = intent.getExtras().getParcelableArrayList("rightChoice");
+
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userID = currentUser.getUid();
+
+        // For pushing to db QUIZZES_COMPLETED
+        QuizzesCompleted quizzesCompleted = new QuizzesCompleted();
+        quizzesCompleted.setCompleted(true);
+        quizzesCompleted.setMiniQuizId(miniQuizID);
+        quizzesCompleted.setWorldId(worldID);
+        quizzesCompleted.setUserId(userID);
+        int tt=0;
+        for (int i=0; i<timeTaken.length; i++){
+            tt = timeTaken[i]-(-tt);
+        }
+        quizzesCompleted.setTimeTaken(tt);
+        int s=0;
+        for (int i=0; i< questionAnswered.size();i++){
+            if (choiceChosen.get(i).isCorrect()){
+                s = s-(-1);
+            }
+        }
+        quizzesCompleted.setScore(s);
+        databaseReferenceQuizCompleted.child(userID).child("World"+worldID).child("Quiz"+miniQuizID).setValue(quizzesCompleted);
 
         setContentView(R.layout.activity_quiz_summary);
         scrollView = (ScrollView)findViewById(R.id.quizsummaryscrollview);
@@ -124,6 +152,9 @@ public class QuizSummary extends AppCompatActivity {
 //        tvcorrect[7] = R.id.correct8;
 //        tvcorrect[8] = R.id.correct9;
 //        tvcorrect[9] = R.id.correct10;
+
+        TextView quizHeader = (TextView)findViewById(R.id.quiz_type_header);
+        quizHeader.setText(miniQuizName);
 
         for (int i=0; i<questionAnswered.size(); i++){
             TextView question = (TextView)findViewById(tvquestion[i]);

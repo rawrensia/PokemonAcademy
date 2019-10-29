@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 populateQuestionTable();
                 populateQuestionChoicesTable();
                 populateUserQuestionAnsTable();
-                populateQuizCompleteTable();
+//                populateQuizCompleteTable();
                 populateUserCompletedQnsTable();;
 
                 Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadeout);
@@ -219,35 +219,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void populateQuizCompleteTable(){
-        int userId;
-        int worldId;
-        boolean completed;
-        int quizId;
-        int score;
-        int timeTaken;
-
-        for (int i=0; i<NUM_STUDENTS; i++){
-            for (int j=0; j<NUM_WORLDS; j++){
-                for (int k=0; k<NUM_QUIZZES; k++){
-                    worldId = j;
-                    userId = i + 1;
-                    quizId = k;
-                    String userIdString = "User"+userId;
-                    String worldIdString = "World"+worldId;
-                    String quizIdString = "Quiz"+quizId;
-                    completed = false;
-                    score = 0;
-                    timeTaken = 0;
-                    QuizzesCompleted oneQuiz = new QuizzesCompleted(userId, worldId, quizId, completed, timeTaken, score);
-                    databaseReferenceQuizComplete.child(userIdString).child(worldIdString).child(quizIdString).setValue(oneQuiz);
-                }
-
-
-
-            }
-        }
-    }
+//    public void populateQuizCompleteTable(){
+//        int userId;
+//        int worldId;
+//        boolean completed;
+//        int quizId;
+//        int score;
+//        int timeTaken;
+//
+//        for (int i=0; i<NUM_STUDENTS; i++){
+//            for (int j=0; j<NUM_WORLDS; j++){
+//                for (int k=0; k<NUM_QUIZZES; k++){
+//                    worldId = j;
+//                    userId = i + 1;
+//                    quizId = k;
+//                    String userIdString = "User"+userId;
+//                    String worldIdString = "World"+worldId;
+//                    String quizIdString = "Quiz"+quizId;
+//                    completed = false;
+//                    score = 0;
+//                    timeTaken = 0;
+//                    QuizzesCompleted oneQuiz = new QuizzesCompleted(userId, worldId, quizId, completed, timeTaken, score);
+//                    databaseReferenceQuizComplete.child(userIdString).child(worldIdString).child(quizIdString).setValue(oneQuiz);
+//                }
+//            }
+//        }
+//    }
 
     public void populateUserCompletedQnsTable(){
         int userId;
