@@ -9,27 +9,21 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.example.pokemonacademy.Entity.QuizzesCompleted;
 import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
-import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
 
 public class IndividualSummaryReport extends AppCompatActivity {
 
@@ -103,16 +97,16 @@ public class IndividualSummaryReport extends AppCompatActivity {
 
                 usericon.setImageResource(R.drawable.gamelogo); //default
                 switch (charId){
-                    case 1:
+                    case 0:
                         usericon.setImageResource(R.drawable.char1);
                         break;
-                    case 2:
+                    case 1:
                         usericon.setImageResource(R.drawable.char2);
                         break;
-                    case 3:
+                    case 2:
                         usericon.setImageResource(R.drawable.char3);
                         break;
-                    case 5:
+                    case 3:
                         usericon.setImageResource(R.drawable.char5);
                 }
 
@@ -154,8 +148,24 @@ public class IndividualSummaryReport extends AppCompatActivity {
                     }
                 }
 
-                TextView tv = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(1);
-                tv.setText("Mini Quiz 1: " + mq1 + " Mini Quiz 2: " + mq2 + " Final Quiz : " + fq);
+                LinearLayout indi_summary = (LinearLayout)cardView.getChildAt(0);
+
+                for(int i=1; i<indi_summary.getChildCount(); i++) {
+                    String score = "";
+                    switch(i) {
+                        case 1:
+                            score = mq1;
+                            break;
+                        case 2:
+                            score = mq2;
+                            break;
+                        case 3:
+                            score = fq;
+                            break;
+                    }
+                    TextView tv = (TextView) indi_summary.getChildAt(i);
+                    tv.setText(tv.getText().toString() + score);
+                }
             }
 
             @Override
