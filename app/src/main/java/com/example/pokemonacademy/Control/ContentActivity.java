@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.text.Html;
 import android.widget.Toast;
@@ -19,7 +15,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 public class ContentActivity extends AppCompatActivity {
 
@@ -81,7 +76,7 @@ public class ContentActivity extends AppCompatActivity {
                 Intent Layer = getIntent();
                 String worldName = Layer.getStringExtra("worldName");
                 int worldID = Layer.getIntExtra("worldID", -1);
-                Intent intent = new Intent(getApplicationContext(), MiniQuizLandingPage.class);
+                Intent intent = new Intent(getApplicationContext(), QuizLandingPage.class);
                 intent.putExtra("worldName", worldName);
                 intent.putExtra("worldID", worldID);
                 startActivity(intent);
