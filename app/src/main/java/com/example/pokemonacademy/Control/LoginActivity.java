@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        Log.i("whathappen", " "+currentUser);
         checkUser(currentUser);
     }
 
@@ -85,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void userPageSelection() {
         DatabaseReference reference = mDatabase.child(mAuth.getCurrentUser().getUid());
+        Log.i("whathappen", " "+reference);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override

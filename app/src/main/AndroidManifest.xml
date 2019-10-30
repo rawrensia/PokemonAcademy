@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/gamelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Control.QuestionReview"></activity>
         <activity android:name=".Control.Leaderboard"
             android:label="The Leaderboard"></activity>
         <activity android:name=".Control.IndividualReportListActivity" />
@@ -38,8 +39,8 @@
         <activity android:name=".Control.MiniQuiz" />
         <activity android:name=".Control.ChooseCharacterActivity" />
         <activity android:name=".Control.CustomQuizActivity" />
-        <activity android:name=".Control.MenuLandingPage"/>
-        <activity android:name=".Control.CreateCustomQuizActivity"/>
+        <activity android:name=".Control.MenuLandingPage" />
+        <activity android:name=".Control.CreateCustomQuizActivity" />
     </application>
 
 </manifest>
