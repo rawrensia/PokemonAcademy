@@ -17,11 +17,11 @@
             android:label="The Leaderboard"></activity>
         <activity android:name=".Control.IndividualReportListActivity" />
         <activity android:name=".Control.OverallSummaryReportActivity" />
-        <activity android:name=".Control.IndividualSummaryReport" />
-        <activity android:name=".Control.SummaryReport" />
+        <activity android:name=".Control.IndividualSummaryReportActivity" />
+        <activity android:name=".Control.SummaryReportActivity" />
         <activity android:name=".Control.QuizSummary" />
         <activity android:name=".Control.FinalQuiz" />
-        <activity android:name=".Control.FinalQuizPerformanceReport" />
+        <activity android:name=".Control.FinalQuizPerformanceReportActivity" />
         <activity
             android:name=".Control.QuizLandingPage"
             android:label="@string/title_activity_mini_quiz_landing_page" />
