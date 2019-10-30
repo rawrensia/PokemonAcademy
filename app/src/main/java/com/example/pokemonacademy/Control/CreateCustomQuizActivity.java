@@ -47,7 +47,6 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         final TextView addQuestionTV = findViewById(R.id.addQuestionTV);
         final TextView addChoice1TV = findViewById(R.id.addChoice1TV);
         final TextView addChoice2TV = findViewById(R.id.addChoice2TV);
-        final TextView addChoice3TV = findViewById(R.id.addChoice3TV);
         final TextView choiceNumberTV = findViewById(R.id.correctChoiceTV);
 
         final ScrollView createCustomQuizSV = findViewById(R.id.createCustomQuizSV);
@@ -59,7 +58,6 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
                     if(addQuestionTV.getText().toString().isEmpty() ||
                         addChoice1TV.getText().toString().isEmpty() ||
                         addChoice2TV.getText().toString().isEmpty() ||
-                        addChoice3TV.getText().toString().isEmpty() ||
                         choiceNumberTV.getText().toString().isEmpty())    {
 
                         Toast.makeText(CreateCustomQuizActivity.this, "Please leave no blanks.", Toast.LENGTH_LONG).show();
@@ -77,10 +75,8 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
 
                             if(i == 0)
                                 choice = addChoice1TV.getText().toString();
-                            else if(i == 1)
-                                choice = addChoice2TV.getText().toString();
                             else
-                                choice = addChoice3TV.getText().toString();
+                                choice = addChoice2TV.getText().toString();
 
                             qc.setChoice(choice);
 
@@ -103,7 +99,6 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
                         addQuestionTV.setText("");
                         addChoice1TV.setText("");
                         addChoice2TV.setText("");
-                        addChoice3TV.setText("");
                         choiceNumberTV.setText("");
 
                         questions.add(q);
