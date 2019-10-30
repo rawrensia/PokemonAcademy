@@ -147,7 +147,7 @@ public class QuizLandingPage extends AppCompatActivity {
                         break;
                 }
 
-                setContentView(R.layout.activity_mini_quiz_landing_page);
+                setContentView(R.layout.activity_quiz_landing_page);
                 LinearLayout background = (LinearLayout)findViewById(R.id.miniquizlinearlayout);
                 background.setBackground(dynamicBackground);
                 TextView miniquizheading = (TextView)findViewById(R.id.miniquizlandingheading);
