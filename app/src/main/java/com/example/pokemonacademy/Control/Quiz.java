@@ -17,11 +17,16 @@ import android.widget.Toast;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,13 +34,14 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 
 public class Quiz extends AppCompatActivity {
 
-    // Get user's pokemon character
+    ImageView userpokemon;
 
     private int selectedChoice = 0;
     int counter = 0;
@@ -108,7 +114,7 @@ public class Quiz extends AppCompatActivity {
         ConstraintLayout battlelayout = (ConstraintLayout)findViewById(R.id.battlelayout);
         ConstraintLayout answerlayout = (ConstraintLayout)findViewById(R.id.answerlayout);
         ImageView enemypokemon = (ImageView)findViewById(R.id.enemypokemon);
-        ImageView userpokemon = (ImageView)findViewById(R.id.userpokemon);
+        userpokemon = (ImageView)findViewById(R.id.userpokemon);
 
         tv.setText(miniQuizName);
         userpokemonstatus.setText("");
@@ -117,6 +123,29 @@ public class Quiz extends AppCompatActivity {
         battlelayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.pokemonstandingbackground, null));
         answerlayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.answerbackground, null));
         enemypokemon.setImageResource(getRandomEnemyImage());
+        userDb.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dataSnapshot = dataSnapshot.child(userID);
+                User u = new User();
+                u = dataSnapshot.getValue(User.class);
+                if (u.getCharId() == 0) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                } else if (u.getCharId() == 1) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                } else if (u.getCharId() == 2) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                } else if (u.getCharId() == 3) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         // initialize question, answers and buttons
         final int greenColor = Color.parseColor("#22B395");
@@ -262,9 +291,10 @@ public class Quiz extends AppCompatActivity {
                             endBattleFlag = true;
                         }
                     } else {
-                        userpokemonhp = userpokemonhp - 10;
+                        int dmg = userpokemonhp / current_num_of_question;
+                        userpokemonhp = userpokemonhp - dmg;
                         userpokemonhealthbar.setProgress(userpokemonhp);
-                        userpokemonstatus.setText("Took 10 damage");
+                        userpokemonstatus.setText("Took " + dmg + " damage");
                         enemypokemonstatus.setText("Wrong answer");
                         damageAnimate(userpokemon);
                         if (userpokemonhp <= 0) {
