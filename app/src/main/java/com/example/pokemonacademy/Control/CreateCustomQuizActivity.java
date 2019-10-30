@@ -1,7 +1,10 @@
 package com.example.pokemonacademy.Control;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -106,6 +109,7 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
                         tv.setText(q.getQuestion());
                         ((LinearLayout)createCustomQuizSV.getChildAt(0)).addView(tv);
                     }
+                    closeKeyboard();
                     updateTotalQuestionsUI();
                 }
             });
@@ -130,7 +134,8 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
                         questions.clear();
                         updateTotalQuestionsUI();
                         Toast.makeText(CreateCustomQuizActivity.this, "Successfully created custom quiz.", Toast.LENGTH_LONG).show();
-                        finish();
+                        Intent Layer = new Intent(CreateCustomQuizActivity.this, CustomQuizInfoActivity.class);
+                        startActivity(Layer);
                     }
                     updateTotalQuestionsUI();
                 }
@@ -140,6 +145,14 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
     private void updateTotalQuestionsUI()   {
         final TextView totalQuestions = findViewById(R.id.totalQuestionTV);
         totalQuestions.setText("Total questions: " + questions.size());
+    }
+
+    private void closeKeyboard()    {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
 }
