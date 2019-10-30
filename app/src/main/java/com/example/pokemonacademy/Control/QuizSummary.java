@@ -4,19 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.util.Xml;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Scroller;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -32,14 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.StringReader;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class QuizSummary extends AppCompatActivity {
@@ -245,7 +229,7 @@ public class QuizSummary extends AppCompatActivity {
                 String worldName = intent.getStringExtra("worldName");
                 int worldID = intent.getIntExtra("worldID", -1);
 
-                Intent Layer = new Intent(QuizSummary.this, MiniQuizLandingPage.class);
+                Intent Layer = new Intent(QuizSummary.this, QuizLandingPage.class);
                 Layer.putExtra("worldName", worldName);
                 Layer.putExtra("worldID", worldID);
                 startActivity(Layer);

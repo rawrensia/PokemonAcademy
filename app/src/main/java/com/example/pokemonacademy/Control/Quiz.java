@@ -20,11 +20,8 @@ import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,12 +29,11 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 
-public class MiniQuiz extends AppCompatActivity {
+public class Quiz extends AppCompatActivity {
 
     // Get user's pokemon character
 
@@ -220,7 +216,7 @@ public class MiniQuiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!choiceClicked)
-                    Toast.makeText(MiniQuiz.this, "Please select an answer.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Quiz.this, "Please select an answer.", Toast.LENGTH_LONG).show();
                 else {
 
                     // For mini quiz summary
@@ -283,7 +279,7 @@ public class MiniQuiz extends AppCompatActivity {
                         int worldID = intent.getIntExtra("worldID", -1);
                         TextView miniQuizTv = (TextView) findViewById(R.id.miniquiztitle);
 
-                        Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
+                        Intent Layer = new Intent(Quiz.this, QuizSummary.class);
 
                         Bundle bundle1 = new Bundle();
                         bundle1.putParcelableArrayList("questionAnswered", questionAnswered);

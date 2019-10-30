@@ -4,18 +4,14 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
 
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.QuizzesCompleted;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -24,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,7 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MiniQuizLandingPage extends AppCompatActivity {
+public class QuizLandingPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference userDb;
@@ -172,7 +167,7 @@ public class MiniQuizLandingPage extends AppCompatActivity {
                             String worldName = intent.getStringExtra("worldName");
                             int worldID = intent.getIntExtra("worldID", -1);
 
-                            Intent Layer = new Intent(MiniQuizLandingPage.this, MiniQuiz.class);
+                            Intent Layer = new Intent(QuizLandingPage.this, Quiz.class);
                             TextView tv = (TextView)((LinearLayout)miniQuiz.getChildAt(0)).getChildAt(1);
                             String miniQuizName = tv.getText().toString();
                             if (miniQuizName.equals("Mini Quiz 1")){
@@ -310,21 +305,21 @@ public class MiniQuizLandingPage extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.toworld:
-                Layer = new Intent(MiniQuizLandingPage.this, WorldActivity.class);
+                Layer = new Intent(QuizLandingPage.this, WorldActivity.class);
                 startActivity(Layer);
                 return true;
             case R.id.tologout:
                 mAuth.signOut();
-                Layer = new Intent(MiniQuizLandingPage.this, MainActivity.class);
-                Toast.makeText(MiniQuizLandingPage.this, "Successfully logged out.",
+                Layer = new Intent(QuizLandingPage.this, MainActivity.class);
+                Toast.makeText(QuizLandingPage.this, "Successfully logged out.",
                         Toast.LENGTH_SHORT).show();
                 startActivity(Layer);
                 finish();
                 return true;
             case R.id.toleaderboard:
-                Layer = new Intent(MiniQuizLandingPage.this, Leaderboard.class);
+                Layer = new Intent(QuizLandingPage.this, Leaderboard.class);
                 startActivity(Layer);
-                Toast.makeText(MiniQuizLandingPage.this, "Welcome to the leaderboard!",
+                Toast.makeText(QuizLandingPage.this, "Welcome to the leaderboard!",
                         Toast.LENGTH_SHORT).show();
                 return true;
             default:
