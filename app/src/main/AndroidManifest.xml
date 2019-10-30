@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Control.Leaderboard"
             android:label="The Leaderboard"></activity>
-        <activity android:name=".Control.IndividualReportList" />
-        <activity android:name=".Control.OverallSummaryReport" />
+        <activity android:name=".Control.IndividualReportListActivity" />
+        <activity android:name=".Control.OverallSummaryReportActivity" />
         <activity android:name=".Control.IndividualSummaryReport" />
         <activity android:name=".Control.SummaryReport" />
         <activity android:name=".Control.QuizSummary" />
