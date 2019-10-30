@@ -649,5 +649,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.843" />
 
+    <TextView
+        android:id="@+id/finalQuizTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quenda"
+        android:text="Congratulations!\n For Planning World"
+        android:textAlignment="center"
+        android:textColor="@color/yellow"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/nextBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quizsummaryscrollview"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <TextView
+        android:id="@+id/finalQuizScoreTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quenda"
+        android:text="You scored: 100%\nGrade: A"
+        android:textAlignment="center"
+        android:textColor="@color/yellow"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/nextBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/quizsummaryscrollview"
+        app:layout_constraintTop_toBottomOf="@+id/finalQuizTV"
+        app:layout_constraintVertical_bias="0.13999999" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,7 @@ public class Quiz extends AppCompatActivity {
     private int enemypokemonhp = 100;
     private boolean endBattleFlag = false;
     private int total_num_of_question = 5;
-    private int num_of_question = 5;
+    private int current_num_of_question = 5;
     private int currentQuestionId;
     private int correctChoiceId;
     private int currentQuestionIndex;
@@ -65,7 +65,7 @@ public class Quiz extends AppCompatActivity {
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
     private ArrayList<QuestionChoice> choiceChosen = new ArrayList<QuestionChoice>(); // for storing the choice which is chosen by the student
     private ArrayList<QuestionChoice> rightChoice = new ArrayList<QuestionChoice>(); // for storing the right choice
-    private int timeTaken[] = new int[num_of_question];
+    private int timeTaken[] = new int[current_num_of_question];
     private long startTime, endTime;
     private boolean choiceClicked = false;
 
@@ -73,7 +73,7 @@ public class Quiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Starting
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mini_quiz);
+        setContentView(R.layout.activity_quiz);
 
         // Initialize dbs
         mAuth = FirebaseAuth.getInstance();
@@ -96,6 +96,8 @@ public class Quiz extends AppCompatActivity {
             questionList = intent.getExtras().getParcelableArrayList("questionList1");
         } else {
             questionList = intent.getExtras().getParcelableArrayList("questionList2");
+            total_num_of_question = 10;
+            current_num_of_question = 10;
         }
 
         // initialize background & pokemons
@@ -250,7 +252,7 @@ public class Quiz extends AppCompatActivity {
                     TextView enemypokemonstatus = (TextView) findViewById(R.id.enemypokemonstatus);
 
                     if (selectedChoice == correctChoiceIndex) {
-                        int dmg = enemypokemonhp / num_of_question;
+                        int dmg = enemypokemonhp / current_num_of_question;
                         enemypokemonhp = enemypokemonhp - dmg;
                         enemyhealthbar.setProgress(enemypokemonhp);
                         userpokemonstatus.setText("Correct answer");
@@ -269,11 +271,11 @@ public class Quiz extends AppCompatActivity {
                             endBattleFlag = true;
                         }
                     }
-                    num_of_question = num_of_question - 1;
+                    current_num_of_question = current_num_of_question - 1;
                     choiceClicked = false;
 
                     // End condition
-                    if (endBattleFlag || num_of_question <= 0) {
+                    if (endBattleFlag || current_num_of_question <= 0) {
                         Intent intent = getIntent();
                         String worldName = intent.getStringExtra("worldName");
                         int worldID = intent.getIntExtra("worldID", -1);
@@ -316,7 +318,7 @@ public class Quiz extends AppCompatActivity {
                     attackbtn.setVisibility(View.INVISIBLE);
 
                     // Display next question
-                    if (num_of_question!=0){
+                    if (current_num_of_question !=0){
                         questionAssigned = displayNextQuestion(questionList, getDifficultyLevel(userpokemonhp));
                     }
                 }
@@ -337,7 +339,7 @@ public class Quiz extends AppCompatActivity {
             Question q = questionList.get(i);
             Log.d("questionlist","question " + q.getQuestion());
             Log.d("questionlist","question " + q.getAttempted());
-//             && q.getDifficultyLevel() == difficultyLevel
+//            if (q.attemped == false && (q.getDifficultyLevel() == difficultyLevel || q.getDifficultyLevel == -1)){
             if (q.attempted == false){
                 questionTv.setText(questionList.get(i).question);
                 currentQuestionIndex = i;
@@ -369,8 +371,8 @@ public class Quiz extends AppCompatActivity {
 
     public void getTimeTaken(){
         endTime = System.currentTimeMillis() - startTime;
-        if(total_num_of_question-num_of_question>0){
-            timeTaken[total_num_of_question-num_of_question] = (int)(long)(endTime/1000);
+        if(total_num_of_question- current_num_of_question >0){
+            timeTaken[total_num_of_question- current_num_of_question] = (int)(long)(endTime/1000);
         }
         startTime = System.currentTimeMillis();
     }

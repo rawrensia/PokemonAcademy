@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class QuizSummary extends AppCompatActivity {
@@ -64,7 +66,6 @@ public class QuizSummary extends AppCompatActivity {
         questionAnswered = intent.getExtras().getParcelableArrayList("questionAnswered");
         choiceChosen = intent.getExtras().getParcelableArrayList("choiceChosen");
         rightChoice = intent.getExtras().getParcelableArrayList("rightChoice");
-
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -110,15 +111,11 @@ public class QuizSummary extends AppCompatActivity {
                 userQnsAns.setUserId(userID);
                 databaseReferenceUserQnsAns.child(userID).child("Question"+userQnsAns.getQnsId()).child("Choice"+userQnsAns.getChoiceId()).setValue(userQnsAns);
             }
-
         }
 
         setContentView(R.layout.activity_quiz_summary);
         scrollView = (ScrollView)findViewById(R.id.quizsummaryscrollview);
         quizSummaryTableLayout = (TableLayout)findViewById(R.id.quizsummarytablelayout);
-
-        final int shade1 = Color.parseColor("#F0BE2C");
-        final int shade2 = Color.parseColor("#F4D372");
 
         int[] tvquestion = new int[questionAnswered.size()];
         int[] tvanswer = new int[questionAnswered.size()];
@@ -152,68 +149,82 @@ public class QuizSummary extends AppCompatActivity {
         TextView quizHeader = (TextView)findViewById(R.id.quiz_type_header);
         quizHeader.setText(miniQuizName);
 
-        for (int i=0; i<questionAnswered.size(); i++){
-            final int selected = i;
-            final TextView question = (TextView)findViewById(tvquestion[i]);
-            TextView answer = (TextView)findViewById(tvanswer[i]);
-            TextView time = (TextView)findViewById(tvtime[i]);
-            TextView correct = (TextView)findViewById(tvcorrect[i]);
-
-            // display question
-            Question q = questionAnswered.get(i);
-            String qs = q.question;
-            try{
-                qs = qs.substring(0,10) + "...";
-            } catch (Exception e){
-                Log.d("exception","qs.substring");
-            }
-            question.setText(qs);
-
-//            String rc = rightChoice.get(i).choice;
-//            try{
-//                rc = rc.substring(0,10) + "...";
-//            } catch (Exception e){
-//                Log.d("exception","rc.substring");
-//            }
-//            answer.setText(rc);
-
-            // display chosen choice
-            String cc = choiceChosen.get(i).getChoice();
-            try{
-                cc = cc.substring(0,10) + "...";
-            } catch (Exception e){
-                Log.d("exception","rc.substring");
-            }
-            answer.setText(cc);
-
-            // display timetaken
-            time.setText(""+timeTaken[i]);
-
-            // display correct
-            if (choiceChosen.get(i).isCorrect()){
-                correct.setText("Correct" );
-            } else {
-                correct.setText("Wrong" );
-            }
-
-            correct.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view){
-                    if (miniQuizID != 2) {
-                        Intent Layer = new Intent(QuizSummary.this, QuestionReview.class);
-
-                        Layer.putExtra("questionAnswered", questionAnswered.get(selected).question);
-                        Layer.putExtra("choiceChosen", choiceChosen.get(selected).choice);
-                        Layer.putExtra("rightChoice", rightChoice.get(selected).choice);
-
-                        startActivity(Layer);
-                    }
+        if (miniQuizID!=2){
+            for (int i=0; i<questionAnswered.size(); i++){
+                final int selected = i;
+                TextView question = (TextView)findViewById(tvquestion[i]);
+                TextView answer = (TextView)findViewById(tvanswer[i]);
+                TextView time = (TextView)findViewById(tvtime[i]);
+                TextView correct = (TextView)findViewById(tvcorrect[i]);
+                // display question
+                Question q = questionAnswered.get(i);
+                String qs = q.question;
+                try{
+                    qs = qs.substring(0,10) + "...";
+                } catch (Exception e){
+                    Log.d("exception","qs.substring");
                 }
-            });
+                question.setText(qs);
+                // display chosen choice
+                String cc = choiceChosen.get(i).getChoice();
+                try{
+                    cc = cc.substring(0,10) + "...";
+                } catch (Exception e){
+                    Log.d("exception","rc.substring");
+                }
+                answer.setText(cc);
+                // display timetaken
+                time.setText(""+timeTaken[i]);
+                // display correct
+                if (choiceChosen.get(i).isCorrect()){
+                    correct.setText("Correct" );
+                } else {
+                    correct.setText("Wrong" );
+                }
 
-            //TODO
-            // set on click for Correct
-            // go to activity which shows the full question, selected answer and the correct answer.
+                correct.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view){
+                        if (miniQuizID != 2) {
+                            Intent Layer = new Intent(QuizSummary.this, QuestionReview.class);
+                            Layer.putExtra("questionAnswered", questionAnswered.get(selected).question);
+                            Layer.putExtra("choiceChosen", choiceChosen.get(selected).choice);
+                            Layer.putExtra("rightChoice", rightChoice.get(selected).choice);
+                            startActivity(Layer);
+                        }
+                    }
+                });
+            }
 
+            TextView finalQuizTV = (TextView)findViewById(R.id.finalQuizTV);
+            finalQuizTV.setVisibility(View.INVISIBLE);
+            TextView finalQuizScoreTV = (TextView)findViewById(R.id.finalQuizScoreTv);
+            finalQuizScoreTV.setVisibility(View.INVISIBLE);
+
+        } else if (miniQuizID == 2) {
+            TableLayout quizSummaryTableLayout = (TableLayout)findViewById(R.id.quizsummarytablelayout);
+            quizSummaryTableLayout.setVisibility(View.INVISIBLE);
+            TextView finalQuizTV = (TextView)findViewById(R.id.finalQuizTV);
+            finalQuizTV.setVisibility(View.VISIBLE);
+            TextView finalQuizScoreTV = (TextView)findViewById(R.id.finalQuizScoreTv);
+            finalQuizScoreTV.setVisibility(View.VISIBLE);
+            s=0;
+            for (int j=0; j< questionAnswered.size();j++){
+                if (choiceChosen.get(j).isCorrect()){ s = s-(-1);}
+            }
+            int percentage = (s*100/10);
+            if (s>=9){
+                finalQuizTV.setText("Congratulations!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: A");
+            } else if (s>=7){
+                finalQuizTV.setText("Good Try!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: B");
+            } else if (s>=5){
+                finalQuizTV.setText("Try harder next time!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: C");
+            } else {
+                finalQuizTV.setText("Please read up on the lecture notes before attempting!\n\nFor " + worldName + " World");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: F");
+            }
         }
 
         for (int i=0;i<5; i++){
