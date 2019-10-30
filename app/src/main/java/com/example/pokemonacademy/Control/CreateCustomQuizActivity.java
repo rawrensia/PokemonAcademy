@@ -123,9 +123,13 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
                         Toast.makeText(CreateCustomQuizActivity.this, "Please add at least one question before submitting.", Toast.LENGTH_LONG).show();
                     } else {
                         String randomCode = GenerateRandomString.generateRandomString(RANDOM_STRING_LENGTH);
+
                         for(int i=0; i<questions.size(); i++)   {
                             questions.get(i).setQuizId(randomCode);
                             questionDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).setValue(questions.get(i));
+                            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
+                            for(int j=0; j<qc.size(); j++)
+                                questionChoiceDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).child("Choice"+(j+1)).setValue(qc.get(j));
                         }
 
                         questions.clear();
