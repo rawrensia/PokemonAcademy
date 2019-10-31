@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/customQuizInfo"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="80dp"
             android:padding="6dp"
             android:textSize="30dp"
             android:gravity="center"
@@ -38,27 +38,35 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="80dp">
 
                 <TextView
                     android:id="@+id/customQuizInfoTV1"
                     android:layout_width="170dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
                     android:text="TextView"
+                    android:textColor="@color/darkBlue"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="20dp"
                     android:gravity="center"
                     android:background="@drawable/details_input_field"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.511" />
+                    app:layout_constraintVertical_bias="0.511"
+                    android:textAllCaps="true"/>
 
                 <Button
                     android:id="@+id/customQuizBtn1"
                     android:layout_width="85dp"
                     android:layout_height="35dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginEnd="10dp"
                     android:text="Share"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -66,9 +74,13 @@
 
                 <Button
                     android:id="@+id/customQuizBtn2"
+                    android:text="Copy"
                     android:layout_width="88dp"
                     android:layout_height="38dp"
-                    android:text="Copy"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/customQuizBtn1"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -91,14 +103,20 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="80dp">
 
                 <TextView
                     android:id="@+id/customQuizInfoTV2"
-                    android:layout_width="192dp"
-                    android:layout_height="21dp"
                     android:layout_marginStart="16dp"
                     android:text="TextView"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:textColor="@color/darkBlue"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/details_input_field"
+                    android:textAllCaps="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -106,9 +124,13 @@
 
                 <Button
                     android:id="@+id/customQuizBtn3"
-                    android:layout_width="85dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_width="88dp"
+                    android:layout_height="38dp"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
+                    android:layout_marginEnd="10dp"
                     android:text="Share"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -119,6 +141,10 @@
                     android:id="@+id/customQuizBtn4"
                     android:layout_width="88dp"
                     android:layout_height="38dp"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
                     android:text="Copy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/customQuizBtn3"
@@ -142,12 +168,18 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="80dp">
 
                 <TextView
                     android:id="@+id/customQuizInfoTV3"
-                    android:layout_width="192dp"
-                    android:layout_height="21dp"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:textColor="@color/darkBlue"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/details_input_field"
+                    android:textAllCaps="true"
                     android:layout_marginStart="16dp"
                     android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -157,9 +189,13 @@
 
                 <Button
                     android:id="@+id/customQuizBtn5"
-                    android:layout_width="85dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_width="88dp"
+                    android:layout_height="38dp"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
+                    android:layout_marginEnd="10dp"
                     android:text="Share"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -170,6 +206,10 @@
                     android:id="@+id/customQuizBtn6"
                     android:layout_width="88dp"
                     android:layout_height="38dp"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
                     android:text="Copy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/customQuizBtn5"
@@ -193,12 +233,18 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="80dp">
 
                 <TextView
                     android:id="@+id/customQuizInfoTV4"
-                    android:layout_width="192dp"
-                    android:layout_height="21dp"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
+                    android:textColor="@color/darkBlue"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/details_input_field"
+                    android:textAllCaps="true"
                     android:layout_marginStart="16dp"
                     android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -208,9 +254,13 @@
 
                 <Button
                     android:id="@+id/customQuizBtn7"
-                    android:layout_width="85dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_width="88dp"
+                    android:layout_height="38dp"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
+                    android:layout_marginEnd="10dp"
                     android:text="Share"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -221,6 +271,10 @@
                     android:id="@+id/customQuizBtn8"
                     android:layout_width="88dp"
                     android:layout_height="38dp"
+                    android:fontFamily="@font/quenda"
+                    android:textSize="18dp"
+                    android:textColor="@color/darkBlue"
+                    android:background="@drawable/button1"
                     android:text="Copy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/customQuizBtn7"
@@ -233,6 +287,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="411dp"
             android:layout_height="107dp"
             android:orientation="horizontal"
@@ -243,14 +298,20 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="80dp">
 
                 <TextView
                     android:id="@+id/customQuizInfoTV5"
-                    android:layout_width="192dp"
-                    android:layout_height="21dp"
+                    android:layout_width="170dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="16dp"
+                    android:background="@drawable/details_input_field"
+                    android:fontFamily="@font/quenda"
+                    android:gravity="center"
                     android:text="TextView"
+                    android:textAllCaps="true"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -258,10 +319,14 @@
 
                 <Button
                     android:id="@+id/customQuizBtn9"
-                    android:layout_width="85dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_width="88dp"
+                    android:layout_height="38dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/button1"
+                    android:fontFamily="@font/quenda"
                     android:text="Share"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -271,7 +336,11 @@
                     android:id="@+id/customQuizBtn10"
                     android:layout_width="88dp"
                     android:layout_height="38dp"
+                    android:background="@drawable/button1"
+                    android:fontFamily="@font/quenda"
                     android:text="Copy"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/customQuizBtn9"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -281,6 +350,21 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:background="@drawable/button2"
+            android:text="Back to Main"
+            android:textColor="@color/yellow"
+            android:fontFamily="@font/quenda"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout5"
+            app:layout_constraintTop_toTopOf="@+id/customQuizInfo"
+            app:layout_constraintVertical_bias="0.953" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
