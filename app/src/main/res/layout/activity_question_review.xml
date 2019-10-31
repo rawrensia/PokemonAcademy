@@ -4,16 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Control.QuestionReview">
+    tools:context=".Control.QuestionReview"
+    android:id="@+id/question_review_layout"
+    android:background="@drawable/gradient_list">
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
+        android:layout_marginBottom="188dp"
+        android:background="@drawable/rectangle"
         android:fontFamily="@font/quenda"
+        android:gravity="center"
         android:text="Question"
+        android:padding="5dp"
         android:textAlignment="center"
+        android:textColor="@color/darkBlue"
+        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/selectedChoice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -23,25 +31,38 @@
 
     <TextView
         android:id="@+id/selectedChoice"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:background="@drawable/edit_text_3"
         android:fontFamily="@font/quenda"
+        android:padding="5dp"
         android:text="Selected Choice"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/correctChoice"
+        android:textColor="@color/darkBlue"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
 
     <TextView
         android:id="@+id/correctChoice"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="284dp"
+        android:background="@drawable/edit_text_2"
         android:fontFamily="@font/quenda"
+        android:padding="5dp"
         android:text="Correct Choice"
         android:textAlignment="center"
+        android:textColor="@color/darkBlue"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

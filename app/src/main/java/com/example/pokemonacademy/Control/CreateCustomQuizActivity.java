@@ -44,7 +44,7 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
     }
 
     private void setSingleEvent()   {
-        final Button addQuestionBtn = findViewById(R.id.addQuestionBtn);
+        final Button addQuestionBtn = findViewById(R.id.createQuizBtn);
         Button questionListBtn = findViewById(R.id.createQuizBtn);
 
         final TextView addQuestionTV = findViewById(R.id.addQuestionTV);

@@ -634,11 +634,11 @@
 
     <Button
         android:id="@+id/nextBtn"
-        android:layout_width="140dp"
+        android:layout_width="150dp"
         android:layout_height="60dp"
         android:background="@drawable/button1"
         android:fontFamily="@font/quenda"
-        android:text="Next"
+        android:text="Next Quiz"
         android:textColor="@color/darkBlue"
         android:textSize="20sp"
         android:textStyle="bold"
