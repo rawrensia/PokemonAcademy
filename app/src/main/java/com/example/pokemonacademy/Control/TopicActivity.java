@@ -70,7 +70,7 @@ public class TopicActivity extends AppCompatActivity {
             } else {
                 cardView.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        Intent Layer = new Intent(TopicActivity.this, MiniQuizLandingPage.class);
+                        Intent Layer = new Intent(TopicActivity.this, QuizLandingPage.class);
                         Layer.putExtra("worldName", ((TextView) findViewById(R.id.topicpage)).getText());
                         Layer.putExtra("worldID", worldID);
                         ImageView imgView = findViewById(R.id.trainerView);

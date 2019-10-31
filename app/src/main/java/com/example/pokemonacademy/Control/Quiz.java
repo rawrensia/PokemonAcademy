@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,9 +39,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 
-public class MiniQuiz extends AppCompatActivity {
+public class Quiz extends AppCompatActivity {
 
-    // Get user's pokemon character
+    ImageView userpokemon;
 
     private int selectedChoice = 0;
     int counter = 0;
@@ -47,7 +49,7 @@ public class MiniQuiz extends AppCompatActivity {
     private int enemypokemonhp = 100;
     private boolean endBattleFlag = false;
     private int total_num_of_question = 5;
-    private int num_of_question = 5;
+    private int current_num_of_question = 5;
     private int currentQuestionId;
     private int correctChoiceId;
     private int currentQuestionIndex;
@@ -69,7 +71,7 @@ public class MiniQuiz extends AppCompatActivity {
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
     private ArrayList<QuestionChoice> choiceChosen = new ArrayList<QuestionChoice>(); // for storing the choice which is chosen by the student
     private ArrayList<QuestionChoice> rightChoice = new ArrayList<QuestionChoice>(); // for storing the right choice
-    private int timeTaken[] = new int[num_of_question];
+    private int timeTaken[] = new int[current_num_of_question];
     private long startTime, endTime;
     private boolean choiceClicked = false;
 
@@ -77,7 +79,7 @@ public class MiniQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Starting
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mini_quiz);
+        setContentView(R.layout.activity_quiz);
 
         // Initialize dbs
         mAuth = FirebaseAuth.getInstance();
@@ -100,6 +102,8 @@ public class MiniQuiz extends AppCompatActivity {
             questionList = intent.getExtras().getParcelableArrayList("questionList1");
         } else {
             questionList = intent.getExtras().getParcelableArrayList("questionList2");
+            total_num_of_question = 10;
+            current_num_of_question = 10;
         }
 
         // initialize background & pokemons
@@ -110,7 +114,7 @@ public class MiniQuiz extends AppCompatActivity {
         ConstraintLayout battlelayout = (ConstraintLayout)findViewById(R.id.battlelayout);
         ConstraintLayout answerlayout = (ConstraintLayout)findViewById(R.id.answerlayout);
         ImageView enemypokemon = (ImageView)findViewById(R.id.enemypokemon);
-        ImageView userpokemon = (ImageView)findViewById(R.id.userpokemon);
+        userpokemon = (ImageView)findViewById(R.id.userpokemon);
 
         tv.setText(miniQuizName);
         userpokemonstatus.setText("");
@@ -119,6 +123,29 @@ public class MiniQuiz extends AppCompatActivity {
         battlelayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.pokemonstandingbackground, null));
         answerlayout.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.answerbackground, null));
         enemypokemon.setImageResource(getRandomEnemyImage());
+        userDb.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dataSnapshot = dataSnapshot.child(userID);
+                User u = new User();
+                u = dataSnapshot.getValue(User.class);
+                if (u.getCharId() == 0) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                } else if (u.getCharId() == 1) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                } else if (u.getCharId() == 2) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                } else if (u.getCharId() == 3) {
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         // initialize question, answers and buttons
         final int greenColor = Color.parseColor("#22B395");
@@ -220,7 +247,7 @@ public class MiniQuiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!choiceClicked)
-                    Toast.makeText(MiniQuiz.this, "Please select an answer.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Quiz.this, "Please select an answer.", Toast.LENGTH_LONG).show();
                 else {
 
                     // For mini quiz summary
@@ -254,7 +281,7 @@ public class MiniQuiz extends AppCompatActivity {
                     TextView enemypokemonstatus = (TextView) findViewById(R.id.enemypokemonstatus);
 
                     if (selectedChoice == correctChoiceIndex) {
-                        int dmg = enemypokemonhp / num_of_question;
+                        int dmg = enemypokemonhp / current_num_of_question;
                         enemypokemonhp = enemypokemonhp - dmg;
                         enemyhealthbar.setProgress(enemypokemonhp);
                         userpokemonstatus.setText("Correct answer");
@@ -264,26 +291,27 @@ public class MiniQuiz extends AppCompatActivity {
                             endBattleFlag = true;
                         }
                     } else {
-                        userpokemonhp = userpokemonhp - 10;
+                        int dmg = userpokemonhp / current_num_of_question;
+                        userpokemonhp = userpokemonhp - dmg;
                         userpokemonhealthbar.setProgress(userpokemonhp);
-                        userpokemonstatus.setText("Took 10 damage");
+                        userpokemonstatus.setText("Took " + dmg + " damage");
                         enemypokemonstatus.setText("Wrong answer");
                         damageAnimate(userpokemon);
                         if (userpokemonhp <= 0) {
                             endBattleFlag = true;
                         }
                     }
-                    num_of_question = num_of_question - 1;
+                    current_num_of_question = current_num_of_question - 1;
                     choiceClicked = false;
 
                     // End condition
-                    if (endBattleFlag || num_of_question <= 0) {
+                    if (endBattleFlag || current_num_of_question <= 0) {
                         Intent intent = getIntent();
                         String worldName = intent.getStringExtra("worldName");
                         int worldID = intent.getIntExtra("worldID", -1);
                         TextView miniQuizTv = (TextView) findViewById(R.id.miniquiztitle);
 
-                        Intent Layer = new Intent(MiniQuiz.this, QuizSummary.class);
+                        Intent Layer = new Intent(Quiz.this, QuizSummary.class);
 
                         Bundle bundle1 = new Bundle();
                         bundle1.putParcelableArrayList("questionAnswered", questionAnswered);
@@ -320,7 +348,7 @@ public class MiniQuiz extends AppCompatActivity {
                     attackbtn.setVisibility(View.INVISIBLE);
 
                     // Display next question
-                    if (num_of_question!=0){
+                    if (current_num_of_question !=0){
                         questionAssigned = displayNextQuestion(questionList, getDifficultyLevel(userpokemonhp));
                     }
                 }
@@ -341,7 +369,7 @@ public class MiniQuiz extends AppCompatActivity {
             Question q = questionList.get(i);
             Log.d("questionlist","question " + q.getQuestion());
             Log.d("questionlist","question " + q.getAttempted());
-//             && q.getDifficultyLevel() == difficultyLevel
+//            if (q.attemped == false && (q.getDifficultyLevel() == difficultyLevel || q.getDifficultyLevel == -1)){
             if (q.attempted == false){
                 questionTv.setText(questionList.get(i).question);
                 currentQuestionIndex = i;
@@ -373,8 +401,8 @@ public class MiniQuiz extends AppCompatActivity {
 
     public void getTimeTaken(){
         endTime = System.currentTimeMillis() - startTime;
-        if(total_num_of_question-num_of_question>0){
-            timeTaken[total_num_of_question-num_of_question] = (int)(long)(endTime/1000);
+        if(total_num_of_question- current_num_of_question >0){
+            timeTaken[total_num_of_question- current_num_of_question] = (int)(long)(endTime/1000);
         }
         startTime = System.currentTimeMillis();
     }

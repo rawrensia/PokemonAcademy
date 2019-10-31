@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import com.example.pokemonacademy.R;
 
-public class SummaryReport extends AppCompatActivity {
+public class SummaryReportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +23,14 @@ public class SummaryReport extends AppCompatActivity {
 
         indivReport.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent Layer = new Intent(SummaryReport.this, IndividualReportList.class);
+                Intent Layer = new Intent(SummaryReportActivity.this, IndividualReportListActivity.class);
                 startActivity(Layer);
             }
         });
 
         allReport.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent Layer = new Intent(SummaryReport.this, OverallSummaryReport.class);
+                Intent Layer = new Intent(SummaryReportActivity.this, OverallSummaryReportActivity.class);
                 startActivity(Layer);
             }
         });

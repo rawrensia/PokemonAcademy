@@ -31,7 +31,7 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class FinalQuizPerformanceReport extends AppCompatActivity {
+public class FinalQuizPerformanceReportActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseQns;
     private DatabaseReference mDatabaseQnsChoice;
     private DatabaseReference mDatabaseQuiz;
@@ -113,15 +113,15 @@ public class FinalQuizPerformanceReport extends AppCompatActivity {
                     int qId = q.getQuestionId();
                     Log.i(TAG, "onDataChange: generateReport: " + qId);
 
-                    CardView cv = new CardView(FinalQuizPerformanceReport.this);
-                    LinearLayout block = new LinearLayout(FinalQuizPerformanceReport.this);
+                    CardView cv = new CardView(FinalQuizPerformanceReportActivity.this);
+                    LinearLayout block = new LinearLayout(FinalQuizPerformanceReportActivity.this);
                     block.setOrientation(LinearLayout.VERTICAL);
 
-                    TextView questionText = new TextView(FinalQuizPerformanceReport.this);
-                    TextView choice1 = new TextView(FinalQuizPerformanceReport.this);
-                    TextView choice2 = new TextView(FinalQuizPerformanceReport.this);
-                    TextView choice3 = new TextView(FinalQuizPerformanceReport.this);
-                    TextView correctAttemptText = new TextView(FinalQuizPerformanceReport.this);
+                    TextView questionText = new TextView(FinalQuizPerformanceReportActivity.this);
+                    TextView choice1 = new TextView(FinalQuizPerformanceReportActivity.this);
+                    TextView choice2 = new TextView(FinalQuizPerformanceReportActivity.this);
+                    TextView choice3 = new TextView(FinalQuizPerformanceReportActivity.this);
+                    TextView correctAttemptText = new TextView(FinalQuizPerformanceReportActivity.this);
 
                     block.addView(questionText, 0);
                     block.addView(choice1, 1);
@@ -132,7 +132,7 @@ public class FinalQuizPerformanceReport extends AppCompatActivity {
                     layout.addView(cv);
 
                     addQuestion(worldId, qId, questionText);
-                    addChoices(qId, block);
+                    addChoices(worldId, qId, block);
                     addCorrectAttempts(qId, correctAttemptText);
                 }
             }
@@ -164,8 +164,8 @@ public class FinalQuizPerformanceReport extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(userListener);
     }
 
-    private void addChoices(final int qnsId, final LinearLayout block){
-        DatabaseReference reference = mDatabaseQnsChoice.child("Question" + qnsId);
+    private void addChoices(final int worldId, final int qnsId, final LinearLayout block){
+        DatabaseReference reference = mDatabaseQnsChoice.child("World" + worldId).child("Quiz2").child("Question" + qnsId);
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override

@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class IndividualSummaryReport extends AppCompatActivity {
+public class IndividualSummaryReportActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabaseUser;
     private DatabaseReference mDatabaseResult;

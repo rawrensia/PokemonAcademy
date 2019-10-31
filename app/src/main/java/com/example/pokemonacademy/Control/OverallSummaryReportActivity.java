@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 
-public class OverallSummaryReport extends AppCompatActivity {
+public class OverallSummaryReportActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     @Override
@@ -47,7 +47,7 @@ public class OverallSummaryReport extends AppCompatActivity {
 
             cardView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view){
-                    Intent Layer = new Intent(OverallSummaryReport.this, FinalQuizPerformanceReport.class);
+                    Intent Layer = new Intent(OverallSummaryReportActivity.this, FinalQuizPerformanceReportActivity.class);
                     TextView tv = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(0);
                     Layer.putExtra("worldName", tv.getText());
                     Layer.putExtra("worldID", counter);

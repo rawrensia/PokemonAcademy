@@ -3,11 +3,8 @@ package com.example.pokemonacademy.Control;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class IndividualReportList extends AppCompatActivity {
+public class IndividualReportListActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private static final String TAG = "StudentList";
@@ -62,7 +59,7 @@ public class IndividualReportList extends AppCompatActivity {
     private void addStudent(final String sId, final String name){
         LinearLayout studentList = findViewById(R.id.studentList);
 
-        CardView cv = new CardView(IndividualReportList.this);
+        CardView cv = new CardView(IndividualReportListActivity.this);
         cv.setCardBackgroundColor(Color.LTGRAY);
 
         LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -72,13 +69,13 @@ public class IndividualReportList extends AppCompatActivity {
         cardViewMarginParams.setMargins(20, 10, 20, 10);
         cv.requestLayout();
 
-        TextView tv = new TextView(IndividualReportList.this);
+        TextView tv = new TextView(IndividualReportListActivity.this);
         tv.setPadding(8,2,8,2);
         tv.setText(name);
 
         cv.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent Layer = new Intent(IndividualReportList.this, IndividualSummaryReport.class);
+                Intent Layer = new Intent(IndividualReportListActivity.this, IndividualSummaryReportActivity.class);
                 Layer.putExtra("userId", sId);
                 startActivity(Layer);
             }
