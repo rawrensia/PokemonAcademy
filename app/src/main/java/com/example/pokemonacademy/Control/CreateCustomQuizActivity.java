@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuestionChoice;
@@ -20,11 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class CreateCustomQuizActivity extends AppCompatActivity {
 
     private static final int RANDOM_STRING_LENGTH = 8;
+    private int questionIndex = 1;
 
     private FirebaseAuth mAuth;
     private DatabaseReference questionDatabase;
@@ -40,104 +40,146 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         questionDatabase = FirebaseDatabase.getInstance().getReference("QUESTION");
         questionChoiceDatabase = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
 
+        createEmptyQuestionObject();
+
+        updateUI();
         setSingleEvent();
     }
 
+    private void createEmptyQuestionObject()    {
+
+
+        for(int i=0; i<5; i++)  {
+            Question q = new Question();
+            ArrayList<QuestionChoice> qcArray = new ArrayList<>();
+
+            q.setWorldId(mAuth.getCurrentUser().getUid());
+            q.setAttempted(false);
+            q.setDifficultyLevel(-1);
+            q.setQuestionId(i+1);
+
+            for(int j=0; j<3; j++)  {
+                qcArray.add(new QuestionChoice());
+            }
+            q.setQuestionChoice(qcArray);
+            questions.add(q);
+        }
+    }
+
     private void setSingleEvent()   {
-        final Button addQuestionBtn = findViewById(R.id.addQuestionBtn);
-        Button questionListBtn = findViewById(R.id.createQuizBtn);
+        Button createQuizBtn = findViewById(R.id.createQuizBtn);
+        ImageView leftBtn = findViewById(R.id.customQuizLeftBtn);
+        ImageView rightBtn = findViewById(R.id.customQuizRightBtn);
 
         final TextView addQuestionTV = findViewById(R.id.addQuestionTV);
         final TextView addChoice1TV = findViewById(R.id.addChoice1TV);
         final TextView addChoice2TV = findViewById(R.id.addChoice2TV);
         final TextView choiceNumberTV = findViewById(R.id.correctChoiceTV);
 
-        final ScrollView createCustomQuizSV = findViewById(R.id.createCustomQuizSV);
-
-        addQuestionBtn
+        leftBtn
             .setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    if(addQuestionTV.getText().toString().isEmpty() ||
-                        addChoice1TV.getText().toString().isEmpty() ||
-                        addChoice2TV.getText().toString().isEmpty() ||
-                        choiceNumberTV.getText().toString().isEmpty())    {
-
-                        Toast.makeText(CreateCustomQuizActivity.this, "Please leave no blanks.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Question q = new Question();
-                        ArrayList<QuestionChoice> choices = new ArrayList<>();
-                        String choice;
-
-                        Integer[] shuffleChoices = Shuffle.shuffleList(new Integer[]{1,2,3});
-
-                        for (int i = 0; i < 3; i++) {
-                            QuestionChoice qc = new QuestionChoice();
-                            qc.setQnsId(questions.size() + 1);
-                            qc.setChoiceId(i+1);
-
-                            if(shuffleChoices[i] == 1) {
-                                choice = choiceNumberTV.getText().toString();
-                                qc.setRightChoice(true);
-                            }
-                            else if(shuffleChoices[i] == 2) {
-                                choice = addChoice1TV.getText().toString();
-                                qc.setRightChoice(false);
-                            }
-                            else {
-                                choice = addChoice2TV.getText().toString();
-                                qc.setRightChoice(false);
-                            }
-
-                            qc.setChoice(choice);
-                            qc.setCorrect(false);
-                            choices.add(qc);
-                        }
-
-                        q.setQuestionChoice(choices);
-                        q.setQuestion(addQuestionTV.getText().toString());
-                        q.setQuestionId(questions.size() + 1);
-                        q.setDifficultyLevel(-1);
-                        q.setAttempted(false);
-                        q.setWorldId(mAuth.getCurrentUser().getUid());
-
-                        // reset textviews
-                        addQuestionTV.setText("");
-                        addChoice1TV.setText("");
-                        addChoice2TV.setText("");
-                        choiceNumberTV.setText("");
-
-                        questions.add(q);
-                    }
-                    closeKeyboard();
-                    updateTotalQuestionsUI();
+                public void onClick(View v) {
+                    saveCurrentQuestion();
+                    questionIndex--;
+                    updateUI();
                 }
             });
 
-        questionListBtn
+        rightBtn
             .setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    if(questions.size() <= 0) {
-                        Toast.makeText(CreateCustomQuizActivity.this, "Please add at least one question before submitting.", Toast.LENGTH_LONG).show();
-                    } else {
-                        String randomCode = GenerateRandomString.generateRandomString(RANDOM_STRING_LENGTH);
+                public void onClick(View v) {
+                    saveCurrentQuestion();
+                    questionIndex++;
+                    updateUI();
+                }
+            });
 
-                        for(int i=0; i<questions.size(); i++)   {
-                            questions.get(i).setQuizId(randomCode);
-                            questionDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).setValue(questions.get(i));
-                            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
-                            for(int j=0; j<qc.size(); j++)
-                                questionChoiceDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).child("Choice"+(j+1)).setValue(qc.get(j));
-                        }
-
-                        questions.clear();
-                        updateTotalQuestionsUI();
-                        Toast.makeText(CreateCustomQuizActivity.this, "Successfully created custom quiz.", Toast.LENGTH_LONG).show();
-                        Intent Layer = new Intent(CreateCustomQuizActivity.this, CustomQuizInfoActivity.class);
-                        startActivity(Layer);
-                    }
-                    updateTotalQuestionsUI();
+//        addQuestionBtn
+//            .setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if(addQuestionTV.getText().toString().isEmpty() ||
+//                        addChoice1TV.getText().toString().isEmpty() ||
+//                        addChoice2TV.getText().toString().isEmpty() ||
+//                        choiceNumberTV.getText().toString().isEmpty())    {
+//
+//                        Toast.makeText(CreateCustomQuizActivity.this, "Please leave no blanks.", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        Question q = new Question();
+//                        ArrayList<QuestionChoice> choices = new ArrayList<>();
+//                        String choice;
+//
+//                        Integer[] shuffleChoices = Shuffle.shuffleList(new Integer[]{1,2,3});
+//
+//                        for (int i = 0; i < 3; i++) {
+//                            QuestionChoice qc = new QuestionChoice();
+//                            qc.setQnsId(questions.size() + 1);
+//                            qc.setChoiceId(i+1);
+//
+//                            if(shuffleChoices[i] == 1) {
+//                                choice = choiceNumberTV.getText().toString();
+//                                qc.setRightChoice(true);
+//                            }
+//                            else if(shuffleChoices[i] == 2) {
+//                                choice = addChoice1TV.getText().toString();
+//                                qc.setRightChoice(false);
+//                            }
+//                            else {
+//                                choice = addChoice2TV.getText().toString();
+//                                qc.setRightChoice(false);
+//                            }
+//
+//                            qc.setChoice(choice);
+//                            qc.setCorrect(false);
+//                            choices.add(qc);
+//                        }
+//
+//                        q.setQuestionChoice(choices);
+//                        q.setQuestion(addQuestionTV.getText().toString());
+//                        q.setQuestionId(questions.size() + 1);
+//                        q.setDifficultyLevel(-1);
+//                        q.setAttempted(false);
+//                        q.setWorldId(mAuth.getCurrentUser().getUid());
+//
+//                        // reset textviews
+//                        addQuestionTV.setText("");
+//                        addChoice1TV.setText("");
+//                        addChoice2TV.setText("");
+//                        choiceNumberTV.setText("");
+//
+//                        questions.add(q);
+//                    }
+//                    closeKeyboard();
+//                    updateUI();
+//                }
+//            });
+//
+//        createQuizBtn
+//            .setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if(questions.size() <= 0) {
+//                        Toast.makeText(CreateCustomQuizActivity.this, "Please add at least one question before submitting.", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        String randomCode = GenerateRandomString.generateRandomString(RANDOM_STRING_LENGTH);
+//
+//                        for(int i=0; i<questions.size(); i++)   {
+//                            questions.get(i).setQuizId(randomCode);
+//                            questionDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).setValue(questions.get(i));
+//                            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
+//                            for(int j=0; j<qc.size(); j++)
+//                                questionChoiceDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).child("Choice"+(j+1)).setValue(qc.get(j));
+//                        }
+//
+//                        questions.clear();
+//                        updateUI();
+//                        Toast.makeText(CreateCustomQuizActivity.this, "Successfully created custom quiz.", Toast.LENGTH_LONG).show();
+//                        Intent Layer = new Intent(CreateCustomQuizActivity.this, CustomQuizInfoActivity.class);
+//                        startActivity(Layer);
+//                    }
+//                    updateUI();
 //                    if(questions.size() <= 0)   {
 //                        Toast.makeText(CreateCustomQuizActivity.this, "Please add at least one question before submitting.", Toast.LENGTH_LONG).show();
 //                    } else {
@@ -147,13 +189,67 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
 //                        Layer.putExtras(bd);
 //                        startActivity(Layer);
 //                    }
-                }
-            });
+//                }
+//            });
     }
 
-    private void updateTotalQuestionsUI()   {
-        final TextView totalQuestions = findViewById(R.id.totalQuestionTV);
-        totalQuestions.setText("Total questions: " + questions.size());
+    private void updateUI()   {
+        TextView questionTV = findViewById(R.id.addQuestionTV);
+        TextView correctChoiceTV = findViewById(R.id.correctChoiceTV);
+        TextView choice1TV = findViewById(R.id.addChoice1TV);
+        TextView choice2TV = findViewById(R.id.addChoice2TV);
+
+        ImageView leftBtn = findViewById(R.id.customQuizLeftBtn);
+        ImageView rightBtn = findViewById(R.id.customQuizRightBtn);
+
+        // UPDATES THE VISIBILITY OF THE BUTTONS
+        if(questionIndex == 1)
+            leftBtn.setVisibility(View.INVISIBLE);
+        else if(questionIndex == 5)
+            rightBtn.setVisibility(View.INVISIBLE);
+        else {
+            leftBtn.setVisibility(View.VISIBLE);
+            rightBtn.setVisibility(View.VISIBLE);
+        }
+
+        // UPDATES THE QUESTIONS
+        Question q = questions.get(questionIndex-1);
+        ArrayList<QuestionChoice> qcArray = q.getQuestionChoice();
+
+//        Toast.makeText(CreateCustomQuizActivity.this, String.valueOf(qcArray.size()), Toast.LENGTH_LONG).show();
+        questionTV.setText(q.getQuestion());
+        correctChoiceTV.setText(qcArray.get(0).getChoice());
+        choice1TV.setText(qcArray.get(1).getChoice());
+        choice2TV.setText(qcArray.get(2).getChoice());
+    }
+
+    private void saveCurrentQuestion()  {
+        TextView questionTV = findViewById(R.id.addQuestionTV);
+        TextView correctChoiceTV = findViewById(R.id.correctChoiceTV);
+        TextView choice1TV = findViewById(R.id.addChoice1TV);
+        TextView choice2TV = findViewById(R.id.addChoice2TV);
+
+        ArrayList<QuestionChoice> qcArray = new ArrayList<>();
+        QuestionChoice qc = new QuestionChoice();
+
+        for(int i=0; i<3; i++)  {
+            qc.setQnsId(questionIndex);
+
+            if(i==0)    {
+                qc.setChoice(correctChoiceTV.getText().toString());
+                qc.setRightChoice(true);
+            } else if(i==1) {
+                qc.setChoice(choice1TV.getText().toString());
+                qc.setRightChoice(false);
+            } else {
+                qc.setChoice(choice2TV.getText().toString());
+                qc.setRightChoice(false);
+            }
+
+            qcArray.add(qc);
+        }
+        questions.get(questionIndex-1).setQuestionChoice(qcArray);
+        questions.get(questionIndex-1).setQuestion(questionTV.getText().toString());
     }
 
     private void closeKeyboard()    {
