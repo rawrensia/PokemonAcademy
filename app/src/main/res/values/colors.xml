@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lightGreen">#22B395</color>
+    <color name="lightGreen">#28A578</color>
     <color name="darkGreen">#00574B</color>
     <color name="darkPink">#D81B60</color>
     <color name="orange">#ef6c33</color>
@@ -13,5 +13,7 @@
     <color name="lightyellow">#F5E9BF</color>
     <color name="darkPink2">#741B3F</color>
     <color name="darkerViolet">#BD99F7</color>
+    <color name="lighterGreen">#B1E6CD</color>
+    <color name="lightRed">#EBB5C3</color>
 
 </resources>
