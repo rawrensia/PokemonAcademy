@@ -3,6 +3,7 @@ package com.example.pokemonacademy.Control;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,16 +46,12 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
 
     private void getRecentCustomQuizCode()  {
         Query reference = questiondDB.child(mAuth.getCurrentUser().getUid()).limitToFirst(5);
+        final ArrayList<String> randomCodes = new ArrayList<>();
 
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                ArrayList<String> randomCodes = new ArrayList<>();
-                for(int i=0; i<dataSnapshot.getChildrenCount(); i++)    {
-                    randomCodes.add(dataSnapshot.getKey());
-                }
-                Toast.makeText(CustomQuizInfoActivity.this, String.valueOf(dataSnapshot.getChildrenCount()),
-                        Toast.LENGTH_LONG).show();
+                randomCodes.add(0, dataSnapshot.getKey());
                 updateUI(randomCodes);
             }
 
@@ -65,7 +62,8 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
+                randomCodes.remove(dataSnapshot.getKey());
+                updateUI(randomCodes);
             }
 
             @Override
@@ -84,14 +82,18 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
         LinearLayout LL = findViewById(R.id.customQuizGrid);
         ConstraintLayout cL = (ConstraintLayout)LL.getChildAt(0);
 
-        for(int i=1; i<cL.getChildCount(); i++) {
+        for(int i=1; i<cL.getChildCount()-1; i++) {
             ConstraintLayout innerCL = (ConstraintLayout)((LinearLayout)cL.getChildAt(i)).getChildAt(0);
 
-            TextView tv = (TextView)innerCL.getChildAt(0);
-            tv.setText(randomCodes.get(0));
-
-            Button shareBtn = (Button)innerCL.getChildAt(1);
-            shareBtn.setContentDescription(randomCodes.get(0));
+            TextView tv = (TextView) innerCL.getChildAt(0);
+            Button shareBtn = (Button) innerCL.getChildAt(1);
+            try {
+                tv.setText(randomCodes.get(i - 1));
+                shareBtn.setContentDescription(randomCodes.get(i - 1));
+            } catch (Exception e)   {
+                tv.setText("");
+                shareBtn.setContentDescription("");
+            }
         }
     }
 
@@ -99,7 +101,9 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
         LinearLayout LL = findViewById(R.id.customQuizGrid);
         ConstraintLayout cL = (ConstraintLayout)LL.getChildAt(0);
 
-        for(int i=1; i<cL.getChildCount(); i++) {
+        Button customQuizBackBtn = findViewById(R.id.customQuizInfoBackBtn);
+
+        for(int i=1; i<cL.getChildCount()-1; i++) {
             ConstraintLayout innerCL = (ConstraintLayout)((LinearLayout)cL.getChildAt(i)).getChildAt(0);
 
             final TextView tv = (TextView)innerCL.getChildAt(0);
@@ -124,6 +128,15 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
                 }
             });
         }
+
+        customQuizBackBtn
+            .setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent Layer = new Intent(CustomQuizInfoActivity.this, CustomQuizActivity.class);
+                    startActivity(Layer);
+                }
+            });
     }
 
     private void copyToClipboard(String text)  {

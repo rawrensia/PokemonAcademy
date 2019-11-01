@@ -49,8 +49,8 @@ public class CustomQuizActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if(!playTV.getText().toString().isEmpty())  {
-                        Intent Layer = new Intent(CustomQuizActivity.this, PlayCustomQuizActivity.class);
-                        Layer.putExtra("playCQID", playTV.getText().toString());
+                        Intent Layer = new Intent(CustomQuizActivity.this, CustomQuizInfoActivity.class);
+//                        Layer.putExtra("playCQID", playTV.getText().toString());
                         startActivity(Layer);
                     } else {
                         Toast.makeText(CustomQuizActivity.this, "Please enter a correct code.", Toast.LENGTH_LONG).show();

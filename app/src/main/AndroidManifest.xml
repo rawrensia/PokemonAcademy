@@ -41,6 +41,7 @@
         <activity android:name=".Control.CustomQuizActivity" />
         <activity android:name=".Control.MenuLandingPage" />
         <activity android:name=".Control.CreateCustomQuizActivity" />
+        <activity android:name=".Control.CustomQuizInfoActivity" />
     </application>
 
 </manifest>
