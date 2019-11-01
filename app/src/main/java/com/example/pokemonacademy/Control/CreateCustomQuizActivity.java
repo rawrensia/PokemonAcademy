@@ -47,8 +47,6 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
     }
 
     private void createEmptyQuestionObject()    {
-
-
         for(int i=0; i<5; i++)  {
             Question q = new Question();
             ArrayList<QuestionChoice> qcArray = new ArrayList<>();
@@ -71,11 +69,6 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         ImageView leftBtn = findViewById(R.id.customQuizLeftBtn);
         ImageView rightBtn = findViewById(R.id.customQuizRightBtn);
 
-        final TextView addQuestionTV = findViewById(R.id.addQuestionTV);
-        final TextView addChoice1TV = findViewById(R.id.addChoice1TV);
-        final TextView addChoice2TV = findViewById(R.id.addChoice2TV);
-        final TextView choiceNumberTV = findViewById(R.id.correctChoiceTV);
-
         leftBtn
             .setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,101 +89,38 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
                 }
             });
 
-//        addQuestionBtn
-//            .setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    if(addQuestionTV.getText().toString().isEmpty() ||
-//                        addChoice1TV.getText().toString().isEmpty() ||
-//                        addChoice2TV.getText().toString().isEmpty() ||
-//                        choiceNumberTV.getText().toString().isEmpty())    {
-//
-//                        Toast.makeText(CreateCustomQuizActivity.this, "Please leave no blanks.", Toast.LENGTH_LONG).show();
-//                    } else {
-//                        Question q = new Question();
-//                        ArrayList<QuestionChoice> choices = new ArrayList<>();
-//                        String choice;
-//
-//                        Integer[] shuffleChoices = Shuffle.shuffleList(new Integer[]{1,2,3});
-//
-//                        for (int i = 0; i < 3; i++) {
-//                            QuestionChoice qc = new QuestionChoice();
-//                            qc.setQnsId(questions.size() + 1);
-//                            qc.setChoiceId(i+1);
-//
-//                            if(shuffleChoices[i] == 1) {
-//                                choice = choiceNumberTV.getText().toString();
-//                                qc.setRightChoice(true);
-//                            }
-//                            else if(shuffleChoices[i] == 2) {
-//                                choice = addChoice1TV.getText().toString();
-//                                qc.setRightChoice(false);
-//                            }
-//                            else {
-//                                choice = addChoice2TV.getText().toString();
-//                                qc.setRightChoice(false);
-//                            }
-//
-//                            qc.setChoice(choice);
-//                            qc.setCorrect(false);
-//                            choices.add(qc);
-//                        }
-//
-//                        q.setQuestionChoice(choices);
-//                        q.setQuestion(addQuestionTV.getText().toString());
-//                        q.setQuestionId(questions.size() + 1);
-//                        q.setDifficultyLevel(-1);
-//                        q.setAttempted(false);
-//                        q.setWorldId(mAuth.getCurrentUser().getUid());
-//
-//                        // reset textviews
-//                        addQuestionTV.setText("");
-//                        addChoice1TV.setText("");
-//                        addChoice2TV.setText("");
-//                        choiceNumberTV.setText("");
-//
-//                        questions.add(q);
-//                    }
-//                    closeKeyboard();
-//                    updateUI();
-//                }
-//            });
-//
-//        createQuizBtn
-//            .setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    if(questions.size() <= 0) {
-//                        Toast.makeText(CreateCustomQuizActivity.this, "Please add at least one question before submitting.", Toast.LENGTH_LONG).show();
-//                    } else {
-//                        String randomCode = GenerateRandomString.generateRandomString(RANDOM_STRING_LENGTH);
-//
-//                        for(int i=0; i<questions.size(); i++)   {
-//                            questions.get(i).setQuizId(randomCode);
-//                            questionDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).setValue(questions.get(i));
-//                            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
-//                            for(int j=0; j<qc.size(); j++)
-//                                questionChoiceDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).child("Choice"+(j+1)).setValue(qc.get(j));
-//                        }
-//
-//                        questions.clear();
-//                        updateUI();
-//                        Toast.makeText(CreateCustomQuizActivity.this, "Successfully created custom quiz.", Toast.LENGTH_LONG).show();
-//                        Intent Layer = new Intent(CreateCustomQuizActivity.this, CustomQuizInfoActivity.class);
-//                        startActivity(Layer);
-//                    }
-//                    updateUI();
-//                    if(questions.size() <= 0)   {
-//                        Toast.makeText(CreateCustomQuizActivity.this, "Please add at least one question before submitting.", Toast.LENGTH_LONG).show();
-//                    } else {
-//                        Intent Layer = new Intent(CreateCustomQuizActivity.this, CustomQuizQuestionListActivity.class);
-//                        Bundle bd = new Bundle();
-//                        bd.putParcelableArrayList("questionList", questions);
-//                        Layer.putExtras(bd);
-//                        startActivity(Layer);
-//                    }
-//                }
-//            });
+        createQuizBtn
+            .setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(checkEmptyQuestion())  {
+                        Toast.makeText(CreateCustomQuizActivity.this, "Please do not leave any questions or choices empty.", Toast.LENGTH_LONG).show();
+                    } else {
+                        String randomCode = GenerateRandomString.generateRandomString(RANDOM_STRING_LENGTH);
+
+                        shuffleChoices();
+
+                        for(int i=0; i<questions.size(); i++)   {
+                            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
+                            questions.get(i).setQuizId(randomCode);
+                            questions.get(i).setQuestionChoice(null);
+                            questionDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).setValue(questions.get(i));
+
+                            for(int j=0; j<qc.size(); j++)  {
+                                questionChoiceDatabase.child(mAuth.getCurrentUser().getUid()).child(randomCode).child("Question"+questions.get(i).getQuestionId()).child("Choice"+(j+1)).setValue(qc.get(j));
+                            }
+                        }
+                        questions.clear();
+                        createEmptyQuestionObject();
+                        updateUI();
+
+                        Toast.makeText(CreateCustomQuizActivity.this, "Successfully created custom quiz.", Toast.LENGTH_LONG).show();
+                        Intent Layer = new Intent(CreateCustomQuizActivity.this, CustomQuizInfoActivity.class);
+                        startActivity(Layer);
+                        finish();
+                    }
+                }
+            });
     }
 
     private void updateUI()   {
@@ -216,7 +146,6 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         Question q = questions.get(questionIndex-1);
         ArrayList<QuestionChoice> qcArray = q.getQuestionChoice();
 
-//        Toast.makeText(CreateCustomQuizActivity.this, String.valueOf(qcArray.size()), Toast.LENGTH_LONG).show();
         questionTV.setText(q.getQuestion());
         correctChoiceTV.setText(qcArray.get(0).getChoice());
         choice1TV.setText(qcArray.get(1).getChoice());
@@ -230,9 +159,9 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         TextView choice2TV = findViewById(R.id.addChoice2TV);
 
         ArrayList<QuestionChoice> qcArray = new ArrayList<>();
-        QuestionChoice qc = new QuestionChoice();
 
         for(int i=0; i<3; i++)  {
+            QuestionChoice qc = new QuestionChoice();
             qc.setQnsId(questionIndex);
 
             if(i==0)    {
@@ -250,6 +179,33 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         }
         questions.get(questionIndex-1).setQuestionChoice(qcArray);
         questions.get(questionIndex-1).setQuestion(questionTV.getText().toString());
+    }
+
+    private boolean checkEmptyQuestion()    {
+        for(int i=0; i<questions.size()-1; i++)   {
+            if(questions.get(i).getQuestion() == null || questions.get(i).getQuestion().isEmpty())
+                return true;
+
+            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
+            for(int j=0; j<qc.size(); j++)  {
+                if(qc.get(j).getChoice() == null || qc.get(j).getChoice().isEmpty())
+                    return true;
+            }
+        }
+        if(questionIndex == 5 && questions.get(4).getQuestion() == null)    {
+            saveCurrentQuestion();
+            if(questions.get(4).getQuestion() == null || questions.get(4).getQuestion().isEmpty())
+                return true;
+        }
+        return false;
+    }
+
+    private void shuffleChoices()   {
+        for(int i=0; i<questions.size(); i++) {
+            ArrayList<QuestionChoice> qc = questions.get(i).getQuestionChoice();
+            qc = Shuffle.shuffleList(qc);
+            questions.get(i).setQuestionChoice(qc);
+        }
     }
 
     private void closeKeyboard()    {

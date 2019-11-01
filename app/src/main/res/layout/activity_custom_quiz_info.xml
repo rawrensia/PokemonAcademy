@@ -352,12 +352,13 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/customQuizInfoBackBtn"
             android:layout_width="180dp"
             android:layout_height="80dp"
             android:background="@drawable/button2"
+            android:fontFamily="@font/quenda"
             android:text="Back to Main"
             android:textColor="@color/yellow"
-            android:fontFamily="@font/quenda"
             android:textSize="22dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
