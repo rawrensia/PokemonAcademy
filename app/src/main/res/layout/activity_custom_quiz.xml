@@ -59,19 +59,37 @@
 
         <Button
             android:id="@+id/createCustomQuizBtn"
-            android:layout_width="240dp"
+            android:layout_width="140dp"
             android:layout_height="65dp"
             android:background="@drawable/button2"
             android:fontFamily="@font/quenda"
             android:text="Create Custom quiz"
             android:textColor="@color/yellow"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.199"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.103" />
+            app:layout_constraintVertical_bias="0.124" />
+
+        <Button
+            android:id="@+id/CustomQuizInfoBtn"
+            android:layout_width="140dp"
+            android:layout_height="65dp"
+            android:background="@drawable/button2"
+            android:fontFamily="@font/quenda"
+            android:padding="10dp"
+            android:text="View My Custom Quiz"
+            android:textColor="@color/yellow"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.763"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.124" />
 
         <EditText
             android:id="@+id/password"
@@ -100,7 +118,7 @@
             android:fontFamily="@font/quenda"
             android:text="Play custom quiz"
             android:textColor="@color/darkBlue"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
