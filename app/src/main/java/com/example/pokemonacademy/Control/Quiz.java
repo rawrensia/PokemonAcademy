@@ -376,9 +376,9 @@ public class Quiz extends AppCompatActivity {
                 answeroption1.setText("1) "+q.getQuestionChoice().get(0).getChoice());
                 answeroption2.setText("2) "+q.getQuestionChoice().get(1).getChoice());
                 answeroption3.setText("3) "+q.getQuestionChoice().get(2).getChoice());
-                if (q.getQuestionChoice().get(0).isCorrect()){correctChoiceIndex = 1;}
-                if (q.getQuestionChoice().get(1).isCorrect()){correctChoiceIndex = 2;}
-                if (q.getQuestionChoice().get(2).isCorrect()){correctChoiceIndex = 3;}
+                if (q.getQuestionChoice().get(0).getRightChoice()){correctChoiceIndex = 1;}
+                if (q.getQuestionChoice().get(1).getRightChoice()){correctChoiceIndex = 2;}
+                if (q.getQuestionChoice().get(2).getRightChoice()){correctChoiceIndex = 3;}
                 q.setAttempted(true);
                 return q;
             }

@@ -82,7 +82,7 @@ public class QuizSummary extends AppCompatActivity {
         quizzesCompleted.setTimeTaken(tt);
         int s=0;
         for (int i=0; i< questionAnswered.size();i++){
-            if (choiceChosen.get(i).isCorrect()){ s = s-(-1);}
+            if (choiceChosen.get(i).getRightChoice()){ s = s-(-1);}
         }
         quizzesCompleted.setScore(s);
         databaseReferenceQuizCompleted.child(userID).child("World"+worldID).child("Quiz"+miniQuizID).setValue(quizzesCompleted);
@@ -176,7 +176,7 @@ public class QuizSummary extends AppCompatActivity {
                 // display timetaken
                 time.setText(""+timeTaken[i]);
                 // display correct
-                if (choiceChosen.get(i).isCorrect()){
+                if (choiceChosen.get(i).getRightChoice()){
                     correct.setText("Correct" );
                 } else {
                     correct.setText("Wrong" );
@@ -209,7 +209,7 @@ public class QuizSummary extends AppCompatActivity {
             finalQuizScoreTV.setVisibility(View.VISIBLE);
             s=0;
             for (int j=0; j< questionAnswered.size();j++){
-                if (choiceChosen.get(j).isCorrect()){ s = s-(-1);}
+                if (choiceChosen.get(j).getRightChoice()){ s = s-(-1);}
             }
             int percentage = (s*100/10);
             if (s>=9){

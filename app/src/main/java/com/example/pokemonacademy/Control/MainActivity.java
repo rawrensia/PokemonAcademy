@@ -2,6 +2,7 @@ package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,10 +11,19 @@ import android.widget.ImageView;
 
 import com.example.pokemonacademy.Entity.Question;
 import com.example.pokemonacademy.Entity.QuestionChoice;
+import com.example.pokemonacademy.Entity.QuizzesCompleted;
+import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReferenceQuestion;
     private DatabaseReference databaseReferenceQnsChoice;
+    private DatabaseReference databaseReferenceQuizzesCompleted;
+    private DatabaseReference databaseReferenceUser;
+    private ArrayList<User> userList = new ArrayList<User>();
 
     private Animation frombottom, fromtop;
     private ImageView pokemonLogo;
@@ -45,9 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 //tables in the database
                 databaseReferenceQuestion = FirebaseDatabase.getInstance().getReference("QUESTION");
                 databaseReferenceQnsChoice = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
+                databaseReferenceQuizzesCompleted = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
+                databaseReferenceUser = FirebaseDatabase.getInstance().getReference("USER");
 
-                populateQuestionTable();
-                populateQuestionChoicesTable();
+//                populateQuestionTable();
+//                populateQuestionChoicesTable();
+//                populateQuizzesCompleted();
 
                 Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadeout);
                 btnStart.startAnimation(animation);
@@ -58,6 +74,37 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void populateQuizzesCompleted(){
+        databaseReferenceUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Random rand = new Random();
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    final User u = ds.getValue(User.class);
+                    Log.i("user", ""+u.getName() + " " + u.getId());
+                    userList.add(u);
+                }
+                for (int i=0; i<userList.size(); i++){
+                    for (int worldNum=0; worldNum<6; worldNum++){
+                        for (int quizNum=0; quizNum<3; quizNum++){
+                            QuizzesCompleted qc = new QuizzesCompleted();
+                            qc.setCompleted(false);
+                            qc.setUserId(userList.get(i).getId());
+                            qc.setWorldId(worldNum);
+                            qc.setMiniQuizId(quizNum);
+                            qc.setScore(rand.nextInt(11));
+                            qc.setTimeTaken(rand.nextInt(100));
+                            databaseReferenceQuizzesCompleted.child(userList.get(i).getId()).child("World"+worldNum).child("Quiz"+quizNum).setValue(qc);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+    }
 
     public void populateQuestionTable(){
         String qns;
