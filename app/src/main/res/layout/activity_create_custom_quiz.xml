@@ -79,32 +79,20 @@
         android:weightSum="12">
 
         <ImageView
+            android:id="@+id/customQuizLeftBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/left_arrow"
             android:layout_weight="4"
-            />
+            android:src="@drawable/left_arrow" />
 
         <ImageView
+            android:id="@+id/customQuizRightBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/right_arrow"
             android:layout_weight="4"
-            />
+            android:src="@drawable/right_arrow" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/totalQuestionTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total questions: 0/5"
-        android:fontFamily="@font/quenda"
-        android:textSize="18dp"
-        android:textColor="@color/yellow"
-        app:layout_constraintBottom_toTopOf="@+id/createQuizBtn"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"/>
 
     <Button
         android:id="@+id/createQuizBtn"
@@ -119,10 +107,5 @@
         android:textColor="@color/darkBlue"
         android:layout_gravity="center"
         android:background="@drawable/button1"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/createCustomQuizSV"/>
 
 </LinearLayout>
