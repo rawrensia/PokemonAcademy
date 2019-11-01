@@ -56,7 +56,7 @@ public class Question implements Parcelable {
     };
 
     public boolean verifyChoice(QuestionChoice choice) {
-        return choice.isCorrect();
+        return choice.getRightChoice();
     }
 
     public void setQuestionChoice(ArrayList<QuestionChoice> questionChoice){ this.questionChoice = questionChoice; }
