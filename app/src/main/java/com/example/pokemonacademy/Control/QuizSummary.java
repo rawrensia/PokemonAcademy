@@ -110,7 +110,9 @@ public class QuizSummary extends AppCompatActivity {
         for (int i=0; i<questionAnswered.size();i++){
             for (int j=0; j<3; j++){
                 final UserQnsAns userQnsAns = new UserQnsAns();
-                userQnsAns.setChoiceId(questionAnswered.get(i).getQuestionChoice().get(j).getChoiceId());
+//                userQnsAns.setChoiceId(questionAnswered.get(i).getQuestionChoice().get(j).getChoiceId());
+                userQnsAns.setChoiceId(j);
+                Log.i("choiceid","Choice"+userQnsAns.getChoiceId());
                 userQnsAns.setIsRight(questionAnswered.get(i).getQuestionChoice().get(j).getRightChoice());
                 if (choiceChosen.get(i).getChoiceId() == userQnsAns.getChoiceId()){
                     userQnsAns.setIsSelected(true);

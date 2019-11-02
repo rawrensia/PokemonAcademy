@@ -99,15 +99,36 @@ public class Quiz extends AppCompatActivity {
 
         if (miniQuizID == 0){
             questionList = intent.getExtras().getParcelableArrayList("questionList0");
+            gamePlay();
         } else if (miniQuizID == 1) {
             questionList = intent.getExtras().getParcelableArrayList("questionList1");
+            gamePlay();
         } else if (miniQuizID == 2){
             questionList = intent.getExtras().getParcelableArrayList("questionList2");
             total_num_of_question = 10;
             current_num_of_question = 10;
+            gamePlay();
         } else {
-            questionList = intent.getExtras().getParcelableArrayList("customQuestionList");
             customWorldID = intent.getStringExtra("customworldID");
+            questionDb.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    questionList = getQuestions(dataSnapshot, worldName, miniQuizName);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            choiceDb.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    assignQuestionChoice(dataSnapshot.child(worldName).child(miniQuizName),questionList);
+                    gamePlay();
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
         }
     }
 
@@ -313,8 +334,8 @@ public class Quiz extends AppCompatActivity {
                     // End condition
                     if (endBattleFlag || current_num_of_question <= 0) {
                         Intent intent = getIntent();
-                        String worldName = intent.getStringExtra("worldName");
-                        int worldID = intent.getIntExtra("worldID", -1);
+//                        String worldName = intent.getStringExtra("worldName");
+//                        int worldID = intent.getIntExtra("worldID", -1);
                         TextView miniQuizTv = (TextView) findViewById(R.id.miniquiztitle);
 
                         Intent Layer = new Intent(Quiz.this, QuizSummary.class);
