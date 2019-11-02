@@ -52,6 +52,8 @@ public class Leaderboard extends AppCompatActivity {
     private ArrayList<int[]> gradeCountList = new ArrayList<int[]>();
     private ArrayList<Integer> totalScoreList = new ArrayList<Integer>();
     private ArrayList<Integer> userTimeList = new ArrayList<Integer>();
+    private LinearLayoutManager manager;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,8 @@ public class Leaderboard extends AppCompatActivity {
         userDb = FirebaseDatabase.getInstance().getReference("USER");
         currentUser = mAuth.getCurrentUser();
         userID = currentUser.getUid();
+        manager = new LinearLayoutManager(this);
+        mContext = this;
 
         // Get all the users.
         userDb.addValueEventListener(new ValueEventListener() {
@@ -123,39 +127,16 @@ public class Leaderboard extends AppCompatActivity {
                     userGradesList.add(grades);
                 }
                 sortUser();
+                recyclerView = findViewById(R.id.recycler_view);
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(userTimeList,userGradesList,userList, mContext);
+                recyclerView.setLayoutManager(manager);
+                recyclerView.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        /*LinearLayout linearLayout = findViewById(R.id.leaderboardlayout);
-        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2000);
-        animationDrawable.setExitFadeDuration(4000);
-        animationDrawable.start();*/
-
-        recyclerView = findViewById(R.id.recycler_view);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter();
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapter);
-
-        /*LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_fall_down);
-        recyclerView.setLayoutAnimation(animationController);*/
-
-
-        /*Button returnBtn = (Button)findViewById(R.id.returnBtn);
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent Layer = new Intent(Leaderboard.this, WorldActivity.class);
-                startActivity(Layer);
-            }
-        });*/
     }
-
-    //to rerun the animation after changing the data
-
 
     public void sortUser(){
         for (int i=0; i<userList.size(); i++){
