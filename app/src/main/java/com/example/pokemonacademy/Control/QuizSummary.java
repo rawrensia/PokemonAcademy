@@ -100,7 +100,9 @@ public class QuizSummary extends AppCompatActivity {
             userCompletedQns.setQnsId(questionAnswered.get(i).getQuestionId());
             userCompletedQns.setUserId(userID);
             if (miniQuizID!=-1){
-                databaseReferenceUserCompletedQns.child(userID).child("Question"+userCompletedQns.getQnsId()).setValue(userCompletedQns);
+                databaseReferenceUserCompletedQns.child(userID).child("World"+worldID).child("Quiz"+miniQuizID).child("Question"+userCompletedQns.getQnsId()).setValue(userCompletedQns);
+            } else {
+                databaseReferenceUserCompletedQns.child(userID).child(worldName).child(miniQuizName).child("Question"+userCompletedQns.getQnsId()).setValue(userCompletedQns);
             }
         }
 
@@ -118,7 +120,9 @@ public class QuizSummary extends AppCompatActivity {
                 userQnsAns.setQnsId(questionAnswered.get(i).getQuestionId());
                 userQnsAns.setUserId(userID);
                 if (miniQuizID!=-1){
-                    databaseReferenceUserQnsAns.child(userID).child("Question"+userQnsAns.getQnsId()).child("Choice"+userQnsAns.getChoiceId()).setValue(userQnsAns);
+                    databaseReferenceUserQnsAns.child(userID).child("World"+worldID).child("Quiz"+miniQuizID).child("Question"+userQnsAns.getQnsId()).child("Choice"+userQnsAns.getChoiceId()).setValue(userQnsAns);
+                } else {
+                    databaseReferenceUserQnsAns.child(userID).child(worldName).child(miniQuizName).child("Question"+userQnsAns.getQnsId()).child("Choice"+userQnsAns.getChoiceId()).setValue(userQnsAns);
                 }
             }
         }
