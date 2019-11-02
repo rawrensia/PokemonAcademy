@@ -176,6 +176,8 @@ public class QuizLandingPage extends AppCompatActivity {
                                 Layer.putExtra("miniQuizID", 1);
                             } else if (miniQuizName.equals("Final Quiz")){
                                 Layer.putExtra("miniQuizID", 2);
+                            } else {
+                                Layer.putExtra("miniQuizID", -1);
                             }
                             Layer.putExtra("miniQuizName", miniQuizName);
                             Layer.putExtra("worldName", worldName);
@@ -283,8 +285,8 @@ public class QuizLandingPage extends AppCompatActivity {
             questionList.add(question);
         }
         return questionList;
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
