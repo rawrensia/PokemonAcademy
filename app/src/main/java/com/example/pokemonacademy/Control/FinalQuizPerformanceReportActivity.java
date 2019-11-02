@@ -133,7 +133,7 @@ public class FinalQuizPerformanceReportActivity extends AppCompatActivity {
 
                     addQuestion(worldId, qId, questionText);
                     addChoices(worldId, qId, block);
-                    addCorrectAttempts(qId, correctAttemptText);
+                    addCorrectAttempts(worldId, qId, correctAttemptText);
                 }
             }
 
@@ -189,7 +189,7 @@ public class FinalQuizPerformanceReportActivity extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(userListener);
     }
 
-    private void addCorrectAttempts(final int qnsId, final TextView tv){
+    private void addCorrectAttempts(final int worldId, final int qnsId, final TextView tv){
         DatabaseReference reference = mDatabaseAns;
 
         ValueEventListener userListener = new ValueEventListener() {
@@ -200,7 +200,7 @@ public class FinalQuizPerformanceReportActivity extends AppCompatActivity {
                 int correctUsers = 0;
 
                 for(DataSnapshot user : dataSnapshot.getChildren()) {
-                    DataSnapshot question = user.child("Question" + qnsId);
+                    DataSnapshot question = user.child("World"+ worldId).child("Quiz2").child("Question" + qnsId);
                     for(DataSnapshot choice : question.getChildren()) {
                         UserQnsAns ans = choice.getValue(UserQnsAns.class);
                         if (ans.getIsSelected()) {
