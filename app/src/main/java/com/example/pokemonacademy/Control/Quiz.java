@@ -64,6 +64,7 @@ public class Quiz extends AppCompatActivity {
     public String worldName;
     public int miniQuizID;
     public String miniQuizName;
+    public String customWorldID;
     private ArrayList<Question> questionList;
 
     // Variables for summary quiz
@@ -100,10 +101,13 @@ public class Quiz extends AppCompatActivity {
             questionList = intent.getExtras().getParcelableArrayList("questionList0");
         } else if (miniQuizID == 1) {
             questionList = intent.getExtras().getParcelableArrayList("questionList1");
-        } else {
+        } else if (miniQuizID == 2){
             questionList = intent.getExtras().getParcelableArrayList("questionList2");
             total_num_of_question = 10;
             current_num_of_question = 10;
+        } else {
+            questionList = intent.getExtras().getParcelableArrayList("customQuestionList");
+            customWorldID = intent.getStringExtra("customworldID");
         }
 
         // initialize background & pokemons
@@ -326,11 +330,16 @@ public class Quiz extends AppCompatActivity {
                         Layer.putExtras(bundle3);
 
                         Layer.putExtra("timeTaken", timeTaken);
-                        Layer.putExtra("miniQuizName", miniQuizTv.getText().toString());
-                        Log.i("miniquizid","miniquizid: "+miniQuizID);
                         Layer.putExtra("miniQuizId", miniQuizID);
                         Layer.putExtra("worldName", worldName);
                         Layer.putExtra("worldID", worldID);
+                        if (miniQuizID!=-1) {
+                            Layer.putExtra("worldName", worldName);
+                            Layer.putExtra("miniQuizName", miniQuizTv.getText().toString());
+                        } else {
+                            Layer.putExtra("worldName", customWorldID);
+                            Layer.putExtra("miniQuizName", miniQuizName);
+                        }
                         startActivity(Layer);
                     }
 
