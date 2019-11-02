@@ -122,8 +122,10 @@ public class CustomQuizActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot data : dataSnapshot.getChildren())
+                for(DataSnapshot data : dataSnapshot.getChildren()) {
+                    worldCodes.remove(data.getRef().getParent().getKey());
                     quizCodes.remove(data.getKey());
+                }
             }
 
             @Override
