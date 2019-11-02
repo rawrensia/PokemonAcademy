@@ -97,11 +97,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (user.getUserType().equalsIgnoreCase("T")) {
                     Layer = new Intent(LoginActivity.this, SummaryReportActivity.class);
-                    startActivity(Layer);
-                }
-                if (user.getFirstTime().equalsIgnoreCase("false")) {
+                } else if (user.getFirstTime().equalsIgnoreCase("False")) {
                     Layer = new Intent(LoginActivity.this, MenuLandingPage.class);
-                    startActivity(Layer);
                 } else {
                     Layer = new Intent(LoginActivity.this, ChooseCharacterActivity.class);
                 }
