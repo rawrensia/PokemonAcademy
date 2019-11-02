@@ -112,48 +112,48 @@ public class CustomQuizActivity extends AppCompatActivity {
             .setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(playTV.getText().toString().isEmpty())  {
-                        Intent Layer = new Intent(CustomQuizActivity.this, CustomQuizInfoActivity.class);
+                if(playTV.getText().toString().isEmpty())  {
+                    Intent Layer = new Intent(CustomQuizActivity.this, CustomQuizInfoActivity.class);
 //                        Layer.putExtra("playCQID", playTV.getText().toString());
-                        startActivity(Layer);
+                    startActivity(Layer);
+                } else {
+                    customQuizId = playTV.getText().toString();
+                    if (!checkDbCustomQuizId(customQuizId)) {
+                        Toast.makeText(CustomQuizActivity.this, "Please enter a correct code.", Toast.LENGTH_LONG).show();
                     } else {
-                        customQuizId = playTV.getText().toString();
-                        if (!checkDbCustomQuizId(customQuizId)) {
-                            Toast.makeText(CustomQuizActivity.this, "Please enter a correct code.", Toast.LENGTH_LONG).show();
-                        } else {
-                            questionDB.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    customQuestionList = getQuestions(dataSnapshot,customQuizToWorldList.get(index), customQuizId);
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                }
-                            });
+                        questionDB.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                customQuestionList = getQuestions(dataSnapshot,customQuizToWorldList.get(index), customQuizId);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        });
 
-                            questionchoiceDB.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    assignQuestionChoice(dataSnapshot.child(customQuizToWorldList.get(index)).child(customQuizId),customQuestionList);
-                                    Intent Layer = new Intent(CustomQuizActivity.this, Quiz.class);
-                                    Layer.putExtra("customworldID", customQuizToWorldList.get(index));
-                                    Layer.putExtra("worldID",-1); // default for custom quiz set worldID to -1
-                                    Layer.putExtra("worldName",customQuizId);
-                                    Layer.putExtra("miniQuizID",-1 ); // custom quiz can default as -1
-                                    Layer.putExtra("miniQuizName",customQuizId);
+                        questionchoiceDB.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                assignQuestionChoice(dataSnapshot.child(customQuizToWorldList.get(index)).child(customQuizId),customQuestionList);
+                                Intent Layer = new Intent(CustomQuizActivity.this, Quiz.class);
+                                Layer.putExtra("customworldID", customQuizToWorldList.get(index));
+                                Layer.putExtra("worldID",-1); // default for custom quiz set worldID to -1
+                                Layer.putExtra("worldName",customQuizId);
+                                Layer.putExtra("miniQuizID",-1 ); // custom quiz can default as -1
+                                Layer.putExtra("miniQuizName",customQuizId);
 
-                                    Bundle bundle = new Bundle();
-                                    bundle.putParcelableArrayList("customQuestionList", customQuestionList);
-                                    Layer.putExtras(bundle);
+                                Bundle bundle = new Bundle();
+                                bundle.putParcelableArrayList("customQuestionList", customQuestionList);
+                                Layer.putExtras(bundle);
 
-                                    startActivity(Layer);
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                }
-                            });
-                        }
+                                startActivity(Layer);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        });
                     }
+                }
                 }
             });
     }
