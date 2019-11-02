@@ -20,7 +20,6 @@
         <activity android:name=".Control.IndividualSummaryReportActivity" />
         <activity android:name=".Control.SummaryReportActivity" />
         <activity android:name=".Control.QuizSummary" />
-        <activity android:name=".Control.FinalQuiz" />
         <activity android:name=".Control.FinalQuizPerformanceReportActivity" />
         <activity
             android:name=".Control.QuizLandingPage"

@@ -56,7 +56,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         int time = userTimeList.get(i);
         int s = time%60;
         int m = time/60;
-        viewHolder.timing.setText(m+":"+s);
+        if (s<10 & m<10){
+            viewHolder.timing.setText("0" + m + ":0" + s);
+        } else if (s<10){
+            viewHolder.timing.setText(m + ":0" + s);
+        } else if (m<10){
+            viewHolder.timing.setText("0" + m + ":" + s);
+        } else {
+            viewHolder.timing.setText(m + ":" + s);
+        }
+
         if (userList.get(i).getCharId() == 0) {
             viewHolder.image.setBackground(ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.char3, null));
         } else if (userList.get(i).getCharId() == 1) {
