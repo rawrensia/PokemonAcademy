@@ -31,7 +31,9 @@ public class CustomQuizActivity extends AppCompatActivity {
 
     private void setSingleEvent()   {
         Button createBtn = findViewById(R.id.createCustomQuizBtn);
+        Button customQuizInfoBtn = findViewById(R.id.CustomQuizInfoBtn);
         Button playBtn = findViewById(R.id.playCustomQuizBtn);
+
         final TextView playTV = findViewById(R.id.playCustomQuizTV);
 
         createBtn
@@ -44,13 +46,22 @@ public class CustomQuizActivity extends AppCompatActivity {
             }
         );
 
+        customQuizInfoBtn
+            .setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent Layer = new Intent(CustomQuizActivity.this, CustomQuizInfoActivity.class);
+                    startActivity(Layer);
+                }
+            });
+
         playBtn
             .setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(!playTV.getText().toString().isEmpty())  {
-                        Intent Layer = new Intent(CustomQuizActivity.this, CustomQuizInfoActivity.class);
-//                        Layer.putExtra("playCQID", playTV.getText().toString());
+                        Intent Layer = new Intent(CustomQuizActivity.this, PlayCustomQuizActivity.class);
+                        Layer.putExtra("playCQID", playTV.getText().toString());
                         startActivity(Layer);
                     } else {
                         Toast.makeText(CustomQuizActivity.this, "Please enter a correct code.", Toast.LENGTH_LONG).show();

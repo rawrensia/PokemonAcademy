@@ -42,6 +42,10 @@
         <activity android:name=".Control.MenuLandingPage" />
         <activity android:name=".Control.CreateCustomQuizActivity" />
         <activity android:name=".Control.CustomQuizInfoActivity" />
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider469913970545830"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>
