@@ -135,6 +135,7 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent Layer = new Intent(CustomQuizInfoActivity.this, CustomQuizActivity.class);
                     startActivity(Layer);
+                    finish();
                 }
             });
     }

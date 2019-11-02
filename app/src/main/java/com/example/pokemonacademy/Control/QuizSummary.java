@@ -264,6 +264,7 @@ public class QuizSummary extends AppCompatActivity {
                 } else {
                     Intent Layer = new Intent(QuizSummary.this, CustomQuizActivity.class);
                     startActivity(Layer);
+                    finish();
                 }
 
             }
