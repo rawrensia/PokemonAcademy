@@ -364,6 +364,7 @@ public class Quiz extends AppCompatActivity {
                             Layer.putExtra("miniQuizName", miniQuizName);
                         }
                         startActivity(Layer);
+                        finish();
                     }
 
                     // Reset button states
