@@ -86,6 +86,7 @@ public class CustomQuizActivity extends AppCompatActivity {
                                 Intent Layer = new Intent(CustomQuizActivity.this, Quiz.class);
                                 Layer.putExtra("worldID", -1);
                                 Layer.putExtra("worldName", worldCodes.get(i));
+                                Layer.putExtra("customworldID", worldCodes.get(i));
                                 Layer.putExtra("miniQuizName", playTV.getText().toString());
                                 Layer.putExtra("miniQuizID",-1);
                                 startActivity(Layer);
