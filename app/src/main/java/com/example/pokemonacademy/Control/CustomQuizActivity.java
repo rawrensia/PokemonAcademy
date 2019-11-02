@@ -3,6 +3,7 @@ package com.example.pokemonacademy.Control;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,7 @@ public class CustomQuizActivity extends AppCompatActivity {
 
     private DatabaseReference questiondDB;
     private ArrayList<String> quizCodes = new ArrayList<>();
+    private ArrayList<String> worldCodes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +80,18 @@ public class CustomQuizActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if(!playTV.getText().toString().isEmpty())  {
-                        for(String s : quizCodes)
+                        for(int i=0; i<quizCodes.size(); i++){
+                            String s = quizCodes.get(i);
                             if(s.equals(playTV.getText().toString())) {
-                                Intent Layer = new Intent(CustomQuizActivity.this, PlayCustomQuizActivity.class);
-                                Layer.putExtra("playCQID", playTV.getText().toString());
+                                Intent Layer = new Intent(CustomQuizActivity.this, Quiz.class);
+                                Layer.putExtra("worldID", -1);
+                                Layer.putExtra("worldName", worldCodes.get(i));
+                                Layer.putExtra("miniQuizName", playTV.getText().toString());
+                                Layer.putExtra("miniQuizID",-1);
                                 startActivity(Layer);
                                 break;
                             }
+                        }
                     } else {
                         Toast.makeText(CustomQuizActivity.this, "Please enter a correct code.", Toast.LENGTH_LONG).show();
                     }
@@ -97,9 +105,14 @@ public class CustomQuizActivity extends AppCompatActivity {
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                for(DataSnapshot data : dataSnapshot.getChildren())
-                    if(!data.getKey().matches("World[0-5]"))
+                for(DataSnapshot data : dataSnapshot.getChildren()){
+                    if(!data.getRef().getParent().getKey().matches("World[0-5]")){
+                        worldCodes.add(data.getRef().getParent().getKey());
                         quizCodes.add(data.getKey());
+                        Log.i("CustomQuizActivityParen", ""+data.getRef().getParent().getKey());
+                        Log.i("CustomQuizActivity", ""+data.getKey());
+                    }
+                }
             }
 
             @Override

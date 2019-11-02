@@ -109,7 +109,9 @@ public class Quiz extends AppCompatActivity {
             questionList = intent.getExtras().getParcelableArrayList("customQuestionList");
             customWorldID = intent.getStringExtra("customworldID");
         }
+    }
 
+    public void gamePlay(){
         // initialize background & pokemons
         TextView tv = (TextView)findViewById(R.id.miniquiztitle);
         TextView userpokemonstatus = (TextView)findViewById(R.id.userpokemonstatus);
@@ -363,7 +365,6 @@ public class Quiz extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public Question displayNextQuestion(ArrayList<Question> questionList, int difficultyLevel){
@@ -448,4 +449,50 @@ public class Quiz extends AppCompatActivity {
         }
     }
 
+    public ArrayList<Question> getQuestions(DataSnapshot dataSnapshot, String worldID, String quizId){
+        dataSnapshot = dataSnapshot.child(worldID).child(quizId); // Question->World->Quiz-> Q1,Q2,Q3
+        ArrayList<Question> questionList = new ArrayList<Question>();
+
+        for(DataSnapshot ds: dataSnapshot.getChildren()){
+            final Question question = new Question();
+            question.setAttempted(false);
+            question.setDifficultyLevel(ds.getValue(Question.class).getDifficultyLevel());
+            question.setQuestion(ds.getValue(Question.class).getQuestion());
+            question.setQuestionId(ds.getValue(Question.class).getQuestionId());
+            question.setQuizId(ds.getValue(Question.class).getQuizId());
+            Log.i("QuestionDB","===== LOOP ======");
+            Log.i("QuestionDB","question: " + question.getQuestion());
+            Log.i("QuestionDB","attempted: " + question.getAttempted());
+            Log.i("QuestionDB","difficulty level: " + question.getDifficultyLevel());
+            Log.i("QuestionDB","questionid: " + question.getQuestionId());
+            Log.i("QuestionDB","quizid: " + question.getQuizId());
+            questionList.add(question);
+        }
+        return questionList;
+
+    }
+
+    public void assignQuestionChoice(DataSnapshot dataSnapshot, ArrayList<Question> questionList){
+        int questionId;
+        DataSnapshot datasnap;
+        // iterate through the question list and assign the ArrayList<QuestionChoice>
+        for (int i = 0; i<questionList.size(); i++){
+            final ArrayList<QuestionChoice> questionChoiceList = new ArrayList<QuestionChoice>();
+            questionId = questionList.get(i).getQuestionId();
+            Log.i("questionChoice","questionid" + questionId);
+            datasnap = dataSnapshot.child("Question"+questionId);
+            // Get choice 1,2,3 into choiceList
+            for (DataSnapshot ds : datasnap.getChildren()){
+                final QuestionChoice questionChoice = ds.getValue(QuestionChoice.class);
+                Log.i("questionChoice","==== QC LOOP ====");
+                Log.i("questionChoice","choice: " + questionChoice.getChoice());
+                Log.i("questionChoice","choiceid: " + questionChoice.getChoiceId());
+                Log.i("questionChoice","qnid: " + questionChoice.getQnsId());
+                Log.i("questionChoice","rightchoice: " + questionChoice.getRightChoice());
+                questionChoiceList.add(questionChoice);
+            }
+            // Assign choicelist to the question.
+            questionList.get(i).setQuestionChoice(questionChoiceList);
+        }
+    }
 }
