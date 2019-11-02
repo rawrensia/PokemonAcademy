@@ -75,7 +75,7 @@
             app:layout_constraintVertical_bias="0.124" />
 
         <Button
-            android:id="@+id/CustomQuizInfoBtn"
+            android:id="@+id/customQuizInfoBtn"
             android:layout_width="140dp"
             android:layout_height="65dp"
             android:background="@drawable/button2"
@@ -92,7 +92,7 @@
             app:layout_constraintVertical_bias="0.124" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/enterCustomQuizIdTV"
             android:layout_width="240dp"
             android:layout_height="70dp"
             android:background="@drawable/details_input_field"
