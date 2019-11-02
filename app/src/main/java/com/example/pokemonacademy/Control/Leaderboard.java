@@ -40,16 +40,10 @@ public class Leaderboard extends AppCompatActivity {
 
 
     RecyclerView recyclerView;
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
     private DatabaseReference quizzesCompletedDb;
     private DatabaseReference userDb;
-    private String userID;
     private ArrayList<User> userList = new ArrayList<User>();
-    private ArrayList<User> userSortedList = new ArrayList<User>();
-    private ArrayList<QuizzesCompleted> quizzesCompletedList = new ArrayList<QuizzesCompleted>();
     private ArrayList<String> userGradesList = new ArrayList<String>();
-    private ArrayList<int[]> gradeCountList = new ArrayList<int[]>();
     private ArrayList<Integer> totalScoreList = new ArrayList<Integer>();
     private ArrayList<Integer> userTimeList = new ArrayList<Integer>();
     private LinearLayoutManager manager;
@@ -61,11 +55,8 @@ public class Leaderboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
-        mAuth = FirebaseAuth.getInstance();
         quizzesCompletedDb = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
         userDb = FirebaseDatabase.getInstance().getReference("USER");
-        currentUser = mAuth.getCurrentUser();
-        userID = currentUser.getUid();
         manager = new LinearLayoutManager(this);
         mContext = this;
 
@@ -91,7 +82,6 @@ public class Leaderboard extends AppCompatActivity {
                     String grades = "";
                     int totalScore = 0;
                     int totalTime = 0;
-                    int[] gradeCount = new int[12];
                     QuizzesCompleted quizWorld0 = new QuizzesCompleted();
                     QuizzesCompleted quizWorld1 = new QuizzesCompleted();
                     QuizzesCompleted quizWorld2 = new QuizzesCompleted();
@@ -117,13 +107,8 @@ public class Leaderboard extends AppCompatActivity {
                             quizWorld2.getTimeTaken() + quizWorld3.getTimeTaken() +
                             quizWorld4.getTimeTaken() + quizWorld5.getTimeTaken();
 
-                    String g[] = grades.split(",");
-                    for (int j=0; j<g.length; j++){
-                        gradeCount = getGradeCount(g[j],gradeCount);
-                    }
                     userTimeList.add(totalTime);
                     totalScoreList.add(totalScore);
-                    gradeCountList.add(gradeCount);
                     userGradesList.add(grades);
                 }
                 sortUser();
@@ -168,14 +153,6 @@ public class Leaderboard extends AppCompatActivity {
         }
     }
 
-    private void runLayoutAnimation(final RecyclerView recyclerView){
-        final Context context = recyclerView.getContext();
-        final LayoutAnimationController layoutAnimationController =
-                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down);
-        recyclerView.setLayoutAnimation(layoutAnimationController);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.scheduleLayoutAnimation();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -199,35 +176,17 @@ public class Leaderboard extends AppCompatActivity {
     public String getGrade(int score) {
         switch (score){
             case 10: return "A+";
-            case 9: return "A";
+            case 9: return "A ";
             case 8: return "A-";
             case 7: return "B+";
-            case 6: return "B";
+            case 6: return "B ";
             case 5: return "B-";
             case 4: return "C+";
-            case 3: return "C";
+            case 3: return "C ";
             case 2: return "C-";
-            case 1: return "D";
-            case 0: return "F";
+            case 1: return "D ";
+            case 0: return "F ";
         }
-        return "X";
-    }
-
-    public int[] getGradeCount(String grade, int[] gradeCount){
-        switch (grade){
-            case "A+": gradeCount[0] = gradeCount[0] - (-1);
-            case "A": gradeCount[1] = gradeCount[0] - (-1);
-            case "A-": gradeCount[2] = gradeCount[0] - (-1);
-            case "B+": gradeCount[3] = gradeCount[0] - (-1);
-            case "B": gradeCount[4] = gradeCount[0] - (-1);
-            case "B-": gradeCount[5] = gradeCount[0] - (-1);
-            case "C+": gradeCount[6] = gradeCount[0] - (-1);
-            case "C": gradeCount[7] = gradeCount[0] - (-1);
-            case "C-": gradeCount[8] = gradeCount[0] - (-1);
-            case "D": gradeCount[9] = gradeCount[0] - (-1);
-            case "F": gradeCount[10] = gradeCount[0] - (-1);
-            case "X": gradeCount[11] = gradeCount[0] - (-1);
-        }
-        return gradeCount;
+        return "X ";
     }
 }
