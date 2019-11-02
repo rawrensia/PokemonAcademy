@@ -37,8 +37,6 @@ import java.util.Collections;
 
 public class Leaderboard extends AppCompatActivity {
 
-
-
     RecyclerView recyclerView;
     private DatabaseReference quizzesCompletedDb;
     private DatabaseReference userDb;
