@@ -109,7 +109,9 @@ public class Quiz extends AppCompatActivity {
             questionList = intent.getExtras().getParcelableArrayList("customQuestionList");
             customWorldID = intent.getStringExtra("customworldID");
         }
+    }
 
+    public void gamePlay(){
         // initialize background & pokemons
         TextView tv = (TextView)findViewById(R.id.miniquiztitle);
         TextView userpokemonstatus = (TextView)findViewById(R.id.userpokemonstatus);
@@ -363,7 +365,6 @@ public class Quiz extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public Question displayNextQuestion(ArrayList<Question> questionList, int difficultyLevel){
