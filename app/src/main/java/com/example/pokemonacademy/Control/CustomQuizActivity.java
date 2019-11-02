@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +34,7 @@ public class CustomQuizActivity extends AppCompatActivity {
     private DatabaseReference questiondDB;
     private ArrayList<String> quizCodes = new ArrayList<>();
     private ArrayList<String> worldCodes = new ArrayList<>();
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,5 +144,32 @@ public class CustomQuizActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_logout_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tomenulp:
+                Intent Layer = new Intent(CustomQuizActivity.this, MenuLandingPage.class);
+                startActivity(Layer);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(CustomQuizActivity.this, MainActivity.class);
+                Toast.makeText(CustomQuizActivity.this, "Successfully logged out.",
+                        Toast.LENGTH_LONG).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

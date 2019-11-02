@@ -7,12 +7,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
 import com.example.pokemonacademy.Entity.Question;
@@ -269,4 +273,47 @@ public class QuizSummary extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_mini_quiz_lp, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tocontent:
+                Intent Layer = getIntent();
+                String worldName = Layer.getStringExtra("worldName");
+                int worldID = Layer.getIntExtra("worldID", -1);
+                Intent intent = new Intent(getApplicationContext(), ContentActivity.class);
+                intent.putExtra("worldName", worldName);
+                intent.putExtra("worldID", worldID);
+                startActivity(intent);
+                return true;
+            case R.id.toworld:
+                Layer = new Intent(QuizSummary.this, WorldActivity.class);
+                startActivity(Layer);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(QuizSummary.this, MainActivity.class);
+                Toast.makeText(QuizSummary.this, "Successfully logged out.",
+                        Toast.LENGTH_SHORT).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            case R.id.toleaderboard:
+                Layer = new Intent(QuizSummary.this, Leaderboard.class);
+                startActivity(Layer);
+                Toast.makeText(QuizSummary.this, "Welcome to the leaderboard!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

@@ -3,16 +3,21 @@ package com.example.pokemonacademy.Control;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.pokemonacademy.Entity.QuizzesCompleted;
 import com.example.pokemonacademy.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +28,7 @@ import java.text.DecimalFormat;
 
 public class OverallSummaryReportActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +121,31 @@ public class OverallSummaryReportActivity extends AppCompatActivity {
             }
         };
         reference.addListenerForSingleValueEvent(userListener);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_logout_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tomenulp:
+                Intent Layer = new Intent(OverallSummaryReportActivity.this, MenuLandingPage.class);
+                startActivity(Layer);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(OverallSummaryReportActivity.this, MainActivity.class);
+                Toast.makeText(OverallSummaryReportActivity.this, "Successfully logged out.",
+                        Toast.LENGTH_LONG).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

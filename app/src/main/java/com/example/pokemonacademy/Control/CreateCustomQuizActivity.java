@@ -3,6 +3,9 @@ package com.example.pokemonacademy.Control;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -212,6 +215,33 @@ public class CreateCustomQuizActivity extends AppCompatActivity {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_logout_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tomenulp:
+                Intent Layer = new Intent(CreateCustomQuizActivity.this, MenuLandingPage.class);
+                startActivity(Layer);
+                return true;
+            case R.id.tologout:
+                mAuth.signOut();
+                Layer = new Intent(CreateCustomQuizActivity.this, MainActivity.class);
+                Toast.makeText(CreateCustomQuizActivity.this, "Successfully logged out.",
+                        Toast.LENGTH_LONG).show();
+                startActivity(Layer);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
