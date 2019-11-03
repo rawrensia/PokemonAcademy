@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list2">
 
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
@@ -10,15 +11,15 @@
         <TextView
             android:id="@+id/worldFinalQuizReport"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:fontFamily="@font/quenda"
             android:paddingTop="20dp"
             android:paddingHorizontal="20dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="@color/darkBlue"
-            android:textSize="33sp" />
+            android:textColor="@color/yellow"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/averageTime"
@@ -28,7 +29,7 @@
             android:fontFamily="@font/quenda"
             android:paddingBottom="15dp"
             android:textAlignment="center"
-            android:textColor="@color/darkBlue"
+            android:textColor="@color/yellow"
             android:textSize="25dp" />
     </LinearLayout>
 
@@ -37,13 +38,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbarStyle="insideOverlay"
-
-        >
+        android:backgroundTint="@color/lightyellow">
 
         <LinearLayout
             android:id="@+id/finalQuizReportLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"
+            android:backgroundTint="@color/lightyellow"></LinearLayout>
     </ScrollView>
 </LinearLayout>

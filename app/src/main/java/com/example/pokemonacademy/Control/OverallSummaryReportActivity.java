@@ -110,8 +110,12 @@ public class OverallSummaryReportActivity extends AppCompatActivity {
                 double mq2_avg = ((double)mq2_sum) / mq2_count;
                 double fq_avg = ((double)fq_sum) / fq_count;
 
-                TextView tv = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(1);
-                tv.setText("Mini Quiz 1: " + df2.format(mq1_avg) + " Mini Quiz 2: " + df2.format(mq2_avg) + " Final Quiz : " + df2.format(fq_avg));
+                TextView tv1 = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(1);
+                TextView tv2 = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(2);
+                TextView tv3 = (TextView)((LinearLayout)cardView.getChildAt(0)).getChildAt(3);
+                tv1.setText("Mini Quiz 1: " + df2.format(mq1_avg));
+                tv2.setText("Mini Quiz 2: " + df2.format(mq2_avg));
+                tv3.setText("Final Quiz : " + df2.format(fq_avg));
             }
 
             @Override

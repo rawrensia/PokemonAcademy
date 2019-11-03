@@ -1,0 +1,240 @@
+﻿|World0|Quiz0|Question0|FALSE|1|0|0|0|What are we supposed to do when planning a project?|
+|World0|Quiz0|Question1|FALSE|1|1|0|0|What should not be done when doing requirement elicitation?|
+|World0|Quiz0|Question2|FALSE|1|2|0|0|Functional requirements ____.|
+|World0|Quiz0|Question3|FALSE|1|3|0|0|Which of the following is not an activity of requirement development?|
+|World0|Quiz0|Question4|FALSE|1|4|0|0|Requirements analyst plays an important role in planning. Which one of the following are some essential skills which a good requirement analyst possesses?|
+|World0|Quiz0|Question5|FALSE|2|5|0|0|Which one of  the following are requirement elicitation techniques|
+|World0|Quiz0|Question6|FALSE|2|6|0|0|Which one of the following is not a benefit of a dialog map?|
+|World0|Quiz0|Question7|FALSE|2|7|0|0|What are the quality characteristics of language used in SRS?|
+|World0|Quiz0|Question8|FALSE|2|8|0|0|Which diagram is done in planning?|
+|World0|Quiz0|Question9|FALSE|2|9|0|0|What may result in an unsuccessful program?|
+|World0|Quiz0|Question10|FALSE|3|10|0|0|Project management does not encompass risk management.|
+|World0|Quiz0|Question11|FALSE|3|11|0|0|Project team consists of group working on ____ activity or task and with ____ goals.|
+|World0|Quiz0|Question12|FALSE|3|12|0|0|Technical writer and tester are ____ in a project team.|
+|World0|Quiz0|Question13|FALSE|3|13|0|0|What do we need to define when a planning the project?|
+|World0|Quiz0|Question14|FALSE|3|14|0|0|In most projects, the biggest cost resource is skilled manpower.|
+|World0|Quiz1|Question0|FALSE|1|0|1|0|What are some possible roles in a project team?|
+|World0|Quiz1|Question1|FALSE|1|1|1|0|Which of the following statements about WBS (work breakdown structure) is false?|
+|World0|Quiz1|Question2|FALSE|1|2|1|0|PERT (program evaluation & review technique) chart shows set of _____.|
+|World0|Quiz1|Question3|FALSE|1|3|1|0|Gantt chart shows project schedule of ____ along the time axis.|
+|World0|Quiz1|Question4|FALSE|1|4|1|0|Critical path is _____.|
+|World0|Quiz1|Question5|FALSE|2|5|1|0|Slack time is the _____ amount of time that you can delay an activity and still finish your project in the _____ time possible.|
+|World0|Quiz1|Question6|FALSE|2|6|1|0|ES (earliest start date) is ____.|
+|World0|Quiz1|Question7|FALSE|2|7|1|0|What date is the latest date you can finish an activity and still finish the project in the shortest time?|
+|World0|Quiz1|Question8|FALSE|2|8|1|0|Forward pass is to determine_____.|
+|World0|Quiz1|Question9|FALSE|2|9|1|0|How to calculate slack time of an activity?|
+|World0|Quiz1|Question10|FALSE|3|10|1|0|Which of the following is a method for estimating the time to develop software elements?|
+|World0|Quiz1|Question11|FALSE|3|11|1|0|When analyzing paths in network diagram, after a node is finished, proceed to the next node that is reachable via a transition from the current node.|
+|World0|Quiz1|Question12|FALSE|3|12|1|0|Which time estimating method involves making the development of a particular task into a set of stories with story points and the amount of difficulty or effort (not time) needed for each story (say on a scale of 1to10 where 10 is the hardest).|
+|World0|Quiz1|Question13|FALSE|3|13|1|0|Critical path analysis is an effective and powerful method of assessing the shortest and longest time a project takes to complete.|
+|World0|Quiz1|Question14|FALSE|3|14|1|0|Parkinson’s Law is not a task duration estimating method.|
+|World0|Quiz2|Question0|FALSE|-1|0|2|0|Which of the following statements is false?|
+|World0|Quiz2|Question1|FALSE|-1|1|2|0|SRS does not contain|
+|World0|Quiz2|Question2|FALSE|-1|2|2|0|Project management encompasses ______.|
+|World0|Quiz2|Question3|FALSE|-1|3|2|0|“Must comply with FDA standard 138-A” belongs to which requirement classification?|
+|World0|Quiz2|Question4|FALSE|-1|4|2|0|Which of the following is not a work product?|
+|World0|Quiz2|Question5|FALSE|-1|5|2|0|Which of the following statements about using marketing survey is true?|
+|World0|Quiz2|Question6|FALSE|-1|6|2|0|Changing requirements may result in an unsuccessful project.|
+|World0|Quiz2|Question7|FALSE|-1|7|2|0|“Watch users do their jobs”……|
+|World0|Quiz2|Question8|FALSE|-1|8|2|0|Consultants in a project team can be _____.|
+|World0|Quiz2|Question9|FALSE|-1|9|2|0|For project reviews, _____ assesses status, teams to exchange knowledge.|
+|World1|Quiz0|Question0|FALSE|1|0|0|1|Before designing the software system, what should we do?|
+|World1|Quiz0|Question1|FALSE|1|1|0|1|What should project mission statement define?|
+|World1|Quiz0|Question2|FALSE|1|2|0|1|We can elicit stakeholders’ needs and desires through ___.|
+|World1|Quiz0|Question3|FALSE|1|3|0|1|Functional requirements do not describe _____.|
+|World1|Quiz0|Question4|FALSE|1|4|0|1|A requirement is a short and concise statement describing ___.|
+|World1|Quiz0|Question5|FALSE|2|5|0|1|“After a system reboot, the system must restore full system functionality within 5 minutes.” belongs to which non-functional requirement?|
+|World1|Quiz0|Question6|FALSE|2|6|0|1|A requirement statement has a _____ identifier.|
+|World1|Quiz0|Question7|FALSE|2|7|0|1|What kind of sentences should we write when documenting requirements?|
+|World1|Quiz0|Question8|FALSE|2|8|0|1|We should make requirement statements _____.|
+|World1|Quiz0|Question9|FALSE|2|9|0|1|Is “The company must not hire too-young or too-old people.” a good requirement?|
+|World1|Quiz0|Question10|FALSE|3|10|0|1|A use case helps to associate with functional requirements.|
+|World1|Quiz0|Question11|FALSE|3|11|0|1|Use case diagram is ____ and use case description is _____.|
+|World1|Quiz0|Question12|FALSE|3|12|0|1|Which of the following statements about use case association is false?|
+|World1|Quiz0|Question13|FALSE|3|13|0|1|What are the main elements and notations of a use case diagram?|
+|World1|Quiz0|Question14|FALSE|3|14|0|1|The including (base) use case is ___ without the included (common) use case.|
+|World1|Quiz1|Question0|FALSE|1|0|1|1|Reliability describes the ability of a system to perform its required functions under stated conditions for a specific period of time.|
+|World1|Quiz1|Question1|FALSE|1|1|1|1|When writing documenting requirements, we should use passive voice.|
+|World1|Quiz1|Question2|FALSE|1|2|1|1|What is requirements traceability?|
+|World1|Quiz1|Question3|FALSE|1|3|1|1|“The system must control up to seven drill presses concurrently.” is a verifiable requirement.|
+|World1|Quiz1|Question4|FALSE|1|4|1|1|Is included (common) use case mandatory?|
+|World1|Quiz1|Question5|FALSE|2|5|1|1|What is the purpose of requirements analysis?|
+|World1|Quiz1|Question6|FALSE|2|6|1|1|Which of the following statements about analysis model is false?|
+|World1|Quiz1|Question7|FALSE|2|7|1|1|Include and extend are 2 types of use case associations.|
+|World1|Quiz1|Question8|FALSE|2|8|1|1|What is in conceptual model?|
+|World1|Quiz1|Question9|FALSE|2|9|1|1|Sequence diagram is a kind of state chart diagram and activity diagram is a kind of interaction diagram.|
+|World1|Quiz1|Question10|FALSE|3|10|1|1|Which of the following statements about class diagram is false?|
+|World1|Quiz1|Question11|FALSE|3|11|1|1|In classes, each attribute has a ____, each operation has a ____.|
+|World1|Quiz1|Question12|FALSE|3|12|1|1|What are class relationships that can be used in UML?|
+|World1|Quiz1|Question13|FALSE|3|13|1|1|What are 3 stereotypes of classes?|
+|World1|Quiz1|Question14|FALSE|3|14|1|1|What is a possible type of entity class?|
+|World1|Quiz2|Question0|FALSE|-1|0|2|1|What does performance describe?|
+|World1|Quiz2|Question1|FALSE|-1|1|2|1|When documenting requirements, we should not____.|
+|World1|Quiz2|Question2|FALSE|-1|2|2|1|Data dictionary ensures ___.|
+|World1|Quiz2|Question3|FALSE|-1|3|2|1|Extended (base) use case is incomplete and meaningless on its own.|
+|World1|Quiz2|Question4|FALSE|-1|4|2|1|Each use case must have a use case description that contains ____.|
+|World1|Quiz2|Question5|FALSE|-1|5|2|1|A prototype demonstrating the appearance or user interface and dialogues of the functionality may be produced to show the intended functionality.|
+|World1|Quiz2|Question6|FALSE|-1|6|2|1|What is the output of requirements analysis?|
+|World1|Quiz2|Question7|FALSE|-1|7|2|1|___model analyzes use cases to identify the objects and roles of objects involved in the system, and ___ model determines how to fulfill the processes defined in the use cases and which objects do these processes.|
+|World1|Quiz2|Question8|FALSE|-1|8|2|1|State machine diagram is a kind of state chart diagram.|
+|World1|Quiz2|Question9|FALSE|-1|9|2|1|Use case model provides coherent visual and textual description of system functionalities.|
+|World2|Quiz0|Question0|FALSE|1|0|0|2|Good design has high _____.|
+|World2|Quiz0|Question1|FALSE|1|1|0|2|What is a design pattern?|
+|World2|Quiz0|Question2|FALSE|1|2|0|2|Which of the following statements explains the principle of least knowledge?|
+|World2|Quiz0|Question3|FALSE|1|3|0|2|Conceptual integrity cannot be achieved by the uniform application of a limited number of design forms.|
+|World2|Quiz0|Question4|FALSE|1|4|0|2|What are the pros of MVC (model-view-controller) architecture?|
+|World2|Quiz0|Question5|FALSE|2|5|0|2|In software quality attributes, efficiency measures ____.|
+|World2|Quiz0|Question6|FALSE|2|6|0|2|Which quality attributes belong to product revision in McCall’s model?|
+|World2|Quiz0|Question7|FALSE|2|7|0|2|Which of the following are design strategies?|
+|World2|Quiz0|Question8|FALSE|2|8|0|2|What does portability mean?|
+|World2|Quiz0|Question9|FALSE|2|9|0|2|What is considered as performance of a software system?|
+|World2|Quiz0|Question10|FALSE|3|10|0|2|How to achieve portability in software design?|
+|World2|Quiz0|Question11|FALSE|3|11|0|2|Reliability is concerned with the probability that the system fails.|
+|World2|Quiz0|Question12|FALSE|3|12|0|2|In software architecture visual notations, what represent hardware components?|
+|World2|Quiz0|Question13|FALSE|3|13|0|2|What can be represented by active software component notation (rectangles with corners cut off)?|
+|World2|Quiz0|Question14|FALSE|3|14|0|2|Active and passive are two aspects of components.|
+|World2|Quiz1|Question0|FALSE|1|0|1|2|In Shaw and Garlan’s definition, software architecture has ……|
+|World2|Quiz1|Question1|FALSE|1|1|1|2|____ belong to component and ____ belong to connector.|
+|World2|Quiz1|Question2|FALSE|1|2|1|2|Software architecture ___.|
+|World2|Quiz1|Question3|FALSE|1|3|1|2|What are the design principles of system architecture?|
+|World2|Quiz1|Question4|FALSE|1|4|1|2|What are the advantages of independent components?|
+|World2|Quiz1|Question5|FALSE|2|5|1|2|Which of the following statements is false?|
+|World2|Quiz1|Question6|FALSE|2|6|1|2|In MVC (model-view-controller) architecture, _____.|
+|World2|Quiz1|Question7|FALSE|2|7|1|2|What is the con of MVC (model-view-controller) architecture?|
+|World2|Quiz1|Question8|FALSE|2|8|1|2|In interface segregation principle, _____.|
+|World2|Quiz1|Question9|FALSE|2|9|1|2|Which of the following best describes evolutionary design?|
+|World2|Quiz1|Question10|FALSE|3|10|1|2|Which of the following are software quality attributes?|
+|World2|Quiz1|Question11|FALSE|3|11|1|2|In software quality attributes, usability measures ____.|
+|World2|Quiz1|Question12|FALSE|3|12|1|2|Which quality attributes belong to product operations in McCall’s model?|
+|World2|Quiz1|Question13|FALSE|3|13|1|2|Which of the following statements is true?|
+|World2|Quiz1|Question14|FALSE|3|14|1|2|What may affect detailed design?|
+|World2|Quiz2|Question0|FALSE|-1|0|2|2|What are the 4 elements of a design pattern?|
+|World2|Quiz2|Question1|FALSE|-1|1|2|2|In open-close principle, Software entities like modules should be open for _____ but closed for _____.|
+|World2|Quiz2|Question2|FALSE|-1|2|2|2|Good design principles __.|
+|World2|Quiz2|Question3|FALSE|-1|3|2|2|In software quality attributes, reusability measures ____.|
+|World2|Quiz2|Question4|FALSE|-1|4|2|2|After understanding software quality, we can __.|
+|World2|Quiz2|Question5|FALSE|-1|5|2|2|Which quality attributes belong to product transition in McCall’s model?|
+|World2|Quiz2|Question6|FALSE|-1|6|2|2|For reusability, algorithm and data structure design do not determine ____.|
+|World2|Quiz2|Question7|FALSE|-1|7|2|2|Robustness measures how well the system responds to unanticipated conditions.|
+|World2|Quiz2|Question8|FALSE|-1|8|2|2|In software architecture visual notations, what represent active software components?|
+|World2|Quiz2|Question9|FALSE|-1|9|2|2|What can be represented by passive component notation (round corner rectangles)?|
+|World3|Quiz0|Question0|FALSE|1|0|0|3|What is in a software architectural style?|
+|World3|Quiz0|Question1|FALSE|1|1|0|3|What are considered as connectors in a software architectural style?|
+|World3|Quiz0|Question2|FALSE|1|2|0|3|‘Main program and subroutine’ belongs to which architectural style?|
+|World3|Quiz0|Question3|FALSE|1|3|0|3|In independent component architectures, ____ are a number of independent processes or objects, ______ communicate through messages.|
+|World3|Quiz0|Question4|FALSE|1|4|0|3|In client & server architecture, there are N servers and 1 client.|
+|World3|Quiz0|Question5|FALSE|2|5|0|3|How styles can be combined together?|
+|World3|Quiz0|Question6|FALSE|2|6|0|3|UML (unified modeling language) specifies 14 diagrams for software modeling, _____for structure, _____for behavior.|
+|World3|Quiz0|Question7|FALSE|2|7|0|3|Which of the following statements about Façade Design Pattern is false?|
+|World3|Quiz0|Question8|FALSE|2|8|0|3|A software port is ______.|
+|World3|Quiz0|Question9|FALSE|2|9|0|3|Data link in network is included in the software architecture.|
+|World3|Quiz0|Question10|FALSE|3|10|0|3|What are the 2 kinds of information exchange channels between components?|
+|World3|Quiz0|Question11|FALSE|3|11|0|3|­­­­­­­­­­___ is a “wait till completion” message.|
+|World3|Quiz0|Question12|FALSE|3|12|0|3|Message sequence is a mandatory annotation.|
+|World3|Quiz0|Question13|FALSE|3|13|0|3|What are the elements of Berlo’s model of communication?|
+|World3|Quiz0|Question14|FALSE|3|14|0|3|Direct calling ____.|
+|World3|Quiz1|Question0|FALSE|1|0|1|3|‘Pipe-and-filter’ belongs to which architectural style?|
+|World3|Quiz1|Question1|FALSE|1|1|1|3|What is the advantage of independent component architecture?|
+|World3|Quiz1|Question2|FALSE|1|2|1|3|What is the disadvantage of data flow architecture?|
+|World3|Quiz1|Question3|FALSE|1|3|1|3|A software port ­­­­______.|
+|World3|Quiz1|Question4|FALSE|1|4|1|3|What are the 3 forms of UML component diagrams?|
+|World3|Quiz1|Question5|FALSE|2|5|1|3|___ is a “fire and forget” message.|
+|World3|Quiz1|Question6|FALSE|2|6|1|3|What are some sample roles that components could have in a typical computerized product?|
+|World3|Quiz1|Question7|FALSE|2|7|1|3|In software development, library is ______.|
+|World3|Quiz1|Question8|FALSE|2|8|1|3|Library is not reusable at implementation stage|
+|World3|Quiz1|Question9|FALSE|2|9|1|3|A common framework can be ______.|
+|World3|Quiz1|Question10|FALSE|3|10|1|3|In steps to reusing software components, _____ analyse the reusable for appropriateness in the design, including services offered, conditions of service, naming, and library usage.|
+|World3|Quiz1|Question11|FALSE|3|11|1|3|What is the order of steps to reusing software components?|
+|World3|Quiz1|Question12|FALSE|3|12|1|3|What do we need to consider in CBSE repositories?|
+|World3|Quiz1|Question13|FALSE|3|13|1|3|Software frameworks and component-based software engineering (CBSE) repositories are two effective and trustworthy sources of reusable software components.|
+|World3|Quiz1|Question14|FALSE|3|14|1|3|Which of the following statements is false?|
+|World3|Quiz2|Question0|FALSE|-1|0|2|3|‘Rule-based system’ belongs to which architectural style?|
+|World3|Quiz2|Question1|FALSE|-1|1|2|3|What is the disadvantage of pipe-and-filter style?|
+|World3|Quiz2|Question2|FALSE|-1|2|2|3|What are the components of call-and-return style?|
+|World3|Quiz2|Question3|FALSE|-1|3|2|3|How many diagrams does UML specifies for software modeling?|
+|World3|Quiz2|Question4|FALSE|-1|4|2|3|Which of the followings is not a hardware port?|
+|World3|Quiz2|Question5|FALSE|-1|5|2|3|Android uses layered structure style.|
+|World3|Quiz2|Question6|FALSE|-1|6|2|3|In decomposition form of UML component diagram, which of the following statements is true?|
+|World3|Quiz2|Question7|FALSE|-1|7|2|3|In Berlo’s model of communication, ____ originates a coherent message, encodes the message into a form interpretable by the receiver, and loads it into a channel for transmission to the receiver|
+|World3|Quiz2|Question8|FALSE|-1|8|2|3|In MVC (Model-View-Controller), ___ controls operation of the MVC such as sending input parameters to model, launching views, and synchronizing views and model|
+|World3|Quiz2|Question9|FALSE|-1|9|2|3|Library and toolkit are Two common reuse approaches in software development|
+|World4|Quiz0|Question0|FALSE|1|0|0|4|Basis path testing……|
+|World4|Quiz0|Question1|FALSE|1|1|0|4|Which of the following does not belong to black box testing?|
+|World4|Quiz0|Question2|FALSE|1|2|0|4|Integration testing……|
+|World4|Quiz0|Question3|FALSE|1|3|0|4|Test case does not need to have…|
+|World4|Quiz0|Question4|FALSE|1|4|0|4|What does a testing engine do in black box testing?|
+|World4|Quiz0|Question5|FALSE|2|5|0|4|What does a tester do in equivalence class testing?|
+|World4|Quiz0|Question6|FALSE|2|6|0|4|White box testing……|
+|World4|Quiz0|Question7|FALSE|2|7|0|4|What is CFG (Control Flow Graph)?|
+|World4|Quiz0|Question8|FALSE|2|8|0|4|In CFG, for ‘if’ statement...|
+|World4|Quiz0|Question9|FALSE|2|9|0|4|How to compute CC (cyclomatic complexity) if all decision points are binary?|
+|World4|Quiz0|Question10|FALSE|3|10|0|4|Which of the following statements about process block in CFG is false?|
+|World4|Quiz0|Question11|FALSE|3|11|0|4|What is the first step of equivalence class testing process?|
+|World4|Quiz0|Question12|FALSE|3|12|0|4|What is testing?|
+|World4|Quiz0|Question13|FALSE|3|13|0|4|For white box testing, what do we need to analyze?|
+|World4|Quiz0|Question14|FALSE|3|14|0|4|What are the 4 levels of testing?|
+|World4|Quiz1|Question0|FALSE|1|0|1|4|What does the edge represent in CFG (Control Flow Graph)?|
+|World4|Quiz1|Question1|FALSE|1|1|1|4|In CFG, for ‘while’ statement..|
+|World4|Quiz1|Question2|FALSE|1|2|1|4|For black box testing, what do we need to analyze?|
+|World4|Quiz1|Question3|FALSE|1|3|1|4|What does unit testing test?|
+|World4|Quiz1|Question4|FALSE|1|4|1|4|Control flow testing and equivalence class testing are white box testing methods.|
+|World4|Quiz1|Question5|FALSE|2|5|1|4|What does ‘oracle’ mean in test case?|
+|World4|Quiz1|Question6|FALSE|2|6|1|4|For cascading test cases, ……|
+|World4|Quiz1|Question7|FALSE|2|7|1|4|In black box testing, the tester determines expected outputs before writing JUnit program.|
+|World4|Quiz1|Question8|FALSE|2|8|1|4|What is the pro of white box testing?|
+|World4|Quiz1|Question9|FALSE|2|9|1|4|Black box testing is applicable to …|
+|World4|Quiz1|Question10|FALSE|3|10|1|4|What are the assumptions for black box testing?|
+|World4|Quiz1|Question11|FALSE|3|11|1|4|For equivalence class testing, ……|
+|World4|Quiz1|Question12|FALSE|3|12|1|4|Does testing engine in equivalence class testing compare log with oracle?|
+|World4|Quiz1|Question13|FALSE|3|13|1|4|Requirement: the password must contain 4-8 chars and digits. What is the valid input for length of password?|
+|World4|Quiz1|Question14|FALSE|3|14|1|4|When we design test cases using equivalence class testing, ……|
+|World4|Quiz2|Question0|FALSE|-1|0|2|4|What are the 5 elements of test case?|
+|World4|Quiz2|Question1|FALSE|-1|1|2|4|Which of the following statements about black box testing is true?|
+|World4|Quiz2|Question2|FALSE|-1|2|2|4|What does the node represent in CFG (Control Flow Graph)?|
+|World4|Quiz2|Question3|FALSE|-1|3|2|4|In CFG, for ‘switch’ statement...|
+|World4|Quiz2|Question4|FALSE|-1|4|2|4|Which of the following statements about CC (cyclomatic complexity) is false?|
+|World4|Quiz2|Question5|FALSE|-1|5|2|4|Which of the following statements about white box testing is false?|
+|World4|Quiz2|Question6|FALSE|-1|6|2|4|System testing tests everything (functionality, usability, reliability, security…).|
+|World4|Quiz2|Question7|FALSE|-1|7|2|4|For 5 elements of test case, ……|
+|World4|Quiz2|Question8|FALSE|-1|8|2|4|What is the con of black box testing|
+|World4|Quiz2|Question9|FALSE|-1|9|2|4|White box testing is applicable to …|
+|World5|Quiz0|Question0|FALSE|1|0|0|5|Which of the following is not a cause of maintenance problem?|
+|World5|Quiz0|Question1|FALSE|1|1|0|5|What may cause unstructured code?|
+|World5|Quiz0|Question2|FALSE|1|2|0|5|Unstructured code, insufficient domain knowledge and insufficient documentation are 3 main causes of maintenance problems.|
+|World5|Quiz0|Question3|FALSE|1|3|0|5|How to implement changes in software maintenance?|
+|World5|Quiz0|Question4|FALSE|1|4|0|5|‘Fault repairs’ is to modify the system to satisfy new requirements.|
+|World5|Quiz0|Question5|FALSE|2|5|0|5|What are we supposed to do in fault repairs?|
+|World5|Quiz0|Question6|FALSE|2|6|0|5|How much does functionality modification distribute in maintenance effort distribution approximately?|
+|World5|Quiz0|Question7|FALSE|2|7|0|5|Software refactoring ……|
+|World5|Quiz0|Question8|FALSE|2|8|0|5|Software refactoring is the process of making improvements to a program to slow down degradation through change.|
+|World5|Quiz0|Question9|FALSE|2|9|0|5|What kinds of program code can be improved?|
+|World5|Quiz0|Question10|FALSE|3|10|0|5|Software maintenance is concerned with ……|
+|World5|Quiz0|Question11|FALSE|3|11|0|5|Refactoring is not a continuous process of improvement.|
+|World5|Quiz0|Question12|FALSE|3|12|0|5|When we want to change a system to fix bugs, we need to do ……|
+|World5|Quiz0|Question13|FALSE|3|13|0|5|White box testing is a type of software maintenance.|
+|World5|Quiz0|Question14|FALSE|3|14|0|5|Insufficient domain knowledge results in ……|
+|World5|Quiz1|Question0|FALSE|1|0|1|5|Insufficient documentation is not a cause of maintenance problem.|
+|World5|Quiz1|Question1|FALSE|1|1|1|5|In software maintenance, what are the reasons to modify a software system after delivery?|
+|World5|Quiz1|Question2|FALSE|1|2|1|5|Which of the following describes environmental adaptation best?|
+|World5|Quiz1|Question3|FALSE|1|3|1|5|Functionality modification modifies the system to satisfy new requirements.|
+|World5|Quiz1|Question4|FALSE|1|4|1|5|Which of the following distributes most in maintenance effort distribution?|
+|World5|Quiz1|Question5|FALSE|2|5|1|5|Software refactoring means modifying a program to ……|
+|World5|Quiz1|Question6|FALSE|2|6|1|5|How much does fault repair distribute in maintenance effort distribution approximately?|
+|World5|Quiz1|Question7|FALSE|2|7|1|5|Data clumping (same group of data reoccurs in several places) does not need to be improved.|
+|World5|Quiz1|Question8|FALSE|2|8|1|5|Insufficient documentation may be caused by ……|
+|World5|Quiz1|Question9|FALSE|2|9|1|5|Refactoring is intended to avoid the structure and code degradation that increases the costs and difficulties of maintaining a system.|
+|World5|Quiz1|Question10|FALSE|3|10|1|5|When we want to modify the system to satisfy new requirements, we need to do ……|
+|World5|Quiz1|Question11|FALSE|3|11|1|5|Which of the following statements is true?|
+|World5|Quiz1|Question12|FALSE|3|12|1|5|Which of the following statements is false?|
+|World5|Quiz1|Question13|FALSE|3|13|1|5|What are the goals of software refactoring?|
+|World5|Quiz1|Question14|FALSE|3|14|1|5|Software maintenance is useless so it is not needed.|
+|World5|Quiz2|Question0|FALSE|-1|0|2|5|What may cause insufficient documentation?|
+|World5|Quiz2|Question1|FALSE|-1|1|2|5|Which one of the following is not a part of software maintenance?|
+|World5|Quiz2|Question2|FALSE|-1|2|2|5|Correcting errors found after the software has been delivered is necessary in software maintenance.|
+|World5|Quiz2|Question3|FALSE|-1|3|2|5|What are the 3 types of software maintenance?|
+|World5|Quiz2|Question4|FALSE|-1|4|2|5|Which of the following statements about software refactoring is false?|
+|World5|Quiz2|Question5|FALSE|-1|5|2|5|How much does environmental adaptation distribute in maintenance effort distribution approximately?|
+|World5|Quiz2|Question6|FALSE|-1|6|2|5|What kinds of program code can be improved in software maintenance?|
+|World5|Quiz2|Question7|FALSE|-1|7|2|5|Numerous GOTO statements is a kind of unstructured code, they are ……|
+|World5|Quiz2|Question8|FALSE|-1|8|2|5|Switch (case) statement is not included in a situation in which the code of a program can be improved.|
+|World5|Quiz2|Question9|FALSE|-1|9|2|5|When we want to adapt software to a different operating environment, we need to do ……|

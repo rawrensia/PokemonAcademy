@@ -72,7 +72,7 @@ public class Quiz extends AppCompatActivity {
     private ArrayList<Question> questionAnswered = new ArrayList<Question>(); // for storing questions answered
     private ArrayList<QuestionChoice> choiceChosen = new ArrayList<QuestionChoice>(); // for storing the choice which is chosen by the student
     private ArrayList<QuestionChoice> rightChoice = new ArrayList<QuestionChoice>(); // for storing the right choice
-    private int timeTaken[] = new int[current_num_of_question];
+    private int timeTaken[];
     private long startTime, endTime;
     private boolean choiceClicked = false;
 
@@ -97,33 +97,56 @@ public class Quiz extends AppCompatActivity {
         miniQuizID = intent.getIntExtra("miniQuizID",-1);
         miniQuizName = intent.getStringExtra("miniQuizName");
 
-        if (miniQuizID == 0){
-            questionList = intent.getExtras().getParcelableArrayList("questionList0");
-            gamePlay();
-        } else if (miniQuizID == 1) {
-            questionList = intent.getExtras().getParcelableArrayList("questionList1");
-            gamePlay();
-        } else if (miniQuizID == 2){
-            questionList = intent.getExtras().getParcelableArrayList("questionList2");
-            total_num_of_question = 10;
-            current_num_of_question = 10;
-            gamePlay();
+        if (miniQuizID == 0 || miniQuizID == 1 || miniQuizID == 2){
+            questionDb.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    questionList = getQuestions2(dataSnapshot, worldID, miniQuizID);
+                    choiceDb.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            assignQuestionChoice2(dataSnapshot.child("World"+worldID).child("Quiz"+miniQuizID),questionList);
+                            if (miniQuizID == 0 || miniQuizID == 1){
+                                total_num_of_question = 5;
+                                current_num_of_question = 5;
+                                timeTaken = new int[5];
+                            } else {
+                                total_num_of_question = questionList.size();
+                                current_num_of_question = questionList.size();
+                                timeTaken = new int[questionList.size()];
+                            }
+                            gamePlay();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+
+
         } else {
             customWorldID = intent.getStringExtra("customworldID");
             questionDb.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     questionList = getQuestions(dataSnapshot, worldName, miniQuizName);
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-            choiceDb.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    assignQuestionChoice(dataSnapshot.child(worldName).child(miniQuizName),questionList);
-                    gamePlay();
+                    choiceDb.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            assignQuestionChoice(dataSnapshot.child(worldName).child(miniQuizName),questionList);
+                            total_num_of_question = questionList.size();
+                            current_num_of_question = questionList.size();
+                            timeTaken = new int[questionList.size()];
+                            gamePlay();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -329,13 +352,12 @@ public class Quiz extends AppCompatActivity {
                         }
                     }
                     current_num_of_question = current_num_of_question - 1;
+                    Log.i("currentnumquestions",""+current_num_of_question);
                     choiceClicked = false;
 
                     // End condition
                     if (endBattleFlag || current_num_of_question <= 0) {
                         Intent intent = getIntent();
-//                        String worldName = intent.getStringExtra("worldName");
-//                        int worldID = intent.getIntExtra("worldID", -1);
                         TextView miniQuizTv = (TextView) findViewById(R.id.miniquiztitle);
 
                         Intent Layer = new Intent(Quiz.this, QuizSummary.class);
@@ -401,8 +423,7 @@ public class Quiz extends AppCompatActivity {
             Question q = questionList.get(i);
             Log.d("questionlist","question " + q.getQuestion());
             Log.d("questionlist","question " + q.getAttempted());
-//            if (q.attemped == false && (q.getDifficultyLevel() == difficultyLevel || q.getDifficultyLevel == -1)){
-            if (q.attempted == false){
+            if (q.attempted == false && (q.getDifficultyLevel() == difficultyLevel || q.getDifficultyLevel() == -1)){
                 questionTv.setText(questionList.get(i).question);
                 currentQuestionIndex = i;
                 answeroption1.setText("1) "+q.getQuestionChoice().get(0).getChoice());
@@ -516,5 +537,53 @@ public class Quiz extends AppCompatActivity {
             // Assign choicelist to the question.
             questionList.get(i).setQuestionChoice(questionChoiceList);
         }
+    }
+
+    public void assignQuestionChoice2(DataSnapshot dataSnapshot, ArrayList<Question> questionList){
+        int questionId;
+        DataSnapshot datasnap;
+        // iterate through the question list and assign the ArrayList<QuestionChoice>
+        for (int i = 0; i<questionList.size(); i++){
+            final ArrayList<QuestionChoice> questionChoiceList = new ArrayList<QuestionChoice>();
+            questionId = questionList.get(i).getQuestionId();
+            Log.i("questionChoice","questionid" + questionId);
+            datasnap = dataSnapshot.child("Question"+questionId);
+            // Get choice 1,2,3 into choiceList
+            for (DataSnapshot ds : datasnap.getChildren()){
+                final QuestionChoice questionChoice = ds.getValue(QuestionChoice.class);
+                Log.i("questionChoice","==== QC LOOP ====");
+                Log.i("questionChoice","choice: " + questionChoice.getChoice());
+                Log.i("questionChoice","choiceid: " + questionChoice.getChoiceId());
+                Log.i("questionChoice","qnid: " + questionChoice.getQnsId());
+                Log.i("questionChoice","rightchoice: " + questionChoice.getRightChoice());
+                questionChoiceList.add(questionChoice);
+            }
+            // Assign choicelist to the question.
+            questionList.get(i).setQuestionChoice(questionChoiceList);
+        }
+    }
+
+    public ArrayList<Question> getQuestions2(DataSnapshot dataSnapshot, int worldID, int quizId){
+        String world = "World"+worldID;
+        String quiz = "Quiz"+quizId;
+        dataSnapshot = dataSnapshot.child(world).child(quiz); // Question->World->Quiz-> Q1,Q2,Q3
+        ArrayList<Question> questionList = new ArrayList<Question>();
+
+        for(DataSnapshot ds: dataSnapshot.getChildren()){
+            final Question question = new Question();
+            question.setAttempted(false);
+            question.setDifficultyLevel(ds.getValue(Question.class).getDifficultyLevel());
+            question.setQuestion(ds.getValue(Question.class).getQuestion());
+            question.setQuestionId(ds.getValue(Question.class).getQuestionId());
+            question.setQuizId(ds.getValue(Question.class).getQuizId());
+            Log.i("QuestionDB","===== LOOP ======");
+            Log.i("QuestionDB","question: " + question.getQuestion());
+            Log.i("QuestionDB","attempted: " + question.getAttempted());
+            Log.i("QuestionDB","difficulty level: " + question.getDifficultyLevel());
+            Log.i("QuestionDB","questionid: " + question.getQuestionId());
+            Log.i("QuestionDB","quizid: " + question.getQuizId());
+            questionList.add(question);
+        }
+        return questionList;
     }
 }

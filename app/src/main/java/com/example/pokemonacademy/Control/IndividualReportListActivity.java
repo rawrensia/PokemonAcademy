@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
@@ -65,18 +67,29 @@ public class IndividualReportListActivity extends AppCompatActivity {
     private void addStudent(final String sId, final String name){
         LinearLayout studentList = findViewById(R.id.studentList);
 
-        CardView cv = new CardView(IndividualReportListActivity.this);
-        cv.setCardBackgroundColor(Color.LTGRAY);
+        CardView cv = new CardView(getApplicationContext());
 
-        LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        cv.setLayoutParams(cardViewParams);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                Math.round(30 * getResources().getDisplayMetrics().density));
 
-        ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) cv.getLayoutParams();
-        cardViewMarginParams.setMargins(20, 10, 20, 10);
-        cv.requestLayout();
+        int margin = Math.round(7 * getResources().getDisplayMetrics().density);
+        lp.setMargins(margin, margin, margin, margin);
+        cv.setLayoutParams(lp);
 
-        TextView tv = new TextView(IndividualReportListActivity.this);
-        tv.setPadding(8,2,8,2);
+        cv.setCardBackgroundColor(getResources().getColor(R.color.yellow));
+        cv.setRadius(Math.round(8 * getResources().getDisplayMetrics().density));
+        cv.setCardElevation(Math.round(6 * getResources().getDisplayMetrics().density));
+
+        TextView tv = new TextView(getApplicationContext());
+        CardView.LayoutParams tvParams = new CardView.LayoutParams(
+                CardView.LayoutParams.WRAP_CONTENT,
+                CardView.LayoutParams.MATCH_PARENT);
+        tvParams.setMargins(Math.round(8 * getResources().getDisplayMetrics().density), 0, 0, 0);
+        tv.setLayoutParams(tvParams);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextColor(getResources().getColor(R.color.darkBlue));
+        tv.setTypeface(ResourcesCompat.getFont(IndividualReportListActivity.this, R.font.quenda));
         tv.setText(name);
 
         cv.setOnClickListener(new View.OnClickListener() {

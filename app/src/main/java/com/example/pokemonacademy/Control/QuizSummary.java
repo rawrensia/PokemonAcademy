@@ -232,16 +232,37 @@ public class QuizSummary extends AppCompatActivity {
                 if (choiceChosen.get(j).getRightChoice()){ s = s-(-1);}
             }
             int percentage = (s*100/10);
-            if (s>=9){
+            if (s==10) {
+                finalQuizTV.setText("Congratulations!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: A+");
+            } else if (s==9) {
                 finalQuizTV.setText("Congratulations!\n\nFor " + worldName + "");
                 finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: A");
-            } else if (s>=7){
+            } else if (s==8) {
+                finalQuizTV.setText("Good Try!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: A-");
+            } else if (s==7) {
+                finalQuizTV.setText("Good Try!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: B+");
+            } else if (s==6) {
                 finalQuizTV.setText("Good Try!\n\nFor " + worldName + "");
                 finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: B");
-            } else if (s>=5){
+            } else if (s==5) {
                 finalQuizTV.setText("Try harder next time!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: B-");
+            } else if (s==4) {
+                finalQuizTV.setText("Try harder next time!\n\nFor " + worldName + "");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: C+");
+            } else if (s==3) {
+                finalQuizTV.setText("Please read up on the lecture notes before attempting!\n\nFor " + worldName + " World");
                 finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: C");
-            } else {
+            } else if (s==2) {
+                finalQuizTV.setText("Please read up on the lecture notes before attempting!\n\nFor " + worldName + " World");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: C-");
+            } else if (s==1) {
+                finalQuizTV.setText("Please read up on the lecture notes before attempting!\n\nFor " + worldName + " World");
+                finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: D");
+            } else if (s==0) {
                 finalQuizTV.setText("Please read up on the lecture notes before attempting!\n\nFor " + worldName + " World");
                 finalQuizScoreTV.setText("You scored " + percentage+"%\nGrade: F");
             }
@@ -265,6 +286,7 @@ public class QuizSummary extends AppCompatActivity {
                     Layer.putExtra("worldName", worldName);
                     Layer.putExtra("worldID", worldID);
                     startActivity(Layer);
+                    finish();
                 } else {
                     Intent Layer = new Intent(QuizSummary.this, CustomQuizActivity.class);
                     startActivity(Layer);

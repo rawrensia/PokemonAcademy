@@ -115,7 +115,7 @@ public class CustomQuizInfoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     copyToClipboard(tv.getText().toString());
-                    Toast.makeText(CustomQuizInfoActivity.this, tv.getText().toString() + "copied to clipboard.",
+                    Toast.makeText(CustomQuizInfoActivity.this, tv.getText().toString() + " copied to clipboard.",
                             Toast.LENGTH_LONG).show();
                 }
             });

@@ -50,12 +50,8 @@ public class QuizLandingPage extends AppCompatActivity {
     public String userID;
     public String worldName;
     public int worldID;
-    public ArrayList<Question> questionList0;
     public ArrayList<Question> questionList1;
     public ArrayList<Question> questionList2;
-    public ArrayList<QuestionChoice> questionChoice0;
-    public ArrayList<QuestionChoice> questionChoice1;
-    public ArrayList<QuestionChoice> questionChoice2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +59,6 @@ public class QuizLandingPage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         userDb = FirebaseDatabase.getInstance().getReference("USER");
-        questionDb = FirebaseDatabase.getInstance().getReference("QUESTION");
-        choiceDb = FirebaseDatabase.getInstance().getReference("QUESTION_CHOICES");
         quizzesCompletedDb = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
         currentUser = mAuth.getCurrentUser();
         userID = currentUser.getUid();
@@ -75,34 +69,6 @@ public class QuizLandingPage extends AppCompatActivity {
 
         Log.i("User","user "+currentUser.getUid());
         Log.i("World","world "+worldID);
-
-        questionDb.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                questionList0 = getQuestions(dataSnapshot, worldID ,0);
-                questionList1 = getQuestions(dataSnapshot, worldID ,1);
-                questionList2 = getQuestions(dataSnapshot, worldID ,2);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        choiceDb.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                assignQuestionChoice(dataSnapshot.child("World"+worldID).child("Quiz0"),questionList0);
-                assignQuestionChoice(dataSnapshot.child("World"+worldID).child("Quiz1"),questionList1);
-                assignQuestionChoice(dataSnapshot.child("World"+worldID).child("Quiz2"),questionList2);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         quizzesCompletedDb.addValueEventListener(new ValueEventListener() {
             @Override
@@ -182,20 +148,8 @@ public class QuizLandingPage extends AppCompatActivity {
                             Layer.putExtra("miniQuizName", miniQuizName);
                             Layer.putExtra("worldName", worldName);
                             Layer.putExtra("worldID", worldID);
-
-                            Bundle bundle0 = new Bundle();
-                            bundle0.putParcelableArrayList("questionList0", questionList0);
-                            Layer.putExtras(bundle0);
-
-                            Bundle bundle1 = new Bundle();
-                            bundle1.putParcelableArrayList("questionList1", questionList1);
-                            Layer.putExtras(bundle1);
-
-                            Bundle bundle2 = new Bundle();
-                            bundle2.putParcelableArrayList("questionList2", questionList2);
-                            Layer.putExtras(bundle2);
-
                             startActivity(Layer);
+                            finish();
                         }
                     });
                 }
@@ -238,54 +192,6 @@ public class QuizLandingPage extends AppCompatActivity {
     // Get from db which mini quiz has completed by the user
     // Mini quiz can be done in any order
     // Condition to check all miniquiz is completed before allowing access to Final quiz.
-
-    public void assignQuestionChoice(DataSnapshot dataSnapshot, ArrayList<Question> questionList){
-        int questionId;
-        DataSnapshot datasnap;
-        // iterate through the question list and assign the ArrayList<QuestionChoice>
-        for (int i = 0; i<questionList.size(); i++){
-            final ArrayList<QuestionChoice> questionChoiceList = new ArrayList<QuestionChoice>();
-            questionId = questionList.get(i).getQuestionId();
-            Log.i("questionChoice","questionid" + questionId);
-            datasnap = dataSnapshot.child("Question"+questionId);
-            // Get choice 1,2,3 into choiceList
-            for (DataSnapshot ds : datasnap.getChildren()){
-                final QuestionChoice questionChoice = ds.getValue(QuestionChoice.class);
-                Log.i("questionChoice","==== QC LOOP ====");
-                Log.i("questionChoice","choice: " + questionChoice.getChoice());
-                Log.i("questionChoice","choiceid: " + questionChoice.getChoiceId());
-                Log.i("questionChoice","qnid: " + questionChoice.getQnsId());
-                Log.i("questionChoice","rightchoice: " + questionChoice.getRightChoice());
-                questionChoiceList.add(questionChoice);
-            }
-            // Assign choicelist to the question.
-            questionList.get(i).setQuestionChoice(questionChoiceList);
-        }
-    }
-
-    public ArrayList<Question> getQuestions(DataSnapshot dataSnapshot, int worldID, int quizId){
-        String world = "World"+worldID;
-        String quiz = "Quiz"+quizId;
-        dataSnapshot = dataSnapshot.child(world).child(quiz); // Question->World->Quiz-> Q1,Q2,Q3
-        ArrayList<Question> questionList = new ArrayList<Question>();
-
-        for(DataSnapshot ds: dataSnapshot.getChildren()){
-            final Question question = new Question();
-            question.setAttempted(false);
-            question.setDifficultyLevel(ds.getValue(Question.class).getDifficultyLevel());
-            question.setQuestion(ds.getValue(Question.class).getQuestion());
-            question.setQuestionId(ds.getValue(Question.class).getQuestionId());
-            question.setQuizId(ds.getValue(Question.class).getQuizId());
-            Log.i("QuestionDB","===== LOOP ======");
-            Log.i("QuestionDB","question: " + question.getQuestion());
-            Log.i("QuestionDB","attempted: " + question.getAttempted());
-            Log.i("QuestionDB","difficulty level: " + question.getDifficultyLevel());
-            Log.i("QuestionDB","questionid: " + question.getQuestionId());
-            Log.i("QuestionDB","quizid: " + question.getQuizId());
-            questionList.add(question);
-        }
-        return questionList;
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
