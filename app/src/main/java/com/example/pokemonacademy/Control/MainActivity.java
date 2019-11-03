@@ -73,11 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 databaseReferenceQuizzesCompleted = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
                 databaseReferenceUser = FirebaseDatabase.getInstance().getReference("USER");
 
-
-
-
 //                populateQuestionTable();
-                populateQuestionChoicesTable();
+//                populateQuestionChoicesTable();
 //                populateQuizzesCompleted();
 
                 Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadeout);
@@ -131,29 +128,28 @@ public class MainActivity extends AppCompatActivity {
             String[] data;
             while(s!=null){
                 Log.i(TAG, s);
-                data = s.split(",");
-                Log.i(TAG, data[0]); // String: WorldId
-                Log.i(TAG, data[1]); // String: QuizId
-                Log.i(TAG, data[2]); // String: QuestionId
-                Log.i(TAG, data[3]); // boolean? attempted
-                Log.i(TAG, data[4]); // int: difficultyLevel
-                Log.i(TAG, data[5]); // int: questionId
-                Log.i(TAG, data[6]); // String: quizId
-                Log.i(TAG, data[7]); // String: worldId
-                Log.i(TAG, data[8]); // String: question
-
+                data = s.split("\\|");
+//                Log.i(TAG, data[1]); // String: WorldId
+//                Log.i(TAG, data[2]); // String: QuizId
+//                Log.i(TAG, data[3]); // String: QuestionId
+//                Log.i(TAG, data[4]); // boolean? attempted
+//                Log.i(TAG, data[5]); // int: difficultyLevel
+//                Log.i(TAG, data[6]); // int: questionId
+//                Log.i(TAG, data[7]); // String: quizId
+//                Log.i(TAG, data[8]); // String: worldId
+//                Log.i(TAG, data[9]); // String: question
                 final Question question = new Question();
                 question.setAttempted(false);
-                question.setDifficultyLevel(Integer.parseInt(data[4]));
-                question.setQuestionId(Integer.parseInt(data[5]));
-                question.setQuizId(data[6]);
-                question.setWorldId(data[7]);
-                question.setQuestion(data[8]);
-                databaseReferenceQuestion.child(data[0]).child(data[1]).child(data[2]).setValue(question);
+                question.setDifficultyLevel(Integer.parseInt(data[5]));
+                question.setQuestionId(Integer.parseInt(data[6]));
+                question.setQuizId(data[7]);
+                question.setWorldId(data[8]);
+                question.setQuestion(data[9]);
+                databaseReferenceQuestion.child(data[1]).child(data[2]).child(data[3]).setValue(question);
                 s = reader.readLine();
             }
         }catch (Exception e){
-            e.printStackTrace();
+            Log.i(TAG, ""+e);
         }
     }
 
@@ -167,27 +163,27 @@ public class MainActivity extends AppCompatActivity {
             String[] data;
             while(s!=null){
                 Log.i(TAG, s);
-                data = s.split(",");
-                Log.i(TAG, data[0]); // String: WorldId
-                Log.i(TAG, data[1]); // String: QuizId
-                Log.i(TAG, data[2]); // String: QuestionId
-                Log.i(TAG, data[3]); // String: ChoiceId
-                Log.i(TAG, data[4]); // String: choice
-                Log.i(TAG, data[5]); // int: choiceId
-                Log.i(TAG, data[6]); // boolean: correct
-                Log.i(TAG, data[7]); // int: qnsId
-                Log.i(TAG, data[8]); // boolean: rightChoice
+                data = s.split("\\|");
+//                Log.i(TAG, data[1]); // String: WorldId
+//                Log.i(TAG, data[2]); // String: QuizId
+//                Log.i(TAG, data[3]); // String: QuestionId
+//                Log.i(TAG, data[4]); // String: ChoiceId
+//                Log.i(TAG, data[5]); // String: choice
+//                Log.i(TAG, data[6]); // int: choiceId
+//                Log.i(TAG, data[7]); // boolean: correct
+//                Log.i(TAG, data[8]); // int: qnsId
+//                Log.i(TAG, data[9]); // boolean: rightChoice
                 final QuestionChoice qc = new QuestionChoice();
-                qc.setChoice(data[4]);
-                qc.setChoiceId(Integer.parseInt(data[5]));
-                qc.setCorrect(Boolean.valueOf(data[6]));
-                qc.setQnsId(Integer.parseInt(data[7]));
-                qc.setRightChoice(Boolean.valueOf(data[8]));
-                databaseReferenceQnsChoice.child(data[0]).child(data[1]).child(data[2]).child(data[3]).setValue(qc);
+                qc.setChoice(data[5]);
+                qc.setChoiceId(Integer.parseInt(data[6]));
+                qc.setCorrect(Boolean.valueOf(data[7]));
+                qc.setQnsId(Integer.parseInt(data[8]));
+                qc.setRightChoice(Boolean.valueOf(data[9]));
+                databaseReferenceQnsChoice.child(data[1]).child(data[2]).child(data[3]).child(data[4]).setValue(qc);
                 s = reader.readLine();
             }
         }catch (Exception e){
-            e.printStackTrace();
+            Log.i(TAG,""+e);
         }
     }
 }

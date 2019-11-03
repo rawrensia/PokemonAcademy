@@ -1,3 +1,720 @@
-﻿World0,Quiz0,Question0,Choice1,Conduct acceptance test,1,False,0,False
-World0,Quiz0,Question0,Choice2,Monitor installation,2,False,0,False
-World0,Quiz0,Question0,Choice3,Define the problem scope,3,True,0,True
+﻿|World0|Quiz0|Question0|Choice1|Conduct acceptance test|1|False|0|False|
+|World0|Quiz0|Question0|Choice2|Monitor installation|2|False|0|False|
+|World0|Quiz0|Question0|Choice3|Define the problem scope|3|True|0|True|
+|World0|Quiz0|Question1|Choice1|Identifying possible software stakeholders|1|False|0|False|
+|World0|Quiz0|Question1|Choice2|Classifying the voices of the customer|2|False|0|False|
+|World0|Quiz0|Question1|Choice3|Testing the software system using black-box testing|3|True|0|True|
+|World0|Quiz0|Question2|Choice1|state system behavior under certain conditions|1|True|0|True|
+|World0|Quiz0|Question2|Choice2|describe how well the system must function|2|False|0|False|
+|World0|Quiz0|Question2|Choice3|describe the properties(criteria, quality attributes)the system must have|3|False|0|False|
+|World0|Quiz0|Question3|Choice1|Elicitation of stakeholder requirements|1|False|0|False|
+|World0|Quiz0|Question3|Choice2|Implementation of stakeholder requirements|2|True|0|True|
+|World0|Quiz0|Question3|Choice3|Specification of stakeholder requirements|3|False|0|False|
+|World0|Quiz0|Question4|Choice1|Marketing skills and analytical skills|1|False|0|False|
+|World0|Quiz0|Question4|Choice2|Testing skills and listening skills|2|False|0|False|
+|World0|Quiz0|Question4|Choice3|Interviewing skills  and writing skills|3|True|0|True|
+|World0|Quiz0|Question5|Choice1|Task analysis and software architecture design|1|False|0|False|
+|World0|Quiz0|Question5|Choice2|Examine documents and interview stakeholders|2|True|0|True|
+|World0|Quiz0|Question5|Choice3|Software maintenance and prototyping|3|False|0|False|
+|World0|Quiz0|Question6|Choice1|Model possible statuses of an object in the system|1|True|0|True|
+|World0|Quiz0|Question6|Choice2|Find missing or incorrect requirements early|2|False|0|False|
+|World0|Quiz0|Question6|Choice3|Define user back-out and cancellation routes|3|False|0|False|
+|World0|Quiz0|Question7|Choice1|Correct, feasible and ambiguous|1|False|0|False|
+|World0|Quiz0|Question7|Choice2|Necessary, inconsistent and traceable|2|False|0|False|
+|World0|Quiz0|Question7|Choice3|Complete, modifiable and verifiable|3|True|0|True|
+|World0|Quiz0|Question8|Choice1|Use case diagram|1|False|0|False|
+|World0|Quiz0|Question8|Choice2|Scheduling diagram|2|True|0|True|
+|World0|Quiz0|Question8|Choice3|System architecture diagram|3|False|0|False|
+|World0|Quiz0|Question9|Choice1|Unrealistic goals and objectives|1|False|0|False|
+|World0|Quiz0|Question9|Choice2|Management and control problems|2|False|0|False|
+|World0|Quiz0|Question9|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz0|Question10|Choice1|True|1|False|0|False|
+|World0|Quiz0|Question10|Choice2|False|2|True|0|True|
+|World0|Quiz0|Question10|Choice3|Not sure|3|False|0|False|
+|World0|Quiz0|Question11|Choice1|same, same|1|True|0|True|
+|World0|Quiz0|Question11|Choice2|same, different|2|False|0|False|
+|World0|Quiz0|Question11|Choice3|different, same|3|False|0|False|
+|World0|Quiz0|Question12|Choice1|developers|1|False|0|False|
+|World0|Quiz0|Question12|Choice2|liaison people|2|True|0|True|
+|World0|Quiz0|Question12|Choice3|consultants|3|False|0|False|
+|World0|Quiz0|Question13|Choice1|Problem scope|1|False|0|False|
+|World0|Quiz0|Question13|Choice2|Requirements|2|False|0|False|
+|World0|Quiz0|Question13|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz0|Question14|Choice1|True|1|True|0|True|
+|World0|Quiz0|Question14|Choice2|False|2|False|0|False|
+|World0|Quiz0|Question14|Choice3|Not sure|3|False|0|False|
+|World0|Quiz1|Question0|Choice1|Developers and liaison people|1|False|0|False|
+|World0|Quiz1|Question0|Choice2|Management and consultants|2|False|0|False|
+|World0|Quiz1|Question0|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz1|Question1|Choice1|WBS cannot be obtained through divide and conquer|1|True|0|True|
+|World0|Quiz1|Question1|Choice2|WBS can be derived from statement of work (project scope).|2|False|0|False|
+|World0|Quiz1|Question1|Choice3|WBS decomposes along functional, subsystem or geographical lines.|3|False|0|False|
+|World0|Quiz1|Question2|Choice1|WBS elements|1|False|0|False|
+|World0|Quiz1|Question2|Choice2|Dependencies between WBS elements|2|False|0|False|
+|World0|Quiz1|Question2|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz1|Question3|Choice1|WBS elements|1|True|0|True|
+|World0|Quiz1|Question3|Choice2|design|2|False|0|False|
+|World0|Quiz1|Question3|Choice3|testing methods|3|False|0|False|
+|World0|Quiz1|Question4|Choice1|a sequence of activities that you can delay and still finish the project in the shortest time possible|1|False|0|False|
+|World0|Quiz1|Question4|Choice2|a sequence of activities that take the longest time to complete|2|True|0|True|
+|World0|Quiz1|Question4|Choice3|1 and 2|3|False|0|False|
+|World0|Quiz1|Question5|Choice1|minimum, shortest|1|False|0|False|
+|World0|Quiz1|Question5|Choice2|maximum, shortest|2|True|0|True|
+|World0|Quiz1|Question5|Choice3|maximum, longest|3|False|0|False|
+|World0|Quiz1|Question6|Choice1|the latest date you can start an activity and still finish the project in the shortest time|1|False|0|False|
+|World0|Quiz1|Question6|Choice2|the earliest date you can finish an activity|2|False|0|False|
+|World0|Quiz1|Question6|Choice3|the earliest date you can start an activity|3|True|0|True|
+|World0|Quiz1|Question7|Choice1|Latest finish date(LF)|1|True|0|True|
+|World0|Quiz1|Question7|Choice2|Latest start date(LS)|2|False|0|False|
+|World0|Quiz1|Question7|Choice3|Earliest finish date(EF)|3|False|0|False|
+|World0|Quiz1|Question8|Choice1|slack time|1|False|0|False|
+|World0|Quiz1|Question8|Choice2|the critical path(s)|2|True|0|True|
+|World0|Quiz1|Question8|Choice3|1 and 2|3|False|0|False|
+|World0|Quiz1|Question9|Choice1|Slack time = LS - ES|1|False|0|False|
+|World0|Quiz1|Question9|Choice2|Slack time = LF - EF|2|False|0|False|
+|World0|Quiz1|Question9|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz1|Question10|Choice1|Use historical data|1|False|0|False|
+|World0|Quiz1|Question10|Choice2|Use expert judgment|2|False|0|False|
+|World0|Quiz1|Question10|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz1|Question11|Choice1|True|1|True|0|True|
+|World0|Quiz1|Question11|Choice2|False|2|False|0|False|
+|World0|Quiz1|Question11|Choice3|Not sure|3|False|0|False|
+|World0|Quiz1|Question12|Choice1|COCOMO (construction cost model)|1|False|0|False|
+|World0|Quiz1|Question12|Choice2|Story point|2|True|0|True|
+|World0|Quiz1|Question12|Choice3|Function point|3|False|0|False|
+|World0|Quiz1|Question13|Choice1|True|1|True|0|True|
+|World0|Quiz1|Question13|Choice2|False|2|False|0|False|
+|World0|Quiz1|Question13|Choice3|Not sure|3|False|0|False|
+|World0|Quiz1|Question14|Choice1|True|1|False|0|False|
+|World0|Quiz1|Question14|Choice2|False|2|True|0|True|
+|World0|Quiz1|Question14|Choice3|Not sure|3|False|0|False|
+|World0|Quiz2|Question0|Choice1|SRS is a complete description of the external behavior of a system.|1|False|0|False|
+|World0|Quiz2|Question0|Choice2|Requirement analysis decomposes high-level requirements into details.|2|False|0|False|
+|World0|Quiz2|Question0|Choice3|External interface requirement describes connections between software developer and outside world.|3|True|0|True|
+|World0|Quiz2|Question1|Choice1|Purpose of the system and assumptions|1|False|0|False|
+|World0|Quiz2|Question1|Choice2|Scope of the system and functional requirements|2|False|0|False|
+|World0|Quiz2|Question1|Choice3|Test cases and marketing surveys|3|True|0|True|
+|World0|Quiz2|Question2|Choice1|Scope management and time management|1|False|0|False|
+|World0|Quiz2|Question2|Choice2|Cost management and quality management|2|False|0|False|
+|World0|Quiz2|Question2|Choice3|1 and 2|3|True|0|True|
+|World0|Quiz2|Question3|Choice1|Business requirement|1|False|0|False|
+|World0|Quiz2|Question3|Choice2|Business rule|2|True|0|True|
+|World0|Quiz2|Question3|Choice3|Constraint|3|False|0|False|
+|World0|Quiz2|Question4|Choice1|Test plan|1|False|0|False|
+|World0|Quiz2|Question4|Choice2|Code model|2|False|0|False|
+|World0|Quiz2|Question4|Choice3|Participant|3|True|0|True|
+|World0|Quiz2|Question5|Choice1|Using marketing surveys is good for statistical data.|1|True|0|True|
+|World0|Quiz2|Question5|Choice2|Using marketing surveys is good for generating ideas.|2|False|0|False|
+|World0|Quiz2|Question5|Choice3|Using marketing surveys is not good for quantitative data.|3|False|0|False|
+|World0|Quiz2|Question6|Choice1|True|1|True|0|True|
+|World0|Quiz2|Question6|Choice2|False|2|False|0|False|
+|World0|Quiz2|Question6|Choice3|Not sure|3|False|0|False|
+|World0|Quiz2|Question7|Choice1|applies methods like use cases or scenarios|1|False|0|False|
+|World0|Quiz2|Question7|Choice2|looks at what information the user has|2|True|0|True|
+|World0|Quiz2|Question7|Choice3|focuses on system features|3|False|0|False|
+|World0|Quiz2|Question8|Choice1|project manager|1|False|0|False|
+|World0|Quiz2|Question8|Choice2|client|2|True|0|True|
+|World0|Quiz2|Question8|Choice3|configuration manager|3|False|0|False|
+|World0|Quiz2|Question9|Choice1|project manager|1|True|0|True|
+|World0|Quiz2|Question9|Choice2|API engineer|2|False|0|False|
+|World0|Quiz2|Question9|Choice3|end user|3|False|0|False|
+|World1|Quiz0|Question0|Choice1|Requirements specification|1|True|0|True|
+|World1|Quiz0|Question0|Choice2|Testing|2|False|0|False|
+|World1|Quiz0|Question0|Choice3|Maintenance|3|False|0|False|
+|World1|Quiz0|Question1|Choice1|The problem, the outcomes and benefits of the project.|1|False|0|False|
+|World1|Quiz0|Question1|Choice2|The Stakeholders, developers, and users.|2|False|0|False|
+|World1|Quiz0|Question1|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz0|Question2|Choice1|Interview and observation|1|False|0|False|
+|World1|Quiz0|Question2|Choice2|Brainstorming and prototyping|2|False|0|False|
+|World1|Quiz0|Question2|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz0|Question3|Choice1|what the system should do|1|False|0|False|
+|World1|Quiz0|Question3|Choice2|how well the system must function|2|True|0|True|
+|World1|Quiz0|Question3|Choice3|interactions between the system and its environment|3|False|0|False|
+|World1|Quiz0|Question4|Choice1|an aspect of what the proposed system must do|1|False|0|False|
+|World1|Quiz0|Question4|Choice2|a constraint on the systemâ€™s development|2|False|0|False|
+|World1|Quiz0|Question4|Choice3|Either 1 or 2|3|True|0|True|
+|World1|Quiz0|Question5|Choice1|Usability|1|False|0|False|
+|World1|Quiz0|Question5|Choice2|Reliability|2|True|0|True|
+|World1|Quiz0|Question5|Choice3|Supportability|3|False|0|False|
+|World1|Quiz0|Question6|Choice1|unique|1|True|0|True|
+|World1|Quiz0|Question6|Choice2|single|2|False|0|False|
+|World1|Quiz0|Question6|Choice3|atomic|3|False|0|False|
+|World1|Quiz0|Question7|Choice1|Ambiguous, imprecise, and complex sentences|1|False|0|False|
+|World1|Quiz0|Question7|Choice2|Complete, precise sentences using passive voice|2|False|0|False|
+|World1|Quiz0|Question7|Choice3|Complete, simple, and unambiguous sentences|3|True|0|True|
+|World1|Quiz0|Question8|Choice1|ambiguous and imprecise|1|False|0|False|
+|World1|Quiz0|Question8|Choice2|verifiable and traceable|2|True|0|True|
+|World1|Quiz0|Question8|Choice3|unspecific and complex|3|False|0|False|
+|World1|Quiz0|Question9|Choice1|Yes, it is specific and unambiguous|1|False|0|False|
+|World1|Quiz0|Question9|Choice2|No, it is not verifiable|2|False|0|False|
+|World1|Quiz0|Question9|Choice3|No, it is not even a requirement.|3|True|0|True|
+|World1|Quiz0|Question10|Choice1|True|1|False|0|False|
+|World1|Quiz0|Question10|Choice2|False|2|True|0|True|
+|World1|Quiz0|Question10|Choice3|Not sure|3|False|0|False|
+|World1|Quiz0|Question11|Choice1|static, dynamic|1|True|0|True|
+|World1|Quiz0|Question11|Choice2|dynamic, static|2|False|0|False|
+|World1|Quiz0|Question11|Choice3|unique, specific|3|False|0|False|
+|World1|Quiz0|Question12|Choice1|Dependencies between use cases are represented by use case associations.|1|False|0|False|
+|World1|Quiz0|Question12|Choice2|Associations are used to increase complexity.|2|True|0|True|
+|World1|Quiz0|Question12|Choice3|Include and extend are two types of use case associations.|3|False|0|False|
+|World1|Quiz0|Question13|Choice1|Actor and use case|1|False|0|False|
+|World1|Quiz0|Question13|Choice2|Association and system boundary|2|False|0|False|
+|World1|Quiz0|Question13|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz0|Question14|Choice1|incomplete|1|True|0|True|
+|World1|Quiz0|Question14|Choice2|unambiguous|2|False|0|False|
+|World1|Quiz0|Question14|Choice3|complete|3|False|0|False|
+|World1|Quiz1|Question0|Choice1|True|1|True|0|True|
+|World1|Quiz1|Question0|Choice2|False|2|False|0|False|
+|World1|Quiz1|Question0|Choice3|Not sure|3|False|0|False|
+|World1|Quiz1|Question1|Choice1|Not sure|1|False|0|False|
+|World1|Quiz1|Question1|Choice2|True|2|False|0|False|
+|World1|Quiz1|Question1|Choice3|False|3|True|0|True|
+|World1|Quiz1|Question2|Choice1|The ability to track requirements from their expression in the SRS (Software Requirements Specification) to their realization in design, documentation, source code and their verification in reviews and tests.|1|False|0|False|
+|World1|Quiz1|Question2|Choice2|The ability to track dependencies among requirements, system functions and system components.|2|False|0|False|
+|World1|Quiz1|Question2|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz1|Question3|Choice1|True|1|True|0|True|
+|World1|Quiz1|Question3|Choice2|False|2|False|0|False|
+|World1|Quiz1|Question3|Choice3|Not sure|3|False|0|False|
+|World1|Quiz1|Question4|Choice1|No, it is optional|1|False|0|False|
+|World1|Quiz1|Question4|Choice2|Yes, it is mandatory.|2|True|0|True|
+|World1|Quiz1|Question4|Choice3|It does not matter.|3|False|0|False|
+|World1|Quiz1|Question5|Choice1|To find out what customers want|1|False|0|False|
+|World1|Quiz1|Question5|Choice2|To produce a system model that is correct and consistent based on use cases.|2|True|0|True|
+|World1|Quiz1|Question5|Choice3|To produce an incomplete and ambiguous system mode based on use cases.|3|False|0|False|
+|World1|Quiz1|Question6|Choice1|Analysis model represents people, physical things and concepts important to the application domain.|1|False|0|False|
+|World1|Quiz1|Question6|Choice2|Analysis model shows connections and interactions among these people, things and relevant concepts.|2|False|0|False|
+|World1|Quiz1|Question6|Choice3|Analysis mode does not allow us to check whether the functions we will include in the specification will satisfy the requirements.|3|True|0|True|
+|World1|Quiz1|Question7|Choice1|True|1|True|0|True|
+|World1|Quiz1|Question7|Choice2|False|2|False|0|False|
+|World1|Quiz1|Question7|Choice3|Not sure|3|False|0|False|
+|World1|Quiz1|Question8|Choice1|Interaction diagram and state chart diagram|1|False|0|False|
+|World1|Quiz1|Question8|Choice2|Use case diagram and class diagram|2|True|0|True|
+|World1|Quiz1|Question8|Choice3|1 and 2|3|False|0|False|
+|World1|Quiz1|Question9|Choice1|True|1|False|0|False|
+|World1|Quiz1|Question9|Choice2|False|2|True|0|True|
+|World1|Quiz1|Question9|Choice3|Not sure|3|False|0|False|
+|World1|Quiz1|Question10|Choice1|Class diagrams represent the structure of the system.|1|False|0|False|
+|World1|Quiz1|Question10|Choice2|The classes define the responsibilities for doing various activities.|2|False|0|False|
+|World1|Quiz1|Question10|Choice3|Class diagrams can be used during requirements analysis but not system design and object design.|3|True|0|True|
+|World1|Quiz1|Question11|Choice1|type, signature|1|True|0|True|
+|World1|Quiz1|Question11|Choice2|name, signature|2|False|0|False|
+|World1|Quiz1|Question11|Choice3|type, input|3|False|0|False|
+|World1|Quiz1|Question12|Choice1|Generalization and dependency|1|False|0|False|
+|World1|Quiz1|Question12|Choice2|Association, aggregation and composition|2|False|0|False|
+|World1|Quiz1|Question12|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz1|Question13|Choice1|Boundary class, control class and entity class|1|True|0|True|
+|World1|Quiz1|Question13|Choice2|Boundary class, view class and entity class|2|False|0|False|
+|World1|Quiz1|Question13|Choice3|Boundary class, view class and method class|3|False|0|False|
+|World1|Quiz1|Question14|Choice1|Resource manager|1|False|0|False|
+|World1|Quiz1|Question14|Choice2|Organizational units|2|True|0|True|
+|World1|Quiz1|Question14|Choice3|UI controls|3|False|0|False|
+|World1|Quiz2|Question0|Choice1|Maintainability and portability|1|False|0|False|
+|World1|Quiz2|Question0|Choice2|Availability and dependability|2|False|0|False|
+|World1|Quiz2|Question0|Choice3|Response time, capacity and scalability|3|True|0|True|
+|World1|Quiz2|Question1|Choice1|define terms clearly|1|False|0|False|
+|World1|Quiz2|Question1|Choice2|use clear layout and formatting|2|False|0|False|
+|World1|Quiz2|Question1|Choice3|Write ambiguous sentences using passive voice|3|True|0|True|
+|World1|Quiz2|Question2|Choice1|consistent unambiguous terminology that stakeholders can agree on|1|False|0|False|
+|World1|Quiz2|Question2|Choice2|specialized terms are defined|2|False|0|False|
+|World1|Quiz2|Question2|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz2|Question3|Choice1|True|1|False|0|False|
+|World1|Quiz2|Question3|Choice2|False|2|True|0|True|
+|World1|Quiz2|Question3|Choice3|Not sure|3|False|0|False|
+|World1|Quiz2|Question4|Choice1|Use case ID and use case name|1|False|0|False|
+|World1|Quiz2|Question4|Choice2|Use case description and list of actors|2|False|0|False|
+|World1|Quiz2|Question4|Choice3|1 and 2|3|True|0|True|
+|World1|Quiz2|Question5|Choice1|True|1|True|0|True|
+|World1|Quiz2|Question5|Choice2|False|2|False|0|False|
+|World1|Quiz2|Question5|Choice3|Not sure|3|False|0|False|
+|World1|Quiz2|Question6|Choice1|Analysis model|1|True|0|True|
+|World1|Quiz2|Question6|Choice2|Use case model|2|False|0|False|
+|World1|Quiz2|Question6|Choice3|SRS (software requirements specification)|3|False|0|False|
+|World1|Quiz2|Question7|Choice1|Static, dynamic|1|False|0|False|
+|World1|Quiz2|Question7|Choice2|Conceptual, dynamic|2|True|0|True|
+|World1|Quiz2|Question7|Choice3|Conceptual, static|3|False|0|False|
+|World1|Quiz2|Question8|Choice1|True|1|False|0|False|
+|World1|Quiz2|Question8|Choice2|False|2|True|0|True|
+|World1|Quiz2|Question8|Choice3|Not sure|3|False|0|False|
+|World1|Quiz2|Question9|Choice1|True|1|True|0|True|
+|World1|Quiz2|Question9|Choice2|False|2|False|0|False|
+|World1|Quiz2|Question9|Choice3|Not sure|3|False|0|False|
+|World2|Quiz0|Question0|Choice1|Maintainability and extensibility|1|False|0|False|
+|World2|Quiz0|Question0|Choice2|Scalability and testability|2|False|0|False|
+|World2|Quiz0|Question0|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz0|Question1|Choice1|A design pattern is a proven solution to a problem in a context.|1|False|0|False|
+|World2|Quiz0|Question1|Choice2|A design pattern abstracts a recurring design structure.|2|False|0|False|
+|World2|Quiz0|Question1|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz0|Question2|Choice1|A component should not know about internal details of other components.|1|True|0|True|
+|World2|Quiz0|Question2|Choice2|Software entities like classes should be open for extension but closed for modifications.|2|False|0|False|
+|World2|Quiz0|Question2|Choice3|Each component or module should be responsible for only a specific feature or functionality, or aggregation of cohesive functionality.|3|False|0|False|
+|World2|Quiz0|Question3|Choice1|True|1|False|0|False|
+|World2|Quiz0|Question3|Choice2|False|2|True|0|True|
+|World2|Quiz0|Question3|Choice3|Not sure|3|False|0|False|
+|World2|Quiz0|Question4|Choice1|High coupling and low extensibility|1|False|0|False|
+|World2|Quiz0|Question4|Choice2|Complex framework navigation and multi-artifact consistency|2|False|0|False|
+|World2|Quiz0|Question4|Choice3|High cohesion and simultaneous development|3|True|0|True|
+|World2|Quiz0|Question5|Choice1|how easy it is to add new capabilities|1|False|0|False|
+|World2|Quiz0|Question5|Choice2|how few system resources it consumes|2|True|0|True|
+|World2|Quiz0|Question5|Choice3|how easy it is to correct defects or make changes|3|False|0|False|
+|World2|Quiz0|Question6|Choice1|Maintainability, flexibility and testability.|1|True|0|True|
+|World2|Quiz0|Question6|Choice2|Portability, reusability and interoperability.|2|False|0|False|
+|World2|Quiz0|Question6|Choice3|Correctness, reliability, efficiency, integrity and usability.|3|False|0|False|
+|World2|Quiz0|Question7|Choice1|Decompositional design and compositional design|1|False|0|False|
+|World2|Quiz0|Question7|Choice2|Design patterns and evolutionary design|2|False|0|False|
+|World2|Quiz0|Question7|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz0|Question8|Choice1|The responsiveness of a system|1|False|0|False|
+|World2|Quiz0|Question8|Choice2|The easiness of a software system to be transported from one hardware or software platform to another.|2|True|0|True|
+|World2|Quiz0|Question8|Choice3|The components can be easily reused in the development of other software systems.|3|False|0|False|
+|World2|Quiz0|Question9|Choice1|Time required to respond to stimuli|1|False|0|False|
+|World2|Quiz0|Question9|Choice2|Number of events processed in certain interval of time|2|False|0|False|
+|World2|Quiz0|Question9|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz0|Question10|Choice1|Decompose the system into reusable components.|1|False|0|False|
+|World2|Quiz0|Question10|Choice2|Group environment dependent code in a small number of components.|2|True|0|True|
+|World2|Quiz0|Question10|Choice3|Do component-based software developments.|3|False|0|False|
+|World2|Quiz0|Question11|Choice1|True|1|True|0|True|
+|World2|Quiz0|Question11|Choice2|False|2|False|0|False|
+|World2|Quiz0|Question11|Choice3|Not sure|3|False|0|False|
+|World2|Quiz0|Question12|Choice1|Round corner rectangles|1|False|0|False|
+|World2|Quiz0|Question12|Choice2|Square corner rectangles|2|True|0|True|
+|World2|Quiz0|Question12|Choice3|Rectangles with corners cut off|3|False|0|False|
+|World2|Quiz0|Question13|Choice1|Objects, abstract data types and modules|1|False|0|False|
+|World2|Quiz0|Question13|Choice2|Files, variables and constants|2|False|0|False|
+|World2|Quiz0|Question13|Choice3|Flash player and readers|3|True|0|True|
+|World2|Quiz0|Question14|Choice1|True|1|True|0|True|
+|World2|Quiz0|Question14|Choice2|False|2|False|0|False|
+|World2|Quiz0|Question14|Choice3|Not sure|3|False|0|False|
+|World2|Quiz1|Question0|Choice1|components|1|False|0|False|
+|World2|Quiz1|Question0|Choice2|connectors|2|False|0|False|
+|World2|Quiz1|Question0|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz1|Question1|Choice1|Objects, data streams|1|True|0|True|
+|World2|Quiz1|Question1|Choice2|Procedure calls, clients|2|False|0|False|
+|World2|Quiz1|Question1|Choice3|Servers, databases|3|False|0|False|
+|World2|Quiz1|Question2|Choice1|does not demonstrate or analyze the properties of interest|1|False|0|False|
+|World2|Quiz1|Question2|Choice2|does not hide components and connectors|2|False|0|False|
+|World2|Quiz1|Question2|Choice3|Is about structure and interactions|3|True|0|True|
+|World2|Quiz1|Question3|Choice1|Modularity, abstraction, open-closed and reusability.|1|True|0|True|
+|World2|Quiz1|Question3|Choice2|Efficiency, reliability, security and maintainability.|2|False|0|False|
+|World2|Quiz1|Question3|Choice3|Languages, libraries and communications.|3|False|0|False|
+|World2|Quiz1|Question4|Choice1|Modifiability and concurrent execution|1|False|0|False|
+|World2|Quiz1|Question4|Choice2|Scalability and easy integration|2|False|0|False|
+|World2|Quiz1|Question4|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz1|Question5|Choice1|In design pattern, name describes the pattern.|1|False|0|False|
+|World2|Quiz1|Question5|Choice2|In design pattern, consequences describe elements, collaborations and relationships.|2|True|0|True|
+|World2|Quiz1|Question5|Choice3|In design pattern, problem describes when to apply the pattern.|3|False|0|False|
+|World2|Quiz1|Question6|Choice1|Controller gathers output and updates the Model|1|False|0|False|
+|World2|Quiz1|Question6|Choice2|View is notified and updates its display|2|True|0|True|
+|World2|Quiz1|Question6|Choice3|Model updates the change and notifies a few subscribers of the change|3|False|0|False|
+|World2|Quiz1|Question7|Choice1|Cost of frequent updates|1|True|0|True|
+|World2|Quiz1|Question7|Choice2|High cohesion|2|False|0|False|
+|World2|Quiz1|Question7|Choice3|Low coupling|3|False|0|False|
+|World2|Quiz1|Question8|Choice1|One should depend upon concretions|1|False|0|False|
+|World2|Quiz1|Question8|Choice2|many client-specific interfaces are better than one general-purpose interface|2|True|0|True|
+|World2|Quiz1|Question8|Choice3|Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program|3|False|0|False|
+|World2|Quiz1|Question9|Choice1|Reuse of designs|1|False|0|False|
+|World2|Quiz1|Question9|Choice2|Top-down|2|False|0|False|
+|World2|Quiz1|Question9|Choice3|Trial and error|3|True|0|True|
+|World2|Quiz1|Question10|Choice1|Availability, correctness and efficiency|1|False|0|False|
+|World2|Quiz1|Question10|Choice2|Flexibility, integrity and maintainability|2|False|0|False|
+|World2|Quiz1|Question10|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz1|Question11|Choice1|how easy it is for people to learn or to use|1|True|0|True|
+|World2|Quiz1|Question11|Choice2|how easy it protects against injury or damage|2|False|0|False|
+|World2|Quiz1|Question11|Choice3|how easy it is to correctly install the product|3|False|0|False|
+|World2|Quiz1|Question12|Choice1|Maintainability, flexibility and testability.|1|False|0|False|
+|World2|Quiz1|Question12|Choice2|Correctness, reliability, efficiency, integrity and usability.|2|True|0|True|
+|World2|Quiz1|Question12|Choice3|Portability, reusability and interoperability.|3|False|0|False|
+|World2|Quiz1|Question13|Choice1|Different quality attributes manifest themselves differently during various phases.|1|True|0|True|
+|World2|Quiz1|Question13|Choice2|Design is the second stage in software system creation in which quality requirements can be begin to be addressed.|2|False|0|False|
+|World2|Quiz1|Question13|Choice3|Software quality should not be considered in SDLC.|3|False|0|False|
+|World2|Quiz1|Question14|Choice1|How much communication between the components.|1|False|0|False|
+|World2|Quiz1|Question14|Choice2|The choiceof algorithms, data structure and protocols.|2|True|0|True|
+|World2|Quiz1|Question14|Choice3|How components are partitioned or distributed.|3|False|0|False|
+|World2|Quiz2|Question0|Choice1|Name, problem, location and consequences.|1|False|0|False|
+|World2|Quiz2|Question0|Choice2|Name, problem, solution and output.|2|False|0|False|
+|World2|Quiz2|Question0|Choice3|Name, problem, solution and consequences.|3|True|0|True|
+|World2|Quiz2|Question1|Choice1|aggregation, adaption|1|False|0|False|
+|World2|Quiz2|Question1|Choice2|modifications, extension|2|False|0|False|
+|World2|Quiz2|Question1|Choice3|extension, modifications|3|True|0|True|
+|World2|Quiz2|Question2|Choice1|repeat yourself|1|False|0|False|
+|World2|Quiz2|Question2|Choice2|maximize upfront design|2|False|0|False|
+|World2|Quiz2|Question2|Choice3|achieves conceptual integrity|3|True|0|True|
+|World2|Quiz2|Question3|Choice1|how easy it is to correct defects or make changes|1|False|0|False|
+|World2|Quiz2|Question3|Choice2|how easily we can use components in other systems|2|True|0|True|
+|World2|Quiz2|Question3|Choice3|how well it responds to unanticipated conditions|3|False|0|False|
+|World2|Quiz2|Question4|Choice1|measure an existing systemâ€™s quality|1|False|0|False|
+|World2|Quiz2|Question4|Choice2|predict a systemâ€™s quality during design and development|2|False|0|False|
+|World2|Quiz2|Question4|Choice3|1 and 2|3|True|0|True|
+|World2|Quiz2|Question5|Choice1|Portability, reusability and interoperability.|1|True|0|True|
+|World2|Quiz2|Question5|Choice2|Correctness, reliability, efficiency, integrity and usability.|2|False|0|False|
+|World2|Quiz2|Question5|Choice3|Maintainability, flexibility and testability.|3|False|0|False|
+|World2|Quiz2|Question6|Choice1|how heavy it should depend on the platform specific feature|1|True|0|True|
+|World2|Quiz2|Question6|Choice2|how easily the components can be parameterized|2|False|0|False|
+|World2|Quiz2|Question6|Choice3|the way to configure the components|3|False|0|False|
+|World2|Quiz2|Question7|Choice1|Not sure|1|False|0|False|
+|World2|Quiz2|Question7|Choice2|True|2|True|0|True|
+|World2|Quiz2|Question7|Choice3|False|3|False|0|False|
+|World2|Quiz2|Question8|Choice1|Square corner rectangles|1|False|0|False|
+|World2|Quiz2|Question8|Choice2|Rectangles with corners cut off|2|True|0|True|
+|World2|Quiz2|Question8|Choice3|Round corner rectangles|3|False|0|False|
+|World2|Quiz2|Question9|Choice1|Functions and procedures without side effects|1|True|0|True|
+|World2|Quiz2|Question9|Choice2|Files, variables and constants|2|False|0|False|
+|World2|Quiz2|Question9|Choice3|Objects, abstract data types and modules|3|False|0|False|
+|World3|Quiz0|Question0|Choice1|A set of component types and a set of connectors|1|False|0|False|
+|World3|Quiz0|Question0|Choice2|A topological structure and a set of connectors|2|False|0|False|
+|World3|Quiz0|Question0|Choice3|1 and 2|3|True|0|True|
+|World3|Quiz0|Question1|Choice1|Subroutine calls and remote procedure calls|1|False|0|False|
+|World3|Quiz0|Question1|Choice2|Data streams and sockets|2|False|0|False|
+|World3|Quiz0|Question1|Choice3|1 and 2|3|True|0|True|
+|World3|Quiz0|Question2|Choice1|Call and return|1|True|0|True|
+|World3|Quiz0|Question2|Choice2|Data-centered|2|False|0|False|
+|World3|Quiz0|Question2|Choice3|Independent components|3|False|0|False|
+|World3|Quiz0|Question3|Choice1|topology, connectors|1|False|0|False|
+|World3|Quiz0|Question3|Choice2|components, connectors|2|True|0|True|
+|World3|Quiz0|Question3|Choice3|components, topology|3|False|0|False|
+|World3|Quiz0|Question4|Choice1|Not sure|1|False|0|False|
+|World3|Quiz0|Question4|Choice2|True|2|False|0|False|
+|World3|Quiz0|Question4|Choice3|False|3|True|0|True|
+|World3|Quiz0|Question5|Choice1|Black box testing|1|False|0|False|
+|World3|Quiz0|Question5|Choice2|Hierarchically heterogeneous|2|True|0|True|
+|World3|Quiz0|Question5|Choice3|White box testing|3|False|0|False|
+|World3|Quiz0|Question6|Choice1|7, 7|1|True|0|True|
+|World3|Quiz0|Question6|Choice2|3, 11|2|False|0|False|
+|World3|Quiz0|Question6|Choice3|9, 5|3|False|0|False|
+|World3|Quiz0|Question7|Choice1|“Façade” Class is a class through which external client classes can access a set of functions in supplier classes|1|False|0|False|
+|World3|Quiz0|Question7|Choice2|The purpose is to de-couple the supplying classes from direct access by the client, and by virtue of the Façade|2|False|0|False|
+|World3|Quiz0|Question7|Choice3|Façade Class implementation overrides the functions of the supplier classes|3|True|0|True|
+|World3|Quiz0|Question8|Choice1|the end point of logical communication within the OS|1|False|0|False|
+|World3|Quiz0|Question8|Choice2|the start point of the communication in a computer network|2|False|0|False|
+|World3|Quiz0|Question8|Choice3|a physical interface to a cable between the computer and peripheral|3|True|0|True|
+|World3|Quiz0|Question9|Choice1|True|1|False|0|False|
+|World3|Quiz0|Question9|Choice2|False|2|True|0|True|
+|World3|Quiz0|Question9|Choice3|Not sure|3|False|0|False|
+|World3|Quiz0|Question10|Choice1|Interface connector and delegation connector|1|False|0|False|
+|World3|Quiz0|Question10|Choice2|Assembly connector and delegation connector|2|True|0|True|
+|World3|Quiz0|Question10|Choice3|Assembly connector and interface connector|3|False|0|False|
+|World3|Quiz0|Question11|Choice1|Synchronous|1|True|0|True|
+|World3|Quiz0|Question11|Choice2|Asynchronous|2|False|0|False|
+|World3|Quiz0|Question11|Choice3|Return|3|False|0|False|
+|World3|Quiz0|Question12|Choice1|Not sure|1|False|0|False|
+|World3|Quiz0|Question12|Choice2|True|2|True|0|True|
+|World3|Quiz0|Question12|Choice3|False|3|False|0|False|
+|World3|Quiz0|Question13|Choice1|Source and message|1|False|0|False|
+|World3|Quiz0|Question13|Choice2|Channel and receiver|2|False|0|False|
+|World3|Quiz0|Question13|Choice3|1 and 2|3|True|0|True|
+|World3|Quiz0|Question14|Choice1|calls a concrete operation directly from the supplying object|1|True|0|True|
+|World3|Quiz0|Question14|Choice2|calls an abstract Operation from an abstract Class that triggers a process to identify the proxy supplier|2|False|0|False|
+|World3|Quiz0|Question14|Choice3|1 and 2|3|False|0|False|
+|World3|Quiz1|Question0|Choice1|Virtual machine|1|False|0|False|
+|World3|Quiz1|Question0|Choice2|Data-centered|2|False|0|False|
+|World3|Quiz1|Question0|Choice3|Data flow|3|True|0|True|
+|World3|Quiz1|Question1|Choice1|Easy integration|1|False|0|False|
+|World3|Quiz1|Question1|Choice2|Scalability|2|False|0|False|
+|World3|Quiz1|Question1|Choice3|1 and 2|3|True|0|True|
+|World3|Quiz1|Question2|Choice1|Synchronization between the components are difficult|1|True|0|True|
+|World3|Quiz1|Question2|Choice2|Easy integration|2|False|0|False|
+|World3|Quiz1|Question2|Choice3|Reusable components|3|False|0|False|
+|World3|Quiz1|Question3|Choice1|is a logical construct|1|True|0|True|
+|World3|Quiz1|Question3|Choice2|is a physical construct|2|False|0|False|
+|World3|Quiz1|Question3|Choice3|is designated by a phone number|3|False|0|False|
+|World3|Quiz1|Question4|Choice1|Requirement, specification and composition|1|False|0|False|
+|World3|Quiz1|Question4|Choice2|Specification, composition and decomposition|2|True|0|True|
+|World3|Quiz1|Question4|Choice3|Specification,  decomposition and addition|3|False|0|False|
+|World3|Quiz1|Question5|Choice1|Synchronous|1|False|0|False|
+|World3|Quiz1|Question5|Choice2|Asynchronous|2|True|0|True|
+|World3|Quiz1|Question5|Choice3|Return|3|False|0|False|
+|World3|Quiz1|Question6|Choice1|Analyser, broadcaster and parser|1|False|0|False|
+|World3|Quiz1|Question6|Choice2|Manager, timer and reader|2|False|0|False|
+|World3|Quiz1|Question6|Choice3|1 and 2|3|True|0|True|
+|World3|Quiz1|Question7|Choice1|a collection of individual Classes compatible with a particular programming language that each provide reliable implementations for a wide variety of standard computer functions|1|True|0|True|
+|World3|Quiz1|Question7|Choice2|an application that provides a standard computer service|2|False|0|False|
+|World3|Quiz1|Question7|Choice3|1 and 2|3|False|0|False|
+|World3|Quiz1|Question8|Choice1|True|1|False|0|False|
+|World3|Quiz1|Question8|Choice2|False|2|True|0|True|
+|World3|Quiz1|Question8|Choice3|Not sure|3|False|0|False|
+|World3|Quiz1|Question9|Choice1|A design|1|False|0|False|
+|World3|Quiz1|Question9|Choice2|An implementation|2|False|0|False|
+|World3|Quiz1|Question9|Choice3|1 and 2|3|True|0|True|
+|World3|Quiz1|Question10|Choice1|isolate any unwanted service|1|False|0|False|
+|World3|Quiz1|Question10|Choice2|make architecture style|2|False|0|False|
+|World3|Quiz1|Question10|Choice3|qualify fitness of candidate components|3|True|0|True|
+|World3|Quiz1|Question11|Choice1|Identify opportunities to reuse, qualify fitness of candidate components, isolate any unwanted service and make architecture style|1|True|0|True|
+|World3|Quiz1|Question11|Choice2|Make architecture style, identify opportunities to reuse, qualify fitness of candidate components and isolate any unwanted service|2|False|0|False|
+|World3|Quiz1|Question11|Choice3|Identify opportunities to reuse, isolate any unwanted service, qualify fitness of candidate components and make architecture style|3|False|0|False|
+|World3|Quiz1|Question12|Choice1|Testing methods|1|False|0|False|
+|World3|Quiz1|Question12|Choice2|Mockups and licences|2|True|0|True|
+|World3|Quiz1|Question12|Choice3|Environment adaption|3|False|0|False|
+|World3|Quiz1|Question13|Choice1|True|1|True|0|True|
+|World3|Quiz1|Question13|Choice2|False|2|False|0|False|
+|World3|Quiz1|Question13|Choice3|Not sure|3|False|0|False|
+|World3|Quiz1|Question14|Choice1|Framework is tightly coupled and repository is loosely coupled.|1|False|0|False|
+|World3|Quiz1|Question14|Choice2|Framework is acceptable to modify and repository is non-modifiable.|2|True|0|True|
+|World3|Quiz1|Question14|Choice3|Framework connects externally via API and repository connects externally via interface and protocol.|3|False|0|False|
+|World3|Quiz2|Question0|Choice1|Call and return|1|False|0|False|
+|World3|Quiz2|Question0|Choice2|Independent components|2|False|0|False|
+|World3|Quiz2|Question0|Choice3|Virtual machine|3|True|0|True|
+|World3|Quiz2|Question1|Choice1|Support reuse|1|False|0|False|
+|World3|Quiz2|Question1|Choice2|Easy to maintain and enhance|2|False|0|False|
+|World3|Quiz2|Question1|Choice3|May force a lowest common denominator or data transmission|3|True|0|True|
+|World3|Quiz2|Question2|Choice1|Subroutines|1|False|0|False|
+|World3|Quiz2|Question2|Choice2|Global variables|2|False|0|False|
+|World3|Quiz2|Question2|Choice3|Subroutine calls|3|True|0|True|
+|World3|Quiz2|Question3|Choice1|5|1|False|0|False|
+|World3|Quiz2|Question3|Choice2|14|2|True|0|True|
+|World3|Quiz2|Question3|Choice3|20|3|False|0|False|
+|World3|Quiz2|Question4|Choice1|Speakers|1|False|0|False|
+|World3|Quiz2|Question4|Choice2|Webcam|2|False|0|False|
+|World3|Quiz2|Question4|Choice3|IP address|3|True|0|True|
+|World3|Quiz2|Question5|Choice1|True|1|True|0|True|
+|World3|Quiz2|Question5|Choice2|False|2|False|0|False|
+|World3|Quiz2|Question5|Choice3|Not sure|3|False|0|False|
+|World3|Quiz2|Question6|Choice1|The uppermost (from the depthwise perspective) vertices are white-box view and the lowermost are black-box view|1|True|0|True|
+|World3|Quiz2|Question6|Choice2|All vertices are black-box view.|2|False|0|False|
+|World3|Quiz2|Question6|Choice3|The uppermost (from the depthwise perspective) vertices are black-box view and the lowermost are white-box view|3|False|0|False|
+|World3|Quiz2|Question7|Choice1|Message|1|False|0|False|
+|World3|Quiz2|Question7|Choice2|Source|2|True|0|True|
+|World3|Quiz2|Question7|Choice3|Receiver|3|False|0|False|
+|World3|Quiz2|Question8|Choice1|Model|1|False|0|False|
+|World3|Quiz2|Question8|Choice2|Controller|2|True|0|True|
+|World3|Quiz2|Question8|Choice3|View|3|False|0|False|
+|World3|Quiz2|Question9|Choice1|True|1|True|0|True|
+|World3|Quiz2|Question9|Choice2|False|2|False|0|False|
+|World3|Quiz2|Question9|Choice3|Not sure|3|False|0|False|
+|World4|Quiz0|Question0|Choice1|is a black box testing method|1|False|0|False|
+|World4|Quiz0|Question0|Choice2|obtains dependent paths|2|False|0|False|
+|World4|Quiz0|Question0|Choice3|generates test cases for each path|3|True|0|True|
+|World4|Quiz0|Question1|Choice1|Equivalence class testing|1|False|0|False|
+|World4|Quiz0|Question1|Choice2|State-based testing|2|False|0|False|
+|World4|Quiz0|Question1|Choice3|Data flow testing|3|True|0|True|
+|World4|Quiz0|Question2|Choice1|tests units in combination|1|True|0|True|
+|World4|Quiz0|Question2|Choice2|tests an unit individually|2|False|0|False|
+|World4|Quiz0|Question2|Choice3|tests everything|3|False|0|False|
+|World4|Quiz0|Question3|Choice1|input|1|False|0|False|
+|World4|Quiz0|Question3|Choice2|diagram|2|True|0|True|
+|World4|Quiz0|Question3|Choice3|log|3|False|0|False|
+|World4|Quiz0|Question4|Choice1|It analyzes requirements and specifications.|1|False|0|False|
+|World4|Quiz0|Question4|Choice2|It chooses valid inputs and invalid inputs.|2|False|0|False|
+|World4|Quiz0|Question4|Choice3|It compares actual outputs with the expected outputs.|3|True|0|True|
+|World4|Quiz0|Question5|Choice1|The tester compares the actual outputs with the expected outputs.|1|False|0|False|
+|World4|Quiz0|Question5|Choice2|The tester determines expected outputs for chosen inputs.|2|True|0|True|
+|World4|Quiz0|Question5|Choice3|The tester executes the tests.|3|False|0|False|
+|World4|Quiz0|Question6|Choice1|ensures that every path through the SUT (System Under Test) has been identified and tested.|1|True|0|True|
+|World4|Quiz0|Question6|Choice2|can detect data and arithmetic bugs|2|False|0|False|
+|World4|Quiz0|Question6|Choice3|can find paths that are not implemented.|3|False|0|False|
+|World4|Quiz0|Question7|Choice1|It is a directed graph|1|False|0|False|
+|World4|Quiz0|Question7|Choice2|It consists of nodes and edges|2|False|0|False|
+|World4|Quiz0|Question7|Choice3|1 and 2|3|True|0|True|
+|World4|Quiz0|Question8|Choice1|there is one control flow edge out of the decision point.|1|False|0|False|
+|World4|Quiz0|Question8|Choice2|there is one control flow edge into the decision point.|2|True|0|True|
+|World4|Quiz0|Question8|Choice3|Control flow does not change at the decision point.|3|False|0|False|
+|World4|Quiz0|Question9|Choice1|CC = num of edges - num of nodes + 2|1|False|0|False|
+|World4|Quiz0|Question9|Choice2|CC = num of decision point + 1|2|False|0|False|
+|World4|Quiz0|Question9|Choice3|Both 1 and 2 are correct|3|True|0|True|
+|World4|Quiz0|Question10|Choice1|It contains any number of sequentially executed statements in the process block.|1|False|0|False|
+|World4|Quiz0|Question10|Choice2|It contains ‘switch’ statements.|2|True|0|True|
+|World4|Quiz0|Question10|Choice3|It has one control flow edge into the process block and one control flow edge out of the process block.|3|False|0|False|
+|World4|Quiz0|Question11|Choice1|The tester identifies valid and invalid equivalence classes that partition the input values.|1|True|0|True|
+|World4|Quiz0|Question11|Choice2|The tester determines expected outputs for chosen inputs.|2|False|0|False|
+|World4|Quiz0|Question11|Choice3|The tester constructs tests with the chosen inputs.|3|False|0|False|
+|World4|Quiz0|Question12|Choice1|Testing is to show that software works.|1|False|0|False|
+|World4|Quiz0|Question12|Choice2|Testing is to achieve a low-risk software without much testing effort.|2|True|0|True|
+|World4|Quiz0|Question12|Choice3|Testing is to increase the perceived risk or system not working to an acceptable value.|3|False|0|False|
+|World4|Quiz0|Question13|Choice1|Implementation details, requirements and structure|1|False|0|False|
+|World4|Quiz0|Question13|Choice2|Specifications, requirements and structure|2|False|0|False|
+|World4|Quiz0|Question13|Choice3|Implementation details, internal paths and structure|3|True|0|True|
+|World4|Quiz0|Question14|Choice1|Unit testing, integration testing, system testing and acceptance testing.|1|True|0|True|
+|World4|Quiz0|Question14|Choice2|Unit testing, combination testing, system testing and acceptance testing.|2|False|0|False|
+|World4|Quiz0|Question14|Choice3|Unit testing, combination testing, software testing and acceptance testing.|3|False|0|False|
+|World4|Quiz1|Question0|Choice1|A process block|1|False|0|False|
+|World4|Quiz1|Question0|Choice2|A decision point|2|False|0|False|
+|World4|Quiz1|Question0|Choice3|Control flow|3|True|0|True|
+|World4|Quiz1|Question1|Choice1|there are two control flow edges out of the decision point.|1|True|0|True|
+|World4|Quiz1|Question1|Choice2|control flow cannot change at the decision point.|2|False|0|False|
+|World4|Quiz1|Question1|Choice3|there are two control flow edges into the decision point.|3|False|0|False|
+|World4|Quiz1|Question2|Choice1|Requirements|1|False|0|False|
+|World4|Quiz1|Question2|Choice2|Specifications|2|False|0|False|
+|World4|Quiz1|Question2|Choice3|1 and 2|3|True|0|True|
+|World4|Quiz1|Question3|Choice1|It tests an unit individually.|1|True|0|True|
+|World4|Quiz1|Question3|Choice2|It tests units combination.|2|False|0|False|
+|World4|Quiz1|Question3|Choice3|It tests system’s usability and performance.|3|False|0|False|
+|World4|Quiz1|Question4|Choice1|True|1|False|0|False|
+|World4|Quiz1|Question4|Choice2|False|2|True|0|True|
+|World4|Quiz1|Question4|Choice3|Not sure|3|False|0|False|
+|World4|Quiz1|Question5|Choice1|It means path to test program and its inputs.|1|False|0|False|
+|World4|Quiz1|Question5|Choice2|It means expected test output.|2|True|0|True|
+|World4|Quiz1|Question5|Choice3|It means actual output produced by the test.|3|False|0|False|
+|World4|Quiz1|Question6|Choice1|We read an order first.|1|False|0|False|
+|World4|Quiz1|Question6|Choice2|After we read the order, we delete the order.|2|False|0|False|
+|World4|Quiz1|Question6|Choice3|We update the order before we delete the order.|3|True|0|True|
+|World4|Quiz1|Question7|Choice1|True|1|True|0|True|
+|World4|Quiz1|Question7|Choice2|False|2|False|0|False|
+|World4|Quiz1|Question7|Choice3|Not sure|3|False|0|False|
+|World4|Quiz1|Question8|Choice1|It helps detect data and arithmetic errors.|1|False|0|False|
+|World4|Quiz1|Question8|Choice2|It ensures every path through the SUT (System Under Test) has been identified and tested.|2|True|0|True|
+|World4|Quiz1|Question8|Choice3|It directs the tester to a very small subset of test inputs.|3|False|0|False|
+|World4|Quiz1|Question9|Choice1|Unit testing and combination testing|1|False|0|False|
+|World4|Quiz1|Question9|Choice2|System testing and acceptance testing|2|False|0|False|
+|World4|Quiz1|Question9|Choice3|1 and 2|3|True|0|True|
+|World4|Quiz1|Question10|Choice1|Verifiable requirements and API specification exists|1|False|0|False|
+|World4|Quiz1|Question10|Choice2|Code must be testable.|2|False|0|False|
+|World4|Quiz1|Question10|Choice3|1 and 2|3|True|0|True|
+|World4|Quiz1|Question11|Choice1|If one value does not catch a bug, the others probably will not either.|1|True|0|True|
+|World4|Quiz1|Question11|Choice2|If one value catches a bug, the others probably will not.|2|False|0|False|
+|World4|Quiz1|Question11|Choice3|They all are supposed to produce different outputs|3|False|0|False|
+|World4|Quiz1|Question12|Choice1|No, the tester does the comparison.|1|False|0|False|
+|World4|Quiz1|Question12|Choice2|Yes, it does.|2|True|0|True|
+|World4|Quiz1|Question12|Choice3|No, the summary engine does the comparison when generating the summary report.|3|False|0|False|
+|World4|Quiz1|Question13|Choice1|4<=x>=8|1|True|0|True|
+|World4|Quiz1|Question13|Choice2|x<=3|2|False|0|False|
+|World4|Quiz1|Question13|Choice3|x>=9|3|False|0|False|
+|World4|Quiz1|Question14|Choice1|We choose two valid input for each input parameter from an equivalence class.|1|False|0|False|
+|World4|Quiz1|Question14|Choice2|We test valid inputs of several parameters at the same time.|2|True|0|True|
+|World4|Quiz1|Question14|Choice3|We test five invalid inputs from an equivalence class of one input parameter at the same time.|3|False|0|False|
+|World4|Quiz2|Question0|Choice1|Name, order, input, oracle and log|1|False|0|False|
+|World4|Quiz2|Question0|Choice2|Name, location, input, diagram and log|2|False|0|False|
+|World4|Quiz2|Question0|Choice3|Name, location, input, oracle and log|3|True|0|True|
+|World4|Quiz2|Question1|Choice1|Black box testing knows how much of the implementation have been tested.|1|False|0|False|
+|World4|Quiz2|Question1|Choice2|Control flow testing is a black box testing method.|2|False|0|False|
+|World4|Quiz2|Question1|Choice3|Black box testing directs the tester to a very small subset of test inputs that can highly likely find the bugs.|3|True|0|True|
+|World4|Quiz2|Question2|Choice1|A process block|1|False|0|False|
+|World4|Quiz2|Question2|Choice2|A decision point|2|False|0|False|
+|World4|Quiz2|Question2|Choice3|1 and 2|3|True|0|True|
+|World4|Quiz2|Question3|Choice1|there is only one control flow edge out of the decision point.|1|False|0|False|
+|World4|Quiz2|Question3|Choice2|there is only one control flow edge into the decision point.|2|True|0|True|
+|World4|Quiz2|Question3|Choice3|control flow does not change at the decision point.|3|False|0|False|
+|World4|Quiz2|Question4|Choice1|CC measures how complex your program is in terms of the numbers of decision points.|1|False|0|False|
+|World4|Quiz2|Question4|Choice2|We can use equation “CC = num of edges - num of nodes + 2” to compute CC.|2|False|0|False|
+|World4|Quiz2|Question4|Choice3|The more the decision points a program has, the lower the CC.|3|True|0|True|
+|World4|Quiz2|Question5|Choice1|In white box testing, the tester does not need to determine expected outputs for chosen inputs.|1|True|0|True|
+|World4|Quiz2|Question5|Choice2|We need to analyze implementation details, internal paths and structure in white box testing.|2|False|0|False|
+|World4|Quiz2|Question5|Choice3|Boundary value testing is not a white box testing method.|3|False|0|False|
+|World4|Quiz2|Question6|Choice1|True|1|True|0|True|
+|World4|Quiz2|Question6|Choice2|False|2|False|0|False|
+|World4|Quiz2|Question6|Choice3|Not sure|3|False|0|False|
+|World4|Quiz2|Question7|Choice1|location is path to test program and its outputs, and log is expected test output.|1|False|0|False|
+|World4|Quiz2|Question7|Choice2|input means input data or commands, and log is actual output produced by the test.|2|True|0|True|
+|World4|Quiz2|Question7|Choice3|we can have repeated name of test cases, and oracle is actual output produced by the test.|3|False|0|False|
+|World4|Quiz2|Question8|Choice1|Testing all execution is infeasible.|1|False|0|False|
+|World4|Quiz2|Question8|Choice2|There is no notion of testing coverage.|2|True|0|True|
+|World4|Quiz2|Question8|Choice3|It may not detect arithmetic bugs.|3|False|0|False|
+|World4|Quiz2|Question9|Choice1|All levels of system development|1|True|0|True|
+|World4|Quiz2|Question9|Choice2|Unit testing and integration testing|2|False|0|False|
+|World4|Quiz2|Question9|Choice3|System testing and acceptance testing|3|False|0|False|
+|World5|Quiz0|Question0|Choice1|Unstructured code|1|False|0|False|
+|World5|Quiz0|Question0|Choice2|Insufficient domain knowledge|2|False|0|False|
+|World5|Quiz0|Question0|Choice3|Sufficient documentation|3|True|0|True|
+|World5|Quiz0|Question1|Choice1|Consistent naming|1|False|0|False|
+|World5|Quiz0|Question1|Choice2|Strong cohesion|2|False|0|False|
+|World5|Quiz0|Question1|Choice3|Long procedures|3|True|0|True|
+|World5|Quiz0|Question2|Choice1|True|1|True|0|True|
+|World5|Quiz0|Question2|Choice2|False|2|False|0|False|
+|World5|Quiz0|Question2|Choice3|Not sure|3|False|0|False|
+|World5|Quiz0|Question3|Choice1|Modifying existing system components|1|False|0|False|
+|World5|Quiz0|Question3|Choice2|Adding new components to the system|2|False|0|False|
+|World5|Quiz0|Question3|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz0|Question4|Choice1|True|1|False|0|False|
+|World5|Quiz0|Question4|Choice2|False|2|True|0|True|
+|World5|Quiz0|Question4|Choice3|Not sure|3|False|0|False|
+|World5|Quiz0|Question5|Choice1|Changing a system to fix bugs and vulnerabilities|1|False|0|False|
+|World5|Quiz0|Question5|Choice2|Changing a system to correct deficiencies in the way meets its requirements|2|False|0|False|
+|World5|Quiz0|Question5|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz0|Question6|Choice1|58%|1|True|0|True|
+|World5|Quiz0|Question6|Choice2|24%|2|False|0|False|
+|World5|Quiz0|Question6|Choice3|19%|3|False|0|False|
+|World5|Quiz0|Question7|Choice1|changes the behavior of the software|1|False|0|False|
+|World5|Quiz0|Question7|Choice2|is the process of making improvements to a program|2|True|0|True|
+|World5|Quiz0|Question7|Choice3|means modifying a program to increase its complexity|3|False|0|False|
+|World5|Quiz0|Question8|Choice1|Not sure|1|False|0|False|
+|World5|Quiz0|Question8|Choice2|True|2|True|0|True|
+|World5|Quiz0|Question8|Choice3|False|3|False|0|False|
+|World5|Quiz0|Question90|Choice1|Duplicate code and long methods|1|False|0|False|
+|World5|Quiz0|Question90|Choice2|Large class and lazy class|2|False|0|False|
+|World5|Quiz0|Question9|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz0|Question10|Choice1|correcting errors found after the software has been delivered|1|False|0|False|
+|World5|Quiz0|Question10|Choice2|Adapting the software to changing requirements|2|False|0|False|
+|World5|Quiz0|Question10|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz0|Question11|Choice1|False|1|True|0|True|
+|World5|Quiz0|Question11|Choice2|True|2|False|0|False|
+|World5|Quiz0|Question11|Choice3|Not sure|3|False|0|False|
+|World5|Quiz0|Question12|Choice1|black box testing|1|False|0|False|
+|World5|Quiz0|Question12|Choice2|fault repairs|2|True|0|True|
+|World5|Quiz0|Question12|Choice3|Functionality addition|3|False|0|False|
+|World5|Quiz0|Question13|Choice1|True|1|False|0|False|
+|World5|Quiz0|Question13|Choice2|False|2|True|0|True|
+|World5|Quiz0|Question13|Choice3|Not sure|3|False|0|False|
+|World5|Quiz0|Question14|Choice1|insufficient understanding of a system from its source code|1|True|0|True|
+|World5|Quiz0|Question14|Choice2|Out-of-date documentation|2|False|0|False|
+|World5|Quiz0|Question14|Choice3|Poor and inconsistent naming|3|False|0|False|
+|World5|Quiz1|Question0|Choice1|True|1|False|0|False|
+|World5|Quiz1|Question0|Choice2|False|2|True|0|True|
+|World5|Quiz1|Question0|Choice3|Not sure|3|False|0|False|
+|World5|Quiz1|Question1|Choice1|To correct faults and improve performance.|1|False|0|False|
+|World5|Quiz1|Question1|Choice2|To adapt to a changed environment.|2|False|0|False|
+|World5|Quiz1|Question1|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz1|Question2|Choice1|Environmental adaptation changes a system to fix bugs and correct deficiencies.|1|False|0|False|
+|World5|Quiz1|Question2|Choice2|Environmental adaptation changes a system so that it operates in a different environment from its initial implementation.|2|True|0|True|
+|World5|Quiz1|Question2|Choice3|Environmental adaptation modifies the system to satisfy new requirements.|3|False|0|False|
+|World5|Quiz1|Question3|Choice1|True|1|True|0|True|
+|World5|Quiz1|Question3|Choice2|False|2|False|0|False|
+|World5|Quiz1|Question3|Choice3|Not sure|3|False|0|False|
+|World5|Quiz1|Question4|Choice1|Environmental adaptation|1|False|0|False|
+|World5|Quiz1|Question4|Choice2|Functionality addition or modification|2|True|0|True|
+|World5|Quiz1|Question4|Choice3|Fault repair|3|False|0|False|
+|World5|Quiz1|Question5|Choice1|Improve its structure and make it more difficult to implement|1|False|0|False|
+|World5|Quiz1|Question5|Choice2|Reduce its complexity and make it easier to understand|2|True|0|True|
+|World5|Quiz1|Question5|Choice3|Increase its complexity and improve its structure|3|False|0|False|
+|World5|Quiz1|Question6|Choice1|24%|1|True|0|True|
+|World5|Quiz1|Question6|Choice2|18%|2|False|0|False|
+|World5|Quiz1|Question6|Choice3|55%|3|False|0|False|
+|World5|Quiz1|Question7|Choice1|False|1|True|0|True|
+|World5|Quiz1|Question7|Choice2|True|2|False|0|False|
+|World5|Quiz1|Question7|Choice3|Not sure|3|False|0|False|
+|World5|Quiz1|Question8|Choice1|Inconsistent naming and long procedures|1|False|0|False|
+|World5|Quiz1|Question8|Choice2|No documentation and out-of-date documentation|2|True|0|True|
+|World5|Quiz1|Question8|Choice3|Strong coupling and weak cohesion|3|False|0|False|
+|World5|Quiz1|Question9|Choice1|Not sure|1|False|0|False|
+|World5|Quiz1|Question9|Choice2|False|2|False|0|False|
+|World5|Quiz1|Question9|Choice3|True|3|True|0|True|
+|World5|Quiz1|Question10|Choice1|Fault repairs|1|False|0|False|
+|World5|Quiz1|Question10|Choice2|Environmental adaptation|2|False|0|False|
+|World5|Quiz1|Question10|Choice3|Functionality addition or modification|3|True|0|True|
+|World5|Quiz1|Question11|Choice1|Unstructured code and insufficient documentation are causes of maintenance problems.|1|True|0|True|
+|World5|Quiz1|Question11|Choice2|Fault repair modifies the system to satisfy new requirements.|2|False|0|False|
+|World5|Quiz1|Question11|Choice3|Software refactoring changes the behavior of the software.|3|False|0|False|
+|World5|Quiz1|Question12|Choice1|Large class and lazy class can be improved in software maintenance.|1|False|0|False|
+|World5|Quiz1|Question12|Choice2|In software maintenance, adding new components is prohibited.|2|True|0|True|
+|World5|Quiz1|Question12|Choice3|The more spaghetti-like the code is, the difficult it becomes to disentangle it.|3|False|0|False|
+|World5|Quiz1|Question13|Choice1|To reduce the program’s complexity.|1|True|0|True|
+|World5|Quiz1|Question13|Choice2|To retest the system after delivery.|2|False|0|False|
+|World5|Quiz1|Question13|Choice3|To change the behavior of the software.|3|False|0|False|
+|World5|Quiz1|Question14|Choice1|True|1|False|0|False|
+|World5|Quiz1|Question14|Choice2|False|2|True|0|True|
+|World5|Quiz1|Question14|Choice3|Not sure|3|False|0|False|
+|World5|Quiz2|Question0|Choice1|No documentation at all|1|False|0|False|
+|World5|Quiz2|Question0|Choice2|Out-of-date documentation|2|False|0|False|
+|World5|Quiz2|Question0|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz2|Question1|Choice1|Adapting to a changed environment|1|False|0|False|
+|World5|Quiz2|Question1|Choice2|Improving performance and other attributes|2|False|0|False|
+|World5|Quiz2|Question1|Choice3|Drawing use case diagrams|3|True|0|True|
+|World5|Quiz2|Question2|Choice1|Not sure|1|False|0|False|
+|World5|Quiz2|Question2|Choice2|False|2|False|0|False|
+|World5|Quiz2|Question2|Choice3|True|3|True|0|True|
+|World5|Quiz2|Question3|Choice1|Fault repairs, black box testing and functionality addition|1|False|0|False|
+|World5|Quiz2|Question3|Choice2|Fault repairs, environmental adaptation and functionality modification|2|True|0|True|
+|World5|Quiz2|Question3|Choice3|Fault repairs, environmental adaptation and system architecture design|3|False|0|False|
+|World5|Quiz2|Question4|Choice1|Refactoring changes the behavior of the software.|1|True|0|True|
+|World5|Quiz2|Question4|Choice2|Refactoring is intended to avoid the structure and code degradation that increases the costs and difficulties of maintaining a system.|2|False|0|False|
+|World5|Quiz2|Question4|Choice3|Refactoring is a continuous process of improvement throughout the development and evolution process.|3|False|0|False|
+|World5|Quiz2|Question5|Choice1|19%|1|True|0|True|
+|World5|Quiz2|Question5|Choice2|36%|2|False|0|False|
+|World5|Quiz2|Question5|Choice3|78%|3|False|0|False|
+|World5|Quiz2|Question6|Choice1|Duplicate code, lazy class and temporary field|1|False|0|False|
+|World5|Quiz2|Question6|Choice2|Large class, tight coupling of two classes and long methods|2|False|0|False|
+|World5|Quiz2|Question6|Choice3|1 and 2|3|True|0|True|
+|World5|Quiz2|Question7|Choice1|hard to read, but easy to understand and maintain|1|False|0|False|
+|World5|Quiz2|Question7|Choice2|hard to read, understand and maintain|2|True|0|True|
+|World5|Quiz2|Question7|Choice3|easy to read and understand, but hard to maintain|3|False|0|False|
+|World5|Quiz2|Question8|Choice1|True|1|False|0|False|
+|World5|Quiz2|Question8|Choice2|False|2|True|0|True|
+|World5|Quiz2|Question8|Choice3|Not sure|3|False|0|False|
+|World5|Quiz2|Question9|Choice1|environmental adaptation|1|True|0|True|
+|World5|Quiz2|Question9|Choice2|fault repairs|2|False|0|False|
+|World5|Quiz2|Question9|Choice3|white box testing|3|False|0|False|

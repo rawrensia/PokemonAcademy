@@ -107,6 +107,7 @@ public class Quiz extends AppCompatActivity {
             questionList = intent.getExtras().getParcelableArrayList("questionList2");
             total_num_of_question = 10;
             current_num_of_question = 10;
+            timeTaken = new int[current_num_of_question];
             gamePlay();
         } else {
             customWorldID = intent.getStringExtra("customworldID");
@@ -329,13 +330,12 @@ public class Quiz extends AppCompatActivity {
                         }
                     }
                     current_num_of_question = current_num_of_question - 1;
+                    Log.i("currentnumquestions",""+current_num_of_question);
                     choiceClicked = false;
 
                     // End condition
                     if (endBattleFlag || current_num_of_question <= 0) {
                         Intent intent = getIntent();
-//                        String worldName = intent.getStringExtra("worldName");
-//                        int worldID = intent.getIntExtra("worldID", -1);
                         TextView miniQuizTv = (TextView) findViewById(R.id.miniquiztitle);
 
                         Intent Layer = new Intent(Quiz.this, QuizSummary.class);
