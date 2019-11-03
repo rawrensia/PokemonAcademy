@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
 
                 if (user.getUserType().equalsIgnoreCase("T")) {
-                    Layer = new Intent(LoginActivity.this, SummaryReportActivity.class);
+                    Layer = new Intent(LoginActivity.this, TeacherMenuLandingPage.class);
                 } else if (user.getFirstTime().equalsIgnoreCase("False")) {
                     Layer = new Intent(LoginActivity.this, MenuLandingPage.class);
                 } else {
