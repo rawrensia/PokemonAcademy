@@ -42,7 +42,6 @@ public class MenuLandingPage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent Layer = new Intent(MenuLandingPage.this, CustomQuizActivity.class);
                     startActivity(Layer);
-                    finish();
                 }
             });
     }
