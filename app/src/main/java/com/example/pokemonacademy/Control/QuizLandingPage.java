@@ -149,6 +149,7 @@ public class QuizLandingPage extends AppCompatActivity {
                             Layer.putExtra("worldName", worldName);
                             Layer.putExtra("worldID", worldID);
                             startActivity(Layer);
+                            finish();
                         }
                     });
                 }
