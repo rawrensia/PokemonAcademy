@@ -181,13 +181,13 @@ public class Quiz extends AppCompatActivity {
                 User u = new User();
                 u = dataSnapshot.getValue(User.class);
                 if (u.getCharId() == 0) {
-                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonsnorlax));
                 } else if (u.getCharId() == 1) {
-                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonslowpoke));
                 } else if (u.getCharId() == 2) {
                     userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
                 } else if (u.getCharId() == 3) {
-                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonpikachu));
+                    userpokemon.setImageDrawable(getResources().getDrawable(R.drawable.userpokemonbulbasaur));
                 }
             }
 
