@@ -66,54 +66,53 @@ public class Leaderboard extends AppCompatActivity {
                     final User u = ds.getValue(User.class);
                     Log.i("user", ""+u.getName() + " " + u.getId());
                     userList.add(u);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+                    quizzesCompletedDb.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (int i=0; i<userList.size(); i++){
+                                String grades = "";
+                                int totalScore = 0;
+                                int totalTime = 0;
+                                QuizzesCompleted quizWorld0 = new QuizzesCompleted();
+                                QuizzesCompleted quizWorld1 = new QuizzesCompleted();
+                                QuizzesCompleted quizWorld2 = new QuizzesCompleted();
+                                QuizzesCompleted quizWorld3 = new QuizzesCompleted();
+                                QuizzesCompleted quizWorld4 = new QuizzesCompleted();
+                                QuizzesCompleted quizWorld5 = new QuizzesCompleted();
+                                quizWorld0 = dataSnapshot.child(userList.get(i).getId()).child("World0").child("Quiz2").getValue(QuizzesCompleted.class);
+                                quizWorld1 = dataSnapshot.child(userList.get(i).getId()).child("World1").child("Quiz2").getValue(QuizzesCompleted.class);
+                                quizWorld2 = dataSnapshot.child(userList.get(i).getId()).child("World2").child("Quiz2").getValue(QuizzesCompleted.class);
+                                quizWorld3 = dataSnapshot.child(userList.get(i).getId()).child("World3").child("Quiz2").getValue(QuizzesCompleted.class);
+                                quizWorld4 = dataSnapshot.child(userList.get(i).getId()).child("World4").child("Quiz2").getValue(QuizzesCompleted.class);
+                                quizWorld5 = dataSnapshot.child(userList.get(i).getId()).child("World5").child("Quiz2").getValue(QuizzesCompleted.class);
+                                grades = getGrade(quizWorld0.getScore()) + "," +
+                                        getGrade(quizWorld1.getScore()) + "," +
+                                        getGrade(quizWorld2.getScore()) + "," +
+                                        getGrade(quizWorld3.getScore()) + "," +
+                                        getGrade(quizWorld4.getScore()) + "," +
+                                        getGrade(quizWorld5.getScore());
+                                totalScore = quizWorld0.getScore() + quizWorld1.getScore() +
+                                        quizWorld2.getScore() + quizWorld3.getScore() +
+                                        quizWorld4.getScore() + quizWorld5.getScore();
+                                totalTime = quizWorld0.getTimeTaken() + quizWorld1.getTimeTaken() +
+                                        quizWorld2.getTimeTaken() + quizWorld3.getTimeTaken() +
+                                        quizWorld4.getTimeTaken() + quizWorld5.getTimeTaken();
 
-        quizzesCompletedDb.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (int i=0; i<userList.size(); i++){
-                    String grades = "";
-                    int totalScore = 0;
-                    int totalTime = 0;
-                    QuizzesCompleted quizWorld0 = new QuizzesCompleted();
-                    QuizzesCompleted quizWorld1 = new QuizzesCompleted();
-                    QuizzesCompleted quizWorld2 = new QuizzesCompleted();
-                    QuizzesCompleted quizWorld3 = new QuizzesCompleted();
-                    QuizzesCompleted quizWorld4 = new QuizzesCompleted();
-                    QuizzesCompleted quizWorld5 = new QuizzesCompleted();
-                    quizWorld0 = dataSnapshot.child(userList.get(i).getId()).child("World0").child("Quiz2").getValue(QuizzesCompleted.class);
-                    quizWorld1 = dataSnapshot.child(userList.get(i).getId()).child("World1").child("Quiz2").getValue(QuizzesCompleted.class);
-                    quizWorld2 = dataSnapshot.child(userList.get(i).getId()).child("World2").child("Quiz2").getValue(QuizzesCompleted.class);
-                    quizWorld3 = dataSnapshot.child(userList.get(i).getId()).child("World3").child("Quiz2").getValue(QuizzesCompleted.class);
-                    quizWorld4 = dataSnapshot.child(userList.get(i).getId()).child("World4").child("Quiz2").getValue(QuizzesCompleted.class);
-                    quizWorld5 = dataSnapshot.child(userList.get(i).getId()).child("World5").child("Quiz2").getValue(QuizzesCompleted.class);
-                    grades = getGrade(quizWorld0.getScore()) + "," +
-                            getGrade(quizWorld1.getScore()) + "," +
-                            getGrade(quizWorld2.getScore()) + "," +
-                            getGrade(quizWorld3.getScore()) + "," +
-                            getGrade(quizWorld4.getScore()) + "," +
-                            getGrade(quizWorld5.getScore());
-                    totalScore = quizWorld0.getScore() + quizWorld1.getScore() +
-                            quizWorld2.getScore() + quizWorld3.getScore() +
-                            quizWorld4.getScore() + quizWorld5.getScore();
-                    totalTime = quizWorld0.getTimeTaken() + quizWorld1.getTimeTaken() +
-                            quizWorld2.getTimeTaken() + quizWorld3.getTimeTaken() +
-                            quizWorld4.getTimeTaken() + quizWorld5.getTimeTaken();
-
-                    userTimeList.add(totalTime);
-                    totalScoreList.add(totalScore);
-                    userGradesList.add(grades);
+                                userTimeList.add(totalTime);
+                                totalScoreList.add(totalScore);
+                                userGradesList.add(grades);
+                            }
+                            sortUser();
+                            recyclerView = findViewById(R.id.recycler_view);
+                            RecyclerViewAdapter adapter = new RecyclerViewAdapter(userTimeList,userGradesList,userList, mContext);
+                            recyclerView.setLayoutManager(manager);
+                            recyclerView.setAdapter(adapter);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
                 }
-                sortUser();
-                recyclerView = findViewById(R.id.recycler_view);
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(userTimeList,userGradesList,userList, mContext);
-                recyclerView.setLayoutManager(manager);
-                recyclerView.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
