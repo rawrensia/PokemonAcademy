@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                             qc.setUserId(userList.get(i).getId());
                             qc.setWorldId(worldNum);
                             qc.setMiniQuizId(quizNum);
+//                            qc.setScore(-1);
+//                            qc.setTimeTaken(-1);
                             qc.setScore(rand.nextInt(11));
                             qc.setTimeTaken(rand.nextInt(100));
                             databaseReferenceQuizzesCompleted.child(userList.get(i).getId()).child("World"+worldNum).child("Quiz"+quizNum).setValue(qc);
