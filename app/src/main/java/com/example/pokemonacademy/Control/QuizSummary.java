@@ -282,6 +282,7 @@ public class QuizSummary extends AppCompatActivity {
                     Layer.putExtra("worldName", worldName);
                     Layer.putExtra("worldID", worldID);
                     startActivity(Layer);
+                    finish();
                 } else {
                     Intent Layer = new Intent(QuizSummary.this, CustomQuizActivity.class);
                     startActivity(Layer);
