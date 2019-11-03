@@ -10,6 +10,13 @@
         android:visible="true"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/toworld"
+        android:enabled="true"
+        android:title="World"
+        android:icon="@drawable/worldwide"
+        android:visible="true"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/tominiquiz"
         android:enabled="true"
         android:title="Mini Quiz"

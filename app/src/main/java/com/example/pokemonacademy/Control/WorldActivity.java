@@ -99,6 +99,10 @@ public class WorldActivity extends AppCompatActivity {
                 startActivity(Layer);
                 finish();
                 return true;
+            case R.id.tomenulp:
+                Layer = new Intent(WorldActivity.this, MenuLandingPage.class);
+                startActivity(Layer);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

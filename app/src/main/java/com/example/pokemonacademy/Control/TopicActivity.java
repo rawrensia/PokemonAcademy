@@ -115,6 +115,10 @@ public class TopicActivity extends AppCompatActivity {
                 startActivity(Layer);
                 finish();
                 return true;
+            case R.id.tomenulp:
+                Layer = new Intent(TopicActivity.this, MenuLandingPage.class);
+                startActivity(Layer);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

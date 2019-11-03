@@ -42,18 +42,20 @@ public class ContentActivity extends AppCompatActivity {
                 content = getString(R.string.planning_content);
                 break;
             case WorldActivity.WORLD_ANALYSIS_ID:
-                // get analysis content
-                content = mDatabase.child("Student1").child("id").push().getKey();
+                content = getString(R.string.analysis_content);
                 break;
             case WorldActivity.WORLD_DESIGN_ID:
+                content = getString(R.string.design_content);
                 break;
             case WorldActivity.WORLD_IMPLEMENTATION_ID:
+                content = getString(R.string.implementation_content);
                 break;
             case WorldActivity.WORLD_TESTING_ID:
+                content = getString(R.string.testing_content);
                 break;
             case WorldActivity.WORLD_MAINTENANCE_ID:
+                content = getString(R.string.maintenance_content);
                 break;
-
             default:
                 break;
         }
@@ -88,6 +90,10 @@ public class ContentActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 startActivity(Layer);
                 finish();
+                return true;
+            case R.id.toworld:
+                Layer = new Intent(ContentActivity.this, WorldActivity.class);
+                startActivity(Layer);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

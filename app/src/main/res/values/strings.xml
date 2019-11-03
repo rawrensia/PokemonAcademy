@@ -33,32 +33,54 @@
     <string name="title_activity_mini_quiz_landing_page">Mini Quiz</string>
     <string name="analysis_content">
         <![CDATA[
-        <h5> <font color=\"#ffbf00\">Requirements:</h5>"
-                "<p>They are specifications of what should be implemented, "
-                "descriptions of how a system should behave, or of a system property/attribute.</p>"
-                  "<h5> <font color=\"#ffbf00\"> Requirement Engineering</h5><p>It is about identifying "
-                "the purpose of a software system and the contexts in which it will be used. "
-                "It refers to the activity of requirement development, which includes elicitation, "
-                "specification, analysis and management of stakeholder requirements.</p>"
-                  "<br>There are two Requirement Elicitation techniques:<br></br></br>"
-                  "<br><b>Technique 1:</b><br></br></br>"
-                  "<br>&#8226; Examine Documents: reuse existing or related documents, read standards or government regulations.\n</br>"
-                  "<br>&#8226; Interview stakeholders: conduct focus groups with customers to gather idea and needs.\n</br>"
-                  "<br>&#8226; Use questionnaires or marketing surveys for quantitative data.<br></br></br>"
-                  "<br><b>Technique 2:</b><br></br></br>"
-                  "<br>&#8226; Watch users do their job.</br>"
-                  "<br>&#8226; Prototyping: create interface to help customers better understand the system.\n</br>"
-                  "<br>&#8226; Task analysis: make use cases/ scenarios.<br></br></br>"
-                  "<h5> <font color=\"#ffbf00\"> Requirement Analysis</h5>"
-                  "<p>Decompose high-level requirements into details and identify priorities."
-                  "<br><b>Requirement Specification Approaches:</b><br></br></br>"
-                  "<br>&#8226; <b>Textual:</b> vision and scope document, use case document, SRS.</br>"
-                  "<br>&#8226; <b>Graphical:</b> structured analysis models (data flow diagram, entity-relationship diagram, dialog map), OO analysis models.</br>"
-                  "<br>&#8226; <b>Formal:</b> formal specification languages.</br>"
-                  "<p><b>Software Requirement Specification</b> is a set of precisely-stated properties and constraints "
-                "that a software system must satisfy, and a complete description of the external "
-                "behaviour of a system. The objectives of SRS are to achieve agreement regarding the "
-                "requirements among developers, customers and other stakeholders, as well as provide basis for design and system testing.</p>
+            "<p>In the analysis phase, end user business requirements are analysed and project goals "
+                "are converted into defined system functions. The three primary activities involved in the analysis "
+                "phase are as follows: </p>"
+                "<br>&#8226; Gathering business requirements\n</br>"
+                "<br>&#8226; Creating process diagrams\n</br>"
+                "<br>&#8226; Performing detailed analysis<br></br></br>"
+                "<p><b>Business requirement gathering<b> is the most crucial part of this level of SDLC."
+                " Business requirements are a brief set of business functionalities that the system needs"
+                " to meet in order to be successful.</p>"
+         ]]>
+    </string>
+    <string name="design_content">
+        <![CDATA[
+            "<p>In the design phase, the desired features and operations of the system are described. "
+                "The system design provides overall guidance on system functions, performance requirements,"
+                " security requirements, platform characteristics and should comprise:</p>"
+                "<br>&#8226; Business rules/application logic\n</br>"
+                "<br>&#8226; Interface design (app-tp-app, app-to-db)\n</br>"
+                "<br>&#8226; User Interfaces (GUI)\n</br>"
+         ]]>
+    </string>
+    <string name="implementation_content">
+        <![CDATA[
+            "<p>During implementation, all the documents from the previous phase are transformed into the actual system. "
+                "It is when the coding phase begins, where the design specified in the design
+                document into executable programming language code. The output of the coding phase
+                is the source code for the software.</p>"
+         ]]>
+    </string>
+    <string name="testing_content">
+        <![CDATA[
+            "<p>Integration and testing includes detection of errors in the software. The testing process
+            starts with a test plan that recognises test-related activities, such as test case generation, testing
+            criteria, and resource allocation for testing.</p>"
+            "<p>The code is tested and mapped against the design document created in the design phase.
+             The output of the testing phase is a test report containing error that occurred while testing
+              the application.</p>"
+         ]]>
+    </string>
+    <string name="maintenance_content">
+        <![CDATA[
+            "<p>In the maintenance phase, any necessary enhancements, corrections and changes will be made
+             to make sure that the system continues to work, and stay updated to meet the business goals.</p>"
+            "<p>It is necessary to maintain and upgrade the system from time to time, so it can adapt
+             to future needs. The three primary activities involved in the maintenance phase are as follows:</p>"
+             "<br>&#8226; Support the system users\n</br>"
+             "<br>&#8226; System maintenance\n</br>"
+             "<br>&#8226; System changes and adjustment\n</br>"
          ]]>
     </string>
 </resources>
