@@ -1,3 +1,13 @@
+/**
+ * The QuizzesCompleted consists
+ * of the attributes and getter setter
+ * function for a QuizzesCompleted.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Entity;
 
 public class QuizzesCompleted {

@@ -1,3 +1,12 @@
+/**
+ * The RecycleViewAdapter is used by the Leaderboard to create and display
+ * the list of users along with their ranking.
+ *
+ * @author  Lawrann
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.graphics.drawable.Drawable;

@@ -1,3 +1,13 @@
+/**
+ * The Question class consists
+ * of the attributes and getter setter
+ * function for a Question.
+ *
+ * @author  Lawrann
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Entity;
 
 import android.os.Parcel;
@@ -5,11 +15,6 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-//Question
-// - question_id: int
-// - world_id: int (from 0 to 5)
-// - quiz_id: int (from 0 to 2. [0 : mini_quiz_1] [1 : mini_quiz_2] [3: final_quiz])
-// - difficulty_level: int (from 1 to 3)
 
 public class Question implements Parcelable {
     public boolean attempted = false;

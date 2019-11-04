@@ -1,3 +1,14 @@
+/**
+ * The Login activity displays the activity_login.xml
+ * The user is allowed to input their login credentials which is then
+ * verified. Depending on whether the user is a first time user or not,
+ * they would be directed to the ChooseCharacterActivity or MenuLandingPage
+ *
+ * @author  Laurensia
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

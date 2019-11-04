@@ -1,3 +1,12 @@
+/**
+ * The QuestionChoice class consists
+ * of the attributes and getter setter
+ *
+ * @author  Lawrann
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Entity;
 
 

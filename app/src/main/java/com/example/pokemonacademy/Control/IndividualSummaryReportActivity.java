@@ -1,3 +1,13 @@
+/**
+ * The IndividualSummaryReportActivity displays the activity_individual_summary_report.xml
+ * It allows the user to view the summary report which consists of the mini quiz score and
+ * final quiz scores for all the respective SDLC topics.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

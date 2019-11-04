@@ -1,3 +1,12 @@
+/**
+ * The QuestionReview displays the activity_question_review.xml
+ * The user is able to view the full question, his selected choice and the correct choice.
+ *
+ * @author  Lawrann
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import androidx.appcompat.app.AppCompatActivity;

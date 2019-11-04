@@ -1,3 +1,12 @@
+/**
+ * The SummaryReportActivity display the activity_summary_report.xml
+ * It allows the user to select the individual report or overall report
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import androidx.appcompat.app.AppCompatActivity;
