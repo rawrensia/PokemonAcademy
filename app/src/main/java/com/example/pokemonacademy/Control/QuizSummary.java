@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -197,9 +199,15 @@ public class QuizSummary extends AppCompatActivity {
                 time.setText(""+timeTaken[i]);
                 // display correct
                 if (choiceChosen.get(i).getRightChoice()){
-                    correct.setText("Correct" );
+                    String ans = "Correct";
+                    SpannableString content = new SpannableString(ans);
+                    content.setSpan(new UnderlineSpan(), 0, ans.length(), 0);
+                    correct.setText(content);
                 } else {
-                    correct.setText("Wrong" );
+                    String ans = "Wrong";
+                    SpannableString content = new SpannableString(ans);
+                    content.setSpan(new UnderlineSpan(), 0, ans.length(), 0);
+                    correct.setText(content);
                 }
 
                 correct.setOnClickListener(new View.OnClickListener() {
