@@ -48,6 +48,7 @@ public class CustomQuizActivity extends AppCompatActivity {
         animationDrawable.start();
 
         questiondDB = FirebaseDatabase.getInstance().getReference("QUESTION");
+        mAuth = FirebaseAuth.getInstance();
 
         customQuizDatabaseQuery();
 
@@ -155,9 +156,10 @@ public class CustomQuizActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent Layer;
         switch (item.getItemId()) {
             case R.id.tomenulp:
-                Intent Layer = new Intent(CustomQuizActivity.this, MenuLandingPage.class);
+                Layer = new Intent(CustomQuizActivity.this, MenuLandingPage.class);
                 startActivity(Layer);
                 return true;
             case R.id.tologout:

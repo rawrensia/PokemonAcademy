@@ -27,14 +27,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class IndividualReportListActivity extends AppCompatActivity {
-    private DatabaseReference mDatabase;
 
+    private DatabaseReference mDatabase;
     private static final String TAG = "StudentList";
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual_report_list);
 
@@ -113,9 +115,10 @@ public class IndividualReportListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent Layer;
         switch (item.getItemId()) {
             case R.id.tomenulp:
-                Intent Layer = new Intent(IndividualReportListActivity.this, MenuLandingPage.class);
+                Layer = new Intent(IndividualReportListActivity.this, TeacherMenuLandingPage.class);
                 startActivity(Layer);
                 return true;
             case R.id.tologout:
