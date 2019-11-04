@@ -1,18 +1,3 @@
-/**
- * The Quiz displays the activity_menu_landing_page.xml
- *
- * This activity pulls the relevant question and choice options
- * from the database and allows the user the select choices and answer quiz
- * questions.
- * Difficulty of the questions are dynamically changed based on the
- * health points of the user.
- *
- *
- * @author  Lawrann
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -53,7 +38,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
-
+/**
+ * The Quiz displays the activity_menu_landing_page.xml
+ *
+ * This activity pulls the relevant question and choice options
+ * from the database and allows the user the select choices and answer quiz
+ * questions.
+ * Difficulty of the questions are dynamically changed based on the
+ * health points of the user.
+ *
+ *
+ * @author  Lawrann
+ * @since   2019-11-01
+ */
 public class Quiz extends AppCompatActivity {
 
     ImageView userpokemon;

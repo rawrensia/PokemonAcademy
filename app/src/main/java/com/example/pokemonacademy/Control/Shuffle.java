@@ -1,12 +1,3 @@
-/**
- * Shuffle is called when creating a custom quiz to shuffle the answer options
- * before storing them into the database
- *
- * @author  Benjamin
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;
@@ -17,6 +8,14 @@ import java.util.Collections;
 import java.util.List;
 
 import androidx.databinding.ObservableArrayList;
+
+/**
+ * Shuffle is called when creating a custom quiz to shuffle the answer options
+ * before storing them into the database
+ *
+ * @author  Benjamin
+ * @since   2019-11-01
+ */
 
 public class Shuffle {
     public static ArrayList<QuestionChoice> shuffleList(ArrayList<QuestionChoice> qc) {

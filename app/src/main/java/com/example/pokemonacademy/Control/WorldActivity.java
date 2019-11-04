@@ -1,12 +1,3 @@
-/**
- * The WorldActivity displays the activity_world_selection.xml
- * It allows the user to select the different SDLC topics
- *
- * @author  Laurensia
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -28,6 +19,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+/**
+ * The WorldActivity displays the activity_world_selection.xml
+ * It allows the user to select the different SDLC topics
+ *
+ * @author  Laurensia
+ * @since   2019-11-01
+ */
 public class WorldActivity extends AppCompatActivity {
     public final static int WORLD_PLANNING_ID = 0;
     public final static int WORLD_ANALYSIS_ID = 1;

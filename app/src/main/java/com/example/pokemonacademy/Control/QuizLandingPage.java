@@ -1,18 +1,3 @@
-/**
- * The QuizLandingPage display the activity_quiz_landing_page.xml
- *
- * It displays the quizzes available for the selected topic and allows
- * the user to select a quiz to attempt.
- * The user's completion of both mini quiz 1 and mini quiz 2 will be checked
- * from the databased. If the user has not completed both mini quiz 1 and
- * mini quiz 2, they would not be able to view and attempt the final quiz.
- *
- *
- * @author  Lawrann
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -53,7 +38,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * The QuizLandingPage display the activity_quiz_landing_page.xml
+ *
+ * It displays the quizzes available for the selected topic and allows
+ * the user to select a quiz to attempt.
+ * The user's completion of both mini quiz 1 and mini quiz 2 will be checked
+ * from the databased. If the user has not completed both mini quiz 1 and
+ * mini quiz 2, they would not be able to view and attempt the final quiz.
+ *
+ *
+ * @author  Lawrann
+ * @since   2019-11-01
+ */
 public class QuizLandingPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;

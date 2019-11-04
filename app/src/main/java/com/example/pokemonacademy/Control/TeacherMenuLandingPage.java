@@ -1,13 +1,3 @@
-/**
- * The TeacherMenuLandingPAge display the activity_menu_landing_page_teacher.xml
- * It allows the teacher to view the student report
- * or create a custom quiz.
- *
- * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -25,7 +15,15 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
+/**
+ * The TeacherMenuLandingPAge display the activity_menu_landing_page_teacher.xml
+ * It allows the teacher to view the student report
+ * or create a custom quiz.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-11-01
+ */
 public class TeacherMenuLandingPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;

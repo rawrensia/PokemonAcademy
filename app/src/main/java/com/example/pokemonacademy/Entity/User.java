@@ -1,20 +1,15 @@
+package com.example.pokemonacademy.Entity;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 /**
  * The User consists
  * of the attributes and getter setter
  * function for a User.
  *
  * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
+ * @since   2019-11-01
  */
-
-package com.example.pokemonacademy.Entity;
-
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
-
 public class User implements Parcelable {
 
     private String id;

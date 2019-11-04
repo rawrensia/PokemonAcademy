@@ -1,14 +1,3 @@
-
-/**
- * The ChooseCharacterActivity displays the activity_choose_character.xml
- * allows first time user to select a pokemon,
- * input their name and course index
- *
- * @author  Benjamin Lim
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -28,7 +17,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+/**
+ * The ChooseCharacterActivity displays the activity_choose_character.xml
+ * allows first time user to select a pokemon,
+ * input their name and course index
+ *
+ * @author  Benjamin Lim
+ * @since   2019-11-01
+ */
 public class ChooseCharacterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;

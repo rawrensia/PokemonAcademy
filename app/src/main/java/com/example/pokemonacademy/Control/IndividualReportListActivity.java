@@ -1,13 +1,3 @@
-/**
- * The IndividualReportListActivity displays the activity_individual_report_list.xml
- * This activity displays the list of students within the course and allows the user to
- * select a student to view their individual report.
- *
- * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -36,6 +26,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * The IndividualReportListActivity displays the activity_individual_report_list.xml
+ * This activity displays the list of students within the course and allows the user to
+ * select a student to view their individual report.
+ *
+ * @author  Maggie
+ * @since   2019-11-01
+ */
 public class IndividualReportListActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

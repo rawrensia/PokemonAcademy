@@ -1,13 +1,3 @@
-/**
- * The CustomQuizInfoActivity displays the activity_custom_quiz_info.xml
- * It allows the user to view the past 5 custom quizzes he/she has created
- * The user is able to copy the custom quizzes id he has created or share
- * it on social media platform Twitter.
- *
- * @author  Benjamin Lim
- * @version 1.0
- * @since   2019-10-07
- */
 package com.example.pokemonacademy.Control;
 
 import android.content.ClipData;
@@ -37,7 +27,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
+/**
+ * The CustomQuizInfoActivity displays the activity_custom_quiz_info.xml
+ * It allows the user to view the past 5 custom quizzes he/she has created
+ * The user is able to copy the custom quizzes id he has created or share
+ * it on social media platform Twitter.
+ *
+ * @author  Benjamin Lim
+ * @since   2019-11-01
+ */
 public class CustomQuizInfoActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
