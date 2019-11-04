@@ -1,3 +1,15 @@
+/**
+ * The CustomQuizActivity displays the activity_custom_quiz.xml
+ * It allows the user to input custom quiz ids try custom quizzes created
+ * by other users, Or the user can create their own custom quiz
+ * by selecting the create custom quiz button, Or the user can view the custom quizzes
+ * he has created.
+ *
+ * @author  Benjamin Lim
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

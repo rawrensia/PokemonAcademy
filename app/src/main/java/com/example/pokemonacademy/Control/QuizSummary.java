@@ -1,3 +1,19 @@
+/**
+ * The QuizSummary displays the activity_quiz_summary.xml
+ * If the user attempted a custom quiz or mini quiz, it displays a list of
+ * question which was presented to the user,
+ * the user's selected answer and the user has gotten the question correct
+ * The user would be able to select the question to view the full question
+ * and the correct answer to the question
+ *
+ * If the user attemmpted a final quiz, the user would be presented with his grade
+ * obtained for the quiz.
+ *
+ * @author  Lawrann
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import androidx.appcompat.app.AppCompatActivity;

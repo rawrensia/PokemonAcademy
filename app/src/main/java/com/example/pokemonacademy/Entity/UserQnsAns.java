@@ -1,3 +1,13 @@
+/**
+ * The UserQnsAns consists
+ * of the attributes and getter setter
+ * function for a UserQnsAns.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Entity;
 
 

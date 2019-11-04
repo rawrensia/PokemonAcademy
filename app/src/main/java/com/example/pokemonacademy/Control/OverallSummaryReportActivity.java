@@ -1,3 +1,13 @@
+/**
+ * The OverallSummaryReportActivity displays the activity_overall_summary_report.xml
+ * This page allows the user to view the cohorts overall summary report
+ * for mini quiz and final quiz.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

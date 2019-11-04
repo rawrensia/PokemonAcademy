@@ -1,3 +1,13 @@
+/**
+ * The TeacherMenuLandingPAge display the activity_menu_landing_page_teacher.xml
+ * It allows the teacher to view the student report
+ * or create a custom quiz.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

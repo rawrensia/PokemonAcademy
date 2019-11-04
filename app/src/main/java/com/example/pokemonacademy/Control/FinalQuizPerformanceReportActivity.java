@@ -1,3 +1,12 @@
+/**
+ * The FinalQuizPerformanceReportActivity displays the activity_final_quiz_performance.xml
+ * It allows the teacher to see an overview of the perforamnce on a final quiz.
+ *
+ * @author  Maggie
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

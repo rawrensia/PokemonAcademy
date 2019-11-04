@@ -1,3 +1,12 @@
+/**
+ * The CreateCustomQuizActivity displays the activity_create_custom_quiz.xml
+ * It allows the user to input questions, and answer options to create a custom quiz
+ *
+ * @author  Benjamin Lim
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Context;

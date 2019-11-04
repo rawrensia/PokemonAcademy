@@ -1,3 +1,14 @@
+
+/**
+ * The ChooseCharacterActivity displays the activity_choose_character.xml
+ * allows first time user to select a pokemon,
+ * input their name and course index
+ *
+ * @author  Benjamin Lim
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;

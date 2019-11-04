@@ -1,3 +1,12 @@
+/**
+ * Shuffle is called when creating a custom quiz to shuffle the answer options
+ * before storing them into the database
+ *
+ * @author  Benjamin
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import com.example.pokemonacademy.Entity.QuestionChoice;

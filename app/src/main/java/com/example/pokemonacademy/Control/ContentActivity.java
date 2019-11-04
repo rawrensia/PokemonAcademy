@@ -1,3 +1,13 @@
+/**
+ * The ContentActivity displays the activity_learning_material.xml
+ * It shows the relevant lecture notes for the selected SDLC Topic
+ * and allows user to view the notes.
+ *
+ * @author  Laurensia
+ * @version 1.0
+ * @since   2019-10-07
+ */
+
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
