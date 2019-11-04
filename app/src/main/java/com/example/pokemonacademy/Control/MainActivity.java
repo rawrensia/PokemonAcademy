@@ -1,12 +1,3 @@
-/**
- * The MainActivity displays the activity_main.xml
- * This page shows the start button to our application
- *
- * @author  Laurensia
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -45,7 +36,13 @@ import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+/**
+ * The MainActivity displays the activity_main.xml
+ * This page shows the start button to our application
+ *
+ * @author  Laurensia
+ * @since   2019-11-01
+ */
 public class MainActivity extends AppCompatActivity {
     Button btnStart;
 

@@ -1,12 +1,3 @@
-/**
- * The FinalQuizPerformanceReportActivity displays the activity_final_quiz_performance.xml
- * It allows the teacher to see an overview of the perforamnce on a final quiz.
- *
- * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -39,7 +30,13 @@ import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
+/**
+ * The FinalQuizPerformanceReportActivity displays the activity_final_quiz_performance.xml
+ * It allows the teacher to see an overview of the perforamnce on a final quiz.
+ *
+ * @author  Maggie
+ * @since   2019-11-01
+ */
 public class FinalQuizPerformanceReportActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseQns;
     private DatabaseReference mDatabaseQnsChoice;

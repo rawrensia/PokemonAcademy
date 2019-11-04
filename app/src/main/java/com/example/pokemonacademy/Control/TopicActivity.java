@@ -1,13 +1,3 @@
-/**
- * The TopicActivity displays the activity_topic.xml
- * It allows the user to select between viewing the
- * learning material or playing the mini quiz.
- *
- * @author  Laurensia
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -32,7 +22,14 @@ import java.util.Random;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-
+/**
+ * The TopicActivity displays the activity_topic.xml
+ * It allows the user to select between viewing the
+ * learning material or playing the mini quiz.
+ *
+ * @author  Laurensia
+ * @since   2019-11-01
+ */
 public class TopicActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 

@@ -1,15 +1,12 @@
+package com.example.pokemonacademy.Entity;
 /**
  * The QuizzesCompleted consists
  * of the attributes and getter setter
  * function for a QuizzesCompleted.
  *
  * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
+ * @since   2019-11-01
  */
-
-package com.example.pokemonacademy.Entity;
-
 public class QuizzesCompleted {
     String userId;
     int worldId;

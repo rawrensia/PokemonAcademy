@@ -1,18 +1,15 @@
+package com.example.pokemonacademy.Entity;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 /**
  * The QuestionChoice class consists
  * of the attributes and getter setter
  *
  * @author  Lawrann
  * @version 1.0
- * @since   2019-10-07
+ * @since   2019-11-01
  */
-
-package com.example.pokemonacademy.Entity;
-
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class QuestionChoice implements Parcelable {
     public String choice;
     public int choiceId;

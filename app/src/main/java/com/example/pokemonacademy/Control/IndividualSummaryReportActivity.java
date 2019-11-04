@@ -1,13 +1,3 @@
-/**
- * The IndividualSummaryReportActivity displays the activity_individual_summary_report.xml
- * It allows the user to view the summary report which consists of the mini quiz score and
- * final quiz scores for all the respective SDLC topics.
- *
- * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -41,7 +31,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
+/**
+ * The IndividualSummaryReportActivity displays the activity_individual_summary_report.xml
+ * It allows the user to view the summary report which consists of the mini quiz score and
+ * final quiz scores for all the respective SDLC topics.
+ *
+ * @author  Maggie
+ * @since   2019-11-01
+ */
 public class IndividualSummaryReportActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabaseUser;

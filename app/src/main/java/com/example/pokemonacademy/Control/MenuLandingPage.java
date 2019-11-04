@@ -1,12 +1,3 @@
-/**
- * The MenuLandingPAge displays the activity_menu_landing_page.xml
- * This page allows the user to select between world training and custom mode
- *
- * @author  Laurensia
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import android.content.Intent;
@@ -19,7 +10,13 @@ import com.example.pokemonacademy.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
+/**
+ * The MenuLandingPAge displays the activity_menu_landing_page.xml
+ * This page allows the user to select between world training and custom mode
+ *
+ * @author  Laurensia
+ * @since   2019-11-01
+ */
 public class MenuLandingPage extends AppCompatActivity {
 
     @Override

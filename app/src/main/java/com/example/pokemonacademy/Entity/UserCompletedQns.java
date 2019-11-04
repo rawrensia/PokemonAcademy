@@ -1,15 +1,12 @@
+package com.example.pokemonacademy.Entity;
 /**
  * The UserCompletedQns consists
  * of the attributes and getter setter
  * function for a UserCompletedQns.
  *
  * @author  Maggie
- * @version 1.0
- * @since   2019-10-07
+ * @since   2019-11-01
  */
-
-package com.example.pokemonacademy.Entity;
-
 public class UserCompletedQns {
     String userId;
     int qnsId;

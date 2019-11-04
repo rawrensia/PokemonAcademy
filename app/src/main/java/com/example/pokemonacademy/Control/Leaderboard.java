@@ -1,13 +1,3 @@
-/**
- * The Leaderboard activity displays the activity_leaderboard.xml
- * It generates the ranking and scores of all students within the database
- * and displays them in a recycle view
- *
- * @author  Lawrann
- * @version 1.0
- * @since   2019-10-07
- */
-
 package com.example.pokemonacademy.Control;
 
 import androidx.annotation.NonNull;
@@ -44,6 +34,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+/**
+ * The Leaderboard activity displays the activity_leaderboard.xml
+ * It generates the ranking and scores of all students within the database
+ * and displays them in a recycle view
+ *
+ * @author  Lawrann
+ * @version 1.0
+ * @since   2019-11-01
+ */
 
 public class Leaderboard extends AppCompatActivity {
 

@@ -1,16 +1,12 @@
-
+package com.example.pokemonacademy.Control;
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
 /**
  * When user inputs the password, it will be asterisk for security.
  *
  * @author  Laurensia
- * @version 1.0
- * @since   2019-10-07
+ * @since   2019-11-01
  */
-
-package com.example.pokemonacademy.Control;
-import android.text.method.PasswordTransformationMethod;
-import android.view.View;
-
 public class AsteriskPassword extends PasswordTransformationMethod {
     @Override
     public CharSequence getTransformation(CharSequence source, View view) {
