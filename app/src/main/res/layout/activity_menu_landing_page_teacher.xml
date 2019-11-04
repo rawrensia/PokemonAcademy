@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="View Overall Students Report"
+                    android:text="View Students Report"
                     android:fontFamily="@font/quenda"
                     android:gravity="center_vertical"
                     android:textAlignment="center"
