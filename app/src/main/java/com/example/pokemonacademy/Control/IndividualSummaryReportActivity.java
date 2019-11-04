@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -23,6 +24,7 @@ import com.example.pokemonacademy.Entity.User;
 import com.example.pokemonacademy.R;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,8 @@ public class IndividualSummaryReportActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseUser;
     private DatabaseReference mDatabaseResult;
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private String uType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,42 @@ public class IndividualSummaryReportActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String userId = intent.getStringExtra("userId");
 
+        mAuth = FirebaseAuth.getInstance();
         mDatabaseUser = FirebaseDatabase.getInstance().getReference("USER");
         mDatabaseResult = FirebaseDatabase.getInstance().getReference("QUIZZES_COMPLETED");
 
         generateHeader(userId);
+
+        DatabaseReference reference = mDatabaseUser.child(mAuth.getCurrentUser().getUid());
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                Intent Layer;
+                User user = dataSnapshot.getValue(User.class);
+                if (user.getUserType().equals("T")) {
+                    uType = "T";
+                } else if (user.getUserType().equals("S")) {
+                    uType = "S";
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        reference.addListenerForSingleValueEvent(userListener);
+
+//        mDatabaseUser.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                questionList = getQuestions2(dataSnapshot, worldID, miniQuizID);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
+
 
 //        ImageView usericon = (ImageView) findViewById(R.id.usericon);
 //        TextView report = (TextView) findViewById(R.id.individualReport);
@@ -94,7 +130,7 @@ public class IndividualSummaryReportActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-
+                uType = user.getUserType();
                 String name = user.getName();
                 int charId = user.getCharId();
 
@@ -194,12 +230,17 @@ public class IndividualSummaryReportActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.tomenulp:
-                Intent Layer = new Intent(IndividualSummaryReportActivity.this, MenuLandingPage.class);
-                startActivity(Layer);
+                if (uType.equals("S")){
+                    Intent Layer = new Intent(IndividualSummaryReportActivity.this, MenuLandingPage.class);
+                    startActivity(Layer);
+                }else if (uType.equals("T")){
+                    Intent Layer = new Intent(IndividualSummaryReportActivity.this, TeacherMenuLandingPage.class);
+                    startActivity(Layer);
+                }
                 return true;
             case R.id.tologout:
                 mAuth.signOut();
-                Layer = new Intent(IndividualSummaryReportActivity.this, MainActivity.class);
+                Intent Layer = new Intent(IndividualSummaryReportActivity.this, MainActivity.class);
                 Toast.makeText(IndividualSummaryReportActivity.this, "Successfully logged out.",
                         Toast.LENGTH_LONG).show();
                 startActivity(Layer);
