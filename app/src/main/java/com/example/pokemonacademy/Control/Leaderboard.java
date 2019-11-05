@@ -75,7 +75,9 @@ public class Leaderboard extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     final User u = ds.getValue(User.class);
                     Log.i("user", ""+u.getName() + " " + u.getId());
-                    userList.add(u);
+                    if (u.getUserType().equals("S")){
+                        userList.add(u);
+                    }
                     quizzesCompletedDb.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -95,18 +97,51 @@ public class Leaderboard extends AppCompatActivity {
                                 quizWorld3 = dataSnapshot.child(userList.get(i).getId()).child("World3").child("Quiz2").getValue(QuizzesCompleted.class);
                                 quizWorld4 = dataSnapshot.child(userList.get(i).getId()).child("World4").child("Quiz2").getValue(QuizzesCompleted.class);
                                 quizWorld5 = dataSnapshot.child(userList.get(i).getId()).child("World5").child("Quiz2").getValue(QuizzesCompleted.class);
-                                grades = getGrade(quizWorld0.getScore()) + "," +
-                                        getGrade(quizWorld1.getScore()) + "," +
-                                        getGrade(quizWorld2.getScore()) + "," +
-                                        getGrade(quizWorld3.getScore()) + "," +
-                                        getGrade(quizWorld4.getScore()) + "," +
-                                        getGrade(quizWorld5.getScore());
-                                totalScore = quizWorld0.getScore() + quizWorld1.getScore() +
-                                        quizWorld2.getScore() + quizWorld3.getScore() +
-                                        quizWorld4.getScore() + quizWorld5.getScore();
-                                totalTime = quizWorld0.getTimeTaken() + quizWorld1.getTimeTaken() +
-                                        quizWorld2.getTimeTaken() + quizWorld3.getTimeTaken() +
-                                        quizWorld4.getTimeTaken() + quizWorld5.getTimeTaken();
+                                int sqw0,sqw1,sqw2,sqw3,sqw4,sqw5, tt0,tt1,tt2,tt3,tt4,tt5;
+                                sqw0 = -1;
+                                sqw1 = -1;
+                                sqw2 = -1;
+                                sqw3 = -1;
+                                sqw4 = -1;
+                                sqw5 = -1;
+                                tt0 = 0;
+                                tt1 = 0;
+                                tt2 = 0;
+                                tt3 = 0;
+                                tt4 = 0;
+                                tt5 = 0;
+                                if (quizWorld0!=null){
+                                    sqw0 = quizWorld0.getScore();
+                                    tt0 = quizWorld0.getTimeTaken();
+                                }
+                                if (quizWorld1!=null){
+                                    sqw1 = quizWorld1.getScore();
+                                    tt1 = quizWorld1.getTimeTaken();
+                                }
+                                if (quizWorld2!=null){
+                                    sqw2 = quizWorld2.getScore();
+                                    tt2 = quizWorld2.getTimeTaken();
+                                }
+                                if (quizWorld3!=null){
+                                    sqw3 = quizWorld3.getScore();
+                                    tt3 = quizWorld3.getTimeTaken();
+                                }
+                                if (quizWorld4!=null){
+                                    sqw4 = quizWorld4.getScore();
+                                    tt4 = quizWorld4.getTimeTaken();
+                                }
+                                if (quizWorld5!=null){
+                                    sqw5 = quizWorld5.getScore();
+                                    tt5 = quizWorld5.getTimeTaken();
+                                }
+                                grades = getGrade(sqw0) + "," +
+                                        getGrade(sqw1) + "," +
+                                        getGrade(sqw2) + "," +
+                                        getGrade(sqw3) + "," +
+                                        getGrade(sqw4) + "," +
+                                        getGrade(sqw5);
+                                totalScore = sqw0 + sqw1 + sqw2 + sqw3 + sqw4 + sqw5;
+                                totalTime = tt0 + tt1 + tt2 + tt3 + tt4 + tt5;
 
                                 userTimeList.add(totalTime);
                                 totalScoreList.add(totalScore);
