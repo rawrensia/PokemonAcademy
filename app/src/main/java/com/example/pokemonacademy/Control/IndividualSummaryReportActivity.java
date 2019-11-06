@@ -147,16 +147,16 @@ public class IndividualSummaryReportActivity extends AppCompatActivity {
                 usericon.setImageResource(R.drawable.gamelogo); //default
                 switch (charId){
                     case 0:
-                        usericon.setImageResource(R.drawable.char1);
-                        break;
-                    case 1:
-                        usericon.setImageResource(R.drawable.char2);
-                        break;
-                    case 2:
                         usericon.setImageResource(R.drawable.char3);
                         break;
-                    case 3:
+                    case 1:
+                        usericon.setImageResource(R.drawable.char1);
+                        break;
+                    case 2:
                         usericon.setImageResource(R.drawable.char5);
+                        break;
+                    case 3:
+                        usericon.setImageResource(R.drawable.char2);
                 }
 
                 report.setText(name + "'s Report");
